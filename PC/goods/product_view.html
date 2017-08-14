@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="../css/style.css" rel="stylesheet">
+<!--    <script type="text/javascript" src="./js/jquery-2.2.1.min.js"></script>-->
+    <script type="text/javascript" src="../../js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../../js/selectivizr-min.js"></script>
+  </head>
+  <body>
+    <div id="wrap_page">
+      <div id="header">
+        <div class="area_top">
+          <div class="head_bar clearfix">
+            <ul class="user_status">
+              <li><a href="#"><span>로그인</span></a></li>
+              <li><a href="#"><span>회원가입</span></a></li>
+              <li><a href="#"><span>마이페이지</span></a></li>
+              <li><a href="#"><span>장바구니</span></a></li>
+              <li><a href="#"><span>주문조회</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="logo_area">
+          <a href="#"><img src="../images/logo.png"></a>
+        </div>
+        <div class="area_nav">
+          <div class="nav clearfix">
+            <div class="left_cate">
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_plate.png" alt="그릇"></span>
+              </a>
+              <span class="bar1"></span>
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_cooking_tools.png" alt="조리도구"></span>
+              </a>
+              <span class="bar1"></span>
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_props.png" alt="소품"></span>
+              </a>
+              <span class="bar1"></span>
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_set.png" alt="세트"></span>
+              </a>
+              <span class="bar1"></span>
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_special.png" alt="스페셜"></span>
+              </a>
+            </div>
+            <div class="right_cate">
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_magazine&chon.png" alt="매거진&촌"></span>
+              </a>
+              <span class="bar2"></span>
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_event.png" alt="이벤트"></span>
+              </a>
+              <span class="bar2"></span>
+              <a href="#">
+                <span class="cate_name"><img src="../images/navi_ask_partnership.png" alt="제휴문의"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="wrap_content">
+        <div class="contents l2 clearfix">
+          <div class="section main">
+            <div class="area_main_top">
+              <div class="area_product_detail clearfix">
+                <div class="product_head img">
+                  <img src="../images/product_view_head1.jpg">
+                </div>
+                <div class="product_head info">
+                  <div class="block_info_top">
+                    <div class="block_line cate">
+                        <span class="cate1">그릇</span>
+                        <span>></span>
+                        <span class="cate2 current_cate">머그</span>
+                    </div>
+                    <div class="block_line">
+                      <span class="product_name left_text">산도 화이트 디저트볼</span>
+                      <span class="stt_icon1 new">new</span>
+                      <span class="stt_icon1 best">best</span>
+                      <span class="stt_icon1 restock">재입고</span>
+                    </div>
+                    <div class="block_line">
+                      <span class="left_text">판매가</span>
+                      <span class="price sale">19,000원</span>
+                      <span class="sale_price">10,000원</span>
+                      <span class="sale_pctg">[50%]</span>
+                    </div>
+                    <div class="block_line">
+                      <span class="left_text">상품요약</span>
+                      <span class="desc">실용적인 사이즈의 머그컵</span>
+                    </div>
+                    <div class="block_line">
+                      <span class="left_text">코드</span>
+                      <span class="code">MUG1234512</span>
+                    </div>
+                    <div class="block_line">
+                      <span class="left_text">수량</span>
+                      <input type="text" name="select_amount" id="buy_cnt" value="1">
+                      <span class="amount_btn">
+                          <img src="../images/polygon_double.png" usemap="#amount">
+                          <map name="amount" id="amount">
+                            <area shape="rect" coords="0,0,9,9" href="#" onclick="amount_change('up');return false;";>
+                            <area shape="rect" coords="0,10,9,19" href="#" onclick="amount_change('down');return false;";>
+                          </map>
+                      </span>
+<!-- 품절일시 화살표 아이콘 재입고요청 버튼으로 변경
+                      <span class="amount_btn off_stock" style="display:none">
+                        재입고요청<span class="restock_arrow"></span>
+                      </span>
+-->
+                    </div>
+                    <div class="block_line">
+                        <span class="left_text">
+                          색상
+                        </span>
+                        <div class="select_box">
+                          <label for="option_change1" class="select_label">[필수]옵션을 선택해주세요</label>
+                          <select name="select_option" id="option_change1" class="option_change">
+                            <option value="default" selected="selected">[필수]옵션을 선택해주세요</option>
+                            <option value="red">red</option>
+                            <option value="green">green</option>
+                            <option value="orange">orange</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="block_info_bottom">
+                    <div class="block_line total clearfix">
+                      <span class="left_text">총 상품금액(수량)</span>
+                      <div class="right_text">
+                        <span class="total_price">58,000원</span><span class="total_amount">(2개)</span>
+                      </div>
+                    </div>
+                    <div class="block_btn clearfix">
+                      <input type="button" class="pr_btn img_purchase">
+                      <input type="button" class="pr_btn img_basket">
+                      <input type="button" class="pr_btn img_wishlist">
+<!-- 장바구니 팝업
+                      <div class="popup_basket" style="display:none;">
+                        <div class="popup_inner">
+                          <div class="area_close"><a href="#">닫기</a></div>
+                          <div class="popup_txt">
+                            <p>장바구니에 담겼습니다<br>지금 확인하시겠어요?</p>
+                          </div>
+                          <div class="popup_btn_block clearfix">
+                            <input type="button" class="pr_btn sm img_continue_shopping">
+                            <input type="button" class="pr_btn sm img_view_basket">
+                          </div>
+                        </div>
+                      </div>
+-->
+                    </div>
+<!-- 품절일때 버튼 레이아웃, 스타일 변경
+                    <div class="block_btn clearfix off_stock">
+                      <input type="button" class="pr_btn img_soldout" value="SOLD OUT">
+                    </div>
+-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="area_main_middle">
+              <div class="product_logo">
+                <img src="../images/product_logo.png">
+              </div>
+              <div class="product_dt_img">
+                <img src="../images/product_detail1.jpg">
+              </div>
+              <div class="product_desc title">
+                <p class="product_name">
+                  제품명
+                </p>
+                <p class="product_summary">
+                  디저트접시로, 앞접시로, 반찬접시로 전천후로 활용가능한 접시에요.<br>
+                  테두리에 홈이 파진 모양새가 단조롭지 않고 귀엽답니다!
+                </p>
+              </div>
+              <div class="product_dt_img">
+                <img src="../images/product_detail2.jpg">
+              </div>
+              <div class="product_dt_img">
+                <img src="../images/product_detail3.jpg">
+              </div>
+              <div class="product_desc">
+                <p class="product_ment">
+                  다른 테이블 셋팅과도 잘 어울려요
+                </p>
+              </div>
+              <div class="product_dt_img">
+                <img src="../images/product_detail4.jpg">
+              </div>
+              <div class="product_dt_size">
+                <img src="../images/detail_size.jpg">
+              </div>
+              <div class="product_dt_info">
+<!--                <img src="../images/detail_info.jpg">-->
+                <div class="dt_info_top">
+                  <div class="caution_txt ceramics">
+                    <h2>수작업으로 만들어진 도자기들은,</h2>
+                    <p>무늬와 사이즈가 상세 설명과 차이가 있을 수 있어요.<br>
+                       제작공정 과정 중 유약이 흐른 자국, 미세한 돌기, 기포 구멍 등이 발생할 수 있어요.<br>도자기 흙 또는 유약에 포함된 철 성분으로 인해 검은 점이 생성될 수 있어요.
+                    </p>
+                  </div>
+                  <div class="caution_list clearfix">
+                    <div class="caution_block">
+                      <div class="caution_img">
+                        <img src="../images/caution_img1.png" alt="유약 자국">
+                      </div>
+                      <div class="caution_ex_txt">
+                        <span>유약이 흐른 자국</span>
+                      </div>
+                    </div>
+                    <div class="caution_block">
+                      <div class="caution_img">
+                        <img src="../images/caution_img2.png" alt="기포 구멍">
+                      </div>
+                      <div class="caution_ex_txt">
+                        <span>기포가 빠져나간 구멍</span>
+                      </div>
+                    </div>
+                    <div class="caution_block">
+                      <div class="caution_img">
+                        <img src="../images/caution_img3.png" alt="미세 돌기">
+                      </div>
+                      <div class="caution_ex_txt">
+                        <span>미세한 돌기</span>
+                      </div>
+                    </div>
+                    <div class="caution_block">
+                      <div class="caution_img">
+                        <img src="../images/caution_img4.png" alt="철 성분 검은 점">
+                      </div>
+                      <div class="caution_ex_txt">
+                        <span>철 성분으로 인한 검은 점</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="dt_info_bottom">
+                  <div class="dt_info_bottom_bg">
+                    <div class="dt_info_bottom_inner">
+                      <h2 class="dt_guide_headline">
+                         <img src="../images/guide_alert_ico.png" alt="주의">
+                         <span>아래의 내용을 확인해주세요</span>
+                      </h2>
+                      <div class="dt_guide_cnts">
+                        <div class="dt_guide_cnts_inner">
+                          <div class="guide_block">
+                            <h4><img src="../images/guide_dot_img.png">주문배송안내</h4>
+                            <p><span>-</span><span>배송기간은 입금 확인일로부터 주말, 공휴일을 제외하고 약 1~3일 정도 소요됩니다.</span></p>
+                            <p><span>-</span><span>5만원 미만 구매시 2,500원의 배송료가 추가됩니다.</span></p>
+                            <p><span>-</span><span>제주도 및 도서 산간 지역은 별도의 추가요금이 발생할 수 있습니다.</span></p>
+                            <p><span>-</span><span>상품 준비 기간에 따라 배송일자가 달라 질 수 있습니다.</span></p>
+                            <p><span>-</span><span>택배 : 로젠택배   /   배송비 : 2,500원</span></p>
+                          </div>
+                          <div class="guide_block">
+                            <h4><img src="../images/guide_dot_img.png">교환/반품안내</h4>
+                            <p><span>-</span><span>상품하자, 오배송으로 인한 교환 및 반품시 상품 수령 후 7일 이내 교환처리 해드립니다.</span></p>
+                            <p><span>-</span><span>단순 고객 변심에 의한 교환은 왕복 택배비 5,000원을 동봉하여 주시기 바랍니다.</span></p>
+                            <p><span>-</span><span>반품은 배송비를 지불하셨다면 편도 택배비 2,500원, 무료배송 받으셨다면 왕복 택배비 5,000원을 동봉하여 주시기 바랍니다.<br>
+                              (반품신청 기간은 제품을 받은 날부터 3일 이내로 신청해주셔야 반품이 가능합니다.)</span></p>
+                            <p><span>-</span><span>모든 교환 및 반품은 먼저 고객센터로 교환/반품 의사를 밝혀주셔야하며, 로젠택배를 이용해 반품을 신청해주세요.</span></p>
+                          </div>
+                          <div class="guide_block">
+                            <h4><img src="../images/guide_dot_img.png">교환/반품이 불가한 경우</h4>
+                            <p><span>-</span><span>교환/반품 기간이 경과된 경우</span></p>
+                            <p><span>-</span><span>교환 및 반품 의사를 동봉하지 않은 경우</span></p>
+                            <p><span>-</span><span>고객의 부주의로 인해 상품이 훼손된 경우 / 사용흔적이 있거나 판매가 불가한 경우</span></p>
+                            <p><span>-</span><span>이벤트 및 세일상품</span></p>
+                          </div>
+                          <div class="guide_block">
+                            <h4><img src="../images/guide_dot_img.png">고객센터</h4>
+                            <p><span>-</span><span>전화 : 070-4888-3580</span></p>
+                            <p><span>-</span><span>교환 및 반품주소 : 서울특별시 서초구 방배동 931-9 2F</span></p>
+                            <p><span>-</span><span>고객 상담시간 : 평일 오전 10시 30분 ~오후 5시 (토요일, 일요일 및 공휴일 휴무)
+                              </span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="product_dt_branding">
+                <img src="../images/branding_img.jpg">
+              </div>
+            </div>
+            <div class="area_main_bottom">
+              <div class="related_block">
+                <p class="head_txt mb14">관련상품</p>
+                <div class="list_product clearfix">
+                  <div class="product n4 rt">
+                    <a href="#"><img src="../images/relate1.jpg"></a>
+                    <div class="prd_info">
+                      <span class="prd_name">에디슨 스탠드 조명</span>
+                      <span class="stt_icon2 new">NEW</span>
+                      <span class="prd_price">2,500원</span>
+                      <span class="prd_desc">
+                      디저트접시로, 앞접시로,<br>
+                      반찬접시로 전천후로 활용가능한<br>
+                      접시에요.<br>
+                      테두리에 홈이 파진 모양새가<br>
+                      단조롭지 않고 귀엽답니다!
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product n4 rt">
+                    <a href="#"><img src="../images/relate2.jpg"></a>
+                    <div class="prd_info">
+                      <span class="prd_name">에디슨 스탠드 조명</span>
+                      <span class="stt_icon2 restock">재입고</span>
+                      <span class="prd_price">2,500원</span>
+                      <span class="prd_desc">
+                        디저트접시로, 앞접시로,<br>
+                        반찬접시로 전천후로 활용가능한<br>
+                        접시에요.<br>
+                        테두리에 홈이 파진 모양새가<br>
+                        단조롭지 않고 귀엽답니다!
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product n4 rt">
+                    <a href="#"><img src="../images/relate3.jpg"></a>
+                    <div class="prd_info">
+                      <span class="prd_name">에디슨 스탠드 조명</span>
+                      <span class="stt_icon2 best">BEST</span>
+                      <span class="prd_price">2,500원</span>
+                      <span class="prd_desc">
+                        디저트접시로, 앞접시로,<br>
+                        반찬접시로 전천후로 활용가능한<br>
+                        접시에요.<br>
+                        테두리에 홈이 파진 모양새가<br>
+                        단조롭지 않고 귀엽답니다!
+                      </span>
+                    </div>
+                  </div>
+                  <div class="product n4 rt">
+                    <a href="#"><img src="../images/relate4.jpg"></a>
+                    <div class="prd_info">
+                      <span class="prd_name">에디슨 스탠드 조명</span>
+                      <span class="stt_icon2 best">BEST</span>
+                      <span class="prd_price">2,500원</span>
+                      <span class="prd_desc">
+                        디저트접시로, 앞접시로,<br>
+                        반찬접시로 전천후로 활용가능한<br>
+                        접시에요.<br>
+                        테두리에 홈이 파진 모양새가<br>
+                        단조롭지 않고 귀엽답니다!
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="related_block">
+                <p class="head_txt">리뷰</p>
+                <table class="pr_view_table">
+                  <tr>
+                    <td class="num">4</td>
+                    <td class="subject"><a href="#">[제품 이름] 예뻐요 마음에 들어요!</a></td>
+                    <td class="writer">miniver</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+<!--                  본문 영역 hide                  -->
+                  <tr class="hidden_board">
+                    <td class="blank"></td>
+                    <td class="open_content" colspan="3">
+                      <p>실제로 받아보고 너무 예뻐 깜짝놀랬어요!!</p>
+                      <p>간단한 디저트부터 요리까지 다른 그릇들과 전혀 튀지않게</p>
+                      <p>단아하게 어우러지는 완소 그릇이네요^^</p>
+                      <p>따뜻한 엽서와 티스푼, 정성스런 포장까지 너무 감사합니다^^</p>
+                      <img src="../images/review_img.png">
+                    </td>
+                  </tr>
+<!--                  본문 영역 hide                  -->
+                  <tr>
+                    <td class="num">3</td>
+                    <td class="subject"><a href="#">[제품 이름] 예뻐요 마음에 들어요!</a></td>
+                    <td class="writer">miniver</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+                  <tr>
+                    <td class="num">2</td>
+                    <td class="subject"><a href="#">[제품 이름] 예뻐요 마음에 들어요!</a></td>
+                    <td class="writer">miniver</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+                  <tr>
+                    <td class="num">1</td>
+                    <td class="subject"><a href="#">[제품 이름] 예뻐요 마음에 들어요!</a></td>
+                    <td class="writer">miniver</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+                </table>
+<!-- 게시물 없을 때
+                <table class="pr_view_table board_empty" style="display:none">
+                  <tr>
+                    <td>게시물이 없습니다</td>
+                  </tr>
+                </table>
+-->
+                <div class="block_board_btn">
+                  <input type="button" value="작성하기" class="board_btn">
+                  <input type="button" value="목록으로" class="board_btn">
+                </div>
+                <div class="block_board_pager">
+                  <span>
+                    <a href="#"><img src="../images/arrow_left_double.png"></a>
+                  </span>
+                  <span>
+                    <a href="#"><img src="../images/arrow_left_single.png"></a>
+                  </span>
+                  <a href="#"><span>1</span></a>
+                  <a href="#"><span>2</span></a>
+                  <a href="#"><span>3</span></a>
+                  <span>
+                    <a href="#"><img src="../images/arrow_right_single.png"></a>
+                  </span>
+                  <span>
+                    <a href="#"><img src="../images/arrow_right_double.png"></a>
+                  </span>
+                </div>
+              </div>
+              <div class="related_block">
+                <p class="head_txt">상품문의</p>
+                <table class="pr_view_table">
+                  <tr>
+                    <td class="num">4</td>
+                    <td class="subject">문의합니다[2]</td>
+                    <td class="writer">손님</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+                  <tr>
+                    <td class="num">3</td>
+                    <td class="subject">문의합니다[2]</td>
+                    <td class="writer">손님</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+                  <tr>
+                    <td class="num">2</td>
+                    <td class="subject">문의합니다[2]</td>
+                    <td class="writer">손님</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+                  <tr>
+                    <td class="num">1</td>
+                    <td class="subject">문의합니다[2]</td>
+                    <td class="writer">손님</td>
+                    <td class="date">2016-01-01</td>
+                  </tr>
+                </table>
+<!-- 게시물 없을 때
+                <table class="pr_view_table board_empty" style="display:none">
+                  <tr>
+                    <td>게시물이 없습니다</td>
+                  </tr>
+                </table>
+-->
+                <div class="block_board_btn">
+                  <input type="button" value="작성하기" class="board_btn">
+                  <input type="button" value="목록으로" class="board_btn">
+                </div>
+                <div class="block_board_pager">
+                  <span>
+                    <a href="#"><img src="../images/arrow_left_double.png"></a>
+                  </span>
+                  <span>
+                    <a href="#"><img src="../images/arrow_left_single.png"></a>
+                  </span>
+                  <a href="#"><span>1</span></a>
+                  <a href="#"><span>2</span></a>
+                  <a href="#"><span>3</span></a>
+                  <span>
+                    <a href="#"><img src="../images/arrow_right_single.png"></a>
+                  </span>
+                  <span>
+                    <a href="#"><img src="../images/arrow_right_double.png"></a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section side">
+            <div class="side_full_img">
+              <img src="../images/side_full_img1.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <div class="area_infoChon">
+          <div class="inner infoC clearfix">
+            <div class="box_info">
+              <span class="customerC"><img src="../images/customer_center.png" alt="고객센터"></span>
+              <span class="telNum">070-4888-3580</span>
+              <span>운영시간 10:30-18:00 / 점심시간 13:00-2:30</span>
+              <span>신한은행 11-111-11111 예금주 미니버타이징(주)</span>
+            </div>
+            <div class="box_info">
+              <span>이메일 : SERVICE@STORE-CHON.COM</span>
+              <span>토/일 법정공휴일, 임시공휴일 전화상담 휴무<br/>Q&A 게시판을 이용해주세요</span>
+            </div>
+            <div class="box_info clearfix">
+              <a href="#"><span class="about_chon"><img src="../images/about_chon.png" alt="about 촌의감각"></span></a>
+              <a href="#"><span class="sugg"><img src="../images/sugg_store.png" alt="입점문의"></span></a>
+              <a href="#"><span class="sugg"><img src="../images/sugg_partnership.png" alt="제휴문의"></span></a>
+              <a href="#"><span class="sugg last"><img src="../images/heavy_buying.png" alt="대량구매"></span></a>
+            </div>
+            <div class="box_info sns clearfix">
+              <a href="#"><span>인스타그램</span></a>
+              <a href="#"><span>페이스북</span></a>
+              <a href="#"><span>블로그</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="address">
+          <p>company  미니버타이징(주)  address  서울특별시  서초구  방배동  931-9  2F</p>
+          <p>owner  양선혜    business  license  114  87  11622   privacy policy | terms of use</p>
+          <br>
+          <p>@chon all rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </body>
+<script>
+	var cnt=1;
+	jQuery(document).ready(function(){
+		var select = $("select#option_change");
+
+		select.change(function(){
+			var select_name = $(this).children("option:selected").text();
+			$(this).siblings("label").text(select_name);
+		});
+	});
+
+	function amount_change(type) {
+		var amount = $('#buy_cnt');
+		if(type=='up'){
+			cnt = cnt+1;
+			$(amount).val(cnt);
+		}else if(type=='down' && cnt>1){
+			cnt = cnt-1;
+			$(amount).val(cnt);
+		}else{
+			cnt = 1;
+		}
+	}
+</script>
+</html>
