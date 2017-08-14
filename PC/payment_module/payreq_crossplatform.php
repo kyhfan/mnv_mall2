@@ -43,7 +43,7 @@ session_start();
     // $LGD_RETURNURL				= "http://상점URL/returnurl.php";
     // $LGD_RETURNURL				= "http://127.0.0.1/PC/payment_module/returnurl.php";
     // $LGD_RETURNURL				= "http://localhost/PC/payment_module/returnurl.php";
-    $LGD_RETURNURL				= "http://store-chon/PC/payment_module/returnurl.php";
+    $LGD_RETURNURL				= "http://store-chon.com/PC/payment_module/returnurl.php";
 
 
     // $configPath                 = "C:/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
