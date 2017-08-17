@@ -563,7 +563,7 @@
 				$innerHTML	.= "<td>".$list_data['cate_mobileYN']."</td>";
 				$innerHTML	.= "<td>".$list_data['cate_accessYN']."</td>";
 				$innerHTML	.= "<td>".$list_data['cate_date']."</td>";
-				$innerHTML	.= "<td><a href='./category_detail.php?idx=".$list_data['idx']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='#' onclick='delete_goods(".$list_data['goods_name'].",".$list_data['goods_code'].");return false;'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
+				$innerHTML	.= "<td><a href='./category_detail.php?idx=".$list_data['idx']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='#' onclick='delete_category(".$list_data['idx'].");return false;'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
 				$innerHTML	.= "</tr>";
 				//$i++;
 			}
@@ -659,6 +659,67 @@
 			echo $innerHTML;
 		break;
 
+		case "show_coupon_list" :
+			$target	= $_REQUEST['target'];
+			$list_query		= "SELECT * FROM ".$_gl['coupon_info_table']." WHERE 1 ORDER BY idx DESC";
+			$list_result		= mysqli_query($my_db, $list_query);
+			$innerHTML	= "<thead>";
+			$innerHTML	.= "<tr>";
+			$innerHTML	.= "<th>쿠폰명</th>";
+			$innerHTML	.= "<th>쿠폰 타입</th>";
+			$innerHTML	.= "<th>쿠폰 값</th>";
+			$innerHTML	.= "<th>쿠폰 설명</th>";
+			$innerHTML	.= "<th>쿠폰 사용기간 설정</th>";
+			$innerHTML	.= "<th>쿠폰 사용 시작일자</th>";
+			$innerHTML	.= "<th>쿠폰 사용 마감일자</th>";
+			$innerHTML	.= "<th>쿠폰 종료일자</th>";
+			$innerHTML	.= "<th>쿠폰 등록일자</th>";
+			$innerHTML	.= "<th></th>";
+			$innerHTML	.= "</tr>";
+			$innerHTML	.= "</thead>";
+			$innerHTML	.= "<tbody>";
+			//$i	= 1;
+			while ($list_data = mysqli_fetch_array($list_result))
+			{
+				if ($list_data['coupon_type'] == "percent")
+					$list_data['coupon_type'] 	= "상품 퍼센트 할인";
+				else if ($list_data['coupon_type'] == "price")
+					$list_data['coupon_type'] 	= "상품 금액 할인";
+				else
+					$list_data['coupon_type'] 	= "배송비 무료";
+				
+				if ($list_data['coupon_period'] == "default")
+					$list_data['coupon_period'] 	= "기간 설정";
+				else
+					$list_data['coupon_period'] 	= "종료일만 설정";
+				
+				if ($list_data['prev_date'] == "0000-00-00")
+					$list_data['prev_date'] = "-";
+
+				if ($list_data['next_date'] == "0000-00-00")
+					$list_data['next_date'] = "-";
+
+				if ($list_data['end_date'] == "0000-00-00")
+					$list_data['end_date'] = "-";
+
+				$innerHTML	.= "<tr>";
+				$innerHTML	.= "<td>".$list_data['coupon_name']."</td>";
+				$innerHTML	.= "<td>".$list_data['coupon_type']."</td>";
+				$innerHTML	.= "<td>".$list_data['coupon_value']."</td>";
+				$innerHTML	.= "<td>".$list_data['coupon_desc']."</td>";
+				$innerHTML	.= "<td>".$list_data['coupon_period']."</td>";
+				$innerHTML	.= "<td>".$list_data['prev_date']."</td>";
+				$innerHTML	.= "<td>".$list_data['next_date']."</td>";
+				$innerHTML	.= "<td>".$list_data['end_date']."</td>";
+				$innerHTML	.= "<td>".$list_data['coupon_regdate']."</td>";
+				$innerHTML	.= "<td><a href='./coupon_detail.php?idx=".$list_data['idx']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='#' class='del_coupon' data-idx='".$list_data['idx']."'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
+				$innerHTML	.= "</tr>";
+				//$i++;
+			}
+			$innerHTML	.= "</tbody>";
+			echo $innerHTML;
+		break;
+
 		case "show_sales_store_list" :
 			$target	= $_REQUEST['target'];
 
@@ -745,6 +806,20 @@
 			echo $flag;
 		break;
 
+		case "delete_category" :
+			$idx	= $_REQUEST['idx'];
+			
+			$category_query			= "DELETE FROM ".$_gl['category_info_table']." WHERE idx='".$idx."'";
+			$category_result		= mysqli_query($my_db, $category_query);
+
+			if ($category_result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+			
+			echo $flag;
+		break;
+		
 		case "show_stock_list" :
 			$target	= $_REQUEST['target'];
 			$list_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE 1 ORDER BY idx DESC";
@@ -1954,6 +2029,30 @@
 				$flag = "Y";
 			}else{
 				$flag = "N";
+			}
+
+			echo $flag;
+		break;
+
+		case "insert_coupon_info" :
+			$coupon_name 		= $_REQUEST["coupon_name"];
+			$coupon_type 		= $_REQUEST["coupon_type"];
+			$coupon_value 		= $_REQUEST["coupon_value"];
+			$coupon_desc 		= $_REQUEST["coupon_desc"];
+			$coupon_period 		= $_REQUEST["coupon_period"];
+			$prev_date 			= $_REQUEST["prev_date"];
+			$next_date 			= $_REQUEST["next_date"];
+			$end_date 			= $_REQUEST["end_date"];
+
+			$query = "INSERT INTO ".$_gl['coupon_info_table']."(coupon_name, coupon_type, coupon_value, coupon_desc, coupon_period, prev_date, next_date, end_date, coupon_regdate) values('".$coupon_name."','".$coupon_type."','".$coupon_value."','".$coupon_desc."','".$coupon_period."','".$prev_date."','".$next_date."','".$end_date."','".date("Y-m-d H:i:s")."')";
+			$result = mysqli_query($my_db, $query); // 배너 비노출로 변경
+
+			$ins_idx 	= mysqli_insert_id($my_db);
+
+			if($result){
+				$flag = "Y||".$ins_idx;
+			}else{
+				$flag = "N||0";
 			}
 
 			echo $flag;

@@ -20,9 +20,6 @@
             <a href="shop_config.php">기본 설정</a>
           </li>
           <li>
-            <a href="category.php">카테고리 관리</a>
-          </li>
-          <li>
             <a href="banner.php">배너 관리</a>
           </li>
           <li>
@@ -39,6 +36,9 @@
           </li>
           <li>
             <a href="goods_list.php">상품 리스트</a>
+          </li>
+          <li>
+            <a href="category.php">카테고리 관리</a>
           </li>
           <li>
             <a href="purchasing.php">브랜드 관리</a>

@@ -888,14 +888,14 @@ $(document).on("click", "#submit_btn4", function(){
 		url    : "admin_exec.php",
 		data:{
 			"exec"					: "update_cate_info",
-			"idx"						: idx,
-			"cate_name"			: cate_name,
-			"cate_1"					: cate_1,
-			"cate_2"					: cate_2,
-			"cate_3"					: cate_3,
-			"cate_pcYN"			: cate_pcYN,
-			"cate_mobileYN"		: cate_mobileYN,
-			"cate_accessYN"		: cate_accessYN,
+			"idx"					: idx,
+			"cate_name"				: cate_name,
+			"cate_1"				: cate_1,
+			"cate_2"				: cate_2,
+			"cate_3"				: cate_3,
+			"cate_pcYN"				: cate_pcYN,
+			"cate_mobileYN"			: cate_mobileYN,
+			"cate_accessYN"			: cate_accessYN,
 			"access_specific"		: access_specific
 		},
 		success: function(response){
@@ -911,6 +911,26 @@ $(document).on("click", "#submit_btn4", function(){
 		}
 	});
 });
+
+function delete_category(idx)
+{
+	if (confirm("선택하신 카테고리를 정말 삭제 할까요?"))
+	{
+		$.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "admin_exec.php",
+			data:{
+				"exec"	: "delete_category",
+				"idx"	: idx
+			},
+			success: function(response){
+				alert(response);
+				location.reload();
+			}
+		});
+	}
+}
 
 // *********************** 상품관리 *********************** //
 
@@ -1348,7 +1368,7 @@ $(document).on("click", ".del_goods", function(){
 			async  : false,
 			url    : "admin_exec.php",
 			data:{
-				"exec"						: "delete_goods_info",
+				"exec"					: "delete_goods_info",
 				"goodscode"				: goodscode
 			},
 			success: function(response){
@@ -1452,6 +1472,23 @@ function img_submit6(cate_1, cate_2, cate_3)
 		success:function(msg){
 			alert(msg);
 			alert('카테고리가 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_submit7(idx)
+{
+	alert("이미지 업로드");
+	var frm = $('#img_frm');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=coupon&idx='+idx,
+		data: stringData,
+		success:function(msg){
+			alert(msg);
+			alert('쿠폰이 등록 되었습니다');
 			self.location.reload();
 		}
 	}); // end ajaxSubmit
@@ -1630,7 +1667,7 @@ $(document).on("click", "#submit_btn5", function(){
 		async  : false,
 		url    : "admin_exec.php",
 		data:{
-			"exec"						: "insert_purchasing_info",
+			"exec"					: "insert_purchasing_info",
 			"purchasing_name"		: purchasing_name,
 			"purchasing_addr"		: purchasing_addr,
 			"purchasing_phone"		: purchasing_phone,
@@ -2191,4 +2228,106 @@ $(document).on("click", "#submit_btn8", function(){
 			}
 		});
 	}
+});
+
+// *********************** 쿠폰 설정 *********************** //
+
+// 배너 정보 insert
+$(document).on("click", "#submit_btn20", function(){
+	var coupon_name				= $("#coupon_name").val();
+	var coupon_type				= $("#coupon_type").val();
+	var coupon_value			= $("#coupon_value").val();
+	var coupon_desc				= $("#coupon_desc").val();
+	var coupon_period			= $(':radio[name="coupon_period"]:checked').val();
+	var prev_date				= $("#prev_date").val();
+	var next_date				= $("#next_date").val();
+	var end_date				= $("#end_date").val();
+
+	if (coupon_name == "")
+	{
+		alert("쿠폰 이름을 넣어주세요.");
+		$("#coupon_name").focus();
+		return false;
+	}
+
+	if (coupon_type == "")
+	{
+		alert("쿠폰 타입을 넣어주세요.");
+		$("#coupon_type").focus();
+		return false;
+	}
+
+	if (coupon_value == "")
+	{
+		alert("쿠폰 값을 넣어주세요.");
+		$("#coupon_value").focus();
+		return false;
+	}
+
+	if (prev_date == "" && next_date == "" && end_date == "")
+	{
+		alert("쿠폰 사용기간을 넣어주세요.");
+		$("#coupon_value").focus();
+		return false;
+	}
+	
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "admin_exec.php",
+		data:{
+			"exec"						: "insert_coupon_info",
+			"coupon_name"				: coupon_name,
+			"coupon_type"				: coupon_type,
+			"coupon_value"				: coupon_value,
+			"coupon_desc"				: coupon_desc,
+			"coupon_period"				: coupon_period,
+			"prev_date"					: prev_date,
+			"next_date"					: next_date,
+			"end_date"					: end_date
+		},
+		success: function(response){
+			console.log(response);
+			var res_arr = response.split("||");
+			
+			if (res_arr[0] == "Y")
+			{
+				img_submit7(res_arr[1]);
+				alert("쿠폰 설정이 추가되었습니다.");
+				//location.reload();
+			}else{
+				alert("다시 시도해 주세요.");
+				//location.reload();
+			}
+		}
+	});
+});
+
+// 전체 쿠폰 리스트 생성
+function show_coupon_list(id)
+{
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "admin_exec.php",
+		data:{
+			"exec"	: "show_coupon_list",
+			"target"	: id
+		},
+		success: function(response){
+			$("#"+id).html(response);
+		}
+	});
+}
+
+// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 추가 버튼 클릭
+$(document).on("click", "#add_coupon_btn", function(){
+	$("#list_coupon").hide();
+	$("#add_coupon").show();
+});
+
+// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 목록 버튼 클릭
+$(document).on("click", "#list_coupon_btn", function(){
+	$("#add_coupon").hide();
+	$("#list_coupon").show();
 });
