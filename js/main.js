@@ -93,7 +93,7 @@ function validate(ref)
 	//        if (!chk(/^[0-9]{4}$/, tel3, "4자리 번호 입력"))
 	//                return false;
 	//        }
-	
+
 	if (phone1.value == '') {
 		alert("휴대폰번호를 입력해주세요.");
 		phone1.focus();
@@ -106,7 +106,7 @@ function validate(ref)
 		if (!chk(/^[0-9]{4}$/, phone3, "휴대폰번호를 4자리 입력해주세요."))
 			return false;
 	}
-	
+
 	if (email1.value == '' || email2.value == '') {
 		alert("이메일을 입력해주세요.");
 		return false;
@@ -115,14 +115,14 @@ function validate(ref)
 	if (email1.value != '') {
 		var tmp_email = email1.value;
 		email1.value = email1.value+'@'+email2.value;
-		
+
 		if(!chk(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, email1, "이메일 주소가 올바르지 않습니다."))
 			return false;
 		// if(!chk(/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/, email1, "이메일 주소가 올바르지 않습니다."))
 		// 	return false;
 	}
-	
-	
+
+
 	email1.value = tmp_email;
 	return true;
 }
@@ -186,7 +186,7 @@ function cart_plus(code)
 	var ins_cnt	= Number($("#"+code+"_cnt").val()) + 1;
 	$("#"+code+"_cnt").val(ins_cnt);
 	var ins_total_price	= Number($("#"+code+"_current_price").val()) * ins_cnt;
-	
+
 	var ins_final_price	= Number($("#hidden_total_price").val()) + Number($("#"+code+"_current_price").val());
 	if (ins_final_price > 49999)
 		$("#hidden_delivery_price").val("0");
@@ -463,7 +463,7 @@ $(document).on("click", "#wish_link", function(){
 	var goods_idx	= $("#goods_idx").val();
 	var goods_optionYN		= $("#goods_optionYN").val();
 	var option_txt				= "";
-	
+
 	if (goods_optionYN == "Y")
 	{
 		for (var k=0;k<5 ;k++ )
@@ -513,7 +513,7 @@ $(document).on("click", "#mycart_link", function(){
 	var buy_cnt					= $("#buy_cnt").val();
 	var goods_current_cnt		= $("#goods_current_cnt").val();
 	var option_txt				= "";
-	
+
 	if (goods_current_cnt == "0")
 	{
 		alert("품절된 상품입니다. 구매를 원하시면 재입고 버튼을 눌러 요청 주세요.");
@@ -564,7 +564,7 @@ $(document).on("click", "#order_link", function(){
 	var goods_optionYN		= $("#goods_optionYN").val();
 	var buy_cnt					= $("#buy_cnt").val();
 	var option_txt				= "";
-	
+
 	if (goods_optionYN == "Y")
 	{
 		for (var k=0;k<5 ;k++ )
@@ -770,7 +770,7 @@ $(document).on("click", "#new_address", function(){
 // 주문하기 > 결제하기 클릭
 $(document).on("click", "#pay_order", function(){
 	var order_cart_idx			= $("#order_cart_idx").val();
-	var show_goods_name		= $("#show_goods_name").val();
+	var show_goods_name			= $("#show_goods_name").val();
 	var total_order_price		= $("#total_order_price").val();
 	var delivery_price			= $("#delivery_price").val();
 	var total_pay_price			= $("#total_pay_price").val();
@@ -790,7 +790,7 @@ $(document).on("click", "#pay_order", function(){
 	var deliver_phone1			= $("#deliver_phone1").val();
 	var deliver_phone2			= $("#deliver_phone2").val();
 	var deliver_phone3			= $("#deliver_phone3").val();
-	var deliver_message		= $("#deliver_message").val();
+	var deliver_message			= $("#deliver_message").val();
 	var select_pay				=  $(":input:radio[name=select_pay]:checked").val()
 	var order_oid				= makeoid();
 	if (order_name == "")
@@ -917,10 +917,10 @@ $(document).on("click", "#pay_order", function(){
 		async  : false,
 		url    : "http://store-chon.com/main_exec.php",
 		data:{
-			"exec"						: "insert_order_info",
-			"order_cart_idx"			: order_cart_idx,
+			"exec"					: "insert_order_info",
+			"order_cart_idx"		: order_cart_idx,
 			"total_order_price"		: total_order_price,
-			"delivery_price"			: delivery_price,
+			"delivery_price"		: delivery_price,
 			"total_pay_price"		: total_pay_price,
 			"order_name"			: order_name,
 			"order_zipcode"			: order_zipcode,
@@ -939,9 +939,9 @@ $(document).on("click", "#pay_order", function(){
 			"deliver_phone2"		: deliver_phone2,
 			"deliver_phone3"		: deliver_phone3,
 			"deliver_message"		: deliver_message,
-			"select_pay"				: select_pay,
+			"select_pay"			: select_pay,
 			"order_oid"				: order_oid,
-			"show_goods_name"	: show_goods_name
+			"show_goods_name"		: show_goods_name
 		},
 		success: function(response){
 			console.log(response);
@@ -964,6 +964,7 @@ $(document).on("click", "#pay_order", function(){
 	});
 });
 
+
 function makeoid() {
 	// OID 생성은 변경해야함 ( 현재는 시간으로 만들어서 중복될 여지가 있음 )
 	var now = new Date();
@@ -973,7 +974,7 @@ function makeoid() {
 	var hours = LPad(now.getHours(), 2, "0");
 	var minutes = LPad(now.getMinutes(), 2, "0");
 	var seconds = LPad(now.getSeconds(), 2, "0");
-	var timeValue = years + months + dates + hours + minutes + seconds; 
+	var timeValue = years + months + dates + hours + minutes + seconds;
 	//document.getElementById("LGD_OID").value = "test_" + timeValue;
 	//document.getElementById("LGD_TIMESTAMP").value = timeValue;
 
