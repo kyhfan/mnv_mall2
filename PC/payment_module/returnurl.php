@@ -1,19 +1,19 @@
 <?php
 /*
-  payreq_crossplatform ì—ì„œ ì„¸ì…˜ì— ì €ìž¥í–ˆë˜ íŒŒë¼ë¯¸í„° ê°’ì´ ìœ íš¨í•œì§€ ì²´í¬
-  ì„¸ì…˜ ìœ ì§€ ì‹œê°„(ë¡œê·¸ì¸ ìœ ì§€ì‹œê°„)ì„ ì ë‹¹ížˆ ìœ ì§€ í•˜ê±°ë‚˜ ì„¸ì…˜ì„ ì‚¬ìš©í•˜ì§€ ì•ŠëŠ” ê²½ìš° DBì²˜ë¦¬ í•˜ì‹œê¸° ë°”ëžë‹ˆë‹¤.
+  payreq_crossplatform ¿¡¼­ ¼¼¼Ç¿¡ ÀúÀåÇß´ø ÆÄ¶ó¹ÌÅÍ °ªÀÌ À¯È¿ÇÑÁö Ã¼Å©
+  ¼¼¼Ç À¯Áö ½Ã°£(·Î±×ÀÎ À¯Áö½Ã°£)À» Àû´çÈ÷ À¯Áö ÇÏ°Å³ª ¼¼¼ÇÀ» »ç¿ëÇÏÁö ¾Ê´Â °æ¿ì DBÃ³¸® ÇÏ½Ã±â ¹Ù¶ø´Ï´Ù.
 */
   session_start();
   if(!isset($_SESSION['PAYREQ_MAP'])){
-  	echo "ì„¸ì…˜ì´ ë§Œë£Œ ë˜ì—ˆê±°ë‚˜ ìœ íš¨í•˜ì§€ ì•Šì€ ìš”ì²­ ìž…ë‹ˆë‹¤.";
+  	echo "¼¼¼ÇÀÌ ¸¸·á µÇ¾ú°Å³ª À¯È¿ÇÏÁö ¾ÊÀº ¿äÃ» ÀÔ´Ï´Ù.";
   	return;
   }
-  $payReqMap = $_SESSION['PAYREQ_MAP'];//ê²°ì œ ìš”ì²­ì‹œ, Sessionì— ì €ìž¥í–ˆë˜ íŒŒë¼ë¯¸í„° MAP
+  $payReqMap = $_SESSION['PAYREQ_MAP'];//°áÁ¦ ¿äÃ»½Ã, Session¿¡ ÀúÀåÇß´ø ÆÄ¶ó¹ÌÅÍ MAP
 ?>
 <html>
 <head>
 	<script type="text/javascript">
-	
+
 		function setLGDResult() {
 			parent.payment_return();
 			try {
@@ -21,7 +21,7 @@
 				alert(e.message);
 			}
 		}
-		
+
 	</script>
 </head>
 <body onload="setLGDResult()">
@@ -38,7 +38,7 @@
 	  $payReqMap['LGD_PAYKEY'] = $LGD_PAYKEY;
   }
   else{
-	  echo "LGD_RESPCODE:" + $LGD_RESPCODE + " ,LGD_RESPMSG:" + $LGD_RESPMSG; //ì¸ì¦ ì‹¤íŒ¨ì— ëŒ€í•œ ì²˜ë¦¬ ë¡œì§ ì¶”ê°€
+	  echo "LGD_RESPCODE:" + $LGD_RESPCODE + " ,LGD_RESPMSG:" + $LGD_RESPMSG; //ÀÎÁõ ½ÇÆÐ¿¡ ´ëÇÑ Ã³¸® ·ÎÁ÷ Ãß°¡
   }
 ?>
 <form method="post" name="LGD_RETURNINFO" id="LGD_RETURNINFO">
