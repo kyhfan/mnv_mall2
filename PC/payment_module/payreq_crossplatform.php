@@ -47,7 +47,7 @@ session_start();
 
 
     // $configPath                 = "C:/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
-    $configPath                 = "./lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
+    $configPath                 = "./lgdacom"; aa                                 //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
 
 
 
