@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
-<title>LGìœ í”ŒëŸ¬ìŠ¤ ì „ìžê²°ì œ ìƒ˜í”Œ íŽ˜ì´ì§€ (XPay)</title>
+<title>LGÀ¯ÇÃ·¯½º ÀüÀÚ°áÁ¦ »ùÇÃ ÆäÀÌÁö (XPay)</title>
 <script type="text/javascript">
 function LPad(digit, size, attatch) {
     var add = "";
@@ -32,12 +32,12 @@ function makeoid() {
 }
 
 /*
-* ì¸ì¦ìš”ì²­ ì²˜ë¦¬
+* ÀÎÁõ¿äÃ» Ã³¸®
 */
 function doPay() {
-	// OID, TIMESTAMP ìƒì„±
+	// OID, TIMESTAMP »ý¼º
 	makeoid();
-	// ê²°ì œì°½ í˜¸ì¶œ
+	// °áÁ¦Ã¢ È£Ãâ
 	document.getElementById("LGD_PAYINFO").submit();
 }
 </script>
@@ -47,54 +47,54 @@ function doPay() {
     <div>
         <table>
             <tr>
-                <td>ìƒì ì•„ì´ë””(të¥¼ ì œì™¸í•œ ì•„ì´ë””) </td>
+                <td>»óÁ¡¾ÆÀÌµð(t¸¦ Á¦¿ÜÇÑ ¾ÆÀÌµð) </td>
                 <td><input type="text" name="CST_MID" id="CST_MID" value="lgdacomxpay"/></td>
             </tr>
             <tr>
-                <td>ì„œë¹„ìŠ¤,í…ŒìŠ¤íŠ¸ </td>
+                <td>¼­ºñ½º,Å×½ºÆ® </td>
                 <td><input type="text" name="CST_PLATFORM" id="CST_PLATFORM" value="test"/></td>
             </tr>
             <tr>
-                <td>êµ¬ë§¤ìž ì´ë¦„ </td>
-                <td><input type="text" name="LGD_BUYER" id="LGD_BUYER" value="í™ê¸¸ë™"/></td>
+                <td>±¸¸ÅÀÚ ÀÌ¸§ </td>
+                <td><input type="text" name="LGD_BUYER" id="LGD_BUYER" value="È«±æµ¿"/></td>
             </tr>
             <tr>
-                <td>ìƒí’ˆì •ë³´ </td>
-                <td><input type="text" name="LGD_PRODUCTINFO" id="LGD_PRODUCTINFO" value="í…ŒìŠ¤íŠ¸ìƒí’ˆ"/></td>
+                <td>»óÇ°Á¤º¸ </td>
+                <td><input type="text" name="LGD_PRODUCTINFO" id="LGD_PRODUCTINFO" value="Å×½ºÆ®»óÇ°"/></td>
             </tr>
             <tr>
-                <td>ê²°ì œê¸ˆì•¡ </td>
+                <td>°áÁ¦±Ý¾× </td>
                 <td><input type="text" name="LGD_AMOUNT" id="LGD_AMOUNT" value="1000"/></td>
             </tr>
             <tr>
-                <td>êµ¬ë§¤ìž ì´ë©”ì¼ </td>
+                <td>±¸¸ÅÀÚ ÀÌ¸ÞÀÏ </td>
                 <td><input type="text" name="LGD_BUYEREMAIL" id="LGD_BUYEREMAIL" value="jw.o@minivertising.kr"/></td>
             </tr>
             <tr>
-                <td>ì£¼ë¬¸ë²ˆí˜¸ </td>
+                <td>ÁÖ¹®¹øÈ£ </td>
                 <td><input type="text" name="LGD_OID" id="LGD_OID" value="test_1234567890020"/></td>
             </tr>
             <tr>
-                <td>íƒ€ìž„ìŠ¤íƒ¬í”„ </td>
+                <td>Å¸ÀÓ½ºÅÆÇÁ </td>
                 <td><input type="text" name="LGD_TIMESTAMP" id="LGD_TIMESTAMP" value="1234567890"/></td>
             </tr>
             <tr>
-                <td>ì´ˆê¸°ê²°ì œìˆ˜ë‹¨ </td>
+                <td>ÃÊ±â°áÁ¦¼ö´Ü </td>
                 <td>
                 	<select name="LGD_CUSTOM_USABLEPAY" id="LGD_CUSTOM_USABLEPAY">
-						<option value="SC0010">ì‹ ìš©ì¹´ë“œ</option>
-						<option value="SC0030">ê³„ì¢Œì´ì²´</option>
-						<option value="SC0040">ë¬´í†µìž¥ìž…ê¸ˆ</option>
-						<option value="SC0060">íœ´ëŒ€í°</option>
-						<option value="SC0070">ìœ ì„ ì „í™”ê²°ì œ</option>
-						<option value="SC0090">OKìºì‰¬ë°±</option>
-						<option value="SC0111">ë¬¸í™”ìƒí’ˆê¶Œ</option>
-						<option value="SC0112">ê²Œìž„ë¬¸í™”ìƒí’ˆê¶Œ</option>
+						<option value="SC0010">½Å¿ëÄ«µå</option>
+						<option value="SC0030">°èÁÂÀÌÃ¼</option>
+						<option value="SC0040">¹«ÅëÀåÀÔ±Ý</option>
+						<option value="SC0060">ÈÞ´ëÆù</option>
+						<option value="SC0070">À¯¼±ÀüÈ­°áÁ¦</option>
+						<option value="SC0090">OKÄ³½¬¹é</option>
+						<option value="SC0111">¹®È­»óÇ°±Ç</option>
+						<option value="SC0112">°ÔÀÓ¹®È­»óÇ°±Ç</option>
 					</select>
 				</td>
 			</tr>
            <tr>
-                <td>ê²°ì œì°½ í˜¸ì¶œ ë°©ì‹ </td>
+                <td>°áÁ¦Ã¢ È£Ãâ ¹æ½Ä </td>
                 <td>
                 	<select name="LGD_WINDOW_TYPE" id="LGD_WINDOW_TYPE">
 						<option value="iframe">iframe</option>
@@ -102,7 +102,7 @@ function doPay() {
 				</td>
             </tr>
             <tr>
-                <td>ì‹ ìš©ì¹´ë“œ ì¹´ë“œì‚¬ ì¸ì¦ íŽ˜ì´ì§€ ì—°ë™ ë°©ì‹ </td>
+                <td>½Å¿ëÄ«µå Ä«µå»ç ÀÎÁõ ÆäÀÌÁö ¿¬µ¿ ¹æ½Ä </td>
                 <td>
                 	<select name="LGD_CUSTOM_SWITCHINGTYPE" id="LGD_CUSTOM_SWITCHINGTYPE">
 						<option value="IFRAME">IFRAME</option>
@@ -111,7 +111,7 @@ function doPay() {
             </tr>
             <tr>
                 <td colspan="2">
-                <input type="button" value="ê²°ì œí•˜ê¸°" onclick="doPay();" /><br/>
+                <input type="button" value="°áÁ¦ÇÏ±â" onclick="doPay();" /><br/>
                 </td>
             </tr>
         </table>
