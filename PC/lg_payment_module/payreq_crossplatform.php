@@ -41,7 +41,7 @@ session_start();
      * LGD_RETURNURL 을 설정하여 주시기 바랍니다. 반드시 현재 페이지와 동일한 프로트콜 및  호스트이어야 합니다. 아래 부분을 반드시 수정하십시요.
      */
     // $LGD_RETURNURL				= "http://상점URL/returnurl.php";
-    $LGD_RETURNURL				= "http://store-chon.com/PC/payment_module/returnurl.php";
+    $LGD_RETURNURL				= "http://store-chon.com/PC/lg_payment_module/returnurl.php";
 
 
     $configPath                 = "./lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
