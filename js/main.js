@@ -986,7 +986,11 @@ $(document).on("click", "#order_cancel", function(){
 			"LGD_TID"				: lgd_info[1]
 		},
 		success: function(response){
-			console.log(response);
+			// console.log(response);
+			if(response.split("/")[0] === "0000") {
+				alert("주문 취소 완료");
+				location.reload();
+			}
 		}
 	});
 });
