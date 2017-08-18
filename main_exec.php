@@ -1198,6 +1198,8 @@
 			$LGD_MID                    = (("test" == $CST_PLATFORM)?"t":"").$CST_MID;  //상점아이디(자동생성)
 			$LGD_TID                	= $_POST["LGD_TID"];			 //LG유플러스으로 부터 내려받은 거래번호(LGD_TID)
 
+			$LGD_OID					= $_POST["LGD_OID"];			//추가 파라미터, 주문번호로 주문내역 DB 수정하기 위함 *준우
+
 			$configPath 				= $_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom"; 						 //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
 
 			require_once($_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom/XPayClient.php");
@@ -1214,13 +1216,18 @@
 			 */
 			if ($xpay->TX()) {
 				//1)결제취소결과 화면처리(성공,실패 결과 처리를 하시기 바랍니다.)
-				echo "결제 취소요청이 완료되었습니다.  <br>";
-				echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
-				echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
+				// echo "결제 취소요청이 완료되었습니다.  <br>";
+				// echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
+				// echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
 
 				// DB 처리
-				// echo "aaa";
-				// echo json_encode($xpay->Response_Code(),$xpay->Response_Msg());
+				$cancel_query		= "UPDATE ".$_gl['order_info_table']." SET cancel_date='".date("Y-m-d H:i:s")."', order_status='order_cancel' WHERE order_oid='".$LGD_OID."'";
+				$cancel_result		= mysqli_query($my_db, $cancel_query);
+
+				if($cancel_result) {
+					echo $xpay->Response_Code()."/".$xpay->Response_Msg();
+				}
+
 			}else {
 				//2)API 요청 실패 화면처리
 				echo "결제 취소요청이 실패하였습니다.  <br>";

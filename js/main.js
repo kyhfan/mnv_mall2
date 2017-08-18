@@ -967,10 +967,12 @@ $(document).on("click", "#pay_order", function(){
 $(document).on("click", "#order_cancel", function(){
 	var cst_mid = "miniver";
 	var cst_platform = "test";
-	// var lgd_tid = $('#LGD_TID').val();
 	var lgd_info = $(this).data('info').split("||");
-	console.log(lgd_info);
-	return false;
+	// 0 : 주문번호, 1 : 유플러스 고유 거래번호, 2 : 주문 상태
+	if(lgd_info[2] != 'order_comp') {
+		alert("취소할 수 있는 상태가 아닙니다.");
+		return false;
+	}
 
 	$.ajax({
 		type   : "POST",
@@ -980,7 +982,8 @@ $(document).on("click", "#order_cancel", function(){
 			"exec"					: "cancel_order_info",
 			"CST_MID"				: cst_mid,
 			"CST_PLATFORM"			: cst_platform,
-			"LGD_TID"				: lgd_tid
+			"LGD_OID"				: lgd_info[0],
+			"LGD_TID"				: lgd_info[1]
 		},
 		success: function(response){
 			console.log(response);
