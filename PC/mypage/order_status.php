@@ -71,14 +71,13 @@
 			else
 				$current_price	= $wish_data['discount_price'];
 */
-    print_r($order_data);
 ?>
-<input type="hidden" name="CST_MID" id="CST_MID" value="miniver"/>
-<input type="hidden" name="CST_PLATFORM" id="CST_PLATFORM" value="test"/>
-<input type="hidden" name="LGD_TID" id="LGD_TID" value=""/>
                     <tr>
                       <td><p><?=$order_date?></p></td>
                       <td>
+                        <input type="hidden" name="CST_MID" id="CST_MID" value="miniver"/>
+                        <input type="hidden" name="CST_PLATFORM" id="CST_PLATFORM" value="test"/>
+                        <input type="hidden" name="LGD_TID" id="LGD_TID" value="<?=$order_data['LGD_TID']?>"/>
                         <a href="<?=$_mnv_PC_order_url?>order_detail.php?oid=<?=$order_data['LGD_OID']?>"><p class="orderNum"><?=$order_data['LGD_OID']?></p></a>
                         <input type="button" class="board_btn cancel" value="주문취소">
                       </td>
