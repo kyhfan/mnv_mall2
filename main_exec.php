@@ -1214,20 +1214,20 @@
 			 */
 			if ($xpay->TX()) {
 				//1)결제취소결과 화면처리(성공,실패 결과 처리를 하시기 바랍니다.)
-				// echo "결제 취소요청이 완료되었습니다.  <br>";
-				// echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
-				// echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
+				echo "결제 취소요청이 완료되었습니다.  <br>";
+				echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
+				echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
 
 				// DB 처리
-				echo "aaa";
+				// echo "aaa";
 				// echo json_encode($xpay->Response_Code(),$xpay->Response_Msg());
 			}else {
 				//2)API 요청 실패 화면처리
-				// echo "결제 취소요청이 실패하였습니다.  <br>";
-				// echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
-				// echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
+				echo "결제 취소요청이 실패하였습니다.  <br>";
+				echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
+				echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
 
-				echo "bbb";
+				// echo "bbb";
 				// echo json_encode($xpay->Response_Code(),$xpay->Response_Msg());
 			}
 		break;
