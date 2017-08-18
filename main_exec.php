@@ -1219,13 +1219,16 @@
 				// echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
 
 				// DB 처리
-				echo json_encode($xpay->Response_Code(),$xpay->Response_Msg());
+				echo "aaa";
+				// echo json_encode($xpay->Response_Code(),$xpay->Response_Msg());
 			}else {
 				//2)API 요청 실패 화면처리
 				// echo "결제 취소요청이 실패하였습니다.  <br>";
 				// echo "TX Response_code = " . $xpay->Response_Code() . "<br>";
 				// echo "TX Response_msg = " . $xpay->Response_Msg() . "<p>";
-				echo json_encode($xpay->Response_Code(),$xpay->Response_Msg());
+
+				echo "bbb";
+				// echo json_encode($xpay->Response_Code(),$xpay->Response_Msg());
 			}
 		break;
 	}
