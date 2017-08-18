@@ -968,9 +968,8 @@ $(document).on("click", "#order_cancel", function(){
 	var cst_mid = "miniver";
 	var cst_platform = "test";
 	// var lgd_tid = $('#LGD_TID').val();
-	var lgd_info = $(this).data('info');
+	var lgd_info = $(this).data('info').split("||");
 	console.log(lgd_info);
-
 	return false;
 
 	$.ajax({
