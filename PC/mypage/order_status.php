@@ -79,7 +79,7 @@
                         <input type="hidden" name="CST_PLATFORM" id="CST_PLATFORM" value="test"/>
                         <input type="hidden" name="LGD_TID" id="LGD_TID" value="<?=$order_data['LGD_TID']?>"/>
                         <a href="<?=$_mnv_PC_order_url?>order_detail.php?oid=<?=$order_data['LGD_OID']?>"><p class="orderNum"><?=$order_data['LGD_OID']?></p></a>
-                        <input type="button" class="board_btn cancel" value="주문취소">
+                        <input type="button" id="order_cancel" class="board_btn cancel" value="주문취소" data-info="<?=$order_data['LGD_OID'].'||'.$order_data['ORDER_TID']?>">
                       </td>
                       <td class="alignL pl30">
                         <a href="<?=$_mnv_PC_order_url?>order_detail.php?oid=<?=$order_data['LGD_OID']?>">

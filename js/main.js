@@ -964,11 +964,13 @@ $(document).on("click", "#pay_order", function(){
 	});
 });
 
-$(document).on("click", "#pay_cancel", function(){
-	var cst_mid = $('#CST_MID').val();
-	var cst_platform = $('#CST_PLATFORM').val();
-	var lgd_tid = $('#LGD_TID').val();
-
+$(document).on("click", "#order_cancel", function(){
+	var cst_mid = "miniver";
+	var cst_platform = "test";
+	// var lgd_tid = $('#LGD_TID').val();
+	var lgd_info = $(this).data('info');
+	alert(lgd_info);
+	return false;
 
 	$.ajax({
 		type   : "POST",
