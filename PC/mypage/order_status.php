@@ -71,7 +71,11 @@
 			else
 				$current_price	= $wish_data['discount_price'];
 */
+    print_r($order_data);
 ?>
+<input type="hidden" name="CST_MID" id="CST_MID" value="miniver"/>
+<input type="hidden" name="CST_PLATFORM" id="CST_PLATFORM" value="test"/>
+<input type="hidden" name="LGD_TID" id="LGD_TID" value=""/>
                     <tr>
                       <td><p><?=$order_date?></p></td>
                       <td>
