@@ -964,6 +964,28 @@ $(document).on("click", "#pay_order", function(){
 	});
 });
 
+$(document).on("click", "#pay_cancel", function(){
+	var cst_mid = $('#CST_MID').val();
+	var cst_platform = $('#CST_PLATFORM').val();
+	var lgd_tid = $('#LGD_TID').val();
+
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "http://store-chon.com/main_exec.php",
+		data:{
+			"exec"					: "cancel_order_info",
+			"CST_MID"				: cst_mid,
+			"CST_PLATFORM"			: cst_platform,
+			"LGD_TID"				: lgd_tid
+		},
+		success: function(response){
+			console.log(response);
+		}
+	});
+});
+
 
 function makeoid() {
 	// OID 생성은 변경해야함 ( 현재는 시간으로 만들어서 중복될 여지가 있음 )
