@@ -13,6 +13,7 @@
 		$mb_phone		= explode("-",$member_info['mb_handphone']);
 		$mb_email		= explode("@",$member_info['mb_email']);
 	}
+	echo 'SS_ID : '.session_id();
 ?>
   <body>
     <div id="wrap_page">
