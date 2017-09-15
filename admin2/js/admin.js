@@ -1753,7 +1753,7 @@ $(document).on("click", "#submit_btn6", function(){
 			if (response == "Y")
 			{
 				alert("브랜드 정보가 수정되었습니다.");
-				location.reload();
+				location.href 	= "purchasing.php";
 			}else{
 				alert("다시 시도해 주세요.");
 				location.reload();

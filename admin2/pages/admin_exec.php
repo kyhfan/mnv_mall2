@@ -782,12 +782,12 @@
 				$innerHTML	.= "<td>".$list_data['showYN']."</td>";
 				$innerHTML	.= "<td>".$list_data['salesYN']."</td>";
 				$innerHTML	.= "<td>".$list_data['goods_code']."</td>";
-				$innerHTML	.= "<td><img src='".$list_data['goods_img_url']."' width='80px'>".$list_data['goods_name']."</td>";
+				$innerHTML	.= "<td><a href='goods_detail.php?goodscode=".$list_data['goods_code']."'><img src='".$list_data['goods_img_url']."' width='80px'>".$list_data['goods_name']."</a></td>";
 				$innerHTML	.= "<td>".$list_data['goods_model']."</td>";
 				$innerHTML	.= "<td>".$list_data['sales_price']."</td>";
 				$innerHTML	.= "<td>".$list_data['goods_stock']."</td>";
 				$innerHTML	.= "<td>".$list_data['goods_regdate']."</td>";
-				$innerHTML	.= "<td><a href='./goods_detail.php?goodscode=".$list_data['goods_code']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='#' class='del_goods' data-goodscode='".$list_data['goods_code']."'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
+				$innerHTML	.= "<td><a href='./goods_edit.php?goodscode=".$list_data['goods_code']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='#' class='del_goods' data-goodscode='".$list_data['goods_code']."'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
 				$innerHTML	.= "</tr>";
 				//$i++;
 			}
@@ -1415,7 +1415,7 @@
 				$innerHTML	.= "<tr>";
 				$innerHTML	.= "<td><input type='checkbox' name='one_check' id='one_check'></td>";
 				$innerHTML	.= "<td></td>";
-				$innerHTML	.= "<td><a href='".$_mnv_PC_goods_url."goods_detail.php?goods_code=".$list_data['goods_code']."' target='_blank'>".$list_data['goods_code']."</a></td>";
+				$innerHTML	.= "<td><a href='".$_mnv_PC_goods_url."goods_edit.php?goods_code=".$list_data['goods_code']."' target='_blank'>".$list_data['goods_code']."</a></td>";
 				$innerHTML	.= "<td>";
 				if($list_data['depth']>0)
 				{
@@ -1466,7 +1466,7 @@
 				$innerHTML	.= "<tr>";
 				$innerHTML	.= "<td><input type='checkbox' name='one_check' id='one_check'></td>";
 				$innerHTML	.= "<td></td>";
-				$innerHTML	.= "<td><a href='".$_mnv_PC_goods_url."goods_detail.php?goods_code=".$list_data['goods_code']."' target='_blank'>".$list_data['goods_code']."</a></td>";
+				$innerHTML	.= "<td><a href='".$_mnv_PC_goods_url."goods_edit.php?goods_code=".$list_data['goods_code']."' target='_blank'>".$list_data['goods_code']."</a></td>";
 				$innerHTML	.= "<td>";
 				if($list_data['depth']>0)
 				{

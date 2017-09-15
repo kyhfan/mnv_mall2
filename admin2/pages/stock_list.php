@@ -32,7 +32,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <h1 class="page-header">재고 관리<span style="font-size:20px">(삭제 및 상품정보 수정은 상품 관리에서 해 주세요.)</span></h1>
+          <h1 class="page-header">재고 관리<span style="font-size:20px">(재고등록, 삭제 및 상품정보 수정은 상품 관리에서 해 주세요.)</span></h1>
         </div>
         <!-- /.col-lg-12 -->
       </div>
