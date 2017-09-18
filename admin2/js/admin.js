@@ -840,12 +840,12 @@ $(document).on("click", "#submit_btn", function(){
 			"access_specific"	: access_specific
 		},
 		success: function(response){
-			var res_arr = response.split("||");
-			
-			if (res_arr[0] == "Y")
+			//var res_arr = response.split("||");
+			// if (res_arr[0] == "Y")
+			if (response.match("Y") == "Y")
 			{
-				//alert("카테고리가 추가 되었습니다.");
-				img_submit6(res_arr[1],res_arr[2],res_arr[3]);
+				alert("카테고리가 추가 되었습니다.");
+				//img_submit6(res_arr[1],res_arr[2],res_arr[3]);
 				location.reload();
 			}else{
 				alert("다시 시도해 주세요.");

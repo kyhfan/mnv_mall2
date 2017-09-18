@@ -157,10 +157,12 @@
 			$cate_mobileYN		= $_REQUEST['cate_mobileYN'];
 			$cate_accessYN		= $_REQUEST['cate_accessYN'];
 			$access_specific	= $_REQUEST['access_specific'];
+
 			if ($cate_accessYN == "SPECIFIC")
 				$accessYN	= $access_specific;
 			else
 				$accessYN	= $cate_accessYN;
+				
 			if ($cate_1 == "")
 			{
 				$care1_query		= "SELECT * FROM ".$_gl['category_info_table']." WHERE cate_1 <> 0 and cate_2 = 0 and cate_3 = 0";
@@ -191,8 +193,8 @@
 			else
 				$flag	= "N";
 
-			$flag 	= $flag."||".$cate_1."||".$cate_2."||".$cate_3; 
-			echo $flag;
+			// $flag 	= $flag."||".$cate_1."||".$cate_2."||".$cate_3; 
+			echo trim($flag);
 		break;
 
 		case "insert_event_info" :
@@ -2058,5 +2060,4 @@
 			echo $flag;
 		break;
 	}
-
 ?>
