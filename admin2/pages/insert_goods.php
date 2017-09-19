@@ -195,19 +195,19 @@
                 <tr>
                   <td>* 공급가</td>
                   <td colspan="2">
-                    <input class="form-control" id="supply_price"> 원
+                    <input class="form-control" id="supply_price" value="0"> 원
                   </td>
                 </tr>
                 <tr>
                   <td>* 판매가</td>
                   <td colspan="2">
-                    <input class="form-control" id="sales_price"> 원
+                    <input class="form-control" id="sales_price" value="0"> 원
                   </td>
                 </tr>
                 <tr>
                   <td>할인가</td>
                   <td colspan="2">
-                    <input class="form-control" id="discount_price"> 원
+                    <input class="form-control" id="discount_price" value="0"> 원 ( 미 입력시 할인가 노출 안됩니다.)
                   </td>
                 </tr>
                 <tr>

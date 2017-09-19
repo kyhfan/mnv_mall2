@@ -17,6 +17,9 @@
 		$goods_img_type	= "image/gif";
 
 	$goods_link	= str_replace("../../admin/","",$goods_info['goods_img_url']);
+
+  $cate1_val  = select_cate1_info($goods_info['cate_1']);
+  $cate2_val  = select_cate2_info($goods_info['cate_1'], $goods_info['cate_2']);
 ?>
 <link href="../../lib/filer/css/jquery.filer.css" type="text/css" rel="stylesheet" />
 <link href="../../lib/filer/css/themes/jquery.filer-dragdropbox-theme.css" type="text/css" rel="stylesheet" />
@@ -76,44 +79,64 @@
                 <tr>
                   <td>진열상태</td>
                   <td colspan="2">
-                    <input type="radio" name="showYN" value="Y" <?if ($goods_info['showYN']=="Y"){?>checked<?}?>> 진열함
-                    <input type="radio" name="showYN" value="N" <?if ($goods_info['showYN']=="N"){?>checked<?}?>> 진열안함
+<?
+  if ($goods_info['showYN']=="Y"){
+?>
+  진열함
+<?
+  }else{
+?>
+  진열안함
+<?  
+  }
+?>
                   </td>
                 </tr>
                 <tr>
                   <td>판매상태</td>
                   <td colspan="2">
-                    <input type="radio" name="salesYN" value="Y" <?if ($goods_info['salesYN']=="Y"){?>checked<?}?>> 판매함
-                    <input type="radio" name="salesYN" value="N" <?if ($goods_info['salesYN']=="N"){?>checked<?}?>> 판매안함
+<?
+  if ($goods_info['salesYN'] == "Y"){
+?>
+  판매함
+<?
+  }else{
+?>
+  판매안함
+<?  
+  }
+?>
                   </td>
                 </tr>
                 <tr>
                   <td>* 상품분류 선택</td>
                   <td>
-                    <select class="form-control" id="cate_1">
-                      <option value="">선택하세요</option>
-                    </select>
-                    <select class="form-control" id="cate_2">
-                      <option value="">선택하세요</option>
-                    </select>
-                    <!-- <select class="form-control" id="cate_3">
-                      <option value="">선택하세요</option>
-                    </select> -->
+<?=$cate1_val." > ".$cate2_val;?>                  
                   </td>
                 </tr>
                 <tr>
                   <td>연관 상품</td>
                   <td colspan="2">
-                    <input class="form-control" id="related_goods" style="width:50%" value="<?=$goods_info['related_goods']?>">
-                    * 상품코드를 입력해 주시고, 2개 이상일시 ;로 구분해 주세요.(PR00001;PR00002)
+<?
+  $rel_goods_arr        = explode(";",$goods_info['related_goods']);
+  $rel_goods_arr_count  = count($rel_goods_arr);
+  $i = 0;
+  while ($i < $rel_goods_arr_count)
+  {
+    $rel_goods_data   = select_goods_info($rel_goods_arr[$i]);
+    echo "<a href='goods_detail.php?goodscode=".$rel_goods_arr[$i]."'>".$rel_goods_data['goods_name']."</a>  ";
+    $i++;
+  }
+?>                  
                   </td>
                 </tr>
                 <tr>
                   <td>판매 경로</td>
                   <td colspan="2">
-                    <select class="form-control" id="sales_store">
-                      <option value="">선택하세요</option>
-                    </select>
+<?
+  $sales_store  = select_sales_store_info($goods_info['sales_store']);
+  echo $sales_store["sales_store_name"];
+?>                  
                   </td>
                 </tr>
               </tbody>
@@ -128,25 +151,16 @@
                 <tr>
                   <td>* 상품명</td>
                   <td colspan="2">
-                    <input class="form-control" id="goods_name" style="width:100%" value="<?=$goods_info['goods_name']?>">
+<?=$goods_info['goods_name']?>                  
                   </td>
                 </tr>
                 <tr>
                   <td>영문 상품명</td>
                   <td colspan="2">
-                    <input class="form-control" id="goods_eng_name" style="width:100%" value="<?=$goods_info['goods_eng_name']?>">
-                  </td>
-                </tr>
-                <tr>
-                  <td>모델명</td>
-                  <td colspan="2">
-                    <input class="form-control" id="goods_model" style="width:100%" value="<?=$goods_info['goods_model']?>">
-                  </td>
-                </tr>
-                <tr>
+<?=$goods_info['goods_eng_name']?>                   
                   <td>브랜드명</td>
                   <td colspan="2">
-                    <!-- <input class="form-control" id="goods_brand" style="width:100%" value="<?=$goods_info['goods_brand']?>"> -->
+<?=$goods_info['goods_brand']?>                  
                     <select class="form-control" id="goods_brand">
                       <option value="">선택하세요</option>
                     </select>
@@ -339,28 +353,6 @@
 	var goods_code = null;
 	// 옵션 갯수 넣어주기
 	option_num	= $("#option_cnt").val();
-	$(document).ready(function() {
-		// 1번 카테고리 정보
-		show_select_cate1("cate_1");
-		// 세팅된 카테고리 노출
-		selected_category("cate_1",$("#cate1_val").val(),$("#cate2_val").val(),$("#cate3_val").val());
-
-		// 판매 경로 정보
-		show_select_sales_store("sales_store");
-
-		// 세팅된 판매경로 노출
-		selected_sales_store("sales_store",$("#sales_store_val").val());
-
-		// 브랜드 정보
-		show_select_brand("goods_brand");
-
-		// 세팅된 브랜드 노출
-		selected_brand("goods_brand",$("#brand_val").val());
-
-		// 이미지 URL 구분자로 잘라서 배열로 저장
-		//var goods_img		= $("#goodsimgurl").val();
-		//var goods_img_arr	= goods_img.split("||");
-	});
 
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,

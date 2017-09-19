@@ -57,7 +57,7 @@
                     <input type="text" id="cate_name">
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>카테고리 이미지</td>
                   <td colspan="2">
                     <form action="../../lib/filer/php/upload.php" id="main_image_frm" method="post" enctype="multipart/form-data">
@@ -65,7 +65,7 @@
                     </form>
                     <input class="form-control" id="banner_value" placeholder="예시) http://store-chon.com/event/event_list1.php" style="width:90%"> 
                   </td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td>1차 카테고리</td>
                   <td id="cate1_sel_td" style="display:none;">
@@ -101,14 +101,14 @@
                   <td id="cate3_btn_td">
                     <a href="#">추가</a>
                   </td>
-                </tr> -->
+                </tr>
                 <tr>
                   <td>PC쇼핑몰 노출여부</td>
                   <td>
                     <input type="radio" name="cate_pcYN" value="Y">노출함
                     <input type="radio" name="cate_pcYN" value="N" checked>노출 안함
                   </td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td>모바일 쇼핑몰 노출여부</td>
                   <td>

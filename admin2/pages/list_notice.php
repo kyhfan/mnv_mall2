@@ -57,12 +57,12 @@
         <a class="navbar-brand" href="index.php">쇼핑몰 관리자</a>
       </div>
       <!-- /.navbar-header -->
-      <?
+<?
   include_once "top_navi.php";
-           include_once "side_navi.php";
-      ?>
+  include_once "side_navi.php";
+?>
     </nav>
-    <!-- /.navbar-static-side ?????????????????????????????? --> 
+    <!-- /.navbar-static-side --> 
   </div>
 
   <!-- Page Content -->
