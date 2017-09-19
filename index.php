@@ -78,48 +78,23 @@
 			<div class="section newest">
 				<div class="grid">
 					<ul class="list-row clearfix">
+<?
+    $main_goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE showYN='Y'";
+    $main_goods_result		= mysqli_query($my_db, $main_goods_query);
+    while ($main_goods_data = mysqli_fetch_array($main_goods_result))
+    {
+		$goods_thumb_img 	= str_replace("../../../","./",$main_goods_data['goods_thumb_img_url']);
+?>
 						<li class="col">
 							<figure class="pr-item">
 								<a href="#">
-									<img src="./images/newest_01.jpg">
+									<img src="<?=$goods_thumb_img?>">
 								</a>
 							</figure>
 						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_02.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_03.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_04.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_05.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_06.jpg">
-								</a>
-							</figure>
-						</li>
+<?
+    }
+?>
 					</ul>
 				</div>
 			</div>
@@ -136,42 +111,30 @@
 				</div>
 				<div class="grid">
 					<ul class="list-row clearfix">
+<?
+    $discount_goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE discount_price > 0";
+    $discount_goods_result		= mysqli_query($my_db, $discount_goods_query);
+    while ($discount_goods_data = mysqli_fetch_array($discount_goods_result))
+    {
+		$discount_goods_thumb_img 	= str_replace("../../../","./",$discount_goods_data['goods_thumb_img_url']);
+		// 할인율 계산
+		$discount_percent 			= ($discount_goods_data['sales_price'] - $discount_goods_data['discount_price']) / $discount_goods_data['sales_price'] * 100;
+?>
 						<li class="col">
 							<figure class="pr-item">
 								<a href="#">
-									<img src="./images/sale_sample.png">
+									<img src="<?=$discount_goods_thumb_img?>">
 									<figcaption>
-										<span class="price">20,000</span>
-										<span class="percent">50%</span>
-										<span class="saleP">10,000</span>
+										<span class="price"><?=number_format($discount_goods_data['sales_price'])?></span>
+										<span class="percent"><?=ceil($discount_percent)?>%</span>
+										<span class="saleP"><?=number_format($discount_goods_data['discount_price'])?></span>
 									</figcaption>
 								</a>
 							</figure>
 						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/sale_sample.png">
-									<figcaption>
-										<span class="price">20,000</span>
-										<span class="percent">50%</span>
-										<span class="saleP">10,000</span>
-									</figcaption>
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/sale_sample.png">
-									<figcaption>
-										<span class="price">20,000</span>
-										<span class="percent">50%</span>
-										<span class="saleP">10,000</span>
-									</figcaption>
-								</a>
-							</figure>
-						</li>
+<?
+    }
+?>
 					</ul>
 				</div>
 			</div>

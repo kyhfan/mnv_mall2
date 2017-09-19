@@ -645,9 +645,9 @@ $(document).on("click", "#list_category_btn", function(){
 });
 
 // 1차 카테고리 선택시 2차 카테고리 내용 변경
-$(document).on("change", "#cate_1", function(){
-	show_select_cate2("cate_2");
-});
+// $(document).on("change", "#cate_1", function(){
+// 	show_select_cate2("cate_2");
+// });
 
 // 2차 카테고리 선택시 3차 카테고리 내용 변경
 $(document).on("change", "#cate_2", function(){
@@ -1005,7 +1005,7 @@ $(document).on("click", "#submit_btn2", function(){
 	var goods_status				= $(':radio[name="goods_status"]:checked').val();
 	var goods_small_desc			= $("#goods_small_desc").val();
 	var goods_middle_desc		= $("#goods_middle_desc").val();
-	var goods_big_desc			= oEditors.getById["goods_big_desc"].getIR();
+	//var goods_big_desc			= oEditors.getById["goods_big_desc"].getIR();
 	var m_goods_big_descYN		= $(':radio[name="m_goods_big_descYN"]:checked').val();
 	var supply_price				= $("#supply_price").val();
 	var sales_price					= $("#sales_price").val();
@@ -1014,7 +1014,7 @@ $(document).on("click", "#submit_btn2", function(){
 	var goods_optionYN			= $(':radio[name="goods_optionYN"]:checked').val();
 	var goods_option_txt			= "";
 	var goods_stock				= $("#goods_stock").val();
-	var m_goods_big_desc		= "";
+	var m_goods_big_desc		= m_oEditors.getById["m_goods_big_desc"].getIR();
 	var saved_price					= "";
 
 	if (cate_1 == "")
@@ -1062,16 +1062,8 @@ $(document).on("click", "#submit_btn2", function(){
 		return false;
 	}
 
-	if (goods_big_desc == "")
-	{
-		alert("상품 상세 설명을 입력해주세요.");
-		$("#goods_big_desc").focus();
-		return false;
-	}
-
 	if (m_goods_big_descYN == "new")
 	{
-		m_goods_big_desc		= m_oEditors.getById["m_goods_big_desc"].getIR();
 		if (m_goods_big_desc == "")
 		{
 			alert("모바일 상품 상세 설명을 입력해주세요.");
@@ -1149,8 +1141,6 @@ $(document).on("click", "#submit_btn2", function(){
 			"goods_status"				: goods_status,
 			"goods_small_desc"		: goods_small_desc,
 			"goods_middle_desc"		: goods_middle_desc,
-			"goods_big_desc"			: goods_big_desc,
-			"m_goods_big_descYN"	: m_goods_big_descYN,
 			"m_goods_big_desc"		: m_goods_big_desc,
 			"supply_price"				: supply_price,
 			"sales_price"					: sales_price,
@@ -1164,8 +1154,10 @@ $(document).on("click", "#submit_btn2", function(){
 		success: function(response){
 			var res_arr = response.split("||");
 			goods_code	= res_arr[1];
-			if (res_arr[0]== "Y")
+
+			if (res_arr[0].match("Y") == "Y")
 			{
+				img_submit_goods_thumb();
 				img_submit();
 			}else{
 				alert("다시 시도해 주세요.");
@@ -1180,8 +1172,8 @@ $(document).on("click", "#submit_btn3", function(){
 	var showYN						= $(':radio[name="showYN"]:checked').val();
 	var salesYN						= $(':radio[name="salesYN"]:checked').val();
 	var cate_1						= $("#cate_1").val();
-	var cate_2						= $("#cate_2").val();
-	var cate_3						= $("#cate_3").val();
+	// var cate_2						= $("#cate_2").val();
+	// var cate_3						= $("#cate_3").val();
 	var related_goods				= $("#related_goods").val();
 	var sales_store					= $("#sales_store").val();
 	var goods_name				= $("#goods_name").val();
@@ -1191,8 +1183,8 @@ $(document).on("click", "#submit_btn3", function(){
 	var goods_status				= $(':radio[name="goods_status"]:checked').val();
 	var goods_small_desc			= $("#goods_small_desc").val();
 	var goods_middle_desc		= $("#goods_middle_desc").val();
-	var goods_big_desc			= oEditors.getById["goods_big_desc"].getIR();
-	var m_goods_big_descYN		= $(':radio[name="m_goods_big_descYN"]:checked').val();
+	// var goods_big_desc			= oEditors.getById["goods_big_desc"].getIR();
+	// var m_goods_big_descYN		= $(':radio[name="m_goods_big_descYN"]:checked').val();
 	var supply_price				= $("#supply_price").val();
 	var sales_price					= $("#sales_price").val();
 	var discount_price				= $("#discount_price").val();
@@ -1210,12 +1202,13 @@ $(document).on("click", "#submit_btn3", function(){
 		return false;
 	}
 
+/*
 	if (cate_2 == "")
 	{
 		alert("상품분류를 선택해주세요.");
 		return false;
 	}
-/*
+
 	if (cate_3 == "")
 	{
 		alert("상품분류를 선택해주세요.");
@@ -1392,6 +1385,21 @@ function img_submit()
 	frm.ajaxSubmit({
 		type: 'post',
 		url: '../../lib/filer/php/upload.php?ig=goods&goodscode='+goods_code,
+		data: stringData,
+		success:function(msg){
+			alert('상품이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_submit_goods_thumb()
+{
+	var frm = $('#img_frm2');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=goods_thumb&goodscode='+goods_code,
 		data: stringData,
 		success:function(msg){
 			alert('상품이 등록 되었습니다');
