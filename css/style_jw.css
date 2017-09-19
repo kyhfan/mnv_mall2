@@ -1,5 +1,8 @@
 @charset "UTF-8";
 /* CSS Document */
+	* {
+		box-sizing: border-box;
+	}
 	html {
 		height: 100%;
 		webkit-text-size-adjust: none;
@@ -365,6 +368,7 @@
 	}
 	.main .brand .intro-block.layout-1 .product.fullW figcaption .desc {
 		bottom: 26px;
+		font-size: 18px;
 	}
 	.main .newest .grid {
 		width: 90.6%;
