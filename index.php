@@ -118,6 +118,7 @@
 				<div class="grid">
 					<ul class="list-row clearfix">
 <?
+	// 할인상품은 discount_price > 0 경우
     $discount_goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE discount_price > 0";
     $discount_goods_result		= mysqli_query($my_db, $discount_goods_query);
     while ($discount_goods_data = mysqli_fetch_array($discount_goods_result))
