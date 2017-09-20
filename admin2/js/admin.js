@@ -1433,7 +1433,6 @@ function img_submit3(idx)
 		url: '../../lib/filer/php/upload.php?ig=banner&b_idx='+idx,
 		data: stringData,
 		success:function(msg){
-			alert(msg);
 			alert('배너가 등록 되었습니다');
 			self.location.reload();
 		}
@@ -2029,13 +2028,13 @@ $(document).on("click", "#submit_btn7", function(){
 		async  : false,
 		url    : "admin_exec.php",
 		data:{
-			"exec"							: "insert_banner_info",
+			"exec"						: "insert_banner_info",
 			"banner_name"				: banner_name,
 			"device_type"				: device_type,
 			"banner_type"				: banner_type,
 			"banner_value"				: banner_value,
-			"banner_showYN"			: banner_showYN,
-			"banner_show_order"		: banner_show_order,
+			"banner_showYN"				: banner_showYN,
+			"banner_show_order"			: banner_show_order,
 			"banner_link_target"		: banner_link_target
 		},
 		success: function(response){

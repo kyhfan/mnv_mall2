@@ -47,7 +47,7 @@
 			'maxSize' => 10, //Maximum Size of files {null, Number(in MB's)}
 			'extensions' => null, //Whitelist for file extension. {null, Array(ex: array('jpg', 'png'))}
 			'required' => false, //Minimum one file is required for upload {Boolean}
-			'uploadDir' => '../../../uploads2/'.$_REQUEST['b_idx'].'/', //Upload directory {String}
+			'uploadDir' => '../../../uploads2/'.trim($_REQUEST['b_idx']).'/', //Upload directory {String}
 			'title' => array('name'), //New file name {null, String, Array} *please read documentation in README.md
 			'removeFiles' => true, //Enable file exclusion {Boolean(extra for jQuery.filer), String($_POST field name containing json data with file names)}
 			'perms' => null, //Uploaded file permisions {null, Number}
@@ -137,7 +137,6 @@
         $files = $data['data'];
 		$file_txt	= "";
 		$i			= 0;
-		print_r($files);
 		foreach($files['files'] as $key => $val)
 		{
 			//$file_txt	.= "||".$val;
@@ -149,12 +148,10 @@
 		{
 			// 상품정보에 이미지 정보 업데이트
 			$goods_query		= "UPDATE ".$_gl['goods_info_table']." SET goods_img_url='".$file_txt."' WHERE goods_code='".$_REQUEST['goodscode']."'";
-			print_r($goods_query);
 			$goods_result		= mysqli_query($my_db, $goods_query);
 		}else if ($_REQUEST['ig'] == "goods_thumb" ){
 			// 상품정보에 썸네일 이미지 정보 업데이트
 			$goods_query		= "UPDATE ".$_gl['goods_info_table']." SET goods_thumb_img_url='".$file_txt."' WHERE goods_code='".$_REQUEST['goodscode']."'";
-			print_r($goods_query);
 			$goods_result		= mysqli_query($my_db, $goods_query);
 		}else if ($_REQUEST['ig'] == "banner" ){
 			// 배너정보에 이미지 정보 업데이트
@@ -177,7 +174,6 @@
 			$goods_query		= "UPDATE ".$_gl['coupon_info_table']." SET coupon_img_url='".$file_txt."' WHERE idx='".$_REQUEST['idx']."'";
 			$goods_result		= mysqli_query($my_db, $goods_query);
 		}
-		print_r($goods_query);
 	}
 
     if($data['hasErrors']){

@@ -75,8 +75,7 @@
                       <option value="PC">PC</option>
                       <option value="MOBILE">MOBILE</option>
                     </select>
-                    <p style="padding-top:20px;">PC1 : 가로 1180px / 세로 380px</p>
-                    <p>MOBILE : 가로 320px / 세로 160px</p>
+                    <p style="padding-top:20px;">MOBILE : 가로 1180px / 세로 380px</p>
                   </td>
                   <td id="main_top_banner_device_type"  class="device_type_class" style="display:none;">
                     <select id="device_type">

@@ -22,12 +22,18 @@
 		<div id="container" class="main">
 			<div class="section main-slider swiper-container">
 				<div class="slider swiper-wrapper">
-					<div class="slide swiper-slide _01" style="background: url(./images/main_banner_01.jpg) center center / cover no-repeat;">
+<?
+    $main_rolling_query		= "SELECT * FROM ".$_gl['banner_info_table']." WHERE banner_showYN='Y' ORDER BY banner_show_order ASC";
+    $main_rolling_result		= mysqli_query($my_db, $main_rolling_query);
+    while ($main_rolling_data = mysqli_fetch_array($main_rolling_result))
+    {
+		$main_rolling_img 	= str_replace("../../../","./",$main_rolling_data['banner_img_url']);
+?>
+					<div class="slide swiper-slide _01" style="background: url(<?=$main_rolling_img?>) center center / cover no-repeat;">
 					</div>
-					<div class="slide swiper-slide _02" style="background: url(./images/main_banner_02.jpg) center center / cover no-repeat;">
-					</div>
-					<div class="slide swiper-slide _03" style="background: url(./images/main_banner_03.jpg) center center / cover no-repeat;">
-					</div>
+<?
+	}
+?>					
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>

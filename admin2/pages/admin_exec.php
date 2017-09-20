@@ -3,7 +3,6 @@
 
 	switch ($_REQUEST['exec'])
 	{
-		
 		case "login_admin" :
 			$admin_id	= $_REQUEST['admin_id'];
 			$admin_pw	= $_REQUEST['admin_pw'];
