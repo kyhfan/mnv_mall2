@@ -1132,24 +1132,24 @@ $(document).on("click", "#submit_btn2", function(){
 			"cate_1"						: cate_1,
 			"cate_2"						: cate_2,
 			"cate_3"						: cate_3,
-			"related_goods"				: related_goods,
+			"related_goods"					: related_goods,
 			"sales_store"					: sales_store,
-			"goods_name"				: goods_name,
-			"goods_eng_name"			: goods_eng_name,
-			"goods_model"				: goods_model,
-			"goods_brand"				: goods_brand,
-			"goods_status"				: goods_status,
-			"goods_small_desc"		: goods_small_desc,
-			"goods_middle_desc"		: goods_middle_desc,
-			"m_goods_big_desc"		: m_goods_big_desc,
-			"supply_price"				: supply_price,
+			"goods_name"					: goods_name,
+			"goods_eng_name"				: goods_eng_name,
+			"goods_model"					: goods_model,
+			"goods_brand"					: goods_brand,
+			"goods_status"					: goods_status,
+			"goods_small_desc"				: goods_small_desc,
+			"goods_middle_desc"				: goods_middle_desc,
+			"m_goods_big_desc"				: m_goods_big_desc,
+			"supply_price"					: supply_price,
 			"sales_price"					: sales_price,
 			"discount_price"				: discount_price,
-			"saved_priceYN"				: saved_priceYN,
-			"saved_price"				: saved_price,
-			"goods_optionYN"			: goods_optionYN,
-			"goods_option_txt"			: goods_option_txt,
-			"goods_stock"				: goods_stock,
+			"saved_priceYN"					: saved_priceYN,
+			"saved_price"					: saved_price,
+			"goods_optionYN"				: goods_optionYN,
+			"goods_option_txt"				: goods_option_txt,
+			"goods_stock"					: goods_stock
 		},
 		success: function(response){
 			var res_arr = response.split("||");
@@ -1157,8 +1157,20 @@ $(document).on("click", "#submit_btn2", function(){
 
 			if (res_arr[0].match("Y") == "Y")
 			{
+				// 핑계겠지만 오류가 여러번 발생해서 그냥 막코딩 했음. 수정하겠음! 
+				// 아 멍청하게 변수명 안바꿨네..지쳐서 나중에 수정할께요!
+				if ($("#filer_input_main1").val() != "")
+					img_goods1_submit();
+				if ($("#filer_input_main2").val() != "")
+					img_goods2_submit();
+				if ($("#filer_input_main3").val() != "")
+					img_goods3_submit();
+				if ($("#filer_input_main4").val() != "")
+					img_goods4_submit();
+				if ($("#filer_input_main5").val() != "")
+					img_goods5_submit();
+
 				img_submit_goods_thumb();
-				img_submit();
 			}else{
 				alert("다시 시도해 주세요.");
 				location.reload();
@@ -1378,13 +1390,78 @@ $(document).on("click", ".del_goods", function(){
 	}
 });
 
-function img_submit()
+function img_goods1_submit()
 {
-	var frm = $('#img_frm');
+	alert("1");
+	var frm = $('#img_frm_main1');
 	var stringData = frm.serialize();
 	frm.ajaxSubmit({
 		type: 'post',
-		url: '../../lib/filer/php/upload.php?ig=goods&goodscode='+goods_code,
+		url: '../../lib/filer/php/upload.php?ig=goods1&goodscode='+goods_code,
+		data: stringData,
+		success:function(msg){
+			alert('상품이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_goods2_submit()
+{
+	alert("2");
+	var frm = $('#img_frm_main2');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=goods2&goodscode='+goods_code,
+		data: stringData,
+		success:function(msg){
+			alert('상품이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_goods3_submit()
+{
+	alert("3");
+	var frm = $('#img_frm_main3');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=goods3&goodscode='+goods_code,
+		data: stringData,
+		success:function(msg){
+			alert('상품이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_goods4_submit()
+{
+	alert("4");
+	var frm = $('#img_frm_main4');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=goods4&goodscode='+goods_code,
+		data: stringData,
+		success:function(msg){
+			alert('상품이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_goods5_submit()
+{
+	alert("5");
+	var frm = $('#img_frm_main5');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=goods5&goodscode='+goods_code,
 		data: stringData,
 		success:function(msg){
 			alert('상품이 등록 되었습니다');

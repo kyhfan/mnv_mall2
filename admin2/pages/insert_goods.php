@@ -138,15 +138,51 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>* 상품 이미지</td>
+                <td>* 상품 메인 이미지1</td>
+                <td colspan="2">
+                  <form action="../../lib/filer/php/upload.php" id="img_frm_main1" method="post" enctype="multipart/form-data">
+                    <input type="file" name="files_main1[]" id="filer_input_main1" multiple="multiple">
+                    <!-- <input type="submit" value="Submit"> -->
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                  <td>상품 메인 이미지2</td>
                   <td colspan="2">
-                    <form action="../../lib/filer/php/upload.php" id="img_frm" method="post" enctype="multipart/form-data">
-                      <input type="file" name="files[]" id="filer_input" multiple="multiple">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main2" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main2[]" id="filer_input_main2" multiple="multiple">
                       <!-- <input type="submit" value="Submit"> -->
                     </form>
                   </td>
                 </tr>
                 <tr>
+                  <td>상품 메인 이미지3</td>
+                  <td colspan="2">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main3" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main3[]" id="filer_input_main3" multiple="multiple">
+                      <!-- <input type="submit" value="Submit"> -->
+                    </form>
+                  </td>
+                </tr>
+                <tr>
+                  <td>상품 메인 이미지4</td>
+                  <td colspan="2">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main4" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main4[]" id="filer_input_main4" multiple="multiple">
+                      <!-- <input type="submit" value="Submit"> -->
+                    </form>
+                  </td>
+                </tr>
+                <tr>
+                  <td>상품 메인 이미지5</td>
+                  <td colspan="2">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main5" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main5[]" id="filer_input_main5" multiple="multiple">
+                      <!-- <input type="submit" value="Submit"> -->
+                    </form>
+                  </td>
+                </tr>
+              <tr>
                   <td>상품코드</td>
                   <td colspan="2">
                     자동생성
@@ -353,7 +389,235 @@
 		fCreator: "createSEditor2"
 	});
 
-	$('#filer_input').filer({
+	$('#filer_input_main1').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input_main2').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input_main3').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input_main4').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input_main5').filer({
 		showThumbs: true,
 		templates: {
 			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
