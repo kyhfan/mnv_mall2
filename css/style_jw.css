@@ -330,7 +330,7 @@
 		vertical-align: middle;
 		font-weight: 700;
 	}
-	#footer .social {
+	/*#footer .social {
 		text-align: center;
 		margin: 22px 0;
 	}
@@ -345,9 +345,9 @@
 	}
 	#footer .social .insta {
 		background: url(../images/icon_insta.png) center center / cover no-repeat;
-	}
+	}*/
 	#footer .mall-info {
-		margin-bottom: 25px;
+		margin: 22px 0 25px;
 	}
 	#footer .mall-info div {
 		text-align: center;
@@ -688,10 +688,7 @@
 		margin: 0 auto;
 	}
 	.product-detail .etc-block {
-
-	}
-	.product-detail .etc-block .list {
-
+		margin-bottom: 98px;
 	}
 	.product-detail .etc-block .list h4 {
 		font-size: 24px;
@@ -710,9 +707,17 @@
 		right: 67px;
 		font-size: 18px;
 		transform: rotate(90deg);
+		transition: transfrom 0.3s ease;
 	}
+	/*.product-detail .etc-block .list ul.active */
 	.product-detail .etc-block .list ul {
 		display: none;
+	}
+	.product-detail .etc-block .list.active ul {
+		display: block;
+	}
+	.product-detail .etc-block .list.active h4:after {
+		transform: rotate(-90deg);
 	}
 	.product-detail .etc-block .list ul .row {
 		border-bottom: 1px solid #dcdcdc;
@@ -753,8 +758,39 @@
 	.product-detail .etc-block .review ul .row .head .other span:first-child {
 		padding-right: 5px;
 	}
-	.product-detail .etc-block .guide {
-
+	.product-detail .buy-layer {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background: #809255;
+		height: 105px;
+		z-index: 500;
+	}
+	.product-detail .buy-layer .inner {
+		margin: 0 30px;
+		position: relative;
+	}
+	.product-detail .buy-layer .inner > div {
+		position: absolute;
+	}
+	.product-detail .buy-layer .loveit {
+		width: 45px;
+		height: 41px;
+		left: 0;
+		top: 30px;
+	}
+	.product-detail .buy-layer .buy {
+		top: 32px;
+		right: 0;
+	}
+	.product-detail .buy-layer .buy h5 {
+		font-size: 33px;
+		color: #ffffff;
+		font-weight: 400;
+	}
+	.product-detail + #footer .go-top {
+		bottom: 125px;
 	}
 	/* product-detail */
 
