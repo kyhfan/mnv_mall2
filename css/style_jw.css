@@ -819,6 +819,9 @@
 		background: #cccccc;
 		background: linear-gradient( to left, white, #cccccc, white);
 	}
+	.special-list .list-wrapper .block {
+		margin-bottom: 158px;
+	}
 	.special-list .list-wrapper .block .txt {
 		width: 91%;
 		margin: 0 auto;
@@ -848,5 +851,10 @@
 		color: #333333;
 		line-height: 55px;
 		font-weight: 400;
+	}
+	.special-list .list-wrapper .block .txt .desc p {
+		font-size: 20px;
+		color: #5f5f5f;
+		line-height: 1.5;
 	}
 	/* special */
