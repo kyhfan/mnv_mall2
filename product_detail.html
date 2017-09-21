@@ -249,6 +249,20 @@
 					</ul>
 				</div>
 			</div>
+			<div class="buy-layer">
+				<div class="inner">
+					<div class="loveit">
+						<a href="javascript:void(0)">
+							<img src="./images/heart.png" alt="찜 하기">
+						</a>
+					</div>
+					<div class="buy">
+						<a href="javascript:void(0)">
+							<h5>구매하기</h5>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div id="footer">
 			<div class="nav">
@@ -310,6 +324,30 @@
 					<span>TOP</span>
 				</a>
 			</div>
+			<div class="gnb-foot">
+				<ul>
+					<li class="home">
+						<a href="javascript:void(0)">
+							<img src="./images/gnb_home.png" alt="홈으로 가기">
+						</a>
+					</li>
+					<li class="search">
+						<a href="javascript:void(0)">
+							<img src="./images/gnb_search.png" alt="검색">
+						</a>
+					</li>
+					<li class="mypage">
+						<a href="javascript:void(0)">
+							<img src="./images/gnb_mypage.png" alt="마이페이지">
+						</a>
+					</li>
+					<li class="menu">
+						<a href="javascript:void(0)">
+							<img src="./images/gnb_menu.png" alt="메뉴">
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -365,7 +403,7 @@
 			});
 
 			$('.etc-block .toggle').on('click', function() {
-				$(this).siblings('ul').toggle();
+				$(this).parent().toggleClass("active");
 			});
 		});
 
