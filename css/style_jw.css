@@ -984,6 +984,9 @@
 	.promotion-list .list-wrapper .block .img {
 		padding-bottom: 24px;
 	}
+	.promotion-list .list-wrapper .block .desc {
+		position: relative;
+	}
 	.promotion-list .list-wrapper .block .desc > div {
 		float: left;
 	}
@@ -1025,7 +1028,12 @@
 		letter-spacing: -0.04em;
 	}
 	.promotion-list .list-wrapper .block .desc .btn-more {
+		background: url(../images/btn_more.png) center center / cover no-repeat;
 		clear: both;
 		position: absolute;
+		top: -54px;
+		right: 30px;
+		width: 55px;
+		height: 58px;
 	}
 	/* promotion-list */
