@@ -62,7 +62,7 @@
 							<div class="list theme">
 								<ul>
 									<li>
-										<a href="#">
+										<a href="special.php">
 											<span>SPECIAL</span>
 										</a>
 									</li>

@@ -25,7 +25,10 @@
           <li>
             <a href="coupon.php">쿠폰 관리</a>
           </li>
-        </ul>
+          <li>
+            <a href="special.php">스페셜 관리</a>
+          </li>
+      </ul>
         <!-- /.nav-second-level -->
       </li>
       <li>

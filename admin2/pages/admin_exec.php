@@ -1235,6 +1235,21 @@
 				$flag = "0";
 			echo $flag;
 		break;
+		
+		case "insert_special_info" :
+			$special_name			= $_REQUEST['special_name'];
+			$special_desc			= $_REQUEST['special_desc'];
+			$special_showYN			= $_REQUEST['special_showYN'];
+					
+			$special_query	= "INSERT INTO ".$_gl['special_info_table']."(special_name,special_desc,special_showYN,special_regdate) values('".$special_name."','".$special_desc."','".$special_showYN."','".date("Y-m-d H:i:s")."')";
+			$special_result	= mysqli_query($my_db, $special_query);
+			$id_num				= mysqli_insert_id($my_db);
+			if($special_result)
+				$flag = $id_num;
+			else
+				$flag = "0";
+			echo $flag;
+		break;
 			
 		case "update_banner_info" :
 			$banner_idx				= $_REQUEST['banner_idx'];
@@ -1345,6 +1360,39 @@
 				$innerHTML	.= "<td>".$list_data['banner_link_target']."</td>";
 				$innerHTML	.= "<td>".$list_data['banner_regdate']."</td>";
 				$innerHTML	.= "<td><a href='./banner_detail.php?idx=".$list_data['idx']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='javascript:void(0)' class='del_banner' data-idx='".$list_data['idx']."' onclick='delete_row(".$list_data['idx'].");return false;'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
+				$innerHTML	.= "</tr>";
+				//$i++;
+			}
+			$innerHTML	.= "</tbody>";
+			echo $innerHTML;
+		break;
+
+		case "show_special_list" :
+			$target	= $_REQUEST['target'];
+			$list_query		= "SELECT * FROM ".$_gl['special_info_table']." WHERE 1 ORDER BY idx DESC";
+			$list_result		= mysqli_query($my_db, $list_query);
+
+			$innerHTML	= "<thead>";
+			$innerHTML	.= "<tr>";
+			$innerHTML	.= "<th>스페셜 타이틀</th>";
+			$innerHTML	.= "<th>스페셜 설명</th>";
+			$innerHTML	.= "<th>스페셜 대표 이미지</th>";
+			$innerHTML	.= "<th>스페셜 노출 여부</th>";
+			$innerHTML	.= "<th>스페셜 등록일</th>";
+			$innerHTML	.= "<th></th>";
+			$innerHTML	.= "</tr>";
+			$innerHTML	.= "</thead>";
+			$innerHTML	.= "<tbody>";
+			//$i	= 1;
+			while ($list_data = mysqli_fetch_array($list_result))
+			{
+				$innerHTML	.= "<tr>";
+				$innerHTML	.= "<td>".$list_data['special_name']."</td>";
+				$innerHTML	.= "<td>".$list_data['special_desc']."</td>";
+				$innerHTML	.= "<td>".$list_data['banner_img_url']."</td>";
+				$innerHTML	.= "<td class='showYN'>".$list_data['special_showYN']."</td>";
+				$innerHTML	.= "<td>".$list_data['special_regdate']."</td>";
+				$innerHTML	.= "<td><a href='./special_detail.php?idx=".$list_data['idx']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='javascript:void(0)' class='del_banner' data-idx='".$list_data['idx']."' onclick='delete_row(".$list_data['idx'].");return false;'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
 				$innerHTML	.= "</tr>";
 				//$i++;
 			}
