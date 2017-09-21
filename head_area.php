@@ -48,10 +48,9 @@
 
     while ($data = mysqli_fetch_array($result))
     {
-        $cate_link  = $data['cate_1'].$data['cate_2'].$data['cate_3'];
 ?>                                
 									<li>
-										<a href="<?=$cate_link?>">
+										<a href="product_list.php?cate=<?=$data["cate_1"]?>">
 											<span><?=$data['cate_name']?></span>
 										</a>
 									</li>

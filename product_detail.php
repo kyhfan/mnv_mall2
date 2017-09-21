@@ -159,10 +159,10 @@
 				</div>
 			</div>
 		</div>
-		<?
-		include_once "./footer.php";	
-	?>		
-		</div>
+<?
+	include_once "./footer.php";	
+?>		
+	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');

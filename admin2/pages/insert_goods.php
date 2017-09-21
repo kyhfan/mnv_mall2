@@ -264,13 +264,13 @@
                 <tr>
                   <td>* 판매가</td>
                   <td colspan="2">
-                    <input class="form-control" id="sales_price" value="0"> 원
+                    <input class="form-control" id="sales_price" value="0" onblur="$('#discount_price').val($(this).val())"> 원
                   </td>
                 </tr>
                 <tr>
                   <td>할인가</td>
                   <td colspan="2">
-                    <input class="form-control" id="discount_price" value="0"> 원 ( 미 입력시 할인가 노출 안됩니다.)
+                    <input class="form-control" id="discount_price" value="0"> 원 ( 할인가와 판매가가 동일하면 할인상품에 노출 안됩니다.)
                   </td>
                 </tr>
                 <tr>
