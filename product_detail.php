@@ -8,6 +8,9 @@
 
 	// 롤링 이미지를 위해 배열 생성 및 빈 배열값 제거
 	$goods_img_url 		= array_filter(array($goods_data["goods_img_url1"],$goods_data["goods_img_url2"],$goods_data["goods_img_url3"],$goods_data["goods_img_url4"],$goods_data["goods_img_url5"]));
+
+	// 상품 상세 설명 P태그 class 자동 삽입
+	$goods_data["m_goods_big_desc"] 	= str_replace('<p>','<p class="txt-template ft-18 cl-333 lh-32" style="padding-bottom: 68px;">',$goods_data["m_goods_big_desc"]);
 ?>
 <body>
 	<div id="chon-app">
@@ -57,25 +60,25 @@
 					<div class="details">
 						<div class="row">
 							<span>품목명 및 제품명</span>
-							<span>생활공작소 제습제 100ml</span>
+							<span><?=$goods_data["goods_sub_name"]?></span>
 						</div>
 						<div class="row">
 							<span>제조자</span>
-							<span>여기담기</span>
+							<span><?=$goods_data["goods_brand"]?></span>
 						</div>
 						<div class="row">
 							<span>사이즈</span>
-							<span>가로 5cm x 세로 10cm</span>
+							<span><?=$goods_data["goods_size"]?></span>
 						</div>
 						<div class="row">
 							<span>색상 / 무늬</span>
-							<span>모란</span>
+							<span><?=$goods_data["goods_color"]?></span>
 						</div>
 					</div>
 				</div>
 				<div class="divide-line"></div>
 				<div class="wrapper editor">
-					<p class="txt-template ft-18 cl-333 lh-32" style="padding-bottom: 68px;">
+					<!-- <p class="txt-template ft-18 cl-333 lh-32" style="padding-bottom: 68px;">
 						몰리해치의 `Heritage`컬렉션 디자인은 18세기 유럽의 오래된 찻잔에서<br>
 						영감을 얻었습니다. 이 라인은 전통적인 느낌을 풍기지만 현대 라이프 스타일에도<br>
 						어울릴 수 있도록 디자인 되었습니다. 그녀만의 독특한 디자인으로 제품의 모든<br>
@@ -83,7 +86,8 @@
 					</p>
 					<img src="./images/product_detail_img_01.png" style="padding-bottom:49px;">
 					<img src="./images/product_detail_img_02.png" style="padding-bottom:49px;">
-					<img src="./images/product_detail_img_03.png" style="padding-bottom:49px;">
+					<img src="./images/product_detail_img_03.png" style="padding-bottom:49px;"> -->
+					<?=$goods_data["m_goods_big_desc"]?>
 				</div>
 			</div>
 			<div class="etc-block">
