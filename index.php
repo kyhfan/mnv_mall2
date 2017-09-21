@@ -80,7 +80,7 @@
 ?>
 						<li class="col">
 							<figure class="pr-item">
-								<a href="#">
+								<a href="product_detail.php?goodscode=<?=$main_goods_data['goods_code']?>">
 									<img src="<?=$goods_thumb_img?>">
 								</a>
 							</figure>
@@ -116,7 +116,7 @@
 ?>
 						<li class="col">
 							<figure class="pr-item">
-								<a href="#">
+								<a href="product_detail.php?goodscode=<?=$discount_goods_data['goods_code']?>">
 									<img src="<?=$discount_goods_thumb_img?>">
 									<figcaption>
 										<span class="price"><?=number_format($discount_goods_data['sales_price'])?></span>

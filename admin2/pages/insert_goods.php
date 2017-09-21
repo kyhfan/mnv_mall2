@@ -103,12 +103,30 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>* 상품명</td>
+                  <td>* 대표 제품명</td>
                   <td colspan="2">
                     <input class="form-control" id="goods_name" style="width:100%">
                   </td>
                 </tr>
                 <tr>
+                  <td>* 품목명 및 제품명</td>
+                  <td colspan="2">
+                    <input class="form-control" id="goods_sub_name" style="width:100%">
+                  </td>
+                </tr>
+                <tr>
+                  <td>* 사이즈</td>
+                  <td colspan="2">
+                    <input class="form-control" id="goods_size" style="width:100%">
+                  </td>
+                </tr>
+                <tr>
+                  <td>* 색상 / 무늬</td>
+                  <td colspan="2">
+                    <input class="form-control" id="goods_color" style="width:100%">
+                  </td>
+                </tr>
+                <!-- <tr>
                   <td>영문 상품명</td>
                   <td colspan="2">
                     <input class="form-control" id="goods_eng_name" style="width:100%">
@@ -120,8 +138,8 @@
                     <input class="form-control" id="goods_model" style="width:100%">
                   </td>
                 </tr>
-                <tr>
-                  <td>브랜드명</td>
+                <tr> -->
+                  <td>* 브랜드명(제조자)</td>
                   <td colspan="2">
                     <select class="form-control" id="goods_brand">
                       <option value="">선택하세요</option>

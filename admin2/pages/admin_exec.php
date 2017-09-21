@@ -329,33 +329,36 @@
 
 		case "insert_goods_info" :
 			$showYN						= $_REQUEST['showYN'];
-			$salesYN						= $_REQUEST['salesYN'];
+			$salesYN					= $_REQUEST['salesYN'];
 			$cate_1						= $_REQUEST['cate_1'];
 			$cate_2						= $_REQUEST['cate_2'];
 			$cate_3						= $_REQUEST['cate_3'];
 			$related_goods				= $_REQUEST['related_goods'];
-			$sales_store					= $_REQUEST['sales_store'];
-			$goods_name				= $_REQUEST['goods_name'];
-			$goods_eng_name			= $_REQUEST['goods_eng_name'];
-			$goods_model				= $_REQUEST['goods_model'];
+			$sales_store				= $_REQUEST['sales_store'];
+			$goods_name					= $_REQUEST['goods_name'];
+			$goods_sub_name				= $_REQUEST['goods_sub_name'];
+			$goods_size					= $_REQUEST['goods_size'];
+			$goods_color				= $_REQUEST['goods_color'];
+			// $goods_eng_name			= $_REQUEST['goods_eng_name'];
+			// $goods_model				= $_REQUEST['goods_model'];
 			$goods_brand				= $_REQUEST['goods_brand'];
 			$goods_status				= $_REQUEST['goods_status'];
 			$goods_small_desc			= $_REQUEST['goods_small_desc'];
-			$goods_middle_desc		= $_REQUEST['goods_middle_desc'];
-			$goods_big_desc			= $_REQUEST['goods_big_desc'];
-			$m_goods_big_descYN	= $_REQUEST['m_goods_big_descYN'];
-			$m_goods_big_desc		= $_REQUEST['m_goods_big_desc'];
+			$goods_middle_desc			= $_REQUEST['goods_middle_desc'];
+			$goods_big_desc				= $_REQUEST['goods_big_desc'];
+			$m_goods_big_descYN			= $_REQUEST['m_goods_big_descYN'];
+			$m_goods_big_desc			= $_REQUEST['m_goods_big_desc'];
 			$supply_price				= $_REQUEST['supply_price'];
-			$sales_price					= $_REQUEST['sales_price'];
+			$sales_price				= $_REQUEST['sales_price'];
 			$saved_priceYN				= $_REQUEST['saved_priceYN'];
-			$saved_price					= $_REQUEST['saved_price'];
+			$saved_price				= $_REQUEST['saved_price'];
 			$discount_price				= $_REQUEST['discount_price'];
-			$goods_optionYN			= $_REQUEST['goods_optionYN'];
+			$goods_optionYN				= $_REQUEST['goods_optionYN'];
 			$goods_option_txt			= $_REQUEST['goods_option_txt'];
 			$goods_stock				= $_REQUEST['goods_stock'];
-			$goods_code				= create_goodscode();
+			$goods_code					= create_goodscode();
 
-			$goods_query		= "INSERT INTO ".$_gl['goods_info_table']."(showYN,salesYN,cate_1,cate_2,cate_3,related_goods,sales_store,goods_name,goods_eng_name,goods_code,goods_model,goods_brand,goods_status,goods_small_desc,goods_middle_desc,goods_big_desc,m_goods_big_descYN,m_goods_big_desc,supply_price,sales_price,discount_price,saved_priceYN,saved_price,goods_optionYN,goods_option_txt,goods_stock,goods_regdate) values('".$showYN."','".$salesYN."','".$cate_1."','".$cate_2."','".$cate_3."','".$related_goods."','".$sales_store."','".$goods_name."','".$goods_eng_name."','".$goods_code."','".$goods_model."','".$goods_brand."','".$goods_status."','".$goods_small_desc."','".$goods_middle_desc."','".$goods_big_desc."','".$m_goods_big_descYN."','".$m_goods_big_desc."','".$supply_price."','".$sales_price."','".$discount_price."','".$saved_priceYN."','".$saved_price."','".$goods_optionYN."','".$goods_option_txt."','".$goods_stock."','".date("Y-m-d H:i:s")."')";
+			$goods_query		= "INSERT INTO ".$_gl['goods_info_table']."(showYN,salesYN,cate_1,cate_2,cate_3,related_goods,sales_store,goods_name,goods_sub_name,goods_size,goods_color,goods_eng_name,goods_code,goods_model,goods_brand,goods_status,goods_small_desc,goods_middle_desc,goods_big_desc,m_goods_big_descYN,m_goods_big_desc,supply_price,sales_price,discount_price,saved_priceYN,saved_price,goods_optionYN,goods_option_txt,goods_stock,goods_regdate) values('".$showYN."','".$salesYN."','".$cate_1."','".$cate_2."','".$cate_3."','".$related_goods."','".$sales_store."','".$goods_name."','".$goods_sub_name."','".$goods_size."','".$goods_color."','".$goods_eng_name."','".$goods_code."','".$goods_model."','".$goods_brand."','".$goods_status."','".$goods_small_desc."','".$goods_middle_desc."','".$goods_big_desc."','".$m_goods_big_descYN."','".$m_goods_big_desc."','".$supply_price."','".$sales_price."','".$discount_price."','".$saved_priceYN."','".$saved_price."','".$goods_optionYN."','".$goods_option_txt."','".$goods_stock."','".date("Y-m-d H:i:s")."')";
 			$goods_result		= mysqli_query($my_db, $goods_query);
 			if ($goods_result)
 				$flag	= "Y||".$goods_code;

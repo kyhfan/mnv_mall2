@@ -999,8 +999,11 @@ $(document).on("click", "#submit_btn2", function(){
 	var related_goods				= $("#related_goods").val();
 	var sales_store					= $("#sales_store").val();
 	var goods_name				= $("#goods_name").val();
-	var goods_eng_name			= $("#goods_eng_name").val();
-	var goods_model				= $("#goods_model").val();
+	var goods_sub_name				= $("#goods_sub_name").val();
+	var goods_size					= $("#goods_size").val();
+	var goods_color					= $("#goods_color").val();
+	// var goods_eng_name			= $("#goods_eng_name").val();
+	// var goods_model				= $("#goods_model").val();
 	var goods_brand				= $("#goods_brand").val();
 	var goods_status				= $(':radio[name="goods_status"]:checked').val();
 	var goods_small_desc			= $("#goods_small_desc").val();
@@ -1135,8 +1138,11 @@ $(document).on("click", "#submit_btn2", function(){
 			"related_goods"					: related_goods,
 			"sales_store"					: sales_store,
 			"goods_name"					: goods_name,
-			"goods_eng_name"				: goods_eng_name,
-			"goods_model"					: goods_model,
+			"goods_sub_name"				: goods_sub_name,
+			"goods_size"					: goods_size,
+			"goods_color"					: goods_color,
+			// "goods_eng_name"				: goods_eng_name,
+			// "goods_model"				: goods_model,
 			"goods_brand"					: goods_brand,
 			"goods_status"					: goods_status,
 			"goods_small_desc"				: goods_small_desc,
@@ -1157,8 +1163,6 @@ $(document).on("click", "#submit_btn2", function(){
 
 			if (res_arr[0].match("Y") == "Y")
 			{
-				// 핑계겠지만 오류가 여러번 발생해서 그냥 막코딩 했음. 수정하겠음! 
-				// 아 멍청하게 변수명 안바꿨네..지쳐서 나중에 수정할께요!
 				if ($("#filer_input_main1").val() != "")
 					img_goods1_submit();
 				if ($("#filer_input_main2").val() != "")
@@ -1188,24 +1192,27 @@ $(document).on("click", "#submit_btn3", function(){
 	// var cate_3						= $("#cate_3").val();
 	var related_goods				= $("#related_goods").val();
 	var sales_store					= $("#sales_store").val();
-	var goods_name				= $("#goods_name").val();
-	var goods_eng_name			= $("#goods_eng_name").val();
-	var goods_model				= $("#goods_model").val();
-	var goods_brand				= $("#goods_brand").val();
+	var goods_name					= $("#goods_name").val();
+	var goods_sub_name				= $("#goods_sub_name").val();
+	var goods_size					= $("#goods_size").val();
+	var goods_color					= $("#goods_color").val();
+	// var goods_eng_name				= $("#goods_eng_name").val();
+	// var goods_model					= $("#goods_model").val();
+	var goods_brand					= $("#goods_brand").val();
 	var goods_status				= $(':radio[name="goods_status"]:checked').val();
 	var goods_small_desc			= $("#goods_small_desc").val();
-	var goods_middle_desc		= $("#goods_middle_desc").val();
+	var goods_middle_desc			= $("#goods_middle_desc").val();
 	// var goods_big_desc			= oEditors.getById["goods_big_desc"].getIR();
 	// var m_goods_big_descYN		= $(':radio[name="m_goods_big_descYN"]:checked').val();
 	var supply_price				= $("#supply_price").val();
 	var sales_price					= $("#sales_price").val();
 	var discount_price				= $("#discount_price").val();
 	var saved_priceYN				= $(':radio[name="saved_priceYN"]:checked').val();
-	var goods_optionYN			= $(':radio[name="goods_optionYN"]:checked').val();
+	var goods_optionYN				= $(':radio[name="goods_optionYN"]:checked').val();
 	var goods_option_txt			= "";
-	var goods_stock				= $("#goods_stock").val();
+	var goods_stock					= $("#goods_stock").val();
 	goods_code						= $("#goodscode").val();
-	var m_goods_big_desc		= "";
+	var m_goods_big_desc			= "";
 	var saved_price					= "";
 
 	if (cate_1 == "")
@@ -1327,27 +1334,30 @@ $(document).on("click", "#submit_btn3", function(){
 			"cate_1"						: cate_1,
 			"cate_2"						: cate_2,
 			"cate_3"						: cate_3,
-			"related_goods"				: related_goods,
+			"related_goods"					: related_goods,
 			"sales_store"					: sales_store,
-			"goods_name"				: goods_name,
-			"goods_eng_name"			: goods_eng_name,
-			"goods_model"				: goods_model,
-			"goods_brand"				: goods_brand,
-			"goods_status"				: goods_status,
-			"goods_small_desc"		: goods_small_desc,
-			"goods_middle_desc"		: goods_middle_desc,
-			"goods_big_desc"			: goods_big_desc,
-			"m_goods_big_descYN"	: m_goods_big_descYN,
-			"m_goods_big_desc"		: m_goods_big_desc,
-			"supply_price"				: supply_price,
+			"goods_name"					: goods_name,
+			"goods_sub_name"				: goods_sub_name,
+			"goods_size"					: goods_size,
+			"goods_color"					: goods_color,
+			// "goods_eng_name"				: goods_eng_name,
+			// "goods_model"				: goods_model,
+			"goods_brand"					: goods_brand,
+			"goods_status"					: goods_status,
+			"goods_small_desc"				: goods_small_desc,
+			"goods_middle_desc"				: goods_middle_desc,
+			"goods_big_desc"				: goods_big_desc,
+			"m_goods_big_descYN"			: m_goods_big_descYN,
+			"m_goods_big_desc"				: m_goods_big_desc,
+			"supply_price"					: supply_price,
 			"sales_price"					: sales_price,
 			"discount_price"				: discount_price,
-			"saved_priceYN"				: saved_priceYN,
-			"saved_price"				: saved_price,
-			"goods_optionYN"			: goods_optionYN,
-			"goods_option_txt"			: goods_option_txt,
-			"goods_stock"				: goods_stock,
-			"goods_code"				: goods_code,
+			"saved_priceYN"					: saved_priceYN,
+			"saved_price"					: saved_price,
+			"goods_optionYN"				: goods_optionYN,
+			"goods_option_txt"				: goods_option_txt,
+			"goods_stock"					: goods_stock,
+			"goods_code"					: goods_code,
 		},
 		success: function(response){
 			var res_arr		= response.split("||");

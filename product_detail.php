@@ -1,41 +1,54 @@
 <?
-include_once "./header.php";
+	include_once "./header.php";
+
+	$goods_code 		= $_REQUEST["goodscode"];
+	$goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_code='$goods_code'";
+	$goods_result		= mysqli_query($my_db, $goods_query);
+	$goods_data 		= mysqli_fetch_array($goods_result);
+
+	// 롤링 이미지를 위해 배열 생성 및 빈 배열값 제거
+	$goods_img_url 		= array_filter(array($goods_data["goods_img_url1"],$goods_data["goods_img_url2"],$goods_data["goods_img_url3"],$goods_data["goods_img_url4"],$goods_data["goods_img_url5"]));
 ?>
 <body>
 	<div id="chon-app">
-	<?
+<?
 	include_once "./head_area.php";
 ?>
 		<div id="container" class="product-detail">
 			<div class="product-slide swiper-container">
 				<div class="swiper-wrapper">
+<?
+	foreach ($goods_img_url as $key => $val)
+    {
+		$goods_img 	= str_replace("../../../","./",$val);
+?>
 					<div class="swiper-slide">
-						<img src="./images/product_slide_01.jpg">
+						<img src="<?=$goods_img?>">
 					</div>
-					<div class="swiper-slide">
-						<img src="./images/product_slide_02.jpg">
-					</div>
+<?
+    }
+?>
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
 			<div class="product-info">
 				<div class="wrapper top">
 					<div class="name">
-						<h4>i am h 보울</h4>
+						<h4><?=$goods_data["goods_name"]?></h4>
 						<div class="wrap-icon">
 							<span class="new">NEW</span>
 							<span class="percent">10%</span>
 						</div>
 					</div>
 					<div class="sub">
-						<p>단아하게 하얀색의 도자기가 저절로 아끼는 마음을 만들어 냅니다</p>
+						<p><?=$goods_data["goods_small_desc"]?></p>
 					</div>
 					<div class="price discount">
 						<span class="normal">
-							20,000
+							<?=$goods_data["sales_price"]?>
 						</span>
 						<span class="sale">
-							10,000
+							<?=$goods_data["discount_price"]?>
 						</span>
 					</div>
 				</div>
