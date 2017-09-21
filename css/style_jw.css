@@ -419,9 +419,12 @@
 		display: block;
 		width: 100%;
 		height: 100%;
+		text-align: center;
 	}
 	#footer .gnb-foot ul li img {
-		margin: 19px auto 0;
+		display: inline;
+		padding-top: 20px;
+		/*margin: 19px auto 0;*/
 	}
 	.pg-title {
 		padding-top: 20px;
@@ -491,9 +494,14 @@
 	}
 	.product-list .grid .pr-item figcaption .name {
 		padding-bottom: 7px;
+		font-size: 19px;
 	}
 	.product-list .grid .pr-item figcaption .price {
 		/*float: none;*/
+		font-size: 21px;
+	}
+	.product-list .grid .pr-item figcaption .saleP {
+		font-size: 21px;
 	}
 	.product-list .grid .pr-item figcaption {
 		position: relative;
