@@ -52,48 +52,44 @@
               </thead>
               <tbody>
                 <tr>
+                  <td>배너 종류</td>
+                  <td>
+                    <select id="banner_type" onchange="change_banner_device_type(this.value)">
+                      <option value="main_rolling_banner">메인 롤링 배너</option>
+                      <option value="category_best_banner">카테고리 베스트 배너</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
                   <td>배너명</td>
                   <td colspan="2">
                     <input type="text" id="banner_name" style="width:100%">
                   </td>
                 </tr>
                 <tr>
-                  <td>배너 종류</td>
-                  <td>
-                    <select id="banner_type" onchange="change_banner_device_type(this.value)">
-                      <option value="main_rolling_banner">메인 롤링 배너</option>
-                      <option value="main_top_banner">메인 상단 배너</option>
-                      <option value="main_middle_banner">메인 중단 배너</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>디바이스 구분</td>
+                  <td>배너별 옵션</td>
                   <td id="main_rolling_banner_device_type" class="device_type_class">
                     <select id="device_type">
-                      <option value="">선택하세요</option>
-                      <option value="PC">PC</option>
                       <option value="MOBILE">MOBILE</option>
                     </select>
                     <p style="padding-top:20px;">MOBILE : 가로 1180px / 세로 380px</p>
                   </td>
-                  <td id="main_top_banner_device_type"  class="device_type_class" style="display:none;">
+                  <td id="category_best_banner_device_type"  class="device_type_class" style="display:none;">
                     <select id="device_type">
-                      <option value="">선택하세요</option>
-                      <option value="PC">PC</option>
-                      <option value="MOBILE">MOBILE</option>
+                      <option value="">카테고리를 선택하세요</option>
+<?
+    $query		= "SELECT * FROM ".$_gl['category_info_table']." WHERE cate_mobileYN='Y'";
+    $result		= mysqli_query($my_db, $query);
+
+    while ($data = mysqli_fetch_array($result))
+    {
+
+?>                      
+                      <option value="<?=$data["idx"]?>"><?=$data["cate_name"]?></option>
+<?
+    }
+?>                      
                     </select>
-                    <p style="padding-top:20px;">PC2 : 가로 1180px / 세로 380px</p>
-                    <p>MOBILE : 가로 320px / 세로 160px</p>
-                  </td>
-                  <td id="main_middle_banner_device_type"  class="device_type_class" style="display:none;">
-                    <select id="device_type">
-                      <option value="">선택하세요</option>
-                      <option value="PC">PC</option>
-                      <option value="MOBILE">MOBILE</option>
-                    </select>
-                    <p style="padding-top:20px;">PC3 : 가로 1180px / 세로 380px</p>
-                    <p>MOBILE : 가로 320px / 세로 160px</p>
                   </td>
                 </tr>
                 <tr class="banner_detail">

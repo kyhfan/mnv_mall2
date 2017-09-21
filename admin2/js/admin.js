@@ -2521,3 +2521,84 @@ $(document).on("click", "#list_special_btn", function(){
 	$("#add_special").hide();
 	$("#list_special").show();
 });
+
+// *********************** 카테고리 베스트 배너 설정 *********************** //
+
+// 카테고리 베스트 배너 정보 insert
+$(document).on("click", "#submit_btn22", function(){
+	var special_name				= $("#special_name").val();
+	var special_desc				= $("#special_desc").val();
+	var special_showYN				= $("#special_showYN").val();
+	var inputFile  					= $("#filer_input").val();
+
+	if (special_name == "")
+	{
+		alert("SPECIAL 타이틀을 넣어주세요.");
+		$("#special_name").focus();
+		return false;
+	}
+	
+	if (special_desc == "")
+	{
+		alert("SPECIAL 설명을 넣어주세요.");
+		$("#special_desc").focus();
+		return false;
+	}
+
+	if (inputFile == "") {
+		alert("배너 이미지를 넣어주세요.");
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "admin_exec.php",
+		data:{
+			"exec"						: "insert_special_info",
+			"special_name"				: special_name,
+			"special_desc"				: special_desc,
+			"special_showYN"			: special_showYN
+		},
+		success: function(response){
+			if (response == "0")
+			{
+				alert("다시 시도해 주세요.");
+				location.reload();
+			}else{
+				alert("SPECIAL 정보가 입력 되었습니다.");
+				img_submit_special(response);
+				location.reload();
+			}
+		}
+	});
+});
+
+// 전체 쿠폰 리스트 생성
+function show_special_list(id)
+{
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "admin_exec.php",
+		data:{
+			"exec"	: "show_special_list",
+			"target"	: id
+		},
+		success: function(response){
+			$("#"+id).html(response);
+		}
+	});
+}
+
+// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 추가 버튼 클릭
+$(document).on("click", "#add_special_btn", function(){
+	$("#list_special").hide();
+	$("#add_special").show();
+});
+
+// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 목록 버튼 클릭
+$(document).on("click", "#list_special_btn", function(){
+	$("#add_special").hide();
+	$("#list_special").show();
+});

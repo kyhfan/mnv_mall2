@@ -23,23 +23,30 @@
 				<a href="javascript:void(0)" data-sort="row">가격낮은순</a>
 			</div>
 			<div class="brand-banner">
+<?
+	// 베스트 배너
+    $best_banner_query		= "SELECT * FROM ".$_gl['banner_info_table']." WHERE banner_type = 'category_best_banner' AND device_type='$cate' ORDER BY banner_show_order ASC";
+    $best_banner_result		= mysqli_query($my_db, $best_banner_query);
+    while ($best_banner_data = mysqli_fetch_array($best_banner_result))
+    {
+		$best_banner_img 	= str_replace("../../../","./",$best_banner_data['banner_img_url']);
+?>				
 				<div class="block">
-					<a href="javascript:void(0)">
-						<img src="./images/product_brand_banner_01.png">
+					<a href="<?=$best_banner_data["banner_img_link"]?>" target="<?=$best_banner_data["banner_link_target"]?>">
+						<img src="<?=$best_banner_img?>">
 					</a>
 				</div>
-				<div class="block">
-					<a href="javascript:void(0)">
-						<img src="./images/product_brand_banner_02.png">
-					</a>
-				</div>
+<?
+	}
+?>				
 			</div>
 			<div class="grid">
 				<ul class="list-row n2 clearfix">
 <?
 	// 상품 리스트
     $goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE cate_1 = '$cate' ORDER BY discount_price ASC";
-    $goods_result		= mysqli_query($my_db, $goods_query);
+	$goods_result		= mysqli_query($my_db, $goods_query);
+	$goods_count 		= mysqli_num_rows($goods_result);
     while ($goods_data = mysqli_fetch_array($goods_result))
     {
 		$goods_thumb_img 	= str_replace("../../../","./",$goods_data['goods_thumb_img_url']);
@@ -71,11 +78,18 @@
     }
 ?>
 			</div>
+<?
+	if ($goods_count > 6)
+	{
+?>			
 			<div class="more-btn">
 				<a href="javascript:void(0)">
 					<span>더 보기</span>
 				</a>
 			</div>
+<?
+	}
+?>			
 		</div>
 <?
 	include_once "./footer.php";	

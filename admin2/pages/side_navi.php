@@ -56,9 +56,9 @@
             <a href="new_goods_manage.php">신 상품 관리</a>
           </li>
           <li>
-            <a href="plan_goods_manage.php">스페셜 상품 관리</a>
-          </li>
-        </ul>
+			  <a href="plan_goods_manage.php">스페셜 상품 관리</a>
+		  </li>
+	  </ul>
         <!-- /.nav-second-level -->
       </li>
       <li>
