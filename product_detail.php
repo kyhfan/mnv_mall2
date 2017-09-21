@@ -48,10 +48,10 @@
 					</div>
 					<div class="price discount">
 						<span class="normal">
-							<?=$goods_data["sales_price"]?>
+							<?=number_format($goods_data["sales_price"])?>
 						</span>
 						<span class="sale">
-							<?=$goods_data["discount_price"]?>
+							<?=number_format($goods_data["discount_price"])?>
 						</span>
 					</div>
 				</div>
