@@ -26,6 +26,7 @@
 					<div class="wrapper">
 						<div class="verify-btn logoff">
 <?
+print_r($_SESSION);
 	if (!$_SESSION['ss_chon_id'])
 	{
 ?>						
