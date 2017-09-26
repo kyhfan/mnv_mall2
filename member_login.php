@@ -33,9 +33,7 @@
 		// echo "status_code:".$status_code."";
 		curl_close ($ch);
 		if($status_code == 200) {
-			echo $response;
 			$json_data = json_decode($response, true);
-			print_r($json_data);
 			$token = $json_data["access_token"];
 			$header = "Bearer ".$token; // Bearer 다음에 공백 추가
 			$url = "https://openapi.naver.com/v1/nid/me";
@@ -53,7 +51,20 @@
 			curl_close ($ch);
 			if($status_code == 200) {
 				$json_data = json_decode($response, true);
-				print_r($json_data);  
+				print_r($json_data);
+				$str	= "main_exec.php";
+				$str	.= "?exec=member_naver_login";
+				$str	.= "&nickname=".$json_data['nickname'];
+				$str	.= "&login_way=naver";
+				$str	.= "&enc_id=".$json_data['enc_id'];
+				$str	.= "&profile_image=".$json_data['profile_image'];
+				$str	.= "&age=".$json_data['age'];
+				$str	.= "&gender=".$json_data['gender'];
+				$str	.= "&id=".$json_data['id'];
+				$str	.= "&name=".$json_data['name'];
+				$str	.= "&email=".$json_data['email'];
+				$str	.= "&birthday=".$json_data['birthday'];
+				echo "<script>location.href='".$str."';</script>";
 			} else {
 			  	echo "Error 내용:".$response;
 			}			
