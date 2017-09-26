@@ -50,6 +50,13 @@
 		margin: 0;
 		padding: 0;
 	}
+	input {
+		border-radius: 0; /* iSO 둥근모서리 제거 */
+		-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */
+		-moz-appearance: none;
+		appearance: none;
+		border: 0;
+	}
 	/* initialize */
 
 	/* public module */
@@ -582,7 +589,7 @@
 		border: 1px solid #dcdcdc;
 	}
 	.input-group input[type="text"] {
-		font-size: 20px;
+		font-size: 24px;
 		color: #333333;
 	}
 	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
