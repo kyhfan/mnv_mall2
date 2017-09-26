@@ -16,7 +16,7 @@
 	// 네이버 로그인 콜백
 	if ($_GET["code"])
 	{
-		$client_id = "mebia0Wrk4RP6CBvbnwx";
+		// $client_id = "mebia0Wrk4RP6CBvbnwx";
 		$client_secret = "oc4ov9gvgn";
 		$code = $_GET["code"];
 		$state = $_GET["state"];
@@ -30,12 +30,13 @@
 		$headers = array();
 		$response = curl_exec ($ch);
 		$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		echo "status_code:".$status_code."";
+		// echo "status_code:".$status_code."";
 		curl_close ($ch);
 		if($status_code == 200) {
 			//echo $response;
 			$json_data = json_decode($response, true);
 			$token = $json_data["access_token"];
+echo $token;
 			$header = "Bearer ".$token; // Bearer 다음에 공백 추가
 			$url = "https://openapi.naver.com/v1/nid/me";
 			$is_post = false;
