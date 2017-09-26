@@ -26,8 +26,7 @@
 					<div class="wrapper">
 						<div class="verify-btn logoff">
 <?
-print_r($_SESSION);
-	if (!$_SESSION['ss_chon_id'])
+	if (!$_SESSION['ss_chon_email'])
 	{
 ?>						
 							<a href="member_login.php?ref_url=<?=$_SERVER['REQUEST_URI']?>">
