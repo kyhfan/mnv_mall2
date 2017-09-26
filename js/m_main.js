@@ -55,7 +55,30 @@ function loginWithKakao()
         Kakao.API.request({
 			url: '/v1/user/me',
 			success: function(res) {
-			  alert(JSON.stringify(res));
+				console.log(JSON.stringify(res));
+				/*
+				$.ajax({
+					type   : "POST",
+					async  : false,
+					url    : "./main_exec.php",
+					data:{
+						"exec"			: "member_login",
+						"login_way"		: "kakao"
+					},
+					success: function(response){
+						if (response.match("Y") == "Y")
+						{
+							alert('찜추가');
+						}else if (response.match("D") == "D"){
+							alert('이미 찜 추가된 상품');
+						}else if (response.match("N") == "N"){
+							alert('로그인 안되어 있음');
+						}else{
+							alert('시스템 에러');
+						}
+					}
+				});
+				*/	  
 			},
 			fail: function(error) {
 			  alert(JSON.stringify(error));
