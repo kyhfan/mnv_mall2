@@ -5,6 +5,12 @@
 
 	if ($_SESSION['ss_chon_email'])
 		echo "<script>location.href='$ref_url';</script>";
+
+	// 네이버 로그인 접근토큰 요청 예제
+	$client_id = "mebia0Wrk4RP6CBvbnwx";
+	$redirectURI = urlencode("http://www.store-chon.com");
+	$state = "RAMDOM_STATE";
+	$apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$redirectURI."&state=".$state;
 ?>						
 	
 ?>
@@ -32,14 +38,14 @@
 					<span>로그인</span>
 				</a>
 			</div>
-			<div class="other-login" id="naver_id_login">
+			<div class="other-login">
 				<a href="javascript:loginWithKakao('<?=$ref_url?>')" class="kt">
 					<span class="blind">카카오계정 로그인</span>
 				</a>
 				<a href="javascript:void(0)" class="fb">
 					<span class="blind">페이스북 로그인</span>
 				</a>
-				<a href="javascript:loginWithNaver('<?=$ref_url?>')" class="nv">
+				<a href="<?=$apiURL?>" class="nv">
 					<span class="blind">네이버 로그인</span>
 				</a>
 			</div>
