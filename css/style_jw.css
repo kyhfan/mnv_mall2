@@ -1037,3 +1037,92 @@
 		height: 58px;
 	}
 	/* promotion-list */
+
+	/* mypage */
+	.mypage .order-status {
+		width: 96%;
+		margin: 0 auto;
+	}
+	.mypage .order-status > .title {
+		border-top: 1px solid #dcdcdc;
+		text-align: center;
+	}
+	.mypage .order-status > .title p {
+		font-size: 21px;
+		color: #333333;
+		padding: 20px 0;
+	}
+	.mypage .order-status .stat-list {
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.mypage .order-status .stat-list ul {
+		width: 100%;
+	}
+	.mypage .order-status .stat-list ul li {
+		float: left;
+		width: 25%;
+		padding: 34px 0 42px;
+		text-align: center;
+		position: relative;
+	}
+	.mypage .order-status .stat-list ul li:after {
+		content: "";
+		position: absolute;
+		right: 0;
+		top: 20%;
+		width: 1px;
+		height: 60%;
+		background: linear-gradient( to bottom, white, #cccccc, white);
+	}
+	.mypage .order-status .stat-list ul li:last-child::after {
+		content: none;
+	}
+	.mypage .order-status .stat-list ul li .txt {
+		padding-bottom: 22px;
+	}
+	.mypage .order-status .stat-list ul li .txt span {
+		font-size: 21px;
+		color: #333333;
+	}
+	.mypage .order-status .stat-list ul li .count span {
+		font-size: 25px;
+		color: #809255;
+	}
+	.mypage .list-hub {
+		padding: 48px 0 112px;
+		width: 96%;
+		margin: 0 auto;
+	}
+	.mypage .list-hub ul {
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.mypage .list-hub ul li {
+		margin: 0 43px;
+	}
+	.mypage .list-hub ul li:first-child a {
+		padding-top: 34px;
+	}
+	.mypage .list-hub ul li:last-child a {
+		padding-bottom: 45px;
+	}
+	.mypage .list-hub ul li a {
+		display: block;
+		padding: 25px 0;
+	}
+	.mypage .list-hub ul li a span {
+		display: inline-block;
+		font-size: 20px;
+		color: #333333;
+	}
+	.mypage .list-hub ul li a:after {
+		content: ">";
+		display: block;
+		float: right;
+		font-size: 20px;
+		color: #333333;
+	}
+
+
+	/* mypage */
