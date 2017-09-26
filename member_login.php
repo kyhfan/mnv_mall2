@@ -32,7 +32,7 @@
 					<span>로그인</span>
 				</a>
 			</div>
-			<div class="other-login">
+			<div class="other-login" id="naver_id_login">
 				<a href="javascript:loginWithKakao('<?=$ref_url?>')" class="kt">
 					<span class="blind">카카오계정 로그인</span>
 				</a>

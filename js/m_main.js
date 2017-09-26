@@ -96,7 +96,7 @@ function loginWithKakao(refURL)
 // 네이버 로그인
 function loginWithNaver(refURL)
 {
-	var naver_id_login = new naver_id_login("mebia0Wrk4RP6CBvbnwx", "http://www.store-chon.com/member_login.php?ref_url=");
+	var naver_id_login = new naver_id_login("mebia0Wrk4RP6CBvbnwx", "http://www.store-chon.com");
 	var state = naver_id_login.getUniqState();
 	// naver_id_login.setButton("white", 2,40);
 	naver_id_login.setDomain("http://www.store-chon.com");
