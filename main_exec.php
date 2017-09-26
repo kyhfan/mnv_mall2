@@ -650,23 +650,24 @@
 			echo $flag;
 			break;
 
-		case "add_wishlist" :
-			$goods_idx		= $_REQUEST['goods_idx'];
-			$goods_option	= $_REQUEST['goods_option'];
+		case "add_wishlist" : // 사용하는 코드
+			$goods_code		= $_REQUEST['goods_code'];
+			//$goods_option	= $_REQUEST['goods_option'];
 			$mb_id			= $_SESSION['ss_chon_id'];
 
 			if ($mb_id == "")
 			{
 				$flag	= "N"; // 로그인 안되어 있음.
 			}else{
-				$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_idx='".$goods_idx."'";
+				$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."'";
 				$wish_result 	= mysqli_query($my_db, $wish_query);
 				$wish_data		= mysqli_fetch_array($wish_result);
+
 				if ($wish_data)
 				{
 					$flag	= "D";
 				}else{
-					$wish_query2 	= "INSERT INTO ".$_gl['wishlist_info_table']."(mb_id, goods_idx, goods_option, wish_regdate) values('".$mb_id."','".$goods_idx."','".$goods_option."','".date("Y-m-d H:i:s")."')";
+					$wish_query2 	= "INSERT INTO ".$_gl['wishlist_info_table']."(mb_id, goods_code, wish_regdate) values('".$mb_id."','".$goods_code."','".date("Y-m-d H:i:s")."')";
 					$wish_result2 	= mysqli_query($my_db, $wish_query2);
 
 					if ($wish_result2)
@@ -791,7 +792,7 @@
 		break;
 
 		case "move_wishlist" :
-			$cart_idx		= $_REQUEST['cart_idx'];
+			$cart_idx	= $_REQUEST['cart_idx'];
 			$mb_id		= $_SESSION['ss_chon_id'];
 
 			$cart_query		= "SELECT * FROM ".$_gl['mycart_info_table']." WHERE idx='".$cart_idx."'";
@@ -1102,7 +1103,7 @@
 				 * LG유플러스에서 발급한 상점키(MertKey)를 환경설정 파일(lgdacom/conf/mall.conf)에 반드시 입력하여 주시기 바랍니다.
 				 */
 				require_once($_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom/XPayClient.php");
-				$xpay = &new XPayClient($configPath, $CST_PLATFORM);
+				$xpay = new XPayClient($configPath, $CST_PLATFORM);
 				$xpay->Init_TX($LGD_MID);
 				$LGD_HASHDATA = md5($LGD_MID.$LGD_OID.$LGD_AMOUNT.$LGD_TIMESTAMP.$xpay->config[$LGD_MID]);
 
@@ -1203,7 +1204,7 @@
 			$configPath 				= $_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom"; 						 //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
 
 			require_once($_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom/XPayClient.php");
-			$xpay = &new XPayClient($configPath, $CST_PLATFORM);
+			$xpay = new XPayClient($configPath, $CST_PLATFORM);
 			$xpay->Init_TX($LGD_MID);
 
 			$xpay->Set("LGD_TXNAME", "Cancel");

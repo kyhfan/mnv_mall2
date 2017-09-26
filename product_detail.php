@@ -158,6 +158,20 @@
 					</ul>
 				</div>
 			</div>
+			<div class="buy-layer">
+				<div class="inner">
+					<div class="loveit">
+						<a href="javascript:void(0)" data-goods="<?=$goods_code?>">
+							<img src="./images/heart.png" alt="찜 하기">
+						</a>
+					</div>
+					<div class="buy">
+						<a href="javascript:void(0)">
+							<h5>구매하기</h5>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
 <?
 	include_once "./footer.php";	
