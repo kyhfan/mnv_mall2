@@ -94,13 +94,34 @@ function loginWithKakao(refURL)
 }
 
 // 네이버 로그인
-function loginWithNaver(refURL)
+function loginWithNaver(refURL, nickname, login_way, enc_id, profile_image, age, gender, id, name, email, birthday)
 {
-	var naver_id_login = new naver_id_login("mebia0Wrk4RP6CBvbnwx", "http://www.store-chon.com");
-	var state = naver_id_login.getUniqState();
-	// naver_id_login.setButton("white", 2,40);
-	naver_id_login.setDomain("http://www.store-chon.com");
-	naver_id_login.setState(state);
-	naver_id_login.setPopup();
-	naver_id_login.init_naver_id_login();
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"				: "member_naver_login",
+			"login_way"			: login_way,
+			"enc_id"			: enc_id,
+			"profile_image"		: profile_image,
+			"age"				: age,
+			"gender"			: gender,
+			"id"				: id,
+			"mb_name"			: name,						
+			"nickname"			: nickname,						
+			"email"				: email,						
+			"birthday"			: birthday						
+		},
+		success: function(response){
+			if (response.match("Y") == "Y")
+			{
+				location.href	= refURL;
+			}else{
+				alert("다시 시도해 주세요!");
+				location.reload();
+			}
+			
+		}
+	});
 }

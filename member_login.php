@@ -51,7 +51,7 @@
 			curl_close ($ch);
 			if($status_code == 200) {
 				$json_data = json_decode($response, true);
-
+/*
 				$str	= "main_exec.php";
 				$str	.= "?exec=member_naver_login";
 				$str	.= "&nickname=".$json_data['response']['nickname'];
@@ -61,11 +61,13 @@
 				$str	.= "&age=".$json_data['response']['age'];
 				$str	.= "&gender=".$json_data['response']['gender'];
 				$str	.= "&id=".$json_data['response']['id'];
-				$str	.= "&name=".$json_data['response']['name'];
+				$str	.= "&mb_name=".$json_data['response']['name'];
 				$str	.= "&email=".$json_data['response']['email'];
 				$str	.= "&birthday=".$json_data['response']['birthday'];
 				// print_r($str);
 				echo "<script>location.href='".$str."';</script>";
+*/				
+				echo "<script>loginWithNaver('".$ref_url."','".$json_data['response']['nickname']."','naver','".$json_data['response']['enc_id']."','".$json_data['response']['profile_image']."','".$json_data['response']['age']."','".$json_data['response']['gender']."','".$json_data['response']['id']."','".$json_data['response']['name']."','".$json_data['response']['email']."','".$json_data['response']['birthday']."');</script>";
 			} else {
 			  	echo "Error 내용:".$response;
 			}			
