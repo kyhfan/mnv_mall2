@@ -213,7 +213,6 @@
 			});
 		  
 			//check user session and refresh it
-			/
 			FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
 					//user is authorized
