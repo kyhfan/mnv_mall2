@@ -36,10 +36,10 @@
 				<a href="javascript:loginWithKakao('<?=$ref_url?>')" class="kt">
 					<span class="blind">카카오계정 로그인</span>
 				</a>
-				<a href="javascript:loginWithNaver('<?=$ref_url?>')" class="fb">
+				<a href="javascript:void(0)" class="fb">
 					<span class="blind">페이스북 로그인</span>
 				</a>
-				<a href="javascript:void(0)" class="nv">
+				<a href="javascript:loginWithNaver('<?=$ref_url?>')" class="nv">
 					<span class="blind">네이버 로그인</span>
 				</a>
 			</div>

@@ -98,7 +98,7 @@ function loginWithNaver(refURL)
 {
 	var naver_id_login = new naver_id_login("mebia0Wrk4RP6CBvbnwx", "http://www.store-chon.com?ref_url="+refURL);
 	var state = naver_id_login.getUniqState();
-	naver_id_login.setButton("white", 2,40);
+	// naver_id_login.setButton("white", 2,40);
 	naver_id_login.setDomain("http://www.store-chon.com");
 	naver_id_login.setState(state);
 	naver_id_login.setPopup();
