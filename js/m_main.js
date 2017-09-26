@@ -51,7 +51,7 @@ function loginWithKakao()
 	// 로그인 창을 띄웁니다.
 	Kakao.Auth.login({
 	success: function(authObj) {
-		alert(JSON.stringify(authObj));
+		console.log(JSON.stringify(authObj));
 	},
 	fail: function(err) {
 		alert(JSON.stringify(err));
