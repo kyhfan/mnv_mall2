@@ -51,6 +51,7 @@
 		padding: 0;
 	}
 	/* initialize */
+
 	/* public module */
 	#chon-app, #container {
 		/*height: 100%;*/
@@ -79,6 +80,24 @@
 	* html .clearfix { height: 1%; }
 	.clearfix { display: block; }
 	/* close commented backslash hack */
+
+	/* for screenreader */
+	.blind {
+		position: absolute;
+		clip: rect(0 0 0 0);
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+	}
+	.blind::before {
+		display: block;
+		width: 0;
+		height: 0;
+		content: '\00a0';
+		font-size: 0;
+	}
+	/* for screenreader */
 
 	#header {
 		position: fixed;
@@ -427,7 +446,7 @@
 		/*margin: 19px auto 0;*/
 	}
 	.pg-title {
-		padding: 77px 0 47px;
+		padding-top: 77px;
 		text-align: center;
 	}
 	.pg-title h3 {
@@ -545,6 +564,7 @@
 		transform: rotate(90deg);
 	}
 	/* grid */
+
 	/*.pg-title h3:before {
 		content: "";
 		position: absolute;
@@ -556,6 +576,18 @@
 		background: #cccccc;
 		background: linear-gradient( to left, white, #cccccc, white);
 	}*/
+
+	.input-group .input-box {
+		width: 100%;
+		border: 1px solid #dcdcdc;
+	}
+	.input-group input[type="text"] {
+		font-size: 20px;
+		color: #333333;
+	}
+	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		color: #dcdcdc;
+	}
 
 	/* editor template */
 	.ft-18 {
@@ -938,6 +970,9 @@
 	/* product-list */
 
 	/* special-list */
+	.special-list .list-wrapper {
+		margin-top: 46px;
+	}
 	.special-list .list-wrapper .block {
 		margin-bottom: 158px;
 	}
@@ -978,6 +1013,9 @@
 	}
 	/* special-list */
 	/* promotion-list */
+	.promotion-list .list-wrapper {
+		margin-top: 47px;
+	}
 	.promotion-list .list-wrapper .block {
 		margin-bottom: 97px;
 	}
@@ -1041,7 +1079,7 @@
 	/* mypage */
 	.mypage .order-status {
 		width: 96%;
-		margin: 0 auto;
+		margin: 48px auto 0;
 	}
 	.mypage .order-status > .title {
 		border-top: 1px solid #dcdcdc;
@@ -1192,3 +1230,79 @@
 		display: inline-block;
 	}
 	/* order-list */
+
+	/* member */
+
+	/* login */
+	.login .input-group {
+		width: 90.7%;
+		margin: 73px auto 57px;
+	}
+	.login .input-group .input-box:first-child {
+		margin-bottom: 11px;
+	}
+	.login .input-group .input-box input[type="text"] {
+		padding: 27px 0 27px 20px;
+		width: 100%;
+	}
+	.login .btn.login {
+		width: 90.7%;
+		margin: 0 auto;
+	}
+	.login .btn.login a {
+		display: block;
+		height: 100%;
+		text-align: center;
+		background: #809255;
+	}
+	.login .btn.login a span {
+		font-size: 26px;
+		color: #ffffff;
+		display: inline-block;
+		padding: 27px 0;
+	}
+	.login .other-login {
+		margin: 56px auto;
+		width: 76.5%;
+	}
+	.login .other-login a {
+		display: block;
+		height: 100%;
+		padding-bottom: 12.44%;
+		margin-bottom: 16px;
+	}
+	.login .other-login a:last-child {
+		margin-bottom: 0;
+	}
+	.login .other-login .kt {
+		background: url(../images/login_kakao.png) center center / cover no-repeat;
+	}
+	.login .other-login .fb {
+		background: url(../images/login_facebook.png) center center / cover no-repeat;
+	}
+	.login .other-login .nv {
+		background: url(../images/login_naver.png) center center / cover no-repeat;
+	}
+	.login .manage-id {
+		text-align: center;
+		font-size: 0;
+		margin-bottom: 218px;
+	}
+	.login .manage-id a {
+		display: inline-block;
+		position: relative;
+	}
+	.login .manage-id a span {
+		font-size: 20px;
+		color: #777777;
+	}
+	.login .manage-id a:first-child::after {
+		content: "|";
+		font-size: 20px;
+		padding: 0 27px 0 34px;
+	}
+
+
+	/* login */
+
+	/* member */
