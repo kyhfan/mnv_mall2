@@ -172,6 +172,32 @@
 				$("#gender").text("성별 : "+response.gender);
 				$("#birthday").text("생년월일 : "+response.birthday);
 				$("#id").text("아이디 : "+response.id);
+
+				$.ajax({
+					type   : "POST",
+					async  : false,
+					url    : "./main_exec.php",
+					data:{
+						"exec"				: "member_facebook_login",
+						"login_way"			: "facebook",
+						"mb_name"			: response.name,
+						"mb_email"			: response.email,
+						"gender"			: response.gender,
+						"birthday"			: response.birthday,						
+						"id"				: response.id
+					},
+					success: function(response){
+						if (response.match("Y") == "Y")
+						{
+							location.href	= refURL;
+						}else{
+							alert("다시 시도해 주세요!");
+							location.reload();
+						}
+						
+					}
+				});
+				
 			});
 		}
 		  
