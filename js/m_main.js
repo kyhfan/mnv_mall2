@@ -57,13 +57,30 @@ function loginWithKakao()
 			success: function(res) {
 				console.log(JSON.stringify(res));
 				/*
+				{
+					"kaccount_email":"kyhfan@naver.com",
+					"kaccount_email_verified":true,
+					"id":525303385,
+					"properties":{
+						"profile_image":"http://k.kakaocdn.net/dn/JhByL/btqhoSzSNZI/zCKT28lwpKPwPWOXWniRP1/profile_640x640s.jpg",
+						"nickname":"김영훈",
+						"thumbnail_image":"http://k.kakaocdn.net/dn/JhByL/btqhoSzSNZI/zCKT28lwpKPwPWOXWniRP1/profile_110x110c.jpg"
+					}
+				}
+				*/
 				$.ajax({
 					type   : "POST",
 					async  : false,
 					url    : "./main_exec.php",
 					data:{
-						"exec"			: "member_login",
-						"login_way"		: "kakao"
+						"exec"				: "member_kakao_login",
+						"login_way"			: "kakao",
+						"mb_email"			: res.kaccount_email,
+						"mb_email_verified"	: res.kaccount_email_verified,
+						"mb_way_id"			: res.id,
+						"mb_profile_img"	: res.properties.profile_image,
+						"mb_name"			: res.properties.nickname,
+						"mb_thumbnail_img"	: res.properties.thumbnail_image						
 					},
 					success: function(response){
 						if (response.match("Y") == "Y")
@@ -78,7 +95,6 @@ function loginWithKakao()
 						}
 					}
 				});
-				*/	  
 			},
 			fail: function(error) {
 			  alert(JSON.stringify(error));

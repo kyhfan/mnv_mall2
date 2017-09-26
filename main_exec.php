@@ -5,7 +5,7 @@
 	{
 		case "member_login" :
 			$mb_id				= $_REQUEST["mb_id"];
-			$mb_password	= $_REQUEST["mb_password"];
+			$mb_password		= $_REQUEST["mb_password"];
 
 			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_id='".$mb_id."' AND mb_password=MD5('".$mb_password."')";
 			$login_result		= mysqli_query($my_db, $login_query);
@@ -25,6 +25,47 @@
 			}else{
 				$flag	= "N";
 			}
+			echo $flag;
+		break;
+
+		case "member_kakao_login" :
+			$mb_email					= $_REQUEST["mb_email"];
+			$mb_login_way				= $_REQUEST["login_way"];
+			$mb_kakao_email_verified	= $_REQUEST["mb_email_verified"];
+			$mb_kakao_way_id			= $_REQUEST["mb_way_id"];
+			$mb_kakao_profile_img		= $_REQUEST["mb_profile_img"];
+			$mb_kakao_name				= $_REQUEST["mb_name"];
+			$mb_kakao_thumbnail_img		= $_REQUEST["mb_thumbnail_img"];
+
+			if ($mb_kakao_email_verified === true)
+				$mb_kakao_email_verified = "Y";
+			else
+				$mb_kakao_email_verified = "N";
+			
+			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."' AND mb_way_id='".$mb_way_id."'";
+			$login_result		= mysqli_query($my_db, $login_query);
+			$login_data			= mysqli_fetch_array($login_result);
+
+			// 암호 검증
+			//if (validate_password($mb_password,$login_data['mb_password']))
+			if ($login_data['mb_email'])
+			{
+				$query		= "UPDATE ".$_gl['member_info_table']." SET mb_login_date='".date("Y-m-d H:i:s")."' WHERE mb_email='".$login_data['mb_email']."'";
+				$result		= mysqli_query($my_db, $query);
+			}else{
+				$query    = "INSERT INTO ".$_gl['member_info_table']."(mb_login_way, mb_name, mb_email, mb_join_date, mb_login_date, mb_join_ipaddr) values('".$mb_login_way."','".$mb_kakao_name."','".$mb_email."','".date("Y-m-d H:i:s")."','".date("Y-m-d H:i:s")."','".$_SERVER['REMOTE_ADDR']."')";
+				$result   = mysqli_query($my_db, $query);
+			}
+
+			// 회원 이메일, 이름 세션 생성
+			$_SESSION['ss_chon_email']		= $login_data['mb_email'];
+			$_SESSION['ss_chon_name']		= $login_data['mb_name'];
+			
+			if ($result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+	
 			echo $flag;
 		break;
 
