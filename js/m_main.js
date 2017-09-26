@@ -71,7 +71,7 @@ function loginWithKakao(refURL)
 						"mb_thumbnail_img"	: res.properties.thumbnail_image						
 					},
 					success: function(response){
-						if (response == "Y")
+						if (response.match("Y") == "Y")
 						{
 							location.href	= refURL;
 						}else{

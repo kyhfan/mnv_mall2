@@ -43,7 +43,7 @@
 			else
 				$mb_kakao_email_verified = "N";
 			
-			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."' AND mb_way_id='".$mb_way_id."'";
+			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."' AND mb_kakao_way_id='".$mb_way_id."'";
 			$login_result		= mysqli_query($my_db, $login_query);
 			$login_data			= mysqli_fetch_array($login_result);
 
