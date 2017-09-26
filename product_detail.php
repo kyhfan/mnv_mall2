@@ -40,16 +40,33 @@
 						<h4><?=$goods_data["goods_name"]?></h4>
 						<div class="wrap-icon">
 							<span class="new">NEW</span>
+<?
+	// 판매가와 할인가가 동일할 경우 판매가 숨기기
+	if ($goods_data["sales_price"] != $goods_data["discount_price"])
+	{		
+?>									
 							<span class="percent">10%</span>
+<?
+	}
+?>						
 						</div>
 					</div>
 					<div class="sub">
 						<p><?=$goods_data["goods_small_desc"]?></p>
 					</div>
 					<div class="price discount">
+<?
+	// 판매가와 할인가가 동일할 경우 판매가 숨기기
+	if ($goods_data["sales_price"] != $goods_data["discount_price"])
+	{		
+?>									
+						
 						<span class="normal">
 							<?=number_format($goods_data["sales_price"])?>
 						</span>
+<?
+	}
+?>						
 						<span class="sale">
 							<?=number_format($goods_data["discount_price"])?>
 						</span>

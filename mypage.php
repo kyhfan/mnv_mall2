@@ -58,7 +58,7 @@
 			<div class="list-hub">
 				<ul>
 					<li>
-						<a href="javascript:void(0)">
+						<a href="order_list.php">
 							<span>주문/배송조회</span>
 						</a>
 					</li>
