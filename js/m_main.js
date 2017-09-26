@@ -51,7 +51,16 @@ function loginWithKakao()
 	// 로그인 창을 띄웁니다.
 	Kakao.Auth.login({
 	success: function(authObj) {
-		console.log(JSON.stringify(authObj));
+        // 로그인 성공시, API를 호출합니다.
+        Kakao.API.request({
+			url: '/v1/user/me',
+			success: function(res) {
+			  alert(JSON.stringify(res));
+			},
+			fail: function(error) {
+			  alert(JSON.stringify(error));
+			}
+		});
 	},
 	fail: function(err) {
 		alert(JSON.stringify(err));
