@@ -25,9 +25,22 @@
 				<div class="top-block">
 					<div class="wrapper">
 						<div class="verify-btn logoff">
-							<a href="#">
+<?
+	if (!$_SESSION['ss_chon_id'])
+	{
+?>						
+							<a href="member_login.php">
 								<span>로그인</span>
 							</a>
+<?
+	}else{
+?>		
+							<a href="#">
+								<span>로그아웃</span>
+							</a>
+<?
+	}
+?>					
 						</div>
 						<div class="cart-btn">
 							<a href="#">
