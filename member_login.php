@@ -6,14 +6,36 @@
 	if ($_SESSION['ss_chon_email'])
 		echo "<script>location.href='$ref_url';</script>";
 
-	// 네이버 로그인 접근토큰 요청 예제
+	// 네이버 로그인 접근토큰 요청
 	$client_id = "mebia0Wrk4RP6CBvbnwx";
 	$redirectURI = urlencode("http://www.store-chon.com/dev/member_login.php?ref_url=$ref_url");
 	$state = "RAMDOM_STATE";
 	$apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$redirectURI."&state=".$state;
+
+	// 
+	// 네이버 로그인 콜백
+	$client_id = "mebia0Wrk4RP6CBvbnwx";
+	$client_secret = "oc4ov9gvgn";
+	$code = $_GET["code"];
+	$state = $_GET["state"];
+	$redirectURI = urlencode("http://www.store-chon.com/dev/member_login.php?ref_url=$ref_url");
+	$url = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=".$client_id."&client_secret=".$client_secret."&redirect_uri=".$redirectURI."&code=".$code."&state=".$state;
+	$is_post = false;
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_POST, $is_post);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$headers = array();
+	$response = curl_exec ($ch);
+	$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	echo "status_code:".$status_code."";
+	curl_close ($ch);
+	if($status_code == 200) {
+		echo $response;
+	} else {
+		echo "Error 내용:".$response;
+	}	
 ?>						
-	
-?>
 <body>
 	<div id="chon-app">
 <?
