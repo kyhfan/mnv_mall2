@@ -83,16 +83,7 @@ function loginWithKakao()
 						"mb_thumbnail_img"	: res.properties.thumbnail_image						
 					},
 					success: function(response){
-						if (response.match("Y") == "Y")
-						{
-							alert('찜추가');
-						}else if (response.match("D") == "D"){
-							alert('이미 찜 추가된 상품');
-						}else if (response.match("N") == "N"){
-							alert('로그인 안되어 있음');
-						}else{
-							alert('시스템 에러');
-						}
+						alert(res.kaccount_email);
 					}
 				});
 			},
