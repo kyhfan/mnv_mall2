@@ -1,5 +1,7 @@
 <?
-include_once "./header.php";
+	include_once "./header.php";
+
+	$ref_url	= $_REQUEST["ref_url"];
 ?>
 <body>
 	<div id="chon-app">
@@ -26,7 +28,7 @@ include_once "./header.php";
 				</a>
 			</div>
 			<div class="other-login">
-				<a href="javascript:loginWithKakao()" class="kt">
+				<a href="javascript:loginWithKakao('<?=$ref_url?>')" class="kt">
 					<span class="blind">카카오계정 로그인</span>
 				</a>
 				<a href="javascript:void(0)" class="fb">

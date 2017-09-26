@@ -29,13 +29,13 @@
 	if (!$_SESSION['ss_chon_id'])
 	{
 ?>						
-							<a href="member_login.php">
+							<a href="member_login.php?ref_url=<?=$_SERVER['REQUEST_URI']?>">
 								<span>로그인</span>
 							</a>
 <?
 	}else{
 ?>		
-							<a href="#">
+							<a href="logout.php">
 								<span>로그아웃</span>
 							</a>
 <?

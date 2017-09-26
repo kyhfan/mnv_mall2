@@ -46,7 +46,7 @@ $(document).on("click", ".loveit > a", function(){
 });
 
 // 카카오 로그인
-function loginWithKakao()
+function loginWithKakao(refURL)
 {
 	// 로그인 창을 띄웁니다.
 	Kakao.Auth.login({
@@ -56,18 +56,6 @@ function loginWithKakao()
 			url: '/v1/user/me',
 			success: function(res) {
 				console.log(JSON.stringify(res));
-				/*
-				{
-					"kaccount_email":"kyhfan@naver.com",
-					"kaccount_email_verified":true,
-					"id":525303385,
-					"properties":{
-						"profile_image":"http://k.kakaocdn.net/dn/JhByL/btqhoSzSNZI/zCKT28lwpKPwPWOXWniRP1/profile_640x640s.jpg",
-						"nickname":"김영훈",
-						"thumbnail_image":"http://k.kakaocdn.net/dn/JhByL/btqhoSzSNZI/zCKT28lwpKPwPWOXWniRP1/profile_110x110c.jpg"
-					}
-				}
-				*/
 				$.ajax({
 					type   : "POST",
 					async  : false,
@@ -83,7 +71,14 @@ function loginWithKakao()
 						"mb_thumbnail_img"	: res.properties.thumbnail_image						
 					},
 					success: function(response){
-						alert(res.kaccount_email);
+						if (response == "Y")
+						{
+							location.href	= refURL;
+						}else{
+							alert("다시 시도해 주세요!");
+							location.reload();
+						}
+						
 					}
 				});
 			},

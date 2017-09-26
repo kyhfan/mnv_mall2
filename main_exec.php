@@ -28,6 +28,7 @@
 			echo $flag;
 		break;
 
+		// 카카오 회원 가입 및 로그인 처리
 		case "member_kakao_login" :
 			$mb_email					= $_REQUEST["mb_email"];
 			$mb_login_way				= $_REQUEST["login_way"];
@@ -37,7 +38,7 @@
 			$mb_kakao_name				= $_REQUEST["mb_name"];
 			$mb_kakao_thumbnail_img		= $_REQUEST["mb_thumbnail_img"];
 
-			if ($mb_kakao_email_verified === true)
+			if ($mb_kakao_email_verified == "true")
 				$mb_kakao_email_verified = "Y";
 			else
 				$mb_kakao_email_verified = "N";
@@ -46,8 +47,6 @@
 			$login_result		= mysqli_query($my_db, $login_query);
 			$login_data			= mysqli_fetch_array($login_result);
 
-			// 암호 검증
-			//if (validate_password($mb_password,$login_data['mb_password']))
 			if ($login_data['mb_email'])
 			{
 				$query		= "UPDATE ".$_gl['member_info_table']." SET mb_login_date='".date("Y-m-d H:i:s")."' WHERE mb_email='".$login_data['mb_email']."'";
