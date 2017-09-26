@@ -35,7 +35,7 @@
 <?
 	}else{
 ?>		
-							<a href="javascript:void(0)">
+							<a href="logout.php">
 								<span>로그아웃</span>
 							</a>
 <?

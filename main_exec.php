@@ -59,6 +59,7 @@
 			// 회원 이메일, 이름 세션 생성
 			$_SESSION['ss_chon_email']		= $mb_email;
 			$_SESSION['ss_chon_name']		= $mb_kakao_name;
+			$_SESSION['ss_chon_way']		= $mb_login_way;
 			
 			if ($result)
 				$flag	= "Y";
