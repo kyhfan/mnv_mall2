@@ -1,5 +1,5 @@
 <?
-	include_once "./config.php";
+	include_once "./header.php";
 
     if ($_SESSION['ss_chon_way'] == "kakao")
     {
