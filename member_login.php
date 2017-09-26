@@ -52,19 +52,6 @@
 			if($status_code == 200) {
 				$json_data = json_decode($response, true);
 
-				[response] =&gt; Array
-				(
-					[nickname] =&gt; 대역전
-					[enc_id] =&gt; 5e32e6f501b1c4c4023a4232e68245708792356c7c0e5c91ee6da8c77b2acd5e
-					[profile_image] =&gt; https://ssl.pstatic.net/static/pwe/address/img_profile.png
-					[age] =&gt; 30-39
-					[gender] =&gt; M
-					[id] =&gt; 11327695
-					[name] =&gt; 김영훈
-					[email] =&gt; kyhfan@naver.com
-					[birthday] =&gt; 03-26
-				)
-						
 				print_r($json_data);
 				$str	= "main_exec.php";
 				$str	.= "?exec=member_naver_login";
