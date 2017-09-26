@@ -33,10 +33,10 @@
 		// echo "status_code:".$status_code."";
 		curl_close ($ch);
 		if($status_code == 200) {
-			//echo $response;
+			echo $response;
 			$json_data = json_decode($response, true);
+			print_r($json_data);
 			$token = $json_data["access_token"];
-echo $token;
 			$header = "Bearer ".$token; // Bearer 다음에 공백 추가
 			$url = "https://openapi.naver.com/v1/nid/me";
 			$is_post = false;
