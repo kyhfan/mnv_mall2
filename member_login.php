@@ -51,6 +51,7 @@
 			curl_close ($ch);
 			if($status_code == 200) {
 				$json_data = json_decode($response, true);
+
 				print_r($json_data);
 				$str	= "main_exec.php";
 				$str	.= "?exec=member_naver_login";

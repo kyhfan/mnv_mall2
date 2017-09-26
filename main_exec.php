@@ -94,7 +94,7 @@
 				$query    = "INSERT INTO ".$_gl['member_info_table']."(mb_login_way, mb_name, mb_email, mb_naver_profile_img, mb_naver_nickname, mb_naver_gender, mb_naver_birthday, mb_naver_age, mb_naver_way_enc_id, mb_naver_way_id   , mb_join_date, mb_login_date, mb_join_ipaddr) values('".$mb_login_way."','".$mb_naver_name."','".$mb_email."','".$mb_naver_profile_img."','".$mb_naver_nickname."','".$mb_naver_gender."','".$mb_naver_birthday."','".$mb_naver_age."','".$mb_naver_way_enc_id."','".$mb_naver_way_id."','".date("Y-m-d H:i:s")."','".date("Y-m-d H:i:s")."','".$_SERVER['REMOTE_ADDR']."')";
 				$result   = mysqli_query($my_db, $query);
 			}
-
+print_r($query);
 			// 회원 이메일, 이름 세션 생성
 			$_SESSION['ss_chon_email']		= $mb_email;
 			$_SESSION['ss_chon_name']		= $mb_kakao_name;
