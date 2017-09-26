@@ -187,6 +187,7 @@
 						"id"				: response.id
 					},
 					success: function(response){
+						alert(response);
 						if (response.match("Y") == "Y")
 						{
 							location.href	= refURL;
