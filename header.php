@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="./css/style_jw.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="./lib/Swiper-master/dist/js/swiper.jquery.min.js"></script>
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 		<script src="./js/m_main.js"></script>
 		<title>촌의감각 메인페이지</title>
 	</head>

@@ -3,6 +3,7 @@
 *	MOBILE전용 JS 파일
 *
 */
+Kakao.init('dee0f864fcd7296e4dc9d6196634d56a');
 
 // 상품 리스트 소팅 클릭
 $(document).on("click", ".sorting-area > a", function(){
@@ -43,3 +44,17 @@ $(document).on("click", ".loveit > a", function(){
 		}
 	});
 });
+
+// 카카오 로그인
+function loginWithKakao()
+{
+	// 로그인 창을 띄웁니다.
+	Kakao.Auth.login({
+	success: function(authObj) {
+		alert(JSON.stringify(authObj));
+	},
+	fail: function(err) {
+		alert(JSON.stringify(err));
+	}
+	});
+}

@@ -26,7 +26,7 @@ include_once "./header.php";
 				</a>
 			</div>
 			<div class="other-login">
-				<a href="javascript:void(0)" class="kt">
+				<a href="javascript:loginWithKakao()" class="kt">
 					<span class="blind">카카오계정 로그인</span>
 				</a>
 				<a href="javascript:void(0)" class="fb">
