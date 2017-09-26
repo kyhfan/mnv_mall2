@@ -1123,6 +1123,72 @@
 		font-size: 20px;
 		color: #333333;
 	}
-
-
 	/* mypage */
+	/* order-list */
+	.order-list .orderList {
+		width: 96%;
+		margin: 65px auto 165px;
+	}
+	.order-list .orderList ul {
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.order-list .orderList ul li {
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.order-list .orderList ul li:last-child {
+		border-bottom: 0;
+	}
+	.order-list .orderList ul li .inner {
+		padding: 21px 51px 17px;
+		position: relative;
+	}
+	.order-list .orderList ul li .inner .area {
+		float: left;
+	}
+	.order-list .orderList ul li .inner .order a {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 27%;
+	}
+	.order-list .orderList ul li .inner .order .sub {
+		font-size: 0;
+	}
+	.order-list .orderList ul li .inner .order .sub span {
+		display: inline-block;
+		font-size: 15px;
+		color: #777777;
+	}
+	.order-list .orderList ul li .inner .order .sub span i {
+		font-style: normal;
+		padding: 0 10px;
+	}
+	.order-list .orderList ul li .inner .order .main span {
+		padding-top: 16px;
+		display: inline-block;
+		font-size: 20px;
+		color: #333333;
+	}
+	.order-list .orderList ul li .inner .shipping {
+		float: right;
+		text-align: right;
+	}
+	.order-list .orderList ul li .inner .shipping .status {
+		display: block;
+		font-size: 15px;
+		color: #333333;
+		padding-bottom: 7px;
+	}
+	.order-list .orderList ul li .inner .shipping .button {
+		display: block;
+		background: #809255;
+	}
+	.order-list .orderList ul li .inner .shipping .button span {
+		font-size: 18px;
+		color: #ffffff;
+		padding: 11px 17px;
+		display: inline-block;
+	}
+	/* order-list */
