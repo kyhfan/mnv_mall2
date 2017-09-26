@@ -190,7 +190,7 @@
 						alert(response);
 						if (response.match("Y") == "Y")
 						{
-							location.href	= refURL;
+							location.href	= "<?=$ref_url?>";
 						}else{
 							alert("다시 시도해 주세요!");
 							location.reload();
