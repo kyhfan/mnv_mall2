@@ -55,16 +55,16 @@
 				print_r($json_data);
 				$str	= "main_exec.php";
 				$str	.= "?exec=member_naver_login";
-				$str	.= "&nickname=".$json_data['nickname'];
+				$str	.= "&nickname=".$json_data['response']['nickname'];
 				$str	.= "&login_way=naver";
-				$str	.= "&enc_id=".$json_data['enc_id'];
-				$str	.= "&profile_image=".$json_data['profile_image'];
-				$str	.= "&age=".$json_data['age'];
-				$str	.= "&gender=".$json_data['gender'];
-				$str	.= "&id=".$json_data['id'];
-				$str	.= "&name=".$json_data['name'];
-				$str	.= "&email=".$json_data['email'];
-				$str	.= "&birthday=".$json_data['birthday'];
+				$str	.= "&enc_id=".$json_data['response']['enc_id'];
+				$str	.= "&profile_image=".$json_data['response']['profile_image'];
+				$str	.= "&age=".$json_data['response']['age'];
+				$str	.= "&gender=".$json_data['response']['gender'];
+				$str	.= "&id=".$json_data['response']['id'];
+				$str	.= "&name=".$json_data['response']['name'];
+				$str	.= "&email=".$json_data['response']['email'];
+				$str	.= "&birthday=".$json_data['response']['birthday'];
 				print_r($str);
 				//echo "<script>location.href='".$str."';</script>";
 			} else {
