@@ -52,7 +52,6 @@
 			if($status_code == 200) {
 				$json_data = json_decode($response, true);
 
-				print_r($json_data);
 				$str	= "main_exec.php";
 				$str	.= "?exec=member_naver_login";
 				$str	.= "&nickname=".$json_data['response']['nickname'];
@@ -65,8 +64,8 @@
 				$str	.= "&name=".$json_data['response']['name'];
 				$str	.= "&email=".$json_data['response']['email'];
 				$str	.= "&birthday=".$json_data['response']['birthday'];
-				print_r($str);
-				//echo "<script>location.href='".$str."';</script>";
+				// print_r($str);
+				echo "<script>location.href='".$str."';</script>";
 			} else {
 			  	echo "Error 내용:".$response;
 			}			
