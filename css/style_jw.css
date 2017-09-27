@@ -537,14 +537,13 @@
 		width: 100%;
 		border: 1px solid #dcdcdc;
 	}
-	.input-group input[type="text"] {
+	.input-group input[type="text"],
+	.input-group input[type="password"] {
 		font-size: 24px;
 		color: #333333;
 	}
 	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		color: #dcdcdc;
-	}
-	.swap-block {
 	}
 	.swap-block .block {
 		width: 50%;
@@ -1254,7 +1253,7 @@
 
 	/* member */
 
-	/* login */
+	/* login & find */
 	.login .input-group {
 		width: 90.7%;
 		margin: 73px auto 57px;
@@ -1393,21 +1392,25 @@
 		color: #777777;
 		padding: 20px 0;
 	}
+	/* login & find */
+
+	/* join & modify */
 	.join > .wrapper {
 		width: 94.5%;
 		margin: 51px auto 0;
 		background: #f7f7f7;
 	}
 	.join > .wrapper > .inner {
-		padding: 3.4% 2% 11.5%;
+		padding: 2.5% 2% 11.5%;
 	}
 	.join > .wrapper .input-group .input-box {
 		border: 0;
 		margin-bottom: 3px;
 	}
-	.join > .wrapper .input-group .input-box input[type="text"] {
+	.join > .wrapper .input-group .input-box input[type="text"],
+	.join > .wrapper .input-group .input-box input[type="password"] {
 		width: 100%;
-		padding: 40px 0 40px 22px;
+		padding: 38px 0 35px 22px;
 	}
 	.join > .wrapper .birth.n3 .row {
 		width: 100%;
@@ -1447,7 +1450,7 @@
 		width: 100%;
 		font-size: 22px;
 		color: #777777;
-		padding: 40px 0 40px 22px;
+		padding: 38px 0 35px 22px;
 	}
 	.join > .wrapper .area.text {
 		margin: 18px 0 55px 17px;
@@ -1577,9 +1580,95 @@
 		color: #ffffff;
 		padding: 26px 0;
 	}
+	.modify .input-group.readonly {
+		position: relative;
+	}
+	.modify .input-group.readonly .input-box input[type="text"] {
+		background: #eaeaea;
+	}
+	.modify .input-group.readonly .input-box .modify-btn {
+		position: absolute;
+		top: 32px;
+		right: 24px;
+	}
+	.modify .input-group.readonly .input-box .modify-btn a {
+		display: block;
+		text-align: center;
+	}
+	.modify .input-group.readonly .input-box .modify-btn .spread {
 
-
-
-	/* login */
+	}
+	.modify .input-group.readonly .input-box .modify-btn .spread span {
+		background: none;
+		color: #777777;
+		text-decoration: underline;
+	}
+	.modify .input-group.readonly .input-box .modify-btn a span {
+		display: inline-block;
+		margin-top: -1px;
+		padding: 10px 16px;
+		background: #809255;
+		color: #ffffff;
+		font-size: 20px;
+		vertical-align: middle;
+	}
+	.modify .input-group.hidden {
+		position: relative;
+		display: none;
+	}
+	.modify .input-group.hidden .input-box {
+		padding-bottom: 45px;
+	}
+	.modify .input-group.hidden .chk-text {
+		display: block;
+		position: absolute;
+		bottom: 90px;
+		left: 12px;
+		font-size: 20px;
+		color: #809255;
+	}
+	.modify .input-group.hidden .btn-verify {
+		width: 100%;
+	}
+	.modify .input-group.hidden .btn-verify a {
+		display: block;
+		background: #809255;
+		text-align: center;
+	}
+	.modify .input-group.hidden .btn-verify a span {
+		display: inline-block;
+		padding: 26px 0;
+		font-size: 26px;
+		color: #ffffff;
+	}
+	.modify > .wrapper .area.marketing + .area.text {
+		margin-bottom: 37px;
+	}
+	.modify .finish .wrap-btns a {
+		display: block;
+		float: left;
+		width: 49%;
+		text-align: center;
+		background: #809255;
+	}
+	.modify .finish .wrap-btns a span {
+		display: inline-block;
+		padding: 27px 0;
+		color: #ffffff;
+		font-size: 26px;
+	}
+	.modify .finish .wrap-btns a:first-child {
+		margin-right: 2%;
+	}
+	.modify > .wrapper .finish + .drop-out {
+		margin: 50px 0 0 17px;
+	}
+	.modify > .wrapper .finish + .drop-out span {
+		color: #777777;
+	}
+	.modify > .wrapper > .inner {
+		padding: 2.5% 2% 7.8%
+	}
+	/* join & modify */
 
 	/* member */

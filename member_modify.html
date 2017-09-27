@@ -112,28 +112,44 @@
 				</div>
 			</div>
 		</div>
-		<div id="container" class="join">
+		<div id="container" class="join modify">
 			<div class="pg-title">
 				<h3>
-					JOIN
+					MY PAGE
 				</h3>
 			</div>
 			<div class="wrapper">
 				<div class="inner">
 					<div class="area input">
-						<div class="input-group">
+						<div class="input-group readonly">
 							<div class="input-box">
-								<input type="text" placeholder="이메일">
+								<input type="text" value="ojoonwoo@naver.com" readonly>
+								<div class="modify-btn">
+									<a href="javascript:void(0)" onclick="modifyId(this);">
+										<span>변경하기</span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="input-group hidden">
+							<div class="input-box">
+								<input type="text" placeholder="변경할 이메일 주소">
+							</div>
+							<span class="chk-text">이메일 형식을 확인해 주세요.</span>
+							<div class="btn-verify">
+								<a href="javascript:void(0)">
+									<span>인증메일 받기</span>
+								</a>
 							</div>
 						</div>
 						<div class="input-group">
 							<div class="input-box">
-								<input type="password" placeholder="비밀번호 (8-16자리 영문, 숫자조합)">
+								<input type="text" placeholder="비밀번호 (8-16자리 영문, 숫자조합)">
 							</div>
 						</div>
 						<div class="input-group">
 							<div class="input-box">
-								<input type="password" placeholder="비밀번호 확인">
+								<input type="text" placeholder="비밀번호 확인">
 							</div>
 						</div>
 						<div class="input-group">
@@ -211,42 +227,21 @@
 							<span>상품 구매 정보는 수신 등의 여부와 관계없이 발송됩니다.</span>
 						</div>
 					</div>
-					<div class="area check-zone finish">
-						<div class="input-group check">
-							<div class="wrap-line">
-								<span>전체동의</span>
-								<div class="checkbox">
-									<input type="checkbox" name="chk1">
-								</div>
-							</div>
-						</div>
-						<div class="input-group check">
-							<div class="wrap-line">
-								<span>이용약관에 동의합니다.</span>
-								<div class="checkbox">
-									<input type="checkbox" name="chk1">
-								</div>
-								<a href="javascript:void(0)">
-									<span>내용보기</span>
-								</a>
-							</div>
-						</div>
-						<div class="input-group check last">
-							<div class="wrap-line">
-								<span>개인정보 수집 및 이용에 동의합니다.</span>
-								<div class="checkbox">
-									<input type="checkbox" name="chk1">
-								</div>
-								<a href="javascript:void(0)">
-									<span>내용보기</span>
-								</a>
-							</div>
-						</div>
-						<div class="btn join">
-							<a href="javascript:void(0)">
-								<span>회원가입</span>
+					<div class="area finish">
+						<div class="wrap-btns clearfix">
+							<a href="#">
+								<span>취소</span>
+							</a>
+							<a href="#">
+								<span>저장</span>
 							</a>
 						</div>
+					</div>
+					<div class="area text drop-out">
+						<span>탈퇴를 원하시면 회원탈퇴 버튼을 눌러주세요.</span>
+						<a href="javascript:void(0)">
+							<span>회원탈퇴</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -403,6 +398,18 @@
 		$('.btn.find').on('click', function() {
 			alert(submitTarget);
 		});
+		function modifyId(elem) {
+			var $_this = $(elem);
+			if($_this.hasClass('spread')) {
+				$_this.removeClass('spread');
+				$('.input-group.hidden').hide();
+			} else {
+				$_this.addClass('spread');
+				$_this.children().text('변경취소');
+				$('.input-group.hidden').show();
+			}
+
+		}
 
 	</script>
 </body>
