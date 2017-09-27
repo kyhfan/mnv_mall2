@@ -764,7 +764,7 @@
 		case "add_wishlist" : // 사용하는 코드
 			$goods_code		= $_REQUEST['goods_code'];
 			//$goods_option	= $_REQUEST['goods_option'];
-			$mb_id			= $_SESSION['ss_chon_id'];
+			$mb_id			= $_SESSION['ss_chon_email'];
 
 			if ($mb_id == "")
 			{
