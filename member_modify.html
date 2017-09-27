@@ -402,6 +402,7 @@
 			var $_this = $(elem);
 			if($_this.hasClass('spread')) {
 				$_this.removeClass('spread');
+				$_this.children().text('변경하기');
 				$('.input-group.hidden').hide();
 			} else {
 				$_this.addClass('spread');
