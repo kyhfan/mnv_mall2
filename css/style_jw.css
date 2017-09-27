@@ -70,7 +70,8 @@
 	#container {
 		padding-top: 110px;
 	}
-	#container.main {
+	#container.main,
+	#container.about-chon {
 		padding-top: 0;
 	}
 	/* public module */
@@ -1672,6 +1673,52 @@
 	/* join & modify */
 	/* member */
 
+	/* about-chon */
+	.about-chon .main-img {
+		position: relative;
+	}
+	.about-chon .main-img:after {
+		content: "";
+		position: absolute;
+		left: 95px;
+		bottom: -235px;
+		width: 1px;
+		height: 320px;
+		background: #5a5a5a;
+	}
+	.about-chon .message1 {
+		padding: 142px 0 0 154px;
+	}
+	.about-chon .message1 p {
+		font-size: 24px;
+		color: #333333;
+		line-height: 1.3;
+	}
+	.about-chon .message2 {
+		padding: 117px 96px 0 0;
+		text-align: right;
+	}
+	.about-chon .message2 p,
+	.about-chon .message3 p {
+		font-size: 20px;
+		color: #555555;
+		line-height: 1.25;
+	}
+	.about-chon .message3 {
+		padding: 17px 96px 0 0;
+		text-align: right;
+	}
+	.about-chon .message3 em {
+		font-weight: bold;
+	}
+	.about-chon .logo {
+		text-align: right;
+		padding: 65px 96px 215px 0;
+	}
+	.about-chon .logo img {
+		display: inline;
+	}
+	/* about-chon */
 
 	/* popup */
 	.popup {
