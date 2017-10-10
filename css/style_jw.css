@@ -6,7 +6,8 @@
 	}
 	html {
 		height: 100%;
-		webkit-text-size-adjust: 100%;
+		-webkit-text-size-adjust: 100%;
+		-webkit-font-smoothing: antialiased;
 		font-size: 10px;
 	}
 	html, body {
@@ -70,7 +71,8 @@
 	#container {
 		padding-top: 110px;
 	}
-	#container.main {
+	#container.main,
+	#container.about-chon {
 		padding-top: 0;
 	}
 	/* public module */
@@ -537,7 +539,8 @@
 		width: 100%;
 		border: 1px solid #dcdcdc;
 	}
-	.input-group input[type="text"] {
+	.input-group input[type="text"],
+	.input-group input[type="password"] {
 		font-size: 24px;
 		color: #333333;
 	}
@@ -547,8 +550,6 @@
 	}
 	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		color: #dcdcdc;
-	}
-	.swap-block {
 	}
 	.swap-block .block {
 		width: 50%;
@@ -1255,10 +1256,148 @@
 		display: inline-block;
 	}
 	/* order-list */
+	/* order-detail */
+	.order-detail > .inner {
+		width: 96.2%;
+		margin: 54px auto 220px;
+	}
+	.order-detail .info-block {
+		margin-bottom: 80px;
+	}
+	.order-detail .info-block > .title {
+		padding: 0 43px 23px;
+		position: relative;
+	}
+	.order-detail .info-block > .title > * {
+		display: inline-block;
+	}
+	.order-detail .info-block > .title h5 {
+		font-size: 24px;
+		color: #333333;
+		font-weight: 400;
+	}
+	.order-detail .info-block > .title .date {
+		float: right;
+	}
+	.order-detail .info-block > .title .date span {
+		font-size: 20px;
+		color: #777777;
+		font-weight: 700;
+	}
+	.order-detail .info-block .inner {
+		padding: 0 7%;
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.order-detail .info-block._product .inner ul {
+		padding-bottom: 0;
+	}
+	.order-detail ._product .row {
+		padding: 23px 0 20px;
+	}
+	.order-detail .info-block ul .row:last-child {
+		padding-bottom: 0;
+	}
+	.order-detail ._product .row .col {
+		float: left;
+	}
+	.order-detail ._product .row .col:first-child {
+		width: 21.6%;
+		margin-right: 25px;
+	}
+	.order-detail ._product .row .col .details {
+		font-size: 0;
+		color: #777777;
+	}
+	.order-detail ._product .row .col .details span {
+		position: relative;
+		display: inline-block;
+		font-size: 20px;
+		margin-right: 16px;
+	}
+	.order-detail ._product .row .col .details span:after {
+		position: absolute;
+		content: "/";
+		right: -12px;
+		top: 0;
+	}
+	.order-detail ._product .row .col .details span:last-child:after {
+		content: none;
+	}
+	.order-detail ._product .row .col .num {
+		font-size: 0;
+		color: #333333;
+		margin-top: 13px;
+	}
+	.order-detail ._product .row .col .num span {
+		display: inline-block;
+		font-size: 16px;
+	}
+	.order-detail ._product .row .col .num span:first-child:after {
+		content: "|";
+		font-size: 12px;
+		color: #999999;
+		margin: 0 3px;
+	}
+	.order-detail ._product .total {
+		margin: 47px 0 27px;
+	}
+	.order-detail ._product .total span {
+		display: inline-block;
+		font-size: 18px;
+		color: #333333;
+	}
+	.order-detail ._product .total span:last-child {
+		float: right;
+	}
+	.order-detail .info-block .guide span,
+	.order-detail .info-block .info span {
+		color: #777777;
+		font-size: 20px;
+	}
+	.order-detail .info-block .guide {
+		float: left;
+		width: 34.3%;
+	}
+	.order-detail .info-block .info {
+		float: left;
+		width: 65.7%;
+	}
+	.order-detail .info-block .row {
+		padding: 0 0 27px;
+	}
+	.order-detail .info-block .inner ul {
+		padding: 23px 0;
+	}
+	.order-detail .info-block.payment {
+
+	}
+	.order-detail .info-block.payment .p-type {
+		padding-top: 23px;
+	}
+	.order-detail .info-block.payment .p-type span {
+		font-size: 22px;
+		color: #809255;
+	}
+	.order-detail .info-block.payment .row .guide {
+		float: left;
+		width: auto;
+	}
+	.order-detail .info-block.payment .row {
+		padding-bottom: 19px;
+	}
+	.order-detail .info-block.payment .row .info {
+		float: right;
+		width: auto;
+	}
+	.order-detail .info-block.payment .row:nth-of-type(3n+3) {
+		padding-bottom: 37px;
+	}
+	/* order-detail */
+	/* mypage */
 
 	/* member */
-
-	/* login */
+	/* login & find */
 	.login .input-group {
 		width: 90.7%;
 		margin: 73px auto 57px;
@@ -1401,21 +1540,25 @@
 		color: #777777;
 		padding: 20px 0;
 	}
+	/* login & find */
+
+	/* join & modify */
 	.join > .wrapper {
 		width: 94.5%;
 		margin: 51px auto 0;
 		background: #f7f7f7;
 	}
 	.join > .wrapper > .inner {
-		padding: 3.4% 2% 11.5%;
+		padding: 2.5% 2% 11.5%;
 	}
 	.join > .wrapper .input-group .input-box {
 		border: 0;
 		margin-bottom: 3px;
 	}
-	.join > .wrapper .input-group .input-box input[type="text"] {
+	.join > .wrapper .input-group .input-box input[type="text"],
+	.join > .wrapper .input-group .input-box input[type="password"] {
 		width: 100%;
-		padding: 40px 0 40px 22px;
+		padding: 38px 0 35px 22px;
 	}
 	.join > .wrapper .input-group .input-box input[type="password"] {
 		width: 100%;
@@ -1459,7 +1602,12 @@
 		width: 100%;
 		font-size: 22px;
 		color: #777777;
-		padding: 40px 0 40px 22px;
+		padding: 38px 0 35px 22px;
+		-webkit-appearance: none;
+		appearance: none;
+		border: 0;
+		border-radius: 0;
+		background: #ffffff;
 	}
 	.join > .wrapper .area.text {
 		margin: 18px 0 55px 17px;
@@ -1521,7 +1669,7 @@
 		background: #809255;
 		border-radius: 2px;
 		left: 17.5%;
-		top: 19.5%;
+		top: 18.5%;
 		width: 65%;
 		height: 65%;
 	}
@@ -1589,9 +1737,185 @@
 		color: #ffffff;
 		padding: 26px 0;
 	}
-
-
-
-	/* login */
-
+	.modify .input-group.readonly {
+		position: relative;
+	}
+	.modify .input-group.readonly .input-box input[type="text"] {
+		background: #eaeaea;
+	}
+	.modify .input-group.readonly .input-box .modify-btn {
+		position: absolute;
+		top: 32px;
+		right: 24px;
+	}
+	.modify .input-group.readonly .input-box .modify-btn a {
+		display: block;
+		text-align: center;
+	}
+	.modify .input-group.readonly .input-box .modify-btn .spread span {
+		background: none;
+		color: #777777;
+		text-decoration: underline;
+	}
+	.modify .input-group.readonly .input-box .modify-btn a span {
+		display: inline-block;
+		margin-top: -1px;
+		padding: 10px 16px;
+		background: #809255;
+		color: #ffffff;
+		font-size: 20px;
+		vertical-align: middle;
+	}
+	.modify .input-group.hidden {
+		position: relative;
+		display: none;
+	}
+	.modify .input-group.hidden .input-box {
+		padding-bottom: 45px;
+	}
+	.modify .input-group.hidden .chk-text {
+		display: block;
+		position: absolute;
+		bottom: 90px;
+		left: 12px;
+		font-size: 20px;
+		color: #809255;
+	}
+	.modify .input-group.hidden .btn-verify {
+		width: 100%;
+	}
+	.modify .input-group.hidden .btn-verify a {
+		display: block;
+		background: #809255;
+		text-align: center;
+	}
+	.modify .input-group.hidden .btn-verify a span {
+		display: inline-block;
+		padding: 26px 0;
+		font-size: 26px;
+		color: #ffffff;
+	}
+	.modify > .wrapper .area.marketing + .area.text {
+		margin-bottom: 37px;
+	}
+	.modify .finish .wrap-btns a {
+		display: block;
+		float: left;
+		width: 49%;
+		text-align: center;
+		background: #809255;
+	}
+	.modify .finish .wrap-btns a span {
+		display: inline-block;
+		padding: 27px 0;
+		color: #ffffff;
+		font-size: 26px;
+	}
+	.modify .finish .wrap-btns a:first-child {
+		margin-right: 2%;
+	}
+	.modify > .wrapper .finish + .drop-out {
+		margin: 50px 0 0 17px;
+	}
+	.modify > .wrapper .finish + .drop-out span {
+		color: #777777;
+	}
+	.modify > .wrapper > .inner {
+		padding: 2.5% 2% 7.8%
+	}
+	/* join & modify */
 	/* member */
+
+	/* about-chon */
+	.about-chon .main-img {
+		position: relative;
+	}
+	.about-chon .main-img:after {
+		content: "";
+		position: absolute;
+		left: 95px;
+		bottom: -235px;
+		width: 1px;
+		height: 320px;
+		background: #5a5a5a;
+	}
+	.about-chon .message1 {
+		padding: 142px 0 0 154px;
+	}
+	.about-chon .message1 p {
+		font-size: 24px;
+		color: #333333;
+		line-height: 1.3;
+	}
+	.about-chon .message2 {
+		padding: 117px 96px 0 0;
+		text-align: right;
+	}
+	.about-chon .message2 p,
+	.about-chon .message3 p {
+		font-size: 20px;
+		color: #555555;
+		line-height: 1.25;
+	}
+	.about-chon .message3 {
+		padding: 17px 96px 0 0;
+		text-align: right;
+	}
+	.about-chon .message3 em {
+		font-weight: bold;
+	}
+	.about-chon .logo {
+		text-align: right;
+		padding: 65px 96px 215px 0;
+	}
+	.about-chon .logo img {
+		display: inline;
+	}
+	/* about-chon */
+
+	/* popup */
+	.popup {
+		width: 94.2%;
+		margin: 0 auto;
+	}
+	.popup > .wrapper {
+		position: relative;
+	}
+	.popup .close-btn {
+		position: absolute;
+		top: 30px;
+		right: 56px;
+	}
+	.popup.protect .wrapper {
+		background: #ffffff;
+		/*width: 94.2%;
+		margin: 0 auto;*/
+	}
+	.popup.protect .wrapper .inner {
+		padding: 9.6% 8.4%;
+	}
+	.popup.protect .title {
+		text-align: center;
+		padding-bottom: 7.7%;
+	}
+	.popup.protect .title p {
+		font-size: 22px;
+		color: #809255;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	.popup.protect .text .row:first-child {
+		padding-bottom: 20px;
+	}
+	.popup.protect .text span {
+		display: block;
+		float: left;
+		font-size: 20px;
+		color: #b0b0b0;
+		width: 96%;
+		line-height: 1.3;
+	}
+	.popup.protect .text span:first-child {
+		width: 4%;
+	}
+	/* popup */
