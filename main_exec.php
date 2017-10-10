@@ -4,23 +4,24 @@
 	switch ($_REQUEST['exec'])
 	{
 		case "member_login" :
-			$mb_id				= $_REQUEST["mb_id"];
+			$mb_email			= $_REQUEST["mb_email"];
 			$mb_password		= $_REQUEST["mb_password"];
 
-			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_id='".$mb_id."' AND mb_password=MD5('".$mb_password."')";
+			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."' AND mb_password=MD5('".$mb_password."')";
 			$login_result		= mysqli_query($my_db, $login_query);
 			$login_data			= mysqli_fetch_array($login_result);
 
 			// 암호 검증
 			//if (validate_password($mb_password,$login_data['mb_password']))
-			if ($mb_id == $login_data['mb_id'])
+			if ($mb_email == $login_data['mb_email'])
 			{
 				$update_query		= "UPDATE ".$_gl['member_info_table']." SET mb_login_date='".date("Y-m-d H:i:s")."' WHERE mb_id='".$login_data['mb_id']."'";
 				$update_result		= mysqli_query($my_db, $update_query);
-				// 회원 아이디, 이름, 등급 세션 생성
-				$_SESSION['ss_chon_id']			= $login_data['mb_id'];
+
+				// 회원 이메일, 이름, 로그인 경로 세션 생성
+				$_SESSION['ss_chon_email']		= $login_data['mb_email'];
 				$_SESSION['ss_chon_name']		= $login_data['mb_name'];
-				$_SESSION['ss_chon_grade']		= $login_data['mb_grade'];
+				$_SESSION['ss_chon_way']		= $login_data['mb_login_way'];
 				$flag	= "Y";
 			}else{
 				$flag	= "N";
@@ -56,7 +57,7 @@
 				$result   = mysqli_query($my_db, $query);
 			}
 
-			// 회원 이메일, 이름 세션 생성
+			// 회원 이메일, 이름, 로그인 경로 세션 생성
 			$_SESSION['ss_chon_email']		= $mb_email;
 			$_SESSION['ss_chon_name']		= $mb_kakao_name;
 			$_SESSION['ss_chon_way']		= $mb_login_way;
@@ -143,82 +144,48 @@
 			echo $flag;
 		break;
 
-		// 회원가입시 아이디 중복체크
-		case "duplicate_check":
-
-			$input = $_REQUEST['input'];
-
-			$chk_id_query 	= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_id='".$input."'";
-			$chk_id_result 	= mysqli_query($my_db, $chk_id_query);
-			$chk_id_data	= mysqli_num_rows($chk_id_result);
-
-			if($chk_id_data > 0) {
-				$flag = "N";
-			}else{
-				$flag = "Y";
-			}
-			echo $flag;
-		break;
-
 		case "member_join":
-			$user_id = preg_replace("/\s+/", "", $_POST['user_id']);
-			$password = preg_replace("/\s+/", "", $_POST['password']);
-			//$password = create_hash($password);
-			$username = preg_replace("/\s+/", "", $_POST['username']);
-			$zipcode = $_POST['zipcode'];
-			$addr1 = $_POST['addr1'];
-			$addr2 = trim($_POST['addr2']);
-			$email1 = preg_replace("/\s+/", "", $_POST['email1']);
-			$email2 = $_POST['email2'];
-			$emailYN = $_POST['emailYN'];
-			$tel1 = $_POST['tel1'];
-			$tel2 = preg_replace("/\s+/", "", $_POST['tel2']);
-			$tel3 = preg_replace("/\s+/", "", $_POST['tel3']);
-			$phone1 = $_POST['phone1'];
-			$phone2 = $_POST['phone2'];
-			$phone3 = $_POST['phone3'];
-			$smsYN = $_POST['smsYN'];
-			$birthY = preg_replace("/\s+/", "", $_POST['birthY']);
-			$birthM = preg_replace("/\s+/", "", $_POST['birthM']);
-			$birthD = preg_replace("/\s+/", "", $_POST['birthD']);
+			$mb_email		= $_REQUEST["mb_email"];
+			$mb_password	= $_REQUEST["mb_password"];
+			$mb_name		= $_REQUEST["mb_name"];
+			$mb_phone		= $_REQUEST["mb_phone"];
+			$birthday		= $_REQUEST["birthday"];
+			$event_chk		= $_REQUEST["event_chk"];
+			$email_chk		= $_REQUEST["email_chk"];
+			$sms_chk		= $_REQUEST["sms_chk"];
+			$mb_login_way	= "chon";
+		
+			if ($event_chk == "true")
+				$event_chk	= "Y";
+			else
+				$event_chk	= "N";
 
-			$email = $email1 . '@' . $email2;
+			if ($email_chk == "true")
+				$email_chk	= "Y";
+			else
+				$email_chk	= "N";
 
-			if($tel2 == '') {
-				$tel = '';
+			if ($sms_chk == "true")
+				$sms_chk	= "Y";
+			else
+				$sms_chk	= "N";
+
+
+			$dupli_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE 1 AND mb_email='".$mb_email."'";
+			$dupli_result		= mysqli_query($my_db, $dupli_query);
+			$dupli_count 		= mysqli_num_rows($dupli_result);
+	
+			if ($dupli_count > 0)
+			{
+				$flag = "D";
 			}else{
-				$tel = $tel1 . '-' . $tel2 . '-' . $tel3;
-			}
-
-				$phone = $phone1 . '-' . $phone2 . '-' . $phone3;
-
-			if($birthY !== '' && $birthM !== '' && $birthD !== '') {
-				if($birthM < 10 && strlen($birthM) < 2) {
-					$birthM = "/0".$birthM;
-				}else{
-					$birthM = "/".$birthM;
-				}
-				if($birthD < 10 && strlen($birthD) < 2) {
-					$birthD = "/0".$birthD;
-				}else{
-					$birthD = "/".$birthD;
-				}
-			}
-
-
-				$birth = $birthY . $birthM . $birthD;
-				// 등급 수정할것
-				$grade = "3";
-
-
-				$insert_query    = "INSERT INTO ".$_gl['member_info_table']."(mb_id, mb_password, mb_name, mb_birth, mb_address1, mb_address2, mb_zipcode, mb_telphone, mb_handphone, mb_smsYN, mb_email, mb_emailYN, mb_grade, mb_join_date, mb_join_ipaddr) values('".$user_id."',MD5('".$password."'),'".$username."','".$birth."','".$addr1."','".$addr2."','".$zipcode."','".$tel."','".$phone."','".$smsYN."','".$email."','".$emailYN."','".$grade."','".date("Y-m-d H:i:s")."','".$_SERVER['REMOTE_ADDR']."')";
+				$insert_query    = "INSERT INTO ".$_gl['member_info_table']."(mb_email, mb_password, mb_name, mb_phone, mb_birth, mb_eventYN, mb_emailYN, mb_smsYN, mb_login_way, mb_join_date, mb_join_ipaddr) values('".$mb_email."',MD5('".$mb_password."'),'".$mb_name."','".$mb_phone."','".$birthday."','".$event_chk."','".$email_chk."','".$sms_chk."','".$mb_login_way."','".date("Y-m-d H:i:s")."','".$_SERVER['REMOTE_ADDR']."')";
 				$insert_result   = mysqli_query($my_db, $insert_query);
-
 
 				// result - 메일 발송
 				if($insert_result) {
 					$mail_result = sendMail(
-						"yh.kim@minivertising.kr",
+						"kyhfan@naver.com",
 						"촌의감각",
 						"회원가입을 축하합니다.",
 						"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
@@ -228,11 +195,11 @@
 						<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
 						<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
 						안녕하세요 촌의 감각 입니다.<br/>
-						$username($user_id)고객님의 회원가입을 축하드립니다.<br/>
+						$mb_name($mb_email)고객님의 회원가입을 축하드립니다.<br/>
 						회원님의 가입정보는 다음과 같습니다.
 						</p>
 						<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
-						<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px;'>아이디:&nbsp;&nbsp;<span style='color: #b88b5b;letter-spacing: normal;font-weight: bold;'>$user_id</span></span>
+						<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px;'>아이디:&nbsp;&nbsp;<span style='color: #b88b5b;letter-spacing: normal;font-weight: bold;'>$mb_email</span></span>
 
 						</p>
 						<a href='http://www.store-chon.com/' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 홈페이지 가기</span></p></a>
@@ -243,14 +210,16 @@
 						<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
 						<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
 						</div>
-						</div>
+						</div> 
 						",
-						"$email", "$username");
+						"$mb_email", "$mb_name");
+
 					$flag = "Y";
 				}else{
 					$flag = "N";
 				}
-			echo $flag;
+			}
+			echo $$mail_result;
 
 		break;
 
@@ -335,103 +304,86 @@
 
 		break;
 
-		case "sear_pass":
+		case "member_find":
 
-			$mb_id = $_REQUEST['mb_id'];
-			$mb_name = $_REQUEST['mb_name'];
-			$mb_email = $_REQUEST['mb_email'];
+			$mb_password 	= $_REQUEST['mb_password'];
+			$mb_name 		= $_REQUEST['mb_name'];
+			$mb_email 		= $_REQUEST['mb_email'];
+			$submitTarget	= $_REQUEST["submitTarget"];
 
-			$query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_id='".$mb_id."' AND mb_name='".$mb_name."' AND mb_email='".$mb_email."'";
-			$result		= mysqli_query($my_db, $query);
-			$data 		= mysqli_fetch_array($result);
+			if ($submitTarget == "fid")
+			{
+				$query		= "SELECT mb_email FROM ".$_gl['member_info_table']." WHERE mb_name='".$mb_name."' AND mb_password=MD5('".$mb_password."')";
+				$result		= mysqli_query($my_db, $query);
+				$data 		= mysqli_fetch_array($result);
+	
+				if($data){
+					$email_arr	= explode("@",$data['mb_email']);
 
-			if($data){
-				$temp_pw = PHPRandom::getHexString(20);
-				//$password = create_hash($temp_pw);
-				$update_query = "UPDATE ".$_gl['member_info_table']." SET mb_password=MD5('".$temp_pw."') WHERE mb_id='".$data['mb_id']."' AND mb_name='".$data['mb_name']."' AND mb_email='".$data['mb_email']."'";
-				$update_result   = mysqli_query($my_db, $update_query);
-
-				if($update_result)
-				{
-					$mail_result = sendMail(
-						"yh.kim@minivertising.kr",
-						"촌의감각",
-						"비밀번호가 변경되었습니다.",
-						"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
-						<h2>
-						<img src='http://www.store-chon.com/PC/images/mail_title_logo.png' alt='촌의감각' style='width: 116px;height: 92px'/>
-						</h2>
-						<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
-						<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
-						새롭게 설정된 비밀번호 입니다.<br/>
-						로그인 후, 꼭 재설정 해주세요.
-						</p>
-						<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
-						<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>새로 발급된 비밀번호</span>
-						<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 18px;letter-spacing: normal;font-weight: bold;padding-top: 10px'>$temp_pw</span>
-						</p>
-						<a href='http://store-chon.com/PC/member/member_login.php' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 로그인</span></p></a>
-						</div>
-						<div style='background-color: #f9f3ec;width: 600px;height: 154px;margin: 0 auto;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;'>
-						<div style='padding: 20px 38px;text-align: left;font-size: 12px'>
-						<p style='margin: 0;padding-bottom: 4px'>본 메일은 발신전용입니다.</p>
-						<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
-						<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
-						</div>
-						</div>",
-						"$mb_email", "$username");
-					/*
-					if($mail_result == "Y")
-						$flag = "Y"; // 메일 발송까지 완료
-					else
-						$flag = "E"; // 메일 발송 오류
-					*/
-					$flag = "Y"; // 메일 발송까지 완료
+					$email_arr[0] = substr_replace($email_arr[0], "***", -3);
+					$replace_id = $email_arr[0]."@".$email_arr[1];
+					$flag = "Y||".$replace_id;
 				}else{
-					$flag = "E"; // 비밀번호 업데이트 오류
+					$flag = "N||none";
 				}
-
+	
 			}else{
-				$flag = "N"; // 입력한 정보의 회원이 없음
-			}
+				$query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."'";
+				$result		= mysqli_query($my_db, $query);
+				$data 		= mysqli_fetch_array($result);
 
+				if($data){
+					$temp_pw = PHPRandom::getHexString(12);
+					//$password = create_hash($temp_pw);
+					$update_query = "UPDATE ".$_gl['member_info_table']." SET mb_password=MD5('".$temp_pw."') WHERE mb_email='".$data['mb_email']."'";
+					$update_result   = mysqli_query($my_db, $update_query);
+
+					if($update_result)
+					{
+						$mail_result = sendMail(
+							"kyhfan@naver.com",
+							"촌의감각",
+							"비밀번호가 변경되었습니다.",
+							"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
+							<h2>   
+							<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
+							<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
+							새롭게 설정된 비밀번호 입니다.<br/>
+							로그인 후, 꼭 재설정 해주세요.
+							</p>
+							<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
+							<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>새로 발급된 비밀번호</span>
+							<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 18px;letter-spacing: normal;font-weight: bold;padding-top: 10px'>$temp_pw</span>
+							</p>
+							<a href='http://store-chon.com/PC/member/member_login.php' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 로그인</span></p></a>
+							</div>
+							<div style='background-color: #f9f3ec;width: 600px;height: 154px;margin: 0 auto;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;'>
+							<div style='padding: 20px 38px;text-align: left;font-size: 12px'>
+							<p style='margin: 0;padding-bottom: 4px'>본 메일은 발신전용입니다.</p>
+							<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
+							<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
+							</div>
+							</div>",
+							"$mb_email", "$username");
+						/*
+						if($mail_result == "Y")
+							$flag = "Y"; // 메일 발송까지 완료
+						else
+							$flag = "E"; // 메일 발송 오류
+						*/
+						$flag = "Y"; // 메일 발송까지 완료
+					}else{
+						$flag = "E"; // 비밀번호 업데이트 오류
+					}
+
+				}else{
+					$flag = "N"; // 입력한 정보의 회원이 없음
+				}
+			}
 			echo $flag;
 
 		break;
 
-// 회원수정시 회원본인인지 체크 --------------------------> 현재 안쓰는 코드
-		case "member_check":
-
-			$m_id = $_REQUEST['m_id'];
-			$m_pw = $_REQUEST['m_pw'];
-
-			$pw_query		= "SELECT mb_id,mb_name,mb_handphone,mb_telphone,mb_zipcode,mb_address1,mb_address2,mb_birth,mb_email,mb_emailYN,mb_smsYN FROM ".$_gl['member_info_table']." WHERE mb_id='".$m_id."' AND mb_password='".$m_pw."'";
-			$pw_result		= mysqli_query($my_db, $pw_query);
-			$pw_data 		= mysqli_fetch_array($pw_result);
-			if($pw_data) {
-				$flag = "Y";
-			}else{
-				$flag = "N";
-			}
-			echo $flag;
-
-			// $id_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_id='".$m_id."'";
-			// $id_result		= mysqli_query($my_db, $id_query);
-			// $id_data = mysqli_fetch_array($id_result);
-			// if($id_data) { // 아이디가 있을경우 입력한 비밀번호 검사
-			// 	$pw_query		= "SELECT mb_id,mb_name,mb_question,mb_answer,mb_handphone,mb_telphone,mb_zipcode,mb_address1,mb_address2,mb_birth,mb_email,mb_emailYN,mb_gender,mb_smsYN FROM ".$_gl['member_info_table']." WHERE mb_id='".$id_data['mb_id']."' AND mb_password='".$m_pw."'";
-			// 	$pw_result		= mysqli_query($my_db, $pw_query);
-			// 	$pw_data 		= mysqli_fetch_array($pw_result);
-			// 	if($pw_data) {
-			// 		echo json_encode($pw_data);
-			// 	}else{
-			// 		echo json_encode("P");
-			// 	}
-			// }else{ // 입력한 아이디가 없는경우
-			// 	echo json_encode("N");
-			// }
-
-		break;
 
 		case "insert_banner_info" :
 					$banner_name	= $_REQUEST['banner_name'];

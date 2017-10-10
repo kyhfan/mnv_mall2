@@ -3,6 +3,8 @@
 
 	$ref_url	= $_REQUEST["ref_url"];
 
+	if ($ref_url == "")
+		$ref_url = "index.php";
 	if ($_SESSION['ss_chon_email'])
 		echo "<script>location.href='$ref_url';</script>";
 
@@ -12,7 +14,6 @@
 	$state = "RAMDOM_STATE";
 	$apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=".$client_id."&redirect_uri=".$redirectURI."&state=".$state;
 
-	// 
 	// 네이버 로그인 콜백
 	if ($_GET["code"])
 	{
@@ -78,6 +79,7 @@
 ?>						
 <body>
 	<div id="chon-app">
+		<input type="hidden" id="ref_url" value="<?=$ref_url?>">
 <?
 	include_once "./head_area.php";
 ?>
@@ -89,13 +91,13 @@
 			</div>
 			<div class="input-group">
 				<div class="input-box">
-					<input type="text" placeholder="아이디">
+					<input type="text" placeholder="아이디" id="mb_email">
 				</div>
 				<div class="input-box">
-					<input type="text" placeholder="패스워드">
+					<input type="password" placeholder="패스워드" id="mb_password">
 				</div>
 			</div>
-			<div class="btn login">
+			<div class="btn login" id="mb_login">
 				<a href="javascript:void(0)">
 					<span>로그인</span>
 				</a>
@@ -112,10 +114,10 @@
 				</a>
 			</div>
 			<div class="manage-id">
-				<a href="javascript:void(0)">
+				<a href="member_find.php">
 					<span>아이디 · 비밀번호 찾기</span>
 				</a>
-				<a href="javascript:void(0)">
+				<a href="member_join.php">
 					<span>회원가입</span>
 				</a>
 			</div>

@@ -11,6 +11,8 @@
 
 	// 상품 상세 설명 P태그 class 자동 삽입
 	$goods_data["m_goods_big_desc"] 	= str_replace('<p>','<p class="txt-template ft-18 cl-333 lh-32" style="padding-bottom: 68px;">',$goods_data["m_goods_big_desc"]);
+
+	$wish_flag 	= check_wish_goods($goods_code);
 ?>
 <body>
 	<div id="chon-app">
@@ -179,7 +181,18 @@
 				<div class="inner">
 					<div class="loveit">
 						<a href="javascript:void(0)" data-goods="<?=$goods_code?>">
+<?
+	if ($wish_flag == "Y")
+	{
+?>						
+							<img src="./images/heart_fill.png" alt="찜 하기">
+<?
+	}else{
+?>		
 							<img src="./images/heart.png" alt="찜 하기">
+<?
+	}
+?>					
 						</a>
 					</div>
 					<div class="buy">

@@ -296,7 +296,7 @@ function load_option()
 function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail             = new PHPMailer();
 	$body             = $CONTENT;
-
+/*
 	$mail->IsSMTP(); // telling the class to use SMTP
 	// $mail->Host 	  = "www.coolio.so"; // SMTP server
 	$mail->SMTPDebug  = 0;						// enables SMTP debug information (for testing)
@@ -307,7 +307,7 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
 	$mail->Host       = "smtp.naver.com";      // sets GMAIL as the SMTP server
 	$mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-	$mail->Username   = "yh.kim@minivertising.kr";             // GMAIL username
+	$mail->Username   = "kyhfan";             // GMAIL username
 	$mail->Password   = "dudfks88";              // GMAIL password
 
 	$mail->SetFrom($EMAIL, $NAME);
@@ -320,15 +320,38 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 
 	$address = $MAILTO;
 	$mail->AddAddress($address, $MAILTONAME);
-
-/*
-	if(!$mail->Send()) {
-		echo "E";
-	} else {
-		echo "Y";
-	}
 */
-	$mail->Send();
+	$mail->isSMTP();                                      // Set mailer to use SMTP
+	$mail->Host = 'smtp.naver.com';  // Specify main and backup SMTP servers
+	$mail->SMTPAuth = true;                               // Enable SMTP authentication
+	$mail->Username = 'kyhfan';                 // SMTP username
+	$mail->Password = 'dudfks88';                           // SMTP password
+	$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+	$mail->Port = 465;                                    // TCP port to connect to
+	
+	$mail->CharSet    = "utf-8";
+	$mail->setFrom($EMAIL, $NAME);
+	$mail->addAddress($EMAIL, $NAME);     // Add a recipient
+	// $mail->addAddress('ellen@example.com');               // Name is optional
+	$mail->addReplyTo($EMAIL, $NAME);
+	// $mail->addCC('cc@example.com');
+	// $mail->addBCC('bcc@example.com');
+	
+	// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+	$mail->isHTML(true);                                  // Set email format to HTML
+	
+	$mail->Subject = $SUBJECT;
+	$mail->Body    = $body;
+	// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+	
+	if(!$mail->send()) {
+		echo 'Message could not be sent.';
+		echo 'Mailer Error: ' . $mail->ErrorInfo;
+	} else {
+		echo 'Message has been sent';
+	}
+	// $mail->Send();
 }
 
 // 해당 거래처 정보 가져오기 (idx)
@@ -461,9 +484,29 @@ function select_payment_info($oid)
 
 	$payment_query		= "SELECT * FROM ".$_gl['payment_info_table']." WHERE LGD_OID='".$oid."'";
 	$payment_result		= mysqli_query($my_db, $payment_query);
-	$payment_data			= mysqli_fetch_array($payment_result);
+	$payment_data		= mysqli_fetch_array($payment_result);
 
 	return $payment_data;
+}
+
+function check_wish_goods($goods_code)
+{
+	global $_gl;
+	global $my_db;
+
+
+	$mb_id			= $_SESSION['ss_chon_email'];
+	
+	$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."'";
+	$wish_result 	= mysqli_query($my_db, $wish_query);
+	$wish_data		= mysqli_fetch_array($wish_result);
+
+	if ($wish_data)
+		$flag 	= "Y";
+	else
+		$flag 	= "N";
+
+	return $flag;
 }
 
 ?>

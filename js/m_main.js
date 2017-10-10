@@ -33,16 +33,235 @@ $(document).on("click", ".loveit > a", function(){
 		success: function(response){
 			if (response.match("Y") == "Y")
 			{
-				alert('찜추가');
+				alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
+				$(".loveit > a > img").attr("src","./images/heart_fill.png");
 			}else if (response.match("D") == "D"){
-				alert('이미 찜 추가된 상품');
+				alert('이미 관심상품에 추가하신 상품입니다.');
 			}else if (response.match("N") == "N"){
-				alert('로그인 안되어 있음');
+				alert('로그인 후 관심상품에 등록해 주세요!');
+				location.href='member_login.php';
 			}else{
 				alert('시스템 에러');
+				location.reload();
 			}
 		}
 	});
+});
+
+// 회원가입 전체동의 체크 선택
+$(document).on("click", "#all_chk", function(){
+	if ($("#all_chk").prop("checked") == false)
+	{
+		$("#use_chk").prop("checked", false);
+		$("#privacy_chk").prop("checked", false);
+	}else{
+		$("#use_chk").prop("checked", true);
+		$("#privacy_chk").prop("checked", true);
+	}
+		
+});
+
+// 회원 가입
+$(document).on("click", ".btn.join", function(){
+	var mb_email		= $("#mb_email").val();
+	var mb_password		= $("#mb_password").val();
+	var mb_password_re	= $("#mb_re_password").val();
+	var mb_name			= $("#mb_name").val();
+	var mb_phone		= $("#mb_phone").val();
+	var birthY			= $("#birthY").val();
+	var birthM			= $("#birthM").val();
+	var birthD			= $("#birthD").val();
+	var event_chk		= $("#event_chk").is(":checked");
+	var email_chk		= $("#email_chk").is(":checked");
+	var sms_chk			= $("#sms_chk").is(":checked");
+	var birthday		= birthY + "-" + birthM + "-" + birthD;
+
+	if (mb_email == "")
+	{
+		alert("이메일 주소를 입력해 주세요.");
+		$("#mb_email").focus();
+		return false;
+	}
+
+	if (mb_password == "")
+	{
+		alert("비밀번호를 입력해 주세요.");
+		$("#mb_password").focus();
+		return false;
+	}
+
+	if (mb_password_re == "")
+	{
+		alert("비밀번호 확인을 입력해 주세요.");
+		$("#mb_re_password").focus();
+		return false;
+	}
+
+	if (mb_name == "")
+	{
+		alert("이름을 입력해 주세요.");
+		$("#mb_name").focus();
+		return false;
+	}
+
+	if (mb_phone == "")
+	{
+		alert("전화번호를 입력해 주세요.");
+		$("#mb_phone").focus();
+		return false;
+	}
+
+	if (mb_password != mb_password_re)
+	{
+		alert("비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+		return false;
+	}
+
+	if (birthY == "" || birthM == "" || birthD == "")
+	{
+		alert("생년월일을 입력해주세요.");
+		return false;
+	}
+
+	if ($("#use_chk").prop("checked") == false)
+	{
+		alert("이용약관 동의에 체크해 주세요.");
+		return false;
+	}
+
+	if ($("#privacy_chk").prop("checked") == false)
+	{
+		alert("개인정보 수집 및 이용 동의에 체크해주세요.");
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"			: "member_join",
+			"mb_email"		: mb_email,
+			"mb_password"	: mb_password,
+			"mb_name"		: mb_name,
+			"mb_phone"		: mb_phone,
+			"birthday"		: birthday,
+			"event_chk"		: event_chk,
+			"email_chk"		: email_chk,
+			"sms_chk"		: sms_chk
+		},
+		success: function(response){
+			console.log(response);
+			return false;
+			if (response.match("Y") == "Y")
+			{
+				alert('고객님이 입력하신 메일주소로 인증메일이 발송 되었습니다.\r\n메일의 확인버튼을 눌러 주시면 회원가입이 완료 됩니다.');
+				location.href = "index.php";
+			}else if (response.match("D") == "D"){
+				alert('이미 회원 가입 되어 있습니다.');
+				location.href = "index.php";
+			}else{
+				alert('다시 시도해 주세요.');
+				location.reload();
+			}
+		}
+	});
+});
+
+// 회원 로그인
+$(document).on("click", "#find_member", function(){
+	var mb_name 		= $("#mb_name").val();
+	var mb_password		= $("#mb_password").val();
+	var mb_email		= $("#mb_email").val();
+alert(submitTarget);
+	if (submitTarget == "fid")
+	{
+		if (mb_name == "")
+		{
+			alert("이름을 입력해 주세요.");
+			$("#mb_name").focus();
+			return false;
+		}
+	
+		if (mb_password == "")
+		{
+			alert("비밀번호를 입력해 주세요.");
+			$("#mb_password").focus();
+			return false;
+		}
+	}else{
+		if (mb_email == "")
+		{
+			alert("이메일 주소를 입력해 주세요.");
+			$("#mb_email").focus();
+			return false;
+		}
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"			: "member_find",
+			"submitTarget"	: submitTarget,
+			"mb_name"		: mb_name,
+			"mb_email"		: mb_email,
+			"mb_password"	: mb_password
+		},
+		success: function(response){
+			console.log(response);
+			if (response.match("Y") == "Y")
+			{
+				location.href = ref_url;
+			}else{
+				alert('다시 시도해 주세요.');
+				location.reload();
+			}
+		}
+	});
+
+});
+
+// 회원 로그인
+$(document).on("click", "#mb_login", function(){
+	var mb_email		= $("#mb_email").val();
+	var mb_password		= $("#mb_password").val();
+	var ref_url 		= $("#ref_url").val();
+	if (mb_email == "")
+	{
+		alert("이메일 주소를 입력해 주세요.");
+		$("#mb_email").focus();
+		return false;
+	}
+
+	if (mb_password == "")
+	{
+		alert("비밀번호를 입력해 주세요.");
+		$("#mb_password").focus();
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"			: "member_login",
+			"mb_email"		: mb_email,
+			"mb_password"	: mb_password
+		},
+		success: function(response){
+			if (response.match("Y") == "Y")
+			{
+				alert(response);
+			}else{
+				alert('다시 시도해 주세요.');
+				location.reload();
+			}
+		}
+	});
+
 });
 
 // 카카오 로그인
