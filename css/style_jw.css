@@ -6,7 +6,8 @@
 	}
 	html {
 		height: 100%;
-		webkit-text-size-adjust: 100%;
+		-webkit-text-size-adjust: 100%;
+		-webkit-font-smoothing: antialiased;
 		font-size: 10px;
 	}
 	html, body {
@@ -1251,9 +1252,147 @@
 		display: inline-block;
 	}
 	/* order-list */
+	/* order-detail */
+	.order-detail > .inner {
+		width: 96.2%;
+		margin: 54px auto 220px;
+	}
+	.order-detail .info-block {
+		margin-bottom: 80px;
+	}
+	.order-detail .info-block > .title {
+		padding: 0 43px 23px;
+		position: relative;
+	}
+	.order-detail .info-block > .title > * {
+		display: inline-block;
+	}
+	.order-detail .info-block > .title h5 {
+		font-size: 24px;
+		color: #333333;
+		font-weight: 400;
+	}
+	.order-detail .info-block > .title .date {
+		float: right;
+	}
+	.order-detail .info-block > .title .date span {
+		font-size: 20px;
+		color: #777777;
+		font-weight: 700;
+	}
+	.order-detail .info-block .inner {
+		padding: 0 7%;
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.order-detail .info-block._product .inner ul {
+		padding-bottom: 0;
+	}
+	.order-detail ._product .row {
+		padding: 23px 0 20px;
+	}
+	.order-detail .info-block ul .row:last-child {
+		padding-bottom: 0;
+	}
+	.order-detail ._product .row .col {
+		float: left;
+	}
+	.order-detail ._product .row .col:first-child {
+		width: 21.6%;
+		margin-right: 25px;
+	}
+	.order-detail ._product .row .col .details {
+		font-size: 0;
+		color: #777777;
+	}
+	.order-detail ._product .row .col .details span {
+		position: relative;
+		display: inline-block;
+		font-size: 20px;
+		margin-right: 16px;
+	}
+	.order-detail ._product .row .col .details span:after {
+		position: absolute;
+		content: "/";
+		right: -12px;
+		top: 0;
+	}
+	.order-detail ._product .row .col .details span:last-child:after {
+		content: none;
+	}
+	.order-detail ._product .row .col .num {
+		font-size: 0;
+		color: #333333;
+		margin-top: 13px;
+	}
+	.order-detail ._product .row .col .num span {
+		display: inline-block;
+		font-size: 16px;
+	}
+	.order-detail ._product .row .col .num span:first-child:after {
+		content: "|";
+		font-size: 12px;
+		color: #999999;
+		margin: 0 3px;
+	}
+	.order-detail ._product .total {
+		margin: 47px 0 27px;
+	}
+	.order-detail ._product .total span {
+		display: inline-block;
+		font-size: 18px;
+		color: #333333;
+	}
+	.order-detail ._product .total span:last-child {
+		float: right;
+	}
+	.order-detail .info-block .guide span,
+	.order-detail .info-block .info span {
+		color: #777777;
+		font-size: 20px;
+	}
+	.order-detail .info-block .guide {
+		float: left;
+		width: 34.3%;
+	}
+	.order-detail .info-block .info {
+		float: left;
+		width: 65.7%;
+	}
+	.order-detail .info-block .row {
+		padding: 0 0 27px;
+	}
+	.order-detail .info-block .inner ul {
+		padding: 23px 0;
+	}
+	.order-detail .info-block.payment {
+
+	}
+	.order-detail .info-block.payment .p-type {
+		padding-top: 23px;
+	}
+	.order-detail .info-block.payment .p-type span {
+		font-size: 22px;
+		color: #809255;
+	}
+	.order-detail .info-block.payment .row .guide {
+		float: left;
+		width: auto;
+	}
+	.order-detail .info-block.payment .row {
+		padding-bottom: 19px;
+	}
+	.order-detail .info-block.payment .row .info {
+		float: right;
+		width: auto;
+	}
+	.order-detail .info-block.payment .row:nth-of-type(3n+3) {
+		padding-bottom: 37px;
+	}
+	/* order-detail */
+	/* mypage */
 
 	/* member */
-
 	/* login & find */
 	.login .input-group {
 		width: 90.7%;
@@ -1452,6 +1591,11 @@
 		font-size: 22px;
 		color: #777777;
 		padding: 38px 0 35px 22px;
+		-webkit-appearance: none;
+		appearance: none;
+		border: 0;
+		border-radius: 0;
+		background: #ffffff;
 	}
 	.join > .wrapper .area.text {
 		margin: 18px 0 55px 17px;
@@ -1513,7 +1657,7 @@
 		background: #809255;
 		border-radius: 2px;
 		left: 17.5%;
-		top: 19.5%;
+		top: 18.5%;
 		width: 65%;
 		height: 65%;
 	}
@@ -1595,9 +1739,6 @@
 	.modify .input-group.readonly .input-box .modify-btn a {
 		display: block;
 		text-align: center;
-	}
-	.modify .input-group.readonly .input-box .modify-btn .spread {
-
 	}
 	.modify .input-group.readonly .input-box .modify-btn .spread span {
 		background: none;
