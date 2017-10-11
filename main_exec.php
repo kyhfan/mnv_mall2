@@ -741,12 +741,15 @@
 			{
 				$flag	= "N"; // 로그인 안되어 있음.
 			}else{
-				$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."'";
+				$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."' AND showYN='Y'";
 				$wish_result 	= mysqli_query($my_db, $wish_query);
 				$wish_data		= mysqli_fetch_array($wish_result);
 
 				if ($wish_data)
 				{
+					$wish_query2 	= "UPDATE ".$_gl['wishlist_info_table']." SET showYN='N' WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."'";
+					$wish_result2 	= mysqli_query($my_db, $wish_query2);
+
 					$flag	= "D";
 				}else{
 					$wish_query2 	= "INSERT INTO ".$_gl['wishlist_info_table']."(mb_id, goods_code, wish_regdate) values('".$mb_id."','".$goods_code."','".date("Y-m-d H:i:s")."')";

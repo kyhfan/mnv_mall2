@@ -74,10 +74,11 @@ $(document).on("click", ".loveit > a", function(){
 		success: function(response){
 			if (response.match("Y") == "Y")
 			{
-				alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
+				// alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
 				$(".loveit > a > img").attr("src","./images/heart_fill.png");
 			}else if (response.match("D") == "D"){
-				alert('이미 관심상품에 추가하신 상품입니다.');
+				// alert('관심상품에서 삭제 되었습니다.');
+				$(".loveit > a > img").attr("src","./images/heart.png");
 			}else if (response.match("N") == "N"){
 				alert('로그인 후 관심상품에 등록해 주세요!');
 				location.href='member_login.php';

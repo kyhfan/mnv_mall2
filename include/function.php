@@ -494,10 +494,9 @@ function check_wish_goods($goods_code)
 	global $_gl;
 	global $my_db;
 
-
 	$mb_id			= $_SESSION['ss_chon_email'];
 	
-	$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."'";
+	$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."' AND showYN='Y'";
 	$wish_result 	= mysqli_query($my_db, $wish_query);
 	$wish_data		= mysqli_fetch_array($wish_result);
 

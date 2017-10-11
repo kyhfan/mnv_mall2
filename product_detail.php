@@ -41,13 +41,22 @@
 					<div class="name">
 						<h4><?=$goods_data["goods_name"]?></h4>
 						<div class="wrap-icon">
+<?
+	// 신상품 노출 여부
+	if ($goods_data["goods_regdate"] > date("Y-m-d", strtotime("-30days")))
+	{		
+?>									
 							<span class="new">NEW</span>
 <?
+	}
+	
 	// 판매가와 할인가가 동일할 경우 판매가 숨기기
 	if ($goods_data["sales_price"] != $goods_data["discount_price"])
 	{		
+		// 할인율 계산
+		$discount_percent 			= ($goods_data['sales_price'] - $goods_data['discount_price']) / $goods_data['sales_price'] * 100;
 ?>									
-							<span class="percent">10%</span>
+							<span class="percent"><?=ceil($discount_percent)?>%</span>
 <?
 	}
 ?>						
