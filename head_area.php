@@ -31,7 +31,7 @@
 						</div>
 						<div class="cart-btn">
 							<a href="#">
-								<span>장바구니 (<em> 0 </em>)</span>
+								<span>장바구니 (<em class="nft"> 0 </em>)</span>
 							</a>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
     while ($data = mysqli_fetch_array($result))
     {
         $cate_link  = $data['cate_1'].$data['cate_2'].$data['cate_3'];
-?>                                
+?>
 									<li>
 										<a href="<?=$cate_link?>">
 											<span><?=$data['cate_name']?></span>
@@ -57,7 +57,7 @@
 									</li>
 <?
     }
-?>                                    
+?>
 								</ul>
 							</div>
 							<div class="list theme">
