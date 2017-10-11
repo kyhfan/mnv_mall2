@@ -28,11 +28,18 @@
 						<div class="input-group readonly">
 							<div class="input-box">
 								<input type="text" value="<?=$member_info['mb_email']?>" id="mb_email" readonly>
+<?
+	if ($member_info['mb_login_way'] == "chon")
+	{
+?>								
 								<div class="modify-btn">
 									<a href="javascript:void(0)" onclick="modifyId(this);">
 										<span>변경하기</span>
 									</a>
 								</div>
+<?
+	}
+?>								
 							</div>
 						</div>
 						<div class="input-group hidden">
