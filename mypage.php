@@ -1,5 +1,8 @@
 <?
 	include_once "./header.php";
+
+	if (!$_SESSION['ss_chon_email'])
+		echo "<script>location.href='member_login.php?ref_url=mypage.php';</script>";
 ?>
 <body>
 	<div id="chon-app">
@@ -93,8 +96,8 @@
 						</a>
 					</li>
 					<li>
-						<a href="javascript:void(0)">
-							<span>회원정보</span>
+						<a href="member_modify.php">
+							<span>회원정보 수정</span>
 						</a>
 					</li>
 				</ul>

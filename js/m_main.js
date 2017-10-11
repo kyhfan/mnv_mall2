@@ -193,11 +193,12 @@ $(document).on("click", ".btn.join", function(){
 		},
 		success: function(response){
 			console.log(response);
-			return false;
 			if (response.match("Y") == "Y")
 			{
 				alert('고객님이 입력하신 메일주소로 인증메일이 발송 되었습니다.\r\n메일의 확인버튼을 눌러 주시면 회원가입이 완료 됩니다.');
 				location.href = "index.php";
+			}else if (response.match("E") == "E"){
+				alert('만 14세 이상만 가입 가능합니다.');
 			}else if (response.match("D") == "D"){
 				alert('이미 회원 가입 되어 있습니다.');
 				location.href = "index.php";
@@ -208,6 +209,101 @@ $(document).on("click", ".btn.join", function(){
 		}
 	});
 });
+
+// 회원 정보 수정
+$(document).on("click", "#modify_member", function(){
+	var mb_password		= $("#mb_password").val();
+	var mb_password_re	= $("#mb_re_password").val();
+	var mb_name			= $("#mb_name").val();
+	var mb_phone		= $("#mb_phone").val();
+	var birthY			= $("#birthY").val();
+	var birthM			= $("#birthM").val();
+	var birthD			= $("#birthD").val();
+	var event_chk		= $("#event_chk").is(":checked");
+	var email_chk		= $("#email_chk").is(":checked");
+	var sms_chk			= $("#sms_chk").is(":checked");
+	var birthday		= birthY + "-" + birthM + "-" + birthD;
+
+	if (mb_name == "")
+	{
+		alert("이름을 입력해 주세요.");
+		$("#mb_name").focus();
+		return false;
+	}
+
+	if (mb_phone == "")
+	{
+		alert("전화번호를 입력해 주세요.");
+		$("#mb_phone").focus();
+		return false;
+	}
+
+	if (mb_password != mb_password_re)
+	{
+		alert("비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+		return false;
+	}
+
+	if (birthY == "" || birthM == "" || birthD == "")
+	{
+		alert("생년월일을 입력해주세요.");
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"			: "member_modify",
+			"mb_password"	: mb_password,
+			"mb_name"		: mb_name,
+			"mb_phone"		: mb_phone,
+			"birthday"		: birthday,
+			"event_chk"		: event_chk,
+			"email_chk"		: email_chk,
+			"sms_chk"		: sms_chk
+		},
+		success: function(response){
+			console.log(response);
+			if (response.match("Y") == "Y")
+			{
+				alert('고객님이 회원 정보가 수정되었습니다.');
+				location.href = "mypage.php";
+			}else if (response.match("E") == "E"){
+				alert('만 14세 이상만 가입 가능합니다.');
+				location.reload();
+			}else{
+				alert('다시 시도해 주세요.');
+				location.reload();
+			}
+		}
+	});
+});
+
+// 이메일 주소 변경
+$(document).on("click", ".btn-verify > a", function(){
+	var change_email	= $("#change_email").val();
+	var mb_email		= $("#mb_email").val();
+	var mb_name			= $("#mb_name").val();
+	
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"			: "email_change",
+			"change_email"	: change_email,
+			"mb_name"		: mb_name,
+			"mb_email"		: mb_email
+		},
+		success: function(response){
+			console.log(response);
+		}
+	});
+});
+
+
 
 // 회원 로그인
 $(document).on("click", "#find_member", function(){

@@ -362,7 +362,7 @@ function select_purchasing_info($idx)
 
 	$query		= "SELECT * FROM ".$_gl['purchasing_info_table']." WHERE idx='".$idx."'";
 	$result		= mysqli_query($my_db, $query);
-	$data			= mysqli_fetch_array($result);
+	$data		= mysqli_fetch_array($result);
 
 	return $data;
 }
@@ -373,9 +373,9 @@ function select_member_info()
 	global $_gl;
 	global $my_db;
 
-	$query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_id='".$_SESSION['ss_chon_id']."'";
+	$query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$_SESSION['ss_chon_email']."'";
 	$result		= mysqli_query($my_db, $query);
-	$data			= mysqli_fetch_array($result);
+	$data		= mysqli_fetch_array($result);
 
 	return $data;
 }

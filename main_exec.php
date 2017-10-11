@@ -179,44 +179,49 @@
 			{
 				$flag = "D";
 			}else{
-				$insert_query    = "INSERT INTO ".$_gl['member_info_table']."(mb_email, mb_password, mb_name, mb_phone, mb_birth, mb_eventYN, mb_emailYN, mb_smsYN, mb_login_way, mb_join_date, mb_join_ipaddr) values('".$mb_email."',MD5('".$mb_password."'),'".$mb_name."','".$mb_phone."','".$birthday."','".$event_chk."','".$email_chk."','".$sms_chk."','".$mb_login_way."','".date("Y-m-d H:i:s")."','".$_SERVER['REMOTE_ADDR']."')";
-				$insert_result   = mysqli_query($my_db, $insert_query);
-
-				// result - 메일 발송
-				if($insert_result) {
-					$mail_result = sendMail(
-						"kyhfan@naver.com",
-						"촌의감각",
-						"회원가입을 축하합니다.",
-						"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
-						<h2>
-						<img src='http://www.store-chon.com/PC/images/mail_title_logo.png' alt='촌의감각' style='width: 116px;height: 92px'/>
-						</h2>
-						<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
-						<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
-						안녕하세요 촌의 감각 입니다.<br/>
-						$mb_name($mb_email)고객님의 회원가입을 축하드립니다.<br/>
-						회원님의 가입정보는 다음과 같습니다.
-						</p>
-						<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
-						<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px;'>아이디:&nbsp;&nbsp;<span style='color: #b88b5b;letter-spacing: normal;font-weight: bold;'>$mb_email</span></span>
-
-						</p>
-						<a href='http://www.store-chon.com/' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 홈페이지 가기</span></p></a>
-						</div>
-						<div style='background-color: #f9f3ec;width: 600px;height: 154px;margin: 0 auto;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;'>
-						<div style='padding: 20px 38px;text-align: left;font-size: 12px'>
-						<p style='margin: 0;padding-bottom: 4px'>본 메일은 발신전용입니다.</p>
-						<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
-						<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
-						</div>
-						</div> 
-						",
-						"$mb_email", "$mb_name");
-
-					$flag = "Y";
+				if ($birthday > date("Y-m-d", strtotime("-14year")))
+				{
+					$flag = "E";
 				}else{
-					$flag = "N";
+					$insert_query    = "INSERT INTO ".$_gl['member_info_table']."(mb_email, mb_password, mb_name, mb_phone, mb_birth, mb_eventYN, mb_emailYN, mb_smsYN, mb_login_way, mb_join_date, mb_join_ipaddr) values('".$mb_email."',MD5('".$mb_password."'),'".$mb_name."','".$mb_phone."','".$birthday."','".$event_chk."','".$email_chk."','".$sms_chk."','".$mb_login_way."','".date("Y-m-d H:i:s")."','".$_SERVER['REMOTE_ADDR']."')";
+					$insert_result   = mysqli_query($my_db, $insert_query);
+
+					// result - 메일 발송
+					if($insert_result) {
+						$mail_result = sendMail(
+							"kyhfan@naver.com",
+							"촌의감각",
+							"회원가입을 축하합니다.",
+							"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
+							<h2>
+							<img src='http://www.store-chon.com/PC/images/mail_title_logo.png' alt='촌의감각' style='width: 116px;height: 92px'/>
+							</h2>
+							<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
+							<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
+							안녕하세요 촌의 감각 입니다.<br/>
+							$mb_name($mb_email)고객님의 회원가입을 축하드립니다.<br/>
+							회원님의 가입정보는 다음과 같습니다.
+							</p>
+							<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
+							<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px;'>아이디:&nbsp;&nbsp;<span style='color: #b88b5b;letter-spacing: normal;font-weight: bold;'>$mb_email</span></span>
+
+							</p>
+							<a href='http://www.store-chon.com/' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 홈페이지 가기</span></p></a>
+							</div>
+							<div style='background-color: #f9f3ec;width: 600px;height: 154px;margin: 0 auto;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;'>
+							<div style='padding: 20px 38px;text-align: left;font-size: 12px'>
+							<p style='margin: 0;padding-bottom: 4px'>본 메일은 발신전용입니다.</p>
+							<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
+							<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
+							</div>
+							</div> 
+							",
+							"$mb_email", "$mb_name");
+
+						$flag = "Y";
+					}else{
+						$flag = "N";
+					}
 				}
 			}
 			echo $$mail_result;
@@ -224,70 +229,84 @@
 		break;
 
 		case "member_modify":
+			$mb_password	= preg_replace("/\s+/", "", $_REQUEST["mb_password"]);
+			$mb_name		= preg_replace("/\s+/", "", $_REQUEST["mb_name"]);
+			$mb_phone		= preg_replace("/\s+/", "", $_REQUEST["mb_phone"]);
+			$birthday		= $_REQUEST["birthday"];
+			$event_chk		= $_REQUEST["event_chk"];
+			$email_chk		= $_REQUEST["email_chk"];
+			$sms_chk		= $_REQUEST["sms_chk"];
 
-			$user_id = preg_replace("/\s+/", "", $_POST['user_id']);
-			$password = preg_replace("/\s+/", "", $_POST['password']);
-			//$password = create_hash($password);
-			$username = preg_replace("/\s+/", "", $_POST['username']);
-			$zipcode = $_POST['zipcode'];
-			$addr1 = $_POST['addr1'];
-			$addr2 = trim($_POST['addr2']);
-			$email1 = preg_replace("/\s+/", "", $_POST['email1']);
-			$email2 = $_POST['email2'];
-			$emailYN = $_POST['emailYN'];
-			$tel1 = $_POST['tel1'];
-			$tel2 = preg_replace("/\s+/", "", $_POST['tel2']);
-			$tel3 = preg_replace("/\s+/", "", $_POST['tel3']);
-			$phone1 = $_POST['phone1'];
-			$phone2 = $_POST['phone2'];
-			$phone3 = $_POST['phone3'];
-			$smsYN = $_POST['smsYN'];
-			$birthY = preg_replace("/\s+/", "", $_POST['birthY']);
-			$birthM = preg_replace("/\s+/", "", $_POST['birthM']);
-			$birthD = preg_replace("/\s+/", "", $_POST['birthD']);
+			if ($event_chk == "true")
+				$event_chk	= "Y";
+			else
+				$event_chk	= "N";
 
-			$email = $email1 . '@' . $email2;
+			if ($email_chk == "true")
+				$email_chk	= "Y";
+			else
+				$email_chk	= "N";
 
-			if($tel2 == '') {
-				$tel = '';
+			if ($sms_chk == "true")
+				$sms_chk	= "Y";
+			else
+				$sms_chk	= "N";
+
+			if ($birthday > date("Y-m-d", strtotime("-14year")))
+			{
+				$flag = "E";
 			}else{
-				$tel = $tel1 . '-' . $tel2 . '-' . $tel3;
-			}
+				if ($mb_password == "")
+					$update_query = "UPDATE ".$_gl['member_info_table']." SET mb_name='".$mb_name."',mb_birth='".$birthday."',mb_phone='".$mb_phone."',mb_smsYN='".$sms_chk."',mb_eventYN='".$event_chk."',mb_emailYN='".$email_chk."',mb_update_date='".date("Y-m-d H:i:s")."' WHERE mb_email='".$_SESSION['ss_chon_email']."'";
+				else
+					$update_query = "UPDATE ".$_gl['member_info_table']." SET mb_password=MD5('".$mb_password."'),mb_name='".$mb_name."',mb_birth='".$birthday."',mb_phone='".$mb_phone."',mb_smsYN='".$sms_chk."',mb_eventYN='".$event_chk."',mb_emailYN='".$email_chk."',mb_update_date='".date("Y-m-d H:i:s")."' WHERE mb_email='".$_SESSION['ss_chon_email']."'";
+		
+				$update_result   = mysqli_query($my_db, $update_query);
 
-			$phone = $phone1 . '-' . $phone2 . '-' . $phone3;
-
-			if($birthY != '' && $birthM != '' && $birthD != '') {
-				if($birthM < 10 && strlen($birthM) < 2) {
-					$birthM = "/0".$birthM;
+				if($update_result) {
+					$flag = "Y";
 				}else{
-					$birthM = "/".$birthM;
+					$flag = "N";
 				}
-				if($birthD < 10 && strlen($birthD) < 2) {
-					$birthD = "/0".$birthD;
-				}else{
-					$birthD = "/".$birthD;
-				}
-			}
-
-			$birth = $birthY . $birthM . $birthD;
-
-
-
-			$update_query = "UPDATE ".$_gl['member_info_table']." SET mb_password=MD5('".$password."'),mb_name='".$username."',mb_birth='".$birth."',mb_address1='".$addr1."',mb_address2='".$addr2."',mb_zipcode='".$zipcode."',mb_telphone='".$tel."',mb_handphone='".$phone."',mb_smsYN='".$smsYN."',mb_email='".$email."',mb_emailYN='".$emailYN."',mb_update_date='".date("Y-m-d H:i:s")."' WHERE mb_id='".$user_id."'";
-			$update_result   = mysqli_query($my_db, $update_query);
-
-			if($update_result) {
-				$flag = "Y";
-			}else{
-				$flag = "N";
 			}
 			echo $flag;
 
 		break;
 
+		case "email_change" :
+			$change_email 	= $_REQUEST['change_email'];
+			$mb_email 		= $_REQUEST['mb_email'];
+			$mb_name 		= $_REQUEST['mb_name'];	
+
+			$dupli_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE 1 AND mb_email='".$change_email."'";
+			$dupli_result		= mysqli_query($my_db, $dupli_query);
+			$dupli_count 		= mysqli_num_rows($dupli_result);
+	
+			if ($dupli_count > 0)
+			{
+				$flag = "D";
+			}else{
+				// result - 메일 발송
+				if($insert_result) {
+					$mail_result = sendMail(
+						"kyhfan@naver.com",
+						"촌의감각",
+						"이메일 변경 인증 메일입니다.(서버업로드 후 적용)",
+						"이메일 변경 인증 메일입니다.",
+						"$change_email", "$mb_name");
+
+					$flag = "Y";
+				}else{
+					$flag = "N";
+				}
+
+			}
+
+		break;
+
 		case "sear_id":
-			$mb_name = $_REQUEST['mb_name'];
-			$mb_email = $_REQUEST['mb_email'];
+			$mb_name 	= $_REQUEST['mb_name'];
+			$mb_email 	= $_REQUEST['mb_email'];
 
 			$query		= "SELECT mb_id FROM ".$_gl['member_info_table']." WHERE mb_name='".$mb_name."' AND mb_email='".$mb_email."'";
 			$result		= mysqli_query($my_db, $query);

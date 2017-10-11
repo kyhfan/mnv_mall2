@@ -32,7 +32,7 @@
 					<p>개인정보관리책임자 : 김영훈 yh.kim@minivertising.kr</p>
 				</div>
 				<div>
-					<p>사업자등록번호 : 114-87-11622 <a href="#">[사업자 정보확인]</a></p>
+					<p>사업자등록번호 : 114-87-11622 <a href="http://www.ftc.go.kr/info/bizinfo/communicationView.jsp?apv_perm_no=2016321015330201907&area1=&area2=&currpage=1&searchKey=04&searchVal=1148711622&stdate=&enddate=" target="_blank">[사업자 정보확인]</a></p>
 				</div>
 				<div>
 					<p>통신판매업 : 제 2017-</p>
@@ -61,7 +61,7 @@
 			<div class="gnb-foot">
 				<ul>
 					<li class="home">
-						<a href="javascript:void(0)">
+						<a href="index.php">
 							<img src="./images/gnb_home.png" alt="홈으로 가기">
 						</a>
 					</li>
