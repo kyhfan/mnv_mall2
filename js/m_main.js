@@ -394,7 +394,7 @@ $(document).on("click", "#mb_login", function(){
 			{
 				location.href	= ref_url;
 			}else{
-				alert('다시 시도해 주세요.');
+				alert('가입되지 않은 이메일 혹은 틀린 비밀번호 입니다. 확인 후 다시 로그인해 주세요.');
 				location.reload();
 			}
 		}
