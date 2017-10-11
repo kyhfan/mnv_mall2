@@ -389,6 +389,7 @@ $(document).on("click", "#mb_login", function(){
 			"mb_password"	: mb_password
 		},
 		success: function(response){
+			console.log(response);
 			if (response.match("Y") == "Y")
 			{
 				location.href	= ref_url;
