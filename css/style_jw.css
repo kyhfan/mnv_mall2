@@ -9,6 +9,7 @@
 		-webkit-text-size-adjust: 100%;
 		-webkit-font-smoothing: antialiased;
 		font-size: 10px;
+		color: #333333;
 	}
 	html, body {
 		min-width: 640px;
@@ -73,12 +74,14 @@
 		padding-top: 110px;
 	}
 	#container.main,
-	#container.about-chon {
+	#container.about-chon,
+	#container.promotion-detail {
 		padding-top: 0;
 	}
-	/* public module */
 	.clearfix:after {
 		visibility: hidden;
+		display: inline-block;
+		font-weight: 400;
 		display: block;
 		font-size: 0;
 		content: " ";
@@ -1018,7 +1021,8 @@
 	.product-list .brand-banner {
 		padding: 50px 0 136px;
 	}
-	.product-list .grid .list-row {
+	.product-list .grid .list-row,
+	.promotion-detail .grid .list-row {
 		width: 90.7%;
 		margin: 0 auto;
 	}
@@ -1179,6 +1183,80 @@
 		height: 58px;
 	}
 	/* promotion-list */
+	/* promotion-detail */
+	.promotion-detail .title-block {
+		text-align: center;
+		margin: 103px 0 136px;
+	}
+	.promotion-detail .title-block h4 {
+		display: inline-block;
+		font-size: 28px;
+		font-weight: 400;
+		position: relative;
+	}
+	.promotion-detail .title-block h4:before {
+		content: "";
+		background: #666666;
+		width: 1px;
+		height: 190px;
+		position: absolute;
+		left: -14px;
+		top: -157px;
+	}
+	.promotion-detail .title-block h4 em {
+		font-weight: 700;
+	}
+	.promotion-detail .title-block span {
+		padding-top: 21px;
+		display: block;
+		font-size: 14px;
+		color: #666666;
+	}
+	.promotion-detail .intro-block {
+		margin-bottom: 125px;
+	}
+	.promotion-detail .grid .list-row .col {
+		padding-bottom: 124px;
+	}
+	.promotion-detail .pr-list .title {
+		margin-bottom: 61px;
+		text-align: center;
+	}
+	.promotion-detail .pr-list .title h3 {
+		display: inline-block;
+		position: relative;
+		font-size: 20px;
+	}
+	.promotion-detail .pr-list .title h3:after {
+		content: "";
+		position: absolute;
+		bottom: -11px;
+		width: 108%;
+		height: 1px;
+		background: #343434;
+		left: -4%;
+	}
+	.promotion-detail .share-block {
+		text-align: center;
+		font-size: 0;
+		margin-bottom: 119px;
+	}
+	.share-block a {
+		display: inline-block;
+		font-size: 16px;
+		width: 55px;
+		height: 54px;
+	}
+	.share-block a:first-child {
+		margin-right: 18px;
+	}
+	.share-block .kt {
+		background: url(../images/share_kt.png) center center / cover no-repeat;
+	}
+	.share-block .fb {
+		background: url(../images/share_fb.png) center center / cover no-repeat;
+	}
+	/* promotion-detail */
 
 	/* mypage */
 	.mypage .order-status {
