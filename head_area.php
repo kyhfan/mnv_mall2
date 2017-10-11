@@ -44,7 +44,7 @@
 						</div>
 						<div class="cart-btn">
 							<a href="#">
-								<span>장바구니 (<em> 0 </em>)</span>
+								<span>장바구니 (<em class="nft"> 0 </em>)</span>
 							</a>
 						</div>
 					</div>
@@ -69,7 +69,7 @@
 									</li>
 <?
     }
-?>                                    
+?>
 								</ul>
 							</div>
 							<div class="list theme">
