@@ -90,7 +90,7 @@ print_r($_SESSION);
 					</div>
 					<div class="area text">
 						<span>만 14세 이상 가입 가능합니다.</span>
-						<a href="javascript:void(0)">
+						<a href="javascript:void(0)" onclick="open_pop('protect_div')">
 							<span>내용보기</span>
 						</a>
 					</div>
@@ -174,6 +174,7 @@ print_r($_SESSION);
 			</div>
 		</div>
 <?
+	include_once "./popup_div.php";
 	include_once "./footer.php";	
 ?>		
 	</div>
@@ -203,6 +204,15 @@ print_r($_SESSION);
 		});
 		$(document).ready(function() {
 			// swiper initialize
+			$("#cboxTopLeft").hide();
+			$("#cboxTopRight").hide();
+			$("#cboxBottomLeft").hide();
+			$("#cboxBottomRight").hide();
+			$("#cboxMiddleLeft").hide();
+			$("#cboxMiddleRight").hide();
+			$("#cboxTopCenter").hide();
+			$("#cboxBottomCenter").hide();
+
 			var chonSwiper = new Swiper ('.swiper-container', {
 				// Optional parameters
 				direction: 'horizontal',

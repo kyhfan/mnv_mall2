@@ -1,8 +1,8 @@
-<div id="footer">
+		<div id="footer">
 			<div class="nav">
 				<ul class="clearfix">
 					<li>
-						<a href="#">
+						<a href="about_chon.php">
 							<span>촌의감각</span>
 						</a>
 					</li>
@@ -71,7 +71,7 @@
 						</a>
 					</li>
 					<li class="mypage">
-						<a href="javascript:void(0)">
+						<a href="mypage.php">
 							<img src="./images/gnb_mypage.png" alt="마이페이지">
 						</a>
 					</li>

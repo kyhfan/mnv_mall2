@@ -5,6 +5,47 @@
 */
 Kakao.init('dee0f864fcd7296e4dc9d6196634d56a');
 
+function open_pop(param)
+{
+	$.colorbox({
+		innerWidth:"100%",
+		innerHeight: $("#"+param).height(),
+		initialWidth:"95%",
+		initialHeight: $("#"+param).height(),
+		inline:true,
+		opacity:"0.9",
+		scrolling:true,
+		reposition: false,
+		closeButton:false,
+		preloading:true,
+		overlayClose: false,
+		open:true,
+		speed:300,
+		transition: "fade",
+		fadeOut: 300,
+		href:"#"+param,
+		onComplete: function(){
+			$("#cboxContent").css("background","none");
+			$("#cboxContent").css("z-index","4000");
+			$('#cboxWrapper').css('backgroundColor', "");
+			$('#cboxWrapper').css("z-index","4000");
+			$('.popup_wrap').css("z-index","4000");
+			$("#colorbox").css("z-index","4000");
+			$('#cboxLoadedContent').css('backgroundColor', "");
+			$('#cboxLoadedContent').css("z-index","4000");
+			$("#colorbox").width($("body").width());
+			$("#cboxWrapper").width($("body").width());
+			$("#colorbox").css("opacity", 1);
+		},
+		onOpen: function(){
+			$("#colorbox").css("opacity", 0);
+		},
+		onClosed: function(){
+			$("#cboxContent").css("background","#fff");
+		}
+	});
+}
+
 // 상품 리스트 소팅 클릭
 $(document).on("click", ".sorting-area > a", function(){
 	if ($(this).hasClass("current") === false)
@@ -254,7 +295,7 @@ $(document).on("click", "#mb_login", function(){
 		success: function(response){
 			if (response.match("Y") == "Y")
 			{
-				alert(response);
+				location.href	= ref_url;
 			}else{
 				alert('다시 시도해 주세요.');
 				location.reload();
