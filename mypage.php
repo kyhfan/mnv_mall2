@@ -95,11 +95,18 @@
 							<span>1대1 문의</span>
 						</a>
 					</li>
+<?
+	if ($_SESSION['ss_chon_way'] == "chon")
+	{
+?>					
 					<li>
 						<a href="member_modify.php">
 							<span>회원정보 수정</span>
 						</a>
 					</li>
+<?
+	}
+?>					
 				</ul>
 			</div>
 		</div>
