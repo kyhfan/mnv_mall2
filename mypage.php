@@ -1,6 +1,6 @@
 <?
 	include_once "./header.php";
-
+print_r($_SESSION);
 	if (!$_SESSION['ss_chon_email'])
 		echo "<script>location.href='member_login.php?ref_url=mypage.php';</script>";
 ?>
