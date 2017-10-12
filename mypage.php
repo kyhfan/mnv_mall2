@@ -91,7 +91,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="javascript:void(0)">
+						<a href="oto_list.php">
 							<span>1대1 문의</span>
 						</a>
 					</li>
