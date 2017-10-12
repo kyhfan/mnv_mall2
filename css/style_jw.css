@@ -28,6 +28,11 @@
 	img {
 		display: block;
 	}
+	select {
+		border-radius: 0;
+		appearance: none;
+		-webkit-appearance: none;
+	}
 	h1, h2, h3, h4, h5, h6 {
 		margin: 0;
 		padding: 0;
@@ -941,23 +946,23 @@
 		margin: 8px auto 45px;
 		width: 94.6%;
 	}
-	.product-detail .etc-block .list .action-group .pagination {
+	.action-group .pagination {
 		float: left;
 	}
-	.product-detail .etc-block .list .action-group .pagination .wrapper a {
+	.action-group .pagination .wrapper a {
 		display: inline-block;
 		padding: 15px 20px;
 	}
-	.product-detail .etc-block .list .action-group .pagination .wrapper a:first-child {
+	.action-group .pagination .wrapper a:first-child {
 		padding-left: 0;
 	}
-	.product-detail .etc-block .list .action-group .pagination .wrapper a span {
+	.action-group .pagination .wrapper a span {
 		font-size: 12px;
 	}
-	.product-detail .etc-block .list .action-group .button {
+	.action-group .button {
 		float: right;
 	}
-	.product-detail .etc-block .list .action-group .button span {
+	.action-group .button span {
 		font-size: 16px;
 		color: #ffffff;
 		display: inline-block;
@@ -1550,8 +1555,83 @@
 		padding-bottom: 37px;
 	}
 	/* order-detail */
-	/* mypage */
+	/* cart */
+	.cart .empty {
+		font-size: 25px;
+		padding: 220px 0 330px;
+		color: #777777;
+		text-align: center;
+		opacity: 0.57;
+	}
+	/* cart */
 
+	/* oto-list */
+	.sorting {
+		width: 90.7%;
+		margin: 76px auto 32px;
+		position: relative;
+	}
+	.sorting .q-cate {
+		display: block;
+		font-size: 20px;
+		padding: 18px 0 18px 27px;
+		width: 100%;
+		border: 1px solid #809255;
+		background: #ffffff;
+	}
+	.sorting::after {
+		content: ">";
+		position: absolute;
+		font-size: 20px;
+		right: 22px;
+		top: 50%;
+		margin-top: -10px;
+		transform: rotate(90deg);
+	}
+	.board-list table {
+		width: 100%;
+		text-align: center;
+		border-collapse: collapse;
+		border: 0;
+		border-spacing: 0;
+	}
+	.oto-list .board-list table thead {
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+		font-size: 21px;
+	}
+	.oto-list .board-list table thead th {
+		padding: 15px 0;
+	}
+	.oto-list .board-list table tbody {
+		font-size: 18px;
+	}
+	.oto-list .board-list table tbody tr {
+		border-bottom: 1px solid #dcdcdc;
+		position: relative;
+	}
+	.oto-list .board-list table tbody tr td {
+		padding: 27px 0;
+		line-height: 1.4;
+	}
+	.oto-list .board-list table tbody tr td:nth-child(2) {
+		width: 48.6%;
+	}
+	.oto-list .board-list {
+		width: 96%;
+		margin: 32px auto 34px;
+	}
+	.oto-list .action-group {
+		padding: 0 29px 0 55px;
+		margin-bottom: 93px;
+	}
+	.oto-list .action-group .wrapper {
+		padding-top: 10px;
+	}
+	.oto-list .action-group .button span {
+		padding: 17px 50px;
+	}
+	/* oto-list */
 	/* member */
 	/* login & find */
 	.login .input-group {
