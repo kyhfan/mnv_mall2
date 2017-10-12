@@ -1603,6 +1603,51 @@ function img_submit_special(idx)
 	}); // end ajaxSubmit
 }
 
+function img_submit_promotion1(idx)
+{
+	var frm = $('#promotion_image1_frm');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=promotion1&idx='+idx,
+		data: stringData,
+		success:function(msg){
+			alert('PROMOTION이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_submit_promotion2(idx)
+{
+	var frm = $('#promotion_image2_frm');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=promotion2&idx='+idx,
+		data: stringData,
+		success:function(msg){
+			alert('PROMOTION이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
+function img_submit_promotion3(idx)
+{
+	var frm = $('#promotion_image3_frm');
+	var stringData = frm.serialize();
+	frm.ajaxSubmit({
+		type: 'post',
+		url: '../../lib/filer/php/upload.php?ig=promotion3&idx='+idx,
+		data: stringData,
+		success:function(msg){
+			alert('PROMOTION이 등록 되었습니다');
+			self.location.reload();
+		}
+	}); // end ajaxSubmit
+}
+
 // *********************** 재고관리 *********************** //
 
 // 관리자 상품 관리 > 재고관리 > 재고 더블클릭
@@ -2522,9 +2567,38 @@ $(document).on("click", "#list_special_btn", function(){
 	$("#list_special").show();
 });
 
-// *********************** 카테고리 베스트 배너 설정 *********************** //
+// 전체 쿠폰 리스트 생성
+function show_special_list(id)
+{
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "admin_exec.php",
+		data:{
+			"exec"	: "show_special_list",
+			"target"	: id
+		},
+		success: function(response){
+			$("#"+id).html(response);
+		}
+	});
+}
 
-// 카테고리 베스트 배너 정보 insert
+// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 추가 버튼 클릭
+$(document).on("click", "#add_special_btn", function(){
+	$("#list_special").hide();
+	$("#add_special").show();
+});
+
+// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 목록 버튼 클릭
+$(document).on("click", "#list_special_btn", function(){
+	$("#add_special").hide();
+	$("#list_special").show();
+});
+
+// *********************** SPECIAL 설정 *********************** //
+
+// SPECIAL 정보 insert
 $(document).on("click", "#submit_btn22", function(){
 	var special_name				= $("#special_name").val();
 	var special_desc				= $("#special_desc").val();
@@ -2574,31 +2648,85 @@ $(document).on("click", "#submit_btn22", function(){
 	});
 });
 
-// 전체 쿠폰 리스트 생성
-function show_special_list(id)
-{
+// *********************** PROMOTION 설정 *********************** //
+
+// PROMOTION 정보 insert
+$(document).on("click", "#submit_btn23", function(){
+	var promotion_name				= $("#promotion_name").val();
+	var promotion_category			= $("#promotion_category").val();
+	var promotion_startdate			= $("#promotion_startdate").val();
+	var promotion_enddate			= $("#promotion_enddate").val();
+	var promotion_goods				= $("#promotion_goods").val();
+	var promotion_showYN			= $("#promotion_showYN").val();
+	var inputFile1  				= $("#filer_input1").val();
+	var inputFile2  				= $("#filer_input2").val();
+	var inputFile3  				= $("#filer_input3").val();
+
+
+
+	if (promotion_name == "")
+	{
+		alert("SPECIAL 타이틀을 넣어주세요.");
+		$("#special_name").focus();
+		return false;
+	}
+	
+	if (promotion_startdate == "")
+	{
+		alert("SPECIAL 설명을 넣어주세요.");
+		$("#special_desc").focus();
+		return false;
+	}
+
+	if (promotion_enddate == "")
+	{
+		alert("SPECIAL 설명을 넣어주세요.");
+		$("#special_desc").focus();
+		return false;
+	}
+
+	if (inputFile1 == "") {
+		alert("프로모션 리스트 이미지를 넣어주세요.");
+		return false;
+	}
+
+	if (inputFile2 == "") {
+		alert("프로모션 상세 메인 이미지를 넣어주세요.");
+		return false;
+	}
+
+	if (inputFile3 == "") {
+		alert("프로모션 상세 내용 이미지를 넣어주세요.");
+		return false;
+	}
+
 	$.ajax({
 		type   : "POST",
 		async  : false,
 		url    : "admin_exec.php",
 		data:{
-			"exec"	: "show_special_list",
-			"target"	: id
+			"exec"						: "insert_promotion_info",
+			"promotion_name"			: promotion_name,
+			"promotion_category"		: promotion_category,
+			"promotion_startdate"		: promotion_startdate,
+			"promotion_enddate"			: promotion_enddate,
+			"promotion_showYN"			: promotion_showYN,
+			"promotion_goods"			: promotion_goods
 		},
 		success: function(response){
-			$("#"+id).html(response);
+			alert(response);
+			// return false;
+			if (response == "0")
+			{
+				alert("다시 시도해 주세요.");
+				location.reload();
+			}else{
+				alert("PROMOTION 정보가 입력 되었습니다.");
+				img_submit_promotion1(response);
+				img_submit_promotion2(response);
+				img_submit_promotion3(response);
+				location.reload();
+			}
 		}
 	});
-}
-
-// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 추가 버튼 클릭
-$(document).on("click", "#add_special_btn", function(){
-	$("#list_special").hide();
-	$("#add_special").show();
-});
-
-// 쇼핑몰 관리 > 쿠폰 관리 > 쿠폰 목록 버튼 클릭
-$(document).on("click", "#list_special_btn", function(){
-	$("#add_special").hide();
-	$("#list_special").show();
 });

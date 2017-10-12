@@ -13,98 +13,42 @@
 				</h3>
 			</div>
 			<div class="list-wrapper">
+<?
+	$promotion_query		= "SELECT * FROM ".$_gl['promotion_info_table']." WHERE 1 AND promotion_showYN='Y' ORDER BY idx DESC";
+	$promotion_result		= mysqli_query($my_db, $promotion_query);
+
+	while ($promotion_data = mysqli_fetch_array($promotion_result))
+	{
+		$promotion_img1 	= str_replace("../../../","./",$promotion_data['promotion_img_url1']);
+		$start_date_arr		= explode("-",$promotion_data["promotion_startdate"]);		
+		$end_date_arr		= explode("-",$promotion_data["promotion_enddate"]);		
+?>				
 				<div class="block">
 					<a href="#">
 						<div class="img">
-							<img src="./images/promotion_list_img_01.png">
+							<img src="<?=$promotion_img1?>">
 						</div>
 						<div class="desc clearfix">
 							<div class="category">
-								<span>sale</span>
+								<span><?=$promotion_data["promotion_category"]?></span>
 							</div>
 							<div class="txt">
 								<div class="title">
 									<h5>
-										지금 필요한 그릇
+										<?=$promotion_data["promotion_name"]?>
 									</h5>
 								</div>
 								<div class="date">
-									<span>2017 | 09 | 11 - 2017 | 09 | 30</span>
+									<span><?=$start_date_arr[0]?> | <?=$start_date_arr[1]?> | <?=$start_date_arr[2]?> - <?=$end_date_arr[0]?> | <?=$end_date_arr[1]?> | <?=$end_date_arr[2]?></span>
 								</div>
 							</div>
-							<div class="btn-more"></div>
+							<div class="btn-more" data-idx="<?=$promotion_data["idx"]?>"></div>
 						</div>
 					</a>
 				</div>
-				<div class="block">
-					<a href="#">
-						<div class="img">
-							<img src="./images/promotion_list_img_02.png">
-						</div>
-						<div class="desc clearfix">
-							<div class="category">
-								<span>collection</span>
-							</div>
-							<div class="txt">
-								<div class="title">
-									<h5>
-										제주도의 그릇
-									</h5>
-								</div>
-								<div class="date">
-									<span>2017 | 09 | 11 - 2017 | 09 | 30</span>
-								</div>
-							</div>
-							<div class="btn-more"></div>
-						</div>
-					</a>
-				</div>
-				<div class="block">
-					<a href="#">
-						<div class="img">
-							<img src="./images/promotion_list_img_03.png">
-						</div>
-						<div class="desc clearfix">
-							<div class="category">
-								<span>collection</span>
-							</div>
-							<div class="txt">
-								<div class="title">
-									<h5>
-										제주도의 그릇
-									</h5>
-								</div>
-								<div class="date">
-									<span>2017 | 09 | 11 - 2017 | 09 | 30</span>
-								</div>
-							</div>
-							<div class="btn-more"></div>
-						</div>
-					</a>
-				</div>
-				<div class="block">
-					<a href="#">
-						<div class="img">
-							<img src="./images/promotion_list_img_04.png">
-						</div>
-						<div class="desc clearfix">
-							<div class="category">
-								<span>collection</span>
-							</div>
-							<div class="txt">
-								<div class="title">
-									<h5>
-										제주도의 그릇
-									</h5>
-								</div>
-								<div class="date">
-									<span>2017 | 09 | 11 - 2017 | 09 | 30</span>
-								</div>
-							</div>
-							<div class="btn-more"></div>
-						</div>
-					</a>
-				</div>
+<?
+	}
+?>				
 			</div>
 		</div>
 <?

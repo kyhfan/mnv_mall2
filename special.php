@@ -14,7 +14,6 @@
 			</div>
 			<div class="list-wrapper">
 <?
-	// 할인상품은 discount_price > 0 경우
 	$special_query		= "SELECT * FROM ".$_gl['special_info_table']." WHERE 1 ORDER BY idx ASC";
 	$special_result		= mysqli_query($my_db, $special_query);
 	$i = 1;

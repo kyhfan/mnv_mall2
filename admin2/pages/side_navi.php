@@ -28,7 +28,10 @@
           <li>
             <a href="special.php">스페셜 관리</a>
           </li>
-      </ul>
+          <li>
+            <a href="promotion.php">프로모션 관리</a>
+          </li>
+        </ul>
         <!-- /.nav-second-level -->
       </li>
       <li>
@@ -55,10 +58,10 @@
           <li>
             <a href="new_goods_manage.php">신 상품 관리</a>
           </li>
-          <li>
-			  <a href="plan_goods_manage.php">스페셜 상품 관리</a>
-		  </li>
-	  </ul>
+          <!-- <li>
+            <a href="plan_goods_manage.php">스페셜 상품 관리</a>
+          </li> -->
+        </ul>
         <!-- /.nav-second-level -->
       </li>
       <li>

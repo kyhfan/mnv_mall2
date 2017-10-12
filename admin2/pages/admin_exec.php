@@ -1251,6 +1251,24 @@
 			echo $flag;
 		break;
 			
+		case "insert_promotion_info" :
+			$promotion_name			= $_REQUEST['promotion_name'];
+			$promotion_category		= $_REQUEST['promotion_category'];
+			$promotion_startdate	= $_REQUEST['promotion_startdate'];
+			$promotion_enddate		= $_REQUEST['promotion_enddate'];
+			$promotion_goods		= $_REQUEST['promotion_goods'];
+			$promotion_showYN		= $_REQUEST['promotion_showYN'];
+					
+			$promotion_query	= "INSERT INTO ".$_gl['promotion_info_table']."(promotion_name,promotion_category,promotion_startdate,promotion_enddate,promotion_goods,promotion_showYN,promotion_regdate) values('".$promotion_name."','".$promotion_category."','".$promotion_startdate."','".$promotion_enddate."','".$promotion_goods."','".$promotion_showYN."','".date("Y-m-d H:i:s")."')";
+			$promotion_result	= mysqli_query($my_db, $promotion_query);
+			$id_num				= mysqli_insert_id($my_db);
+			if($promotion_result)
+				$flag = $id_num;
+			else
+				$flag = "0";
+			echo $flag;
+		break;
+			
 		case "update_banner_info" :
 			$banner_idx				= $_REQUEST['banner_idx'];
 			$banner_name			= $_REQUEST['banner_name'];

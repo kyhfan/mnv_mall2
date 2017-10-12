@@ -90,6 +90,12 @@ $(document).on("click", ".loveit > a", function(){
 	});
 });
 
+// 상품 하트(위시리스트 추가) 클릭
+$(document).on("click", ".btn-more", function(){
+	location.href = "promotion_detail.php?idx=" + $(this).attr("data-idx");
+});
+
+
 // 회원가입 전체동의 체크 선택
 $(document).on("click", "#all_chk", function(){
 	if ($("#all_chk").prop("checked") == false)
