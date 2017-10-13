@@ -1,5 +1,9 @@
 <?
 	include_once "./header.php";
+
+	if (!$_SESSION['ss_chon_email'])
+		echo "<script>location.href='index.php';</script>";
+
 ?>
 <body>
 	<div id="chon-app">
@@ -86,7 +90,7 @@
 						</div>
 					</div>
 					<div class="button">
-						<a href="javascript:void(0)">
+						<a href="oto_write.php">
 							<span>글쓰기</span>
 						</a>
 					</div>

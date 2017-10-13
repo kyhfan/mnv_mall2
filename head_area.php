@@ -24,35 +24,30 @@
 				</div>
 				<div class="top-block">
 					<div class="wrapper">
-						<div class="verify-btn logoff">
 <?
 	if (!$_SESSION['ss_chon_email'])
 	{
 ?>						
-							<a href="member_login.php?ref_url=<?=$_SERVER['REQUEST_URI']?>">
-								<span>로그인</span>
-							</a>
+						<a href="member_login.php?ref_url=<?=$_SERVER['REQUEST_URI']?>">
+							<span>LOG IN</span>
+						</a>
+						<a href="javascript:void(0)">
+							<span>JOIN</span>
+						</a>
 <?
 	}else{
 ?>		
-							<a href="logout.php">
-								<span>로그아웃</span>
-							</a>
+						<a href="logout.php">
+							<span>LOG OUT</span>
+						</a>
 <?
 	}
 ?>					
-						</div>
-						<div class="cart-btn">
-							<a href="#">
-								<span>장바구니 (<em class="nft"> 0 </em>)</span>
-							</a>
-						</div>
 					</div>
 				</div>
 				<div class="bot-block">
 					<div class="wrapper">
-						<!-- <div class="child"> -->
-							<h4>CATEGORY</h4>
+						<div class="child">
 							<div class="list cate">
 								<ul>
 <?
@@ -91,7 +86,7 @@
 									</li>
 								</ul>
 							</div>
-						<!-- </div> -->
+						</div>
 					</div>
 					<div class="banner-block">
 						<a href="#">
