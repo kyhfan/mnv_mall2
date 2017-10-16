@@ -2246,6 +2246,15 @@
 		height: 100%;
 		padding: 40px 42px;
 	}
+	.board-frame .body .answer {
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.board-frame .body .answer .inner {
+		padding: 24px 46px;
+		background: #f7f7f7;
+		font-size: 18px;
+	}
 	.board-frame .foot .img-upload {
 		text-align: right;
 		border-bottom: 1px solid #dcdcdc;
