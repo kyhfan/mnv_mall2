@@ -2738,6 +2738,7 @@
 	}
 	.popup > .wrapper {
 		position: relative;
+		background: #ffffff;
 	}
 	.popup .close-btn {
 		position: absolute;
@@ -2745,7 +2746,6 @@
 		right: 56px;
 	}
 	.popup.protect .wrapper {
-		background: #ffffff;
 		/*width: 94.2%;
 		margin: 0 auto;*/
 	}
@@ -2775,5 +2775,43 @@
 	}
 	.popup.protect .text span:first-child {
 		width: 4%;
+	}
+	.popup.putin-ok {
+		width: 86.2%;
+	}
+	.popup.putin-ok .close-btn {
+		top: 27px;
+		right: 27px
+	}
+	.putin-ok .wrapper .inner {
+		padding: 77px 32px 40px;
+		text-align: center;
+	}
+	.putin-ok .wrapper .inner .comp-icon + span {
+		display: inline-block;
+		font-size: 22px;
+		text-decoration: underline;
+		margin: 28px 0 56px;
+	}
+	.putin-ok .wrapper .inner .buttons {
+		font-size: 0;
+	}
+	.putin-ok .wrapper .inner .buttons a {
+		display: inline-block;
+		width: 49.5%;
+	}
+	.putin-ok .wrapper .inner .buttons a:first-child {
+		margin-right: 1%;
+	}
+	.putin-ok .wrapper .inner .buttons a:first-child span {
+		background: rgba(128, 146, 85, 0.7);
+	}
+	.putin-ok .wrapper .inner .buttons a span {
+		display: inline-block;
+		font-size: 26px;
+		padding: 26px 0;
+		background: #809255;
+		color: #ffffff;
+		width: 100%;
 	}
 	/* popup */
