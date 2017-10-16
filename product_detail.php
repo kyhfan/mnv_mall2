@@ -106,102 +106,177 @@
 				</div>
 				<div class="divide-line"></div>
 				<div class="wrapper editor">
-					<!-- <p class="txt-template ft-18 cl-333 lh-32" style="padding-bottom: 68px;">
-						몰리해치의 `Heritage`컬렉션 디자인은 18세기 유럽의 오래된 찻잔에서<br>
-						영감을 얻었습니다. 이 라인은 전통적인 느낌을 풍기지만 현대 라이프 스타일에도<br>
-						어울릴 수 있도록 디자인 되었습니다. 그녀만의 독특한 디자인으로 제품의 모든<br>
-						부분과 접시 뒷면, 머그 밑바닥까지 데코레이션이 새겨져있습니다.
-					</p>
-					<img src="./images/product_detail_img_01.png" style="padding-bottom:49px;">
-					<img src="./images/product_detail_img_02.png" style="padding-bottom:49px;">
-					<img src="./images/product_detail_img_03.png" style="padding-bottom:49px;"> -->
 					<?=$goods_data["m_goods_big_desc"]?>
 				</div>
 			</div>
 			<div class="etc-block">
-				<div class="list review">
+				<div class="list board">
 					<a href="javascript:void(0)" class="toggle">
-						<h4>REVIEW</h4>
+						<div>
+							<h4>REVIEW</h4>
+							<span>(0)</span>
+						</div>
 					</a>
-					<ul>
-						<li class="row">
-							<div class="head">
-								<div class="tt">
-									<p>빠른 배송으로 딱 필요할때 사용할수 있어 더욱 만족스럽네요^^</p>
+					<div class="group-switch">
+						<ul>
+							<li class="row">
+								<a href="javascript:void(0)">
+									<div class="head">
+										<div class="tt">
+											<p>빠른 배송으로 딱 필요할때 사용할수 있어 더욱 만족스럽네요^^</p>
+										</div>
+										<div class="other">
+											<span>2017.08.22</span>
+											<span>*duv9**</span>
+										</div>
+									</div>
+								</a>
+								<div class="content clearfix">
+									<div class="img">
+										<img src="./images/review_img.png">
+									</div>
+									<div class="txt">
+										<p>
+											계란후라이를 넣었더니 이렇게 예쁠수가!! 너무 맘에 듭니다~~
+										</p>
+									</div>
 								</div>
-								<div class="other">
-									<span>2017.08.22</span>
-									<span>*duv9**</span>
+							</li>
+							<li class="row">
+								<a href="javascript:void(0)">
+									<div class="head">
+										<div class="tt">
+											<p>제품이 아주 예쁘고 맘에 꼭 들어용~~!!!</p>
+											<!-- 이미지 업로드 했을 시 아이콘 추가 -->
+										</div>
+										<div class="other">
+											<span>2017.08.22</span>
+											<span>*suwq**</span>
+										</div>
+									</div>
+								</a>
+								<div class="content clearfix">
+									<div class="img">
+										<img src="./images/review_img.png">
+									</div>
+									<div class="txt">
+										<p>
+											계란후라이를 넣었더니 이렇게 예쁠수가!! 너무 맘에 듭니다~~
+										</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="action-group clearfix">
+							<div class="pagination">
+								<div class="wrapper">
+									<a href="javascript:void(0)">
+										<span>1</span>
+									</a>
+									<a href="javascript:void(0)">
+										<span>2</span>
+									</a>
+									<a href="javascript:void(0)">
+										<span>></span>
+									</a>
 								</div>
 							</div>
-							<div class="content"></div>
-						</li>
-						<li class="row">
-							<div class="head">
-								<div class="tt">
-									<p>제품이 아주 예쁘고 맘에 꼭 들어용~~!!!</p>
-								</div>
-								<div class="other">
-									<span>2017.08.22</span>
-									<span>*suwq**</span>
-								</div>
+							<div class="button">
+								<a href="javascript:void(0)">
+									<span>후기작성</span>
+								</a>
 							</div>
-							<div class="content"></div>
-						</li>
-					</ul>
+						</div>
+					</div>
 				</div>
-				<div class="list faq">
+				<div class="list board">
 					<a href="javascript:void(0)" class="toggle">
-						<h4>FAQ</h4>
+						<div>
+							<h4>Q&A</h4>
+							<span>(0)</span>
+						</div>
 					</a>
-					<ul>
-						<li class="row">
-							<p>
-								<span>Q.</span>
-								<span>교환하고 싶어요</span>
-							</p>
-						</li>
-						<li class="row">
-							<p>
-								<span>A.</span>
-								<span>3일이내에 연락주세요</span>
-							</p>
-						</li>
-					</ul>
+					<div class="group-switch">
+						<ul>
+							<li class="row">
+								<a href="javascript:void(0)">
+									<div class="head">
+										<div class="tt">
+											<p>배송문의</p>
+											<!-- 비밀글 자물쇠 아이콘 추가 -->
+										</div>
+										<div class="other">
+											<span>2017.08.22</span>
+											<span>*suwq**</span>
+										</div>
+									</div>
+								</a>
+								<div class="content"></div>
+							</li>
+							<li class="row">
+								<a href="javascript:void(0)">
+									<div class="head">
+										<div class="tt">
+											<p>상품문의</p>
+											<!-- 비밀글 자물쇠 아이콘 추가 -->
+										</div>
+										<div class="other">
+											<span>2017.08.22</span>
+											<span>*suwq**</span>
+										</div>
+									</div>
+								</a>
+								<div class="content"></div>
+							</li>
+						</ul>
+						<div class="action-group clearfix">
+							<div class="pagination">
+								<div class="wrapper">
+									<a href="javascript:void(0)">
+										<span>1</span>
+									</a>
+									<a href="javascript:void(0)">
+										<span>2</span>
+									</a>
+									<a href="javascript:void(0)">
+										<span>></span>
+									</a>
+								</div>
+							</div>
+							<div class="button">
+								<a href="javascript:void(0)">
+									<span>문의작성</span>
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="list guide">
 					<a href="javascript:void(0)" class="toggle">
-						<h4>배송정보 / 교환안내</h4>
+						<div>
+							<h4>배송정보 / 교환안내</h4>
+						</div>
 					</a>
-					<ul>
-						<li class="row">
-							<p>1. 교환의 경우 제품을 받으신 후 3일 이내에 연락 주시기 바랍니다.</p>
-						</li>
-						<li class="row">
-							<p>2. 제품이 파손시 교환이 어려울 수도 있습니다.</p>
-						</li>
-						<li class="row">
-							<p>3. 제품이 잘못 갔을 시 배송비 전액을 부담해 드립니다.</p>
-						</li>
-					</ul>
+					<div class="group-switch">
+						<ul>
+							<li class="row">
+								<p>1. 교환의 경우 제품을 받으신 후 3일 이내에 연락 주시기 바랍니다.</p>
+							</li>
+							<li class="row">
+								<p>2. 제품이 파손시 교환이 어려울 수도 있습니다.</p>
+							</li>
+							<li class="row">
+								<p>3. 제품이 잘못 갔을 시 배송비 전액을 부담해 드립니다.</p>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="buy-layer">
 				<div class="inner">
-					<div class="loveit">
-						<a href="javascript:void(0)" data-goods="<?=$goods_code?>">
-<?
-	if ($wish_flag == "Y")
-	{
-?>						
-							<img src="./images/heart_fill.png" alt="찜 하기">
-<?
-	}else{
-?>		
-							<img src="./images/heart.png" alt="찜 하기">
-<?
-	}
-?>					
+					<div class="put-in">
+						<a href="javascript:void(0)">
+							<img src="./images/put_in_cart.png" alt="장바구니에 넣기">
 						</a>
 					</div>
 					<div class="buy">
