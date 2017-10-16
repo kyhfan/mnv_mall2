@@ -1,11 +1,20 @@
 <?
 	include_once "./header.php";
 
+	$idx	= $_REQUEST["idx"];
 	if (!$_SESSION['ss_chon_email'])
 		echo "<script>location.href='index.php';</script>";
 
+	$oto_info 	= select_oto_info($idx);
+
+	if ($oto_info["group_id"] == "null")
+		$status_txt	= "대기중";
+	else
+		$status_txt	= "답변완료";
+
 ?>
 <body>
+	<input type="hidden" id="oto_idx" value="<?=$oto_info["idx"]?>">
 	<div id="chon-app">
 <?
 	include_once "./head_area.php";
@@ -20,57 +29,48 @@
 						<div class="row">
 							<div class="col">
 								<div class="guide">
-									<span>질문구분</span>
+									<span>제목</span>
 								</div>
 							</div>
 							<div class="col">
-								<div class="sorting">
-									<select name="q-cate" class="q-cate" id="oto_question_type">
-										<option value="">선택하세요</option>
-										<option value="product">상품문의</option>
-										<option value="pay">결제문의</option>
-										<option value="cancel">주문취소 신청</option>
-										<option value="saveNcoupon">적립금/쿠폰문의</option>
-										<option value="shipping">배송문의</option>
-										<option value="site">사이트이용</option>
-										<option value="other">기타</option>
-									</select>
-								</div>
+								<span><?=$oto_info["oto_title"]?></span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col">
 								<div class="guide">
-									<span>제목</span>
+									<span>질문구분</span>
 								</div>
 							</div>
 							<div class="col">
-								<div class="input">
-									<input type="text" placeholder="입력하세요" id="oto_title">
+								<span><?=$_gl['oto'][$oto_info["oto_question_type"]]?></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="guide">
+									<span>답변</span>
 								</div>
+							</div>
+							<div class="col">
+								<span><?=$status_txt?></span>
 							</div>
 						</div>
 					</div>
 					<div class="body">
 						<div class="content">
-							<textarea name="name" id="oto_contents" placeholder="내용을 입력하세요"></textarea>
+							<textarea name="name" readonly><?=$oto_info["oto_contents"]?></textarea>
 						</div>
 					</div>
 					<div class="foot">
-						<div class="row img-upload">
-							<label for="imgUp">사진첨부</label>
-							<form action="../../lib/filer/php/upload.php" id="promotion_image3_frm" method="post" enctype="multipart/form-data">
-								<input type="file" name="imgUp" id="imgUp" value="사진첨부" onchange="change_file()">
-							</form>
-						</div>
 						<div class="row buttons">
 							<div class="wrapper">
-								<a href="javascript:void(0)">
-									<span>취소</span>
+								<a href="javascript:void(0)" id="del_oto">
+									<span>삭제</span>
 								</a>
-								<a href="javascript:void(0)" id="write_oto">
-									<span>작성하기</span>
-								</a>
+								<!-- <a href="javascript:void(0)">
+									<span>수정하기</span>
+								</a> -->
 							</div>
 						</div>
 					</div>
@@ -116,12 +116,7 @@
 			});
 		});
 
-		function change_file()
-		{
-			var fileValue = $("#imgUp").val().split("\\");
-			var fileName = fileValue[fileValue.length-1]; // 파일명
-			alert(fileName);
-		}
+
 	</script>
 </body>
 </html>

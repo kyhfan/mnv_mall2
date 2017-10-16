@@ -501,6 +501,19 @@ function select_payment_info($oid)
 	return $payment_data;
 }
 
+function select_oto_info($idx)
+{
+	global $_gl;
+	global $my_db;
+
+	$oto_query		= "SELECT * FROM ".$_gl['board_oto_table']." WHERE idx='".$idx."' AND oto_email='".$_SESSION['ss_chon_email']."'";
+	$oto_result		= mysqli_query($my_db, $oto_query);
+	$oto_data		= mysqli_fetch_array($oto_result);
+
+	return $oto_data;
+
+}
+
 function check_wish_goods($goods_code)
 {
 	global $_gl;

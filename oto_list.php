@@ -37,20 +37,32 @@
 							</tr>
 						</thead>
 						<tbody>
+<?
+    $oto_query		= "SELECT * FROM ".$_gl['board_oto_table']." WHERE oto_email='".$_SESSION['ss_chon_email']."' AND oto_showYN='Y'";
+    $oto_result		= mysqli_query($my_db, $oto_query);
+    while ($oto_data = mysqli_fetch_array($oto_result))
+    {
+		$oto_date	= substr($oto_data["oto_regdate"],2,8);
+
+		$oto_query2			= "SELECT * FROM ".$_gl['board_oto_table']." WHERE group_id='".$oto_data['idx']."'";
+		$oto_result2		= mysqli_query($my_db, $oto_query2);
+		$oto_count			= mysqli_num_rows($oto_result2);
+
+		if ($oto_count > 0)
+			$status_txt	= "답변완료";
+		else
+			$status_txt	= "대기중";
+?>
 							<tr>
-								<td>대기중</td>
+								<td><?=$status_txt?></td>
 								<td>
-									배송문의드립니다.
+									<a href="oto_read.php?idx=<?=$oto_data["idx"]?>"><?=$oto_data["oto_title"]?>
 								</td>
-								<td>17-09-25</td>
+								<td><?=$oto_date?></td>
 							</tr>
-							<tr>
-								<td>답변완료</td>
-								<td>
-									결제관련 문의
-								</td>
-								<td>17-09-28</td>
-							</tr>
+<?
+    }
+?>
 						</tbody>
 					</table>
 				</div>

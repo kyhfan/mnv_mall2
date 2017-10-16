@@ -405,17 +405,47 @@
 
 
 		case "insert_banner_info" :
-					$banner_name	= $_REQUEST['banner_name'];
-					$banner_type		= $_REQUEST['banner_type'];
-					$banner_query	= "INSERT INTO ".$_gl['banner_info_table']."(banner_name,banner_type,banner_regdate) values('".$banner_name."','".$banner_type."','".date("Y-m-d H:i:s")."')";
-					$banner_result	= mysqli_query($my_db, $banner_query);
-					if($banner_result)
-						$flag = "Y";
-					else
-						$flag = "N";
-					echo $banner_query;
+			$banner_name		= $_REQUEST['banner_name'];
+			$banner_type		= $_REQUEST['banner_type'];
+			$banner_query		= "INSERT INTO ".$_gl['banner_info_table']."(banner_name,banner_type,banner_regdate) values('".$banner_name."','".$banner_type."','".date("Y-m-d H:i:s")."')";
+			$banner_result		= mysqli_query($my_db, $banner_query);
+			if($banner_result)
+				$flag = "Y";
+			else
+				$flag = "N";
+			echo $banner_query;
 		break;
 
+		case "insert_oto_info" :
+			$oto_question_type		= $_REQUEST['oto_question_type'];
+			$oto_title				= $_REQUEST['oto_title'];
+			$oto_contents			= $_REQUEST['oto_contents'];
+		
+			$oto_query		= "INSERT INTO ".$_gl['board_oto_table']."(oto_email, oto_question_type, oto_title, oto_contents, oto_regdate, oto_ipaddr) values('".$_SESSION['ss_chon_email']."','".$oto_question_type."','".$oto_title."','".$oto_contents."','".date("Y-m-d H:i:s")."','".$_SERVER["REMOTE_ADDR"]."')";
+			$oto_result		= mysqli_query($my_db, $oto_query);
+
+			if($oto_result)
+				$flag = "Y";
+			else
+				$flag = "N";
+
+			echo $flag;
+
+		break;
+
+		case "delete_oto_info" :
+			$oto_idx	= $_REQUEST["oto_idx"];
+			$oto_query		= "UPDATE ".$_gl['board_oto_table']." SET oto_showYN='N' WHERE idx='".$oto_idx."'";
+			$oto_result		= mysqli_query($my_db, $oto_query);
+
+			if($oto_result)
+				$flag = "Y";
+			else
+				$flag = "N";
+
+			echo $flag;
+		break;
+/*
 		case "write_review":
 
 			$user_id = $_REQUEST['user_id'];
@@ -731,7 +761,7 @@
 
 			echo $flag;
 			break;
-
+*/
 		case "add_wishlist" : // 사용하는 코드
 			$goods_code		= $_REQUEST['goods_code'];
 			//$goods_option	= $_REQUEST['goods_option'];

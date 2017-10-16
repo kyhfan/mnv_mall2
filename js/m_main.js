@@ -90,11 +90,81 @@ $(document).on("click", ".loveit > a", function(){
 	});
 });
 
-// 상품 하트(위시리스트 추가) 클릭
+// 프로모션 더보기 클릭
 $(document).on("click", ".btn-more", function(){
 	location.href = "promotion_detail.php?idx=" + $(this).attr("data-idx");
 });
 
+// 1대1 문의 글쓰기 입력
+$(document).on("click", "#write_oto", function(){
+	var oto_question_type		= $("#oto_question_type").val();
+	var oto_title				= $("#oto_title").val();
+	var oto_contents			= $("#oto_contents").val();
+
+	if (oto_question_type == "")
+	{
+		alert("질문 구분을 선택해주세요.");
+		return false;
+	}
+
+	if (oto_title == "")
+	{
+		alert("제목을 입력해주세요.");
+		$("#oto_title").focus();
+		return false;
+	}
+
+	if (oto_contents == "")
+	{
+		alert("내용을 입력해주세요.");
+		$("#oto_contents").focus();
+		return false;
+	}
+
+	
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"					: "insert_oto_info",
+			"oto_question_type"		: oto_question_type,
+			"oto_title"				: oto_title,
+			"oto_contents"			: oto_contents
+		},
+		success: function(response){
+			location.href = "oto_list.php";
+		}
+	});
+});
+
+// 1대1 문의 글쓰기 삭제
+$(document).on("click", "#del_oto", function(){
+	var oto_idx 	= $("#oto_idx").val();
+
+	if (confirm("이 문의를 삭제하시겠습니까?"))
+	{
+		$.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "./main_exec.php",
+			data:{
+				"exec"					: "delete_oto_info",
+				"oto_idx"				: oto_idx
+			},
+			success: function(response){
+				if (response.match("Y") == "Y")
+				{
+					alert('해당 글이 삭제되었습니다.');
+					location.href='oto_list.php';
+				}else{
+					alert('시스템 에러');
+					location.reload();
+				}
+			}
+		});
+	}
+});
 
 // 회원가입 전체동의 체크 선택
 $(document).on("click", "#all_chk", function(){

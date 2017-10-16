@@ -19,7 +19,7 @@
 	$_gl['board_notice_table']				= "board_notice";				// 공지사항 게시판 테이블
 	$_gl['board_review_table']				= "board_review";				// 리뷰 게시판 테이블
 	$_gl['board_qna_table']					= "board_qna";					// 문의사항 게시판 테이블
-	$_gl['board_mtm_table']					= "board_mtm";					// 1대1문의 게시판 테이블
+	$_gl['board_oto_table']					= "board_oto_info";				// 1대1문의 게시판 테이블
 	$_gl['wishlist_info_table']				= "wishlist_info";				// 위시리스트 테이블
 	$_gl['mycart_info_table']				= "mycart_info";					// 마이카트 테이블
 	$_gl['restock_info_table']				= "restock_info";				// 재입고 요청 테이블
@@ -41,5 +41,12 @@
 	$_gl['PAYTYPE']['SC0060']				= "휴대폰";
 	$_gl['PAYTYPE']['SC0040']				= "무통장입금";
 
-
+	$_gl['oto']['product']					= "상품문의";
+	$_gl['oto']['pay']						= "결제문의";
+	$_gl['oto']['cancel']					= "주문취소 신청";
+	$_gl['oto']['saveNcoupon']				= "적립금/쿠폰문의";
+	$_gl['oto']['shipping']					= "배송문의";
+	$_gl['oto']['site']						= "사이트이용";
+	$_gl['oto']['other']					= "기타";
+	
 ?>
