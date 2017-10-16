@@ -435,6 +435,7 @@
 
 		case "delete_oto_info" :
 			$oto_idx	= $_REQUEST["oto_idx"];
+
 			$oto_query		= "UPDATE ".$_gl['board_oto_table']." SET oto_showYN='N' WHERE idx='".$oto_idx."'";
 			$oto_result		= mysqli_query($my_db, $oto_query);
 
@@ -444,6 +445,13 @@
 				$flag = "N";
 
 			echo $flag;
+		break;
+
+		case "sort_oto_list" :
+			$sort_val	= $_REQUEST["sort_val"];
+
+			$oto_query		= "SELECT * FROM ".$_gl['board_oto_table']." WHERE oto_question_type='".$sort_val."'";
+			$oto_result		= mysqli_query($my_db, $oto_query);
 		break;
 /*
 		case "write_review":

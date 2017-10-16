@@ -16,8 +16,8 @@
 					<h3>1:1 문의</h3>
 				</div>
 				<div class="sorting">
-					<select name="q-cate" class="q-cate">
-						<option value="all">모두보기</option>
+					<select name="q-cate" class="q-cate" onchange="oto_sort(this.value)">
+						<option value="">모두보기</option>
 						<option value="product">상품문의</option>
 						<option value="pay">결제문의</option>
 						<option value="cancel">주문취소 신청</option>
@@ -36,7 +36,7 @@
 								<th>날짜</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="sort_oto_list">
 <?
     $oto_query		= "SELECT * FROM ".$_gl['board_oto_table']." WHERE oto_email='".$_SESSION['ss_chon_email']."' AND oto_showYN='Y'";
     $oto_result		= mysqli_query($my_db, $oto_query);

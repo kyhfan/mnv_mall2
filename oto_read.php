@@ -65,12 +65,12 @@
 					<div class="foot">
 						<div class="row buttons">
 							<div class="wrapper">
-								<a href="javascript:void(0)" id="del_oto">
+								<!-- <a href="javascript:void(0)" id="del_oto">
 									<span>삭제</span>
-								</a>
-								<!-- <a href="javascript:void(0)">
-									<span>수정하기</span>
 								</a> -->
+								<a href="oto_list.php">
+									<span>목록</span>
+								</a>
 							</div>
 						</div>
 					</div>

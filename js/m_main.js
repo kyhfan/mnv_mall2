@@ -166,6 +166,30 @@ $(document).on("click", "#del_oto", function(){
 	}
 });
 
+// 1대1 문의 리스트 소팅
+function oto_sort(val)
+{
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./ajax_oto_list.php",
+		data:{
+			"sort_val"				: val
+		},
+		success: function(response){
+			$("#sort_oto_list").html(response);
+			// if (response.match("Y") == "Y")
+			// {
+			// 	alert('해당 글이 삭제되었습니다.');
+			// 	location.href='oto_list.php';
+			// }else{
+			// 	alert('시스템 에러');
+			// 	location.reload();
+			// }
+		}
+	});
+}
+
 // 회원가입 전체동의 체크 선택
 $(document).on("click", "#all_chk", function(){
 	if ($("#all_chk").prop("checked") == false)
