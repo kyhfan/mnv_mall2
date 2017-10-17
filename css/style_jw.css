@@ -1597,8 +1597,11 @@
 		float: right;
 		width: auto;
 	}
-	.order-detail .info-block.payment .row:nth-of-type(3n+3) {
-		padding-bottom: 37px;
+	.order-detail .info-block.payment .row:nth-of-type(2n+2) {
+		padding-bottom: 30px;
+	}
+	.order-detail .info-block.payment .row:last-child .col span {
+		color: #333333;
 	}
 	/* order-detail */
 	/* order */
