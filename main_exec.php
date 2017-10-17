@@ -803,20 +803,23 @@
 		break;
 
 		case "add_mycart" :
-			$goods_idx		= $_REQUEST['goods_idx'];
-			$goods_option	= $_REQUEST['goods_option'];
-			$buy_cnt			= $_REQUEST['buy_cnt'];
-			$mb_id			= $_SESSION['ss_chon_id'];
-			$cart_id			= $_SESSION['ss_chon_cartid'];
+			$goods_code		= $_REQUEST['goods_code'];
+			$loginYN		= $_REQUEST['loginYN'];
+			// $goods_option	= $_REQUEST['goods_option'];
+			// $buy_cnt			= $_REQUEST['buy_cnt'];
+			$mb_id			= $_SESSION['ss_chon_email'];
+			// $cart_id			= $_SESSION['ss_chon_cartid'];
 
-			if ($mb_id == "")
+			if ($_SESSION['ss_chon_email'])
 			{
-				$_SESSION['ss_chon_cartid']			= create_cartid();
+				// $mb_id					= create_cartid();
+				$mb_id						= $_SESSION['ss_chon_email'];
 			}else{
-				$_SESSION['ss_chon_cartid']			= $mb_id;
+				$_SESSION['ss_chon_email']	= create_cartid();
+				$mb_id						= $_SESSION['ss_chon_email'];
 			}
 
-			$cart_query 	= "SELECT * FROM ".$_gl['mycart_info_table']." WHERE mb_id='".$_SESSION['ss_chon_cartid']."' AND goods_idx='".$goods_idx."' AND goods_option='".$goods_option."' AND showYN='Y' AND cart_regdate >= date_add(now(), interval -3 day)";
+			$cart_query 	= "SELECT * FROM ".$_gl['mycart_info_table']." WHERE mb_email='".$mb_id."' AND goods_code='".$goods_code."' AND showYN='Y' AND cart_regdate >= date_add(now(), interval -3 day)";
 			$cart_result 	= mysqli_query($my_db, $cart_query);
 			$cart_num 	= mysqli_num_rows($cart_result);
 
@@ -824,11 +827,10 @@
 			{
 				$cart_data	= mysqli_fetch_array($cart_result);
 
-				$cart_query2		= "UPDATE ".$_gl['mycart_info_table']." SET goods_cnt=goods_cnt+".$buy_cnt." WHERE idx='".$cart_data['idx']."'";
+				$cart_query2		= "UPDATE ".$_gl['mycart_info_table']." SET goods_cnt=goods_cnt+1 WHERE idx='".$cart_data['idx']."'";
 				$cart_result2		= mysqli_query($my_db, $cart_query2);
 			}else{
-				// 추가 수정 작업 해야함
-				$cart_query2 	= "INSERT INTO ".$_gl['mycart_info_table']."(mb_id, goods_idx, goods_option, goods_cnt, cart_regdate) values('".$_SESSION['ss_chon_cartid']."','".$goods_idx."','".$goods_option."','".$buy_cnt."','".date("Y-m-d H:i:s")."')";
+				$cart_query2 	= "INSERT INTO ".$_gl['mycart_info_table']."(mb_email, goods_code, goods_cnt, cart_regdate) values('".$mb_id."','".$goods_code."','1','".date("Y-m-d H:i:s")."')";
 				$cart_result2 	= mysqli_query($my_db, $cart_query2);
 			}
 
@@ -963,11 +965,24 @@
 			echo $flag;
 		break;
 
-		case "delete_chk_cart" :
-			$mb_id		= $_SESSION['ss_chon_id'];
-			$chk_idx		= $_REQUEST['chk_idx'];
-			$direction	= $_REQUEST['direction'];
+		case "delete_one_cart" :
+			$mb_email		= $_SESSION['ss_chon_email'];
+			$cart_idx		= $_REQUEST['cart_idx'];
 
+			$cart_query 	= "UPDATE ".$_gl['mycart_info_table']." SET showYN='N' WHERE mb_email='".$mb_email."' AND idx='".$cart_idx."'";
+			$result 		= mysqli_query($my_db, $cart_query);
+
+			if ($result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+
+			echo $flag;
+		break;
+
+		case "delete_chk_cart" :
+			$mb_email		= $_SESSION['ss_chon_email'];
+			$chk_idx		= $_REQUEST['chk_idx'];
 
 			$chk_idx_arr		= explode(",",$chk_idx);
 
@@ -980,16 +995,9 @@
 					continue;
 				}
 
-				if($direction == "cart")
-				{
-					$cart_query 	= "UPDATE ".$_gl['mycart_info_table']." SET showYN='N' WHERE idx='".$val."' AND mb_id='".$mb_id."'";
-					$result 		= mysqli_query($my_db, $cart_query);
-					$i++;
-				}else{
-					$wish_query 	= "UPDATE ".$_gl['wishlist_info_table']." SET showYN='N' WHERE idx='".$val."' AND mb_id='".$mb_id."'";
-					$result 		= mysqli_query($my_db, $wish_query);
-					$i++;
-				}
+				$cart_query 	= "UPDATE ".$_gl['mycart_info_table']." SET showYN='N' WHERE idx='".$val."' AND mb_email='".$mb_email."'";
+				$result 		= mysqli_query($my_db, $cart_query);
+				$i++;
 			}
 
 			if ($result)

@@ -142,7 +142,7 @@
 			'removeFiles' => true, //Enable file exclusion {Boolean(extra for jQuery.filer), String($_POST field name containing json data with file names)}
 			'perms' => null, //Uploaded file permisions {null, Number}
 			'onCheck' => null, //A callback function name to be called by checking a file for errors (must return an array) | ($file) | Callback
-			'onError' => null, //A callback function name to be called if an error occured (must return an array) | ($errors, $file) | Callback
+			'onError' => nu ll, //A callback function name to be called if an error occured (must return an array) | ($errors, $file) | Callback
 			'onSuccess' => null, //A callback function name to be called if all files were successfully uploaded | ($files, $metas) | Callback
 			'onUpload' => null, //A callback function name to be called if all files were successfully uploaded (must return an array) | ($file) | Callback
 			//'onComplete' => null, //A callback function name to be called when upload is complete | ($file) | Callback

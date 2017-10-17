@@ -12,7 +12,11 @@
 	// 상품 상세 설명 P태그 class 자동 삽입
 	$goods_data["m_goods_big_desc"] 	= str_replace('<p>','<p class="txt-template ft-18 cl-333 lh-32" style="padding-bottom: 68px;">',$goods_data["m_goods_big_desc"]);
 
-	$wish_flag 	= check_wish_goods($goods_code);
+	// $wish_flag 	= check_wish_goods($goods_code);
+	if ($_SESSION['ss_chon_email'])
+		$mb_flag	= "Y";
+	else
+		$mb_flag	= "N";
 ?>
 <body>
 	<div id="chon-app">
@@ -274,7 +278,7 @@
 			</div>
 			<div class="buy-layer">
 				<div class="inner">
-					<div class="put-in">
+					<div class="put-in" data-goodscode="<?=$goods_code?>" data-login="<?=$mb_flag?>">
 						<a href="javascript:void(0)">
 							<img src="./images/put_in_cart.png" alt="장바구니에 넣기">
 						</a>

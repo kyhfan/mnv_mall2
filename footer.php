@@ -76,7 +76,7 @@
 						</a>
 					</li>
 					<li class="menu">
-						<a href="javascript:void(0)">
+						<a href="cart.php">
 							<img src="./images/gnb_menu.png" alt="메뉴">
 						</a>
 					</li>

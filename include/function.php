@@ -514,6 +514,24 @@ function select_oto_info($idx)
 
 }
 
+function select_cart_info()
+{
+	global $_gl;
+	global $my_db;
+
+	$mb_id			= $_SESSION['ss_chon_email'];
+
+	$cart_query		= "SELECT * FROM ".$_gl['mycart_info_table']." WHERE mb_email='".$mb_id."' AND showYN='Y' AND cart_regdate >=(CURDATE()-INTERVAL 3 DAY);";
+	$cart_result	= mysqli_query($my_db, $cart_query);
+	// $cart_data		= mysqli_fetch_array($cart_result);
+	while ($cart_data = @mysqli_fetch_array($cart_result))
+	{
+		$res_data[]	= $cart_data;
+	}
+
+	return $res_data;
+}
+
 function check_wish_goods($goods_code)
 {
 	global $_gl;
