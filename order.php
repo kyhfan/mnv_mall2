@@ -122,7 +122,7 @@
 												</div>
 											</div>
 										</div>
-										<div class="wrap-group addr">
+										<!-- <div class="wrap-group addr">
 											<div class="row clearfix">
 												<div class="col">
 													<div class="guide">
@@ -156,21 +156,7 @@
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="wrap-group">
-											<div class="row clearfix">
-												<div class="col">
-													<div class="guide">
-														<span>휴대전화</span>
-													</div>
-												</div>
-												<div class="col">
-													<div class="input">
-														<input type="tel">
-													</div>
-												</div>
-											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
 							</div>
@@ -189,12 +175,12 @@
 												<div class="col">
 													<div class="radiobox">
 														<input type="radio" class="radio" id="s_info" name="chk_info">
-														<label for="s_info">주문자 정보와 동일</label>
+														<label for="s_info">최근배송지</label>
 													</div>
 												</div>
 												<div class="col">
 													<div class="radiobox">
-														<input type="radio" class="radio" id="n_info" name="chk_info">
+														<input type="radio" class="radio" id="n_info" name="chk_info" checked>
 														<label for="n_info">신규배송지</label>
 													</div>
 												</div>
@@ -209,7 +195,7 @@
 												</div>
 												<div class="col">
 													<div class="input">
-														<input type="text">
+														<input type="text" id="order_name">
 													</div>
 												</div>
 											</div>
@@ -225,7 +211,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input">
-																<input type="tel" readonly>
+																<input type="tel" id="order_zipcode" readonly>
 															</div>
 															<a href="javascript:void(0)">
 																<span>우편번호</span>
@@ -235,16 +221,30 @@
 													<div class="row">
 														<div class="col">
 															<div class="input">
-																<input type="text">
+																<input type="text" id="order_addr1" readonly>
 															</div>
 														</div>
 													</div>
 													<div class="row">
 														<div class="col">
 															<div class="input">
-																<input type="text">
+																<input type="text" id="order_addr2">
 															</div>
 														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="wrap-group">
+											<div class="row clearfix">
+												<div class="col">
+													<div class="guide">
+														<span>휴대전화</span>
+													</div>
+												</div>
+												<div class="col">
+													<div class="input">
+														<input type="tel" id="order_phone">
 													</div>
 												</div>
 											</div>
@@ -258,7 +258,7 @@
 												</div>
 												<div class="col">
 													<div class="textbox">
-														<textarea name="name"></textarea>
+														<textarea name="name" id="order_message"></textarea>
 													</div>
 												</div>
 											</div>
@@ -297,15 +297,15 @@
 											<div class="row clearfix">
 												<div class="col">
 													<div class="guide">
-														<span>마일리지</span>
+														<span>적립금</span>
 													</div>
 												</div>
 												<div class="col">
 													<div class="input">
 														<input type="tel">
 													</div>
-													<span class="point">Point (보유 : 0P)</span>
-													<span class="guide">* 마일리지는 상품금액 3만원 이상 결제시 사용 가능합니다.</span>
+													<span class="point">원 (보유 : 0원)</span>
+													<span class="guide">* 적립금은 상품금액 3만원 이상 결제시 사용 가능합니다.</span>
 												</div>
 											</div>
 										</div>
