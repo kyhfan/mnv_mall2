@@ -2746,7 +2746,7 @@
 	.about-chon .message3 p {
 		font-size: 20px;
 		color: #555555;
-		line-height: 1.25;
+		line-height: 1.35;
 	}
 	.about-chon .message3 {
 		padding: 17px 96px 0 0;
@@ -2847,4 +2847,38 @@
 		color: #ffffff;
 		width: 100%;
 	}
+	.popup.member {
+		width: 94.2%;
+	}
+	.popup.member .close-btn {
+		top: 26px;
+		right: 26px;
+	}
+	.member .wrapper > .inner {
+		padding: 58px 57px 63px;
+		text-align: center;
+	}
+	.member .wrapper > .inner .title {
+		font-size: 22px;
+		color: #809255;
+		text-decoration: underline;
+	}
+	.member .wrapper > .inner .text p {
+		font-size: 20px;
+		line-height: 1.4;
+		margin: 45px 0 49px;
+		color: #777777;
+	}
+	.member .wrapper > .inner .text p span {
+		color: #809255;
+	}
+	.member .wrapper > .inner .btn span {
+		display: inline-block;
+		padding: 26px 0;
+		font-size: 26px;
+		color: #ffffff;
+		background: #809255;
+		width: 100%;
+	}
+	/*.member .wrapper > .inner */
 	/* popup */
