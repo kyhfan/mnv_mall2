@@ -1593,6 +1593,7 @@
 	}
 	.order > .content .block .head .title h5 {
 		font-size: 23px;
+		font-weight: 400;
 	}
 	.order > .content .block .body .wrap-group {
 		padding: 33px 10px;
@@ -1639,9 +1640,6 @@
 	.order > .content .o-list .body .row .col .price {
 		bottom: 0;
 		font-size: 21px;
-	}
-	.order > .content .block .body .row .col .guide {
-
 	}
 	.order > .content .block .body .row .col .guide span {
 		display: inline-block;
@@ -1858,6 +1856,29 @@
 	.order .total .row:nth-of-type(3n+3) {
 		padding-bottom: 37px;
 	}
+	.order .pay .buttons {
+		text-align: center;
+	}
+	.order .pay .buttons a {
+		display: inline-block;
+		width: 170px;
+		font-size: 0;
+		border: 1px solid #f7f7f7;
+	}
+	.order .pay .buttons a.active {
+		border: 1px solid #809255;
+	}
+	.order .pay .buttons a.active span {
+		color: #809255;
+	}
+	.order .pay .buttons a span {
+		display: inline-block;
+		font-size: 20px;
+		color: #333333;
+		padding: 18px 0;
+		background: #f7f7f7;
+		width: 100%;
+	}
 	.wrap-group .check span {
 		font-size: 22px;
 		display: inline-block;
@@ -1898,8 +1919,73 @@
 		font-size: 26px;
 		font-weight: 700;
 	}
-
 	/* order */
+	/* order-complete */
+	.order-complete .wrapper {
+		margin: 105px 0 513px;
+	}
+	.comp-icon {
+		width: 68px;
+		height: 68px;
+		border: 1px solid #809255;
+		border-radius: 50%;
+		margin: 0 auto;
+		position: relative;
+	}
+	.comp-icon .line {
+		height: 1px;
+		position: absolute;
+		background: #809255;
+		width: 36px;
+		left: 25px;
+		top: 44px;
+		transform: rotate(-35deg);
+		transform-origin: left top;
+	}
+	.comp-icon .line:first-child {
+		width: 16px;
+		left: 10px;
+		top: 44px;
+		transform: rotate(40deg);
+		transform-origin: right top;
+	}
+	.order-complete .wrapper .msg {
+		margin: 77px auto 102px;
+		text-align: center;
+	}
+	.order-complete .wrapper .msg h5 {
+		font-size: 27px;
+		margin-bottom: 17px;
+		font-weight: 400;
+	}
+	.order-complete .wrapper .msg span {
+		font-size: 20px;
+	}
+	.order-complete .wrapper .buttons {
+		font-size: 0;
+		width: 90.6%;
+		margin: 0 auto;
+	}
+	.order-complete .wrapper .buttons a {
+		display: inline-block;
+		width: 49.5%;
+		text-align: center;
+	}
+	.order-complete .wrapper .buttons a:first-child {
+		margin-right: 1%;
+	}
+	.order-complete .wrapper .buttons a:first-child span {
+		background: rgba(128, 146, 85, 0.7);
+	}
+	.order-complete .wrapper .buttons a span {
+		display: inline-block;
+		padding: 26px 0;
+		color: #ffffff;
+		background: #809255;
+		font-size: 26px;
+		width: 100%;
+	}
+	/* order-complete */
 	/* cart */
 	.cart .empty {
 		font-size: 25px;
@@ -2163,6 +2249,15 @@
 		line-height: 1.4;
 		height: 100%;
 		padding: 40px 42px;
+	}
+	.board-frame .body .answer {
+		border-top: 1px solid #dcdcdc;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.board-frame .body .answer .inner {
+		padding: 24px 46px;
+		background: #f7f7f7;
+		font-size: 18px;
 	}
 	.board-frame .foot .img-upload {
 		text-align: right;
@@ -2663,7 +2758,7 @@
 	.about-chon .message3 p {
 		font-size: 20px;
 		color: #555555;
-		line-height: 1.25;
+		line-height: 1.35;
 	}
 	.about-chon .message3 {
 		padding: 17px 96px 0 0;
@@ -2688,6 +2783,7 @@
 	}
 	.popup > .wrapper {
 		position: relative;
+		background: #ffffff;
 	}
 	.popup .close-btn {
 		position: absolute;
@@ -2695,7 +2791,6 @@
 		right: 56px;
 	}
 	.popup.protect .wrapper {
-		background: #ffffff;
 		/*width: 94.2%;
 		margin: 0 auto;*/
 	}
@@ -2726,4 +2821,76 @@
 	.popup.protect .text span:first-child {
 		width: 4%;
 	}
+	.popup.putin-ok {
+		width: 86.2%;
+	}
+	.popup.putin-ok .close-btn {
+		top: 27px;
+		right: 27px
+	}
+	.putin-ok .wrapper .inner {
+		padding: 77px 32px 40px;
+		text-align: center;
+	}
+	.putin-ok .wrapper .inner .comp-icon + span {
+		display: inline-block;
+		font-size: 22px;
+		text-decoration: underline;
+		margin: 28px 0 56px;
+	}
+	.putin-ok .wrapper .inner .buttons {
+		font-size: 0;
+	}
+	.putin-ok .wrapper .inner .buttons a {
+		display: inline-block;
+		width: 49.5%;
+	}
+	.putin-ok .wrapper .inner .buttons a:first-child {
+		margin-right: 1%;
+	}
+	.putin-ok .wrapper .inner .buttons a:first-child span {
+		background: rgba(128, 146, 85, 0.7);
+	}
+	.putin-ok .wrapper .inner .buttons a span {
+		display: inline-block;
+		font-size: 26px;
+		padding: 26px 0;
+		background: #809255;
+		color: #ffffff;
+		width: 100%;
+	}
+	.popup.member {
+		width: 94.2%;
+	}
+	.popup.member .close-btn {
+		top: 26px;
+		right: 26px;
+	}
+	.member .wrapper > .inner {
+		padding: 58px 57px 63px;
+		text-align: center;
+	}
+	.member .wrapper > .inner .title {
+		font-size: 22px;
+		color: #809255;
+		text-decoration: underline;
+	}
+	.member .wrapper > .inner .text p {
+		font-size: 20px;
+		line-height: 1.4;
+		margin: 45px 0 49px;
+		color: #777777;
+	}
+	.member .wrapper > .inner .text p span {
+		color: #809255;
+	}
+	.member .wrapper > .inner .btn span {
+		display: inline-block;
+		padding: 26px 0;
+		font-size: 26px;
+		color: #ffffff;
+		background: #809255;
+		width: 100%;
+	}
+	/*.member .wrapper > .inner */
 	/* popup */

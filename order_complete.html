@@ -109,51 +109,26 @@
 				</div>
 			</div>
 		</div>
-		<div id="container" class="login find">
-			<div class="pg-title">
-				<h3>
-					FIND
-				</h3>
-			</div>
-			<div class="swap-block clearfix">
-				<div class="block">
-					<a href="javascript:void(0)" onclick="swapBlock('fid', this);" class="active fid">
-						<span>아이디(이메일)찾기</span>
-					</a>
-				</div>
-				<div class="block">
-					<a href="javascript:void(0)" onclick="swapBlock('fpw', this);" class="fpw">
-						<span>비밀번호찾기</span>
-					</a>
-				</div>
-			</div>
-			<div class="wrapper">
-				<div class="input-group fid">
-					<div class="input-box">
-						<input type="text" placeholder="이름">
+		<div id="container" class="order-complete">
+			<div class="content">
+				<div class="wrapper">
+					<div class="comp-icon">
+						<div class="line"></div>
+						<div class="line"></div>
 					</div>
-					<div class="input-box">
-						<input type="text" placeholder="휴대폰번호">
+					<div class="msg">
+						<h5 class="nft">THANK YOU</h5>
+						<span>감사합니다. 주문이 완료되었습니다.</span>
+					</div>
+					<div class="buttons">
+						<a href="javascript:void(0)">
+							<span>쇼핑 계속하기</span>
+						</a>
+						<a href="javascript:void(0)">
+							<span>주문내역상세</span>
+						</a>
 					</div>
 				</div>
-				<div class="input-group fpw">
-					<div class="input-box">
-						<input type="text" placeholder="이메일">
-					</div>
-				</div>
-			</div>
-			<div class="btn login find">
-				<a href="javascript:void(0)">
-					<span>확인</span>
-				</a>
-			</div>
-			<div class="link-block clearfix">
-				<a href="javascript:void(0)">
-					<span>로그인</span>
-				</a>
-				<a href="javascript:void(0)">
-					<span>회원가입</span>
-				</a>
 			</div>
 		</div>
 		<div id="footer">
@@ -295,19 +270,6 @@
 			});
 		});
 
-		var submitTarget = "fid";
-		function swapBlock(type, elem) {
-			var $_this = $(elem);
-			var type = type || "fid";
-			$('.swap-block a').not($_this).removeClass('active');
-			$_this.addClass('active');
-			$('.input-group').not('.'+type).hide();
-			$('.input-group.'+type).show();
-			submitTarget = type;
-		}
-		$('.btn.find').on('click', function() {
-			alert(submitTarget);
-		});
 
 	</script>
 </body>
