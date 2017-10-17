@@ -1917,7 +1917,7 @@
 	}
 	/* order */
 	/* order-complete */
-	.order-complete .wrapper {
+	.complete > .content > .wrapper {
 		margin: 105px 0 513px;
 	}
 	.comp-icon {
@@ -1945,24 +1945,25 @@
 		transform: rotate(40deg);
 		transform-origin: right top;
 	}
-	.order-complete .wrapper .msg {
-		margin: 77px auto 102px;
+	.complete .wrapper .msg {
+		margin: 77px auto;
 		text-align: center;
 	}
-	.order-complete .wrapper .msg h5 {
+	.complete .wrapper .msg h5 {
 		font-size: 27px;
 		margin-bottom: 17px;
 		font-weight: 400;
 	}
-	.order-complete .wrapper .msg span {
+	.complete .wrapper .msg span {
 		font-size: 20px;
+		line-height: 1.35;
 	}
-	.order-complete .wrapper .buttons {
+	.complete .wrapper .buttons {
 		font-size: 0;
 		width: 90.6%;
 		margin: 0 auto;
 	}
-	.order-complete .wrapper .buttons a {
+	.complete .wrapper .buttons a {
 		display: inline-block;
 		width: 49.5%;
 		text-align: center;
@@ -1973,7 +1974,7 @@
 	.order-complete .wrapper .buttons a:first-child span {
 		background: rgba(128, 146, 85, 0.7);
 	}
-	.order-complete .wrapper .buttons a span {
+	.complete .wrapper .buttons a span {
 		display: inline-block;
 		padding: 26px 0;
 		color: #ffffff;
@@ -1981,7 +1982,49 @@
 		font-size: 26px;
 		width: 100%;
 	}
+
 	/* order-complete */
+
+	/* join-complete */
+	.join-complete .wrapper .buttons a {
+		width: 100%;
+	}
+	.complete .wrapper .msg span strong {
+		font-weight: 400;
+		color: #809255;;
+	}
+	/* verify-mail*/
+	.verify-mail .rectangle {
+		width: 39px;
+		height: 24px;
+		margin: 21px auto 0;
+		border: 1px solid #809255;
+	}
+	.verify-mail .comp-icon .wrap-lines {
+		position: relative;
+	}
+	.verify-mail .comp-icon .line {
+		z-index: 1;
+		height: 1px;
+		position: absolute;
+		background: #809255;
+		width: 21.5px;
+		left: inherit;
+		right: 0;
+		top: 0;
+		transform: rotate(-30deg);
+		transform-origin: right top;
+	}
+	.comp-icon .line:first-child {
+		width: 21.5px;
+		left: 0;
+		top: 0;
+		transform: rotate(30deg);
+		transform-origin: left top;
+	}
+	/* verify-mail*/
+	/* join-complete */
+
 	/* cart */
 	.cart .empty {
 		font-size: 25px;
