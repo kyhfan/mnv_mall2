@@ -1668,11 +1668,8 @@
 	.order > .content .o-list .body .row .col .num {
 		top: 50%;
 		transform: translateY(-50%);
-		font-size: 16px;
-	}
-	.order > .content .o-list .body .row .col .num em {
-		display: inline-block;
-		padding: 0 4px;
+		font-size: 18px;
+		color: #777777;
 	}
 	.order > .content .o-list .body .row .col .price {
 		bottom: 0;
@@ -1697,6 +1694,10 @@
 	.order > .content .block .body .already .row .col .input,
 	.order > .content .block .body .already .row .col .input {
 		border: 0;
+	}
+	.order > .content .block .body .already input[type="text"],
+	.order > .content .block .body .already input[type="tel"] {
+		user-select: none;
 	}
 	.order > .content .block .body .row .col .input input[type="text"],
 	.order > .content .block .body .row .col .input input[type="tel"],
@@ -1890,8 +1891,11 @@
 	.order .total .row .info {
 		float: right !important;
 	}
-	.order .total .row:nth-of-type(3n+3) {
-		padding-bottom: 37px;
+	.order .total .row:nth-of-type(2n+2) {
+		padding-bottom: 33px;
+	}
+	.order .total .row:last-child .col span {
+		color: #333333;
 	}
 	.order .pay .buttons {
 		text-align: center;
