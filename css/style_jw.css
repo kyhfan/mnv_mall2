@@ -1667,10 +1667,6 @@
 		font-size: 18px;
 		color: #777777;
 	}
-	/*.order > .content .o-list .body .row .col .num em {
-		display: inline-block;
-		padding: 0 4px;
-	}*/
 	.order > .content .o-list .body .row .col .price {
 		bottom: 0;
 		font-size: 21px;
@@ -1694,6 +1690,10 @@
 	.order > .content .block .body .already .row .col .input,
 	.order > .content .block .body .already .row .col .input {
 		border: 0;
+	}
+	.order > .content .block .body .already input[type="text"],
+	.order > .content .block .body .already input[type="tel"] {
+		user-select: none;
 	}
 	.order > .content .block .body .row .col .input input[type="text"],
 	.order > .content .block .body .row .col .input input[type="tel"],
