@@ -35,6 +35,22 @@ function select_goods_info($goodscode)
 	return $data;
 }
 
+// 주문용 해당 상품정보 가져오기 (goods_code)
+function select_order_goods_info($goodscode)
+{
+	global $_gl;
+	global $my_db;
+
+	$query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_code='".$goodscode."'";
+	$result		= mysqli_query($my_db, $query);
+	while ($data = mysqli_fetch_array($result))
+	{
+		$res_data[]	= $data;
+	}
+
+	return $res_data;
+}
+
 // 해당 상품정보 가져오기 (idx)
 function select_idx_goods_info($idx)
 {

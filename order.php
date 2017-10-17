@@ -1,5 +1,23 @@
 <?
 	include_once "./header.php";
+
+	$order_type		= $_REQUEST["t"];
+
+	if ($order_type == "cart")
+	{
+		$order_info 		= select_cart_info();
+		$buycnt				= count($order_info);
+	}else{
+		$buycnt				= $_REQUEST["buycnt"];
+		$goodscode			= $_REQUEST["goodscode"];
+		$order_info 		= select_order_goods_info($goodscode);
+		$total_order_price	= $order_info[0]["discount_price"] * $buycnt;
+	}
+
+	if ($total_order_price < 50000)
+		$total_order_price = $total_order_price + 2500;
+
+	$member_info 	= select_member_info();
 ?>
 <body>
 	<div id="chon-app">
@@ -19,19 +37,25 @@
 									<div class="head">
 										<div class="title">
 											<h5>
-												주문 리스트 <span>( 총 1개 / 272,000 )</span>
+												주문 리스트 <span>( 총 <?=$buycnt?>개 / <?=$total_order_price?> )</span>
 											</h5>
 										</div>
 									</div>
 									<div class="body">
+<?
+	foreach($order_info as $key => $val)
+	{
+		$goods_thumb_img 	= str_replace("../../../","./",$val['goods_thumb_img_url']);
+		
+?>										
 										<div class="wrap-group">
 											<div class="row clearfix">
 												<div class="col">
-													<img src="./images/order_sample_thum.png">
+													<img src="<?=$goods_thumb_img?>">
 												</div>
 												<div class="col">
 													<div class="name">
-														<span>소창행주 (옵션 : 빨간 스티치)</span>
+														<span><?=$val["goods_name"]?></span>
 													</div>
 													<div class="num">
 														<span>
@@ -39,11 +63,14 @@
 														</span>
 													</div>
 													<div class="price">
-														<span class="nft">272,000</span>
+														<span class="nft"><?=$total_order_price?></span>
 													</div>
 												</div>
 											</div>
 										</div>
+<?
+	}
+?>										
 									</div>
 								</div>
 							</div>
@@ -66,7 +93,7 @@
 												</div>
 												<div class="col">
 													<div class="input">
-														<input type="text" name="" value="오준우" readonly>
+														<input type="text" name="" value="<?=$member_info["mb_name"]?>" readonly>
 													</div>
 												</div>
 											</div>
@@ -78,7 +105,7 @@
 												</div>
 												<div class="col">
 													<div class="input">
-														<input type="text" name="" value="jw.o@minivertising" readonly>
+														<input type="text" name="" value="<?=$member_info["mb_email"]?>" readonly>
 													</div>
 												</div>
 											</div>
@@ -90,7 +117,7 @@
 												</div>
 												<div class="col">
 													<div class="input">
-														<input type="tel" name="" value="01037578414" readonly>
+														<input type="tel" name="" value="<?=$member_info["mb_phone"]?>" readonly>
 													</div>
 												</div>
 											</div>
@@ -106,7 +133,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input">
-																<input type="tel" readonly>
+																<input type="text" readonly>
 															</div>
 															<a href="javascript:void(0)">
 																<span>우편번호</span>
@@ -387,7 +414,15 @@
 									</div>
 									<div class="body">
 										<div class="wrap-group">
-											asdadasdad
+											<div class="buttons">
+												<!-- 선택시 addClass active -->
+												<a href="javascript:void(0)" class="active">
+													<span>신용카드</span>
+												</a>
+												<a href="javascript:void(0)">
+													<span>휴대폰</span>
+												</a>
+											</div>
 										</div>
 										<div class="wrap-group">
 											<div class="check">

@@ -120,7 +120,7 @@
 						</div>
 					</div>
 					<div class="finish-btn">
-						<a href="javascript:void(0)">
+						<a href="order.php?t=cart">
 							<span>구매하기</span>
 						</a>
 					</div>

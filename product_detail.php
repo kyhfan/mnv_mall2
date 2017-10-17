@@ -284,7 +284,7 @@
 						</a>
 					</div>
 					<div class="buy">
-						<a href="javascript:void(0)">
+						<a href="order.php?t=goods&goodscode=<?=$goods_code?>&buycnt=1">
 							<h5>구매하기</h5>
 						</a>
 					</div>
