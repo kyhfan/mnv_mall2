@@ -568,6 +568,7 @@ function select_order_cart_info()
 		$res_data[$i]							= $cart_data;
 		$res_data[$i]["goods_thumb_img_url"]	= $goods_info["goods_thumb_img_url"];
 		$res_data[$i]["goods_name"]				= $goods_info["goods_name"];
+		$res_data[$i]["discount_price"]			= $goods_info["discount_price"];
 		$total_order_price						+= $goods_info["discount_price"] * $cart_data["goods_cnt"];
 		$total_order_cnt						+= $cart_data["goods_cnt"];
 		$i++;

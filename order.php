@@ -1,6 +1,11 @@
 <?
 	include_once "./header.php";
 
+	$error_level = error_reporting();
+	error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+	// dompdf code
+	error_reporting($error_level);
+
 	$order_type				= $_REQUEST["t"];
 	$total_delivery_price	= 0;
 	if ($order_type == "cart")
@@ -15,6 +20,8 @@
 		$goodscode			= $_REQUEST["goodscode"];
 		$order_info 		= select_order_goods_info($goodscode);
 		$total_order_price	= $order_info[0]["discount_price"] * $buycnt;
+		$goods_order_price	= $total_order_price;
+		
 	}
 
 	$total_payment_price 		= $total_order_price;
@@ -51,12 +58,17 @@
 									</div>
 									<div class="body">
 <?
+	$order_goods	= "";
 	foreach($order_info as $key => $val)
 	{
 		$goods_thumb_img 	= str_replace("../../../","./",$val['goods_thumb_img_url']);
 		if ($order_type = "cart")
+		{
 			$buycnt				= $val["goods_cnt"];
-
+			$goods_order_price	= $val["discount_price"] * $buycnt;
+		}			
+		$order_goods	+= ",".$val["goods_code"]."||".$buycnt;
+		print_r($order_goods);
 ?>
 										<div class="wrap-group">
 											<div class="row clearfix">
@@ -73,7 +85,7 @@
 														</span>
 													</div>
 													<div class="price">
-														<span class="nft"><?=number_format($total_order_price)?></span>
+														<span class="nft"><?=number_format($goods_order_price)?></span>
 													</div>
 												</div>
 											</div>
@@ -418,6 +430,7 @@
 								</div>
 							</div>
 							<div class="finish-btn">
+								<input type="hidden" id="order_goods" value="<?=$order_goods?>">
 								<a href="javascript:void(0)" id="order_start">
 									<span>결제하기</span>
 								</a>
