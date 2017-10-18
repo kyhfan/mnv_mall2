@@ -33,7 +33,7 @@
 	$_gl['payment_info_table']				= "payment_info";				// 결제 테이블
 
 	$_gl['order_status']['order_comp']			= "주문완료";
-	$_gl['order_status']['delivery_ing']			= "배송중";
+	$_gl['order_status']['delivery_ing']		= "배송중";
 	$_gl['order_status']['delivery_comp']		= "배송완료";
 	$_gl['order_status']['order_cancel']		= "주문취소";
 
@@ -48,5 +48,9 @@
 	$_gl['oto']['shipping']					= "배송문의";
 	$_gl['oto']['site']						= "사이트이용";
 	$_gl['oto']['other']					= "기타";
+
+	$_gl['save_percent']					= 0.01;
+	$_gl['delivery_price']					= 2500;
+	$_gl['delivery_max_price']				= 2500;
 	
 ?>

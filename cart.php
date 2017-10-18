@@ -50,7 +50,7 @@
 		$goods_thumb_img 		= str_replace("../../../","./",$goods_info['goods_thumb_img_url']);
 		$total_cnt				+= $val["goods_cnt"];
 		$total_goods_price		+= $cart_price;
-		$total_save_price		+= $cart_price * 0.01;
+		$total_save_price		+= $cart_price * $_gl['save_percent'];
 ?>					
 					<div class="block">
 						<div class="wrap-control clearfix">
@@ -90,8 +90,8 @@
 <?
 	}
 
-	if ($total_goods_price < 50000)
-		$total_delivery_price = 0;
+	if ($total_goods_price < $_gl['delivery_max_price'])
+		$total_delivery_price = $_gl['delivery_price'];
 
 	$total_price			= $total_goods_price + $total_delivery_price;
 		

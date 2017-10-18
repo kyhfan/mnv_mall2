@@ -548,6 +548,36 @@ function select_cart_info()
 	return $res_data;
 }
 
+function select_order_cart_info()
+{
+	global $_gl;
+	global $my_db;
+
+	$mb_id			= $_SESSION['ss_chon_email'];
+
+	$cart_query		= "SELECT * FROM ".$_gl['mycart_info_table']." WHERE mb_email='".$mb_id."' AND showYN='Y' AND cart_regdate >=(CURDATE()-INTERVAL 3 DAY);";
+	$cart_result	= mysqli_query($my_db, $cart_query);
+	// $cart_data		= mysqli_fetch_array($cart_result);
+
+	$total_order_price 	= 0;
+	$total_order_cnt	= 0;
+	$i 					= 0;
+	while ($cart_data = @mysqli_fetch_array($cart_result))
+	{
+		$goods_info 							= select_goods_info($cart_data['goods_code']);
+		$res_data[$i]							= $cart_data;
+		$res_data[$i]["goods_thumb_img_url"]	= $goods_info["goods_thumb_img_url"];
+		$res_data[$i]["goods_name"]				= $goods_info["goods_name"];
+		$total_order_price						+= $goods_info["discount_price"] * $cart_data["goods_cnt"];
+		$total_order_cnt						+= $cart_data["goods_cnt"];
+		$i++;
+	}
+	$res_data[0]["total_order_price"]	= $total_order_price;
+	$res_data[0]["total_order_cnt"]		= $total_order_cnt;
+	
+	return $res_data;
+}
+
 function check_wish_goods($goods_code)
 {
 	global $_gl;

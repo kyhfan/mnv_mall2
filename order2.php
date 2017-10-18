@@ -5,13 +5,10 @@
 
 	if ($order_type == "cart")
 	{
-		$order_info 		= select_order_cart_info();
-		$total_buycnt		= $order_info[0]["total_order_cnt"];
-		// $buycnt			= count($order_info);
-		$total_order_price	= $order_info[0]["total_order_price"];
+		$order_info 		= select_cart_info();
+		$buycnt				= count($order_info);
 	}else{
 		$buycnt				= $_REQUEST["buycnt"];
-		$total_buycnt		= $_REQUEST["buycnt"];
 		$goodscode			= $_REQUEST["goodscode"];
 		$order_info 		= select_order_goods_info($goodscode);
 		$total_order_price	= $order_info[0]["discount_price"] * $buycnt;
@@ -40,7 +37,7 @@
 									<div class="head">
 										<div class="title">
 											<h5>
-												주문 리스트 <span>( 총 <?=$total_buycnt?>개 / <?=number_format($total_order_price)?> )</span>
+												주문 리스트 <span>( 총 <?=$buycnt?>개 / <?=$total_order_price?> )</span>
 											</h5>
 										</div>
 									</div>
@@ -49,8 +46,6 @@
 	foreach($order_info as $key => $val)
 	{
 		$goods_thumb_img 	= str_replace("../../../","./",$val['goods_thumb_img_url']);
-		if ($order_type = "cart")
-			$buycnt				= $val["goods_cnt"];
 		
 ?>										
 										<div class="wrap-group">
@@ -64,11 +59,11 @@
 													</div>
 													<div class="num">
 														<span>
-															수량 : <?=$buycnt?>개
+															주문번호<em>|</em>1350256401
 														</span>
 													</div>
 													<div class="price">
-														<span class="nft"><?=number_format($total_order_price)?></span>
+														<span class="nft"><?=$total_order_price?></span>
 													</div>
 												</div>
 											</div>
@@ -98,7 +93,7 @@
 												</div>
 												<div class="col">
 													<div class="input">
-														<input type="text" name="" value="<?=$member_info["mb_name"]?>">
+														<input type="text" name="" value="<?=$member_info["mb_name"]?>" readonly>
 													</div>
 												</div>
 											</div>
@@ -110,7 +105,7 @@
 												</div>
 												<div class="col">
 													<div class="input">
-														<input type="text" name="" value="<?=$member_info["mb_email"]?>">
+														<input type="text" name="" value="<?=$member_info["mb_email"]?>" readonly>
 													</div>
 												</div>
 											</div>
@@ -138,7 +133,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input">
-																<input type="tel" readonly>
+																<input type="text" readonly>
 															</div>
 															<a href="javascript:void(0)">
 																<span>우편번호</span>
@@ -226,7 +221,7 @@
 													<div class="row">
 														<div class="col">
 															<div class="input">
-																<input type="text" id="order_addr1">
+																<input type="text" id="order_addr1" readonly>
 															</div>
 														</div>
 													</div>
@@ -309,7 +304,7 @@
 													<div class="input">
 														<input type="tel">
 													</div>
-													<span class="point">Point (보유 : 0P)</span>
+													<span class="point">원 (보유 : 0원)</span>
 													<span class="guide">* 적립금은 상품금액 3만원 이상 결제시 사용 가능합니다.</span>
 												</div>
 											</div>
@@ -334,12 +329,20 @@
 														<span>상품금액</span>
 													</div>
 													<div class="col info">
-														<span><em class="nft"><?=number_format($total_order_price)?></em>원</span>
+														<span><em class="nft">79,010</em>원</span>
 													</div>
 												</li>
 												<li class="row clearfix">
 													<div class="col guide">
-														<span>배송비</span>
+														<span>상품합계</span>
+													</div>
+													<div class="col info">
+														<span><em class="nft">80,000</em>원</span>
+													</div>
+												</li>
+												<li class="row clearfix">
+													<div class="col guide">
+														<span>배송비합계</span>
 													</div>
 													<div class="col info">
 														<span><em class="nft">0</em>원</span>
@@ -347,31 +350,51 @@
 												</li>
 												<li class="row clearfix">
 													<div class="col guide">
-														<span>쿠폰</span>
+														<span>할인금액</span>
 													</div>
 													<div class="col info">
 														<span>
-															<em class="nft">990</em>원
+															<em class="nft">-990</em>원
 														</span>
 													</div>
 												</li>
 												<li class="row clearfix">
 													<div class="col guide">
-														<span>적립금</span>
+														<span>상품/주문할인</span>
 													</div>
 													<div class="col info">
 														<span>
-															<em class="nft">1,000</em>원
+															<em class="nft">-990</em>원
 														</span>
 													</div>
 												</li>
 												<li class="row clearfix">
 													<div class="col guide">
-														<span>총결제금액</span>
+														<span>배송비할인</span>
 													</div>
 													<div class="col info">
 														<span>
-															<em class="nft">78,010</em>원
+															<em class="nft">0</em>원
+														</span>
+													</div>
+												</li>
+												<li class="row clearfix">
+													<div class="col guide">
+														<span>환불정산액/포인트 결제액</span>
+													</div>
+													<div class="col info">
+														<span>
+															<em class="nft">0</em>원
+														</span>
+													</div>
+												</li>
+												<li class="row clearfix">
+													<div class="col guide">
+														<span>포인트</span>
+													</div>
+													<div class="col info">
+														<span>
+															<em class="nft">0</em>원
 														</span>
 													</div>
 												</li>
