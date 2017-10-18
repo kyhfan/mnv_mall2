@@ -3,7 +3,6 @@
 
 	switch ($_REQUEST['exec'])
 	{
-		
 		case "login_admin" :
 			$admin_id	= $_REQUEST['admin_id'];
 			$admin_pw	= $_REQUEST['admin_pw'];
@@ -330,33 +329,36 @@
 
 		case "insert_goods_info" :
 			$showYN						= $_REQUEST['showYN'];
-			$salesYN						= $_REQUEST['salesYN'];
+			$salesYN					= $_REQUEST['salesYN'];
 			$cate_1						= $_REQUEST['cate_1'];
 			$cate_2						= $_REQUEST['cate_2'];
 			$cate_3						= $_REQUEST['cate_3'];
 			$related_goods				= $_REQUEST['related_goods'];
-			$sales_store					= $_REQUEST['sales_store'];
-			$goods_name				= $_REQUEST['goods_name'];
-			$goods_eng_name			= $_REQUEST['goods_eng_name'];
-			$goods_model				= $_REQUEST['goods_model'];
+			$sales_store				= $_REQUEST['sales_store'];
+			$goods_name					= $_REQUEST['goods_name'];
+			$goods_sub_name				= $_REQUEST['goods_sub_name'];
+			$goods_size					= $_REQUEST['goods_size'];
+			$goods_color				= $_REQUEST['goods_color'];
+			// $goods_eng_name			= $_REQUEST['goods_eng_name'];
+			// $goods_model				= $_REQUEST['goods_model'];
 			$goods_brand				= $_REQUEST['goods_brand'];
 			$goods_status				= $_REQUEST['goods_status'];
 			$goods_small_desc			= $_REQUEST['goods_small_desc'];
-			$goods_middle_desc		= $_REQUEST['goods_middle_desc'];
-			$goods_big_desc			= $_REQUEST['goods_big_desc'];
-			$m_goods_big_descYN	= $_REQUEST['m_goods_big_descYN'];
-			$m_goods_big_desc		= $_REQUEST['m_goods_big_desc'];
+			$goods_middle_desc			= $_REQUEST['goods_middle_desc'];
+			$goods_big_desc				= $_REQUEST['goods_big_desc'];
+			$m_goods_big_descYN			= $_REQUEST['m_goods_big_descYN'];
+			$m_goods_big_desc			= $_REQUEST['m_goods_big_desc'];
 			$supply_price				= $_REQUEST['supply_price'];
-			$sales_price					= $_REQUEST['sales_price'];
+			$sales_price				= $_REQUEST['sales_price'];
 			$saved_priceYN				= $_REQUEST['saved_priceYN'];
-			$saved_price					= $_REQUEST['saved_price'];
+			$saved_price				= $_REQUEST['saved_price'];
 			$discount_price				= $_REQUEST['discount_price'];
-			$goods_optionYN			= $_REQUEST['goods_optionYN'];
+			$goods_optionYN				= $_REQUEST['goods_optionYN'];
 			$goods_option_txt			= $_REQUEST['goods_option_txt'];
 			$goods_stock				= $_REQUEST['goods_stock'];
-			$goods_code				= create_goodscode();
+			$goods_code					= create_goodscode();
 
-			$goods_query		= "INSERT INTO ".$_gl['goods_info_table']."(showYN,salesYN,cate_1,cate_2,cate_3,related_goods,sales_store,goods_name,goods_eng_name,goods_code,goods_model,goods_brand,goods_status,goods_small_desc,goods_middle_desc,goods_big_desc,m_goods_big_descYN,m_goods_big_desc,supply_price,sales_price,discount_price,saved_priceYN,saved_price,goods_optionYN,goods_option_txt,goods_stock,goods_regdate) values('".$showYN."','".$salesYN."','".$cate_1."','".$cate_2."','".$cate_3."','".$related_goods."','".$sales_store."','".$goods_name."','".$goods_eng_name."','".$goods_code."','".$goods_model."','".$goods_brand."','".$goods_status."','".$goods_small_desc."','".$goods_middle_desc."','".$goods_big_desc."','".$m_goods_big_descYN."','".$m_goods_big_desc."','".$supply_price."','".$sales_price."','".$discount_price."','".$saved_priceYN."','".$saved_price."','".$goods_optionYN."','".$goods_option_txt."','".$goods_stock."','".date("Y-m-d H:i:s")."')";
+			$goods_query		= "INSERT INTO ".$_gl['goods_info_table']."(showYN,salesYN,cate_1,cate_2,cate_3,related_goods,sales_store,goods_name,goods_sub_name,goods_size,goods_color,goods_eng_name,goods_code,goods_model,goods_brand,goods_status,goods_small_desc,goods_middle_desc,goods_big_desc,m_goods_big_descYN,m_goods_big_desc,supply_price,sales_price,discount_price,saved_priceYN,saved_price,goods_optionYN,goods_option_txt,goods_stock,goods_regdate) values('".$showYN."','".$salesYN."','".$cate_1."','".$cate_2."','".$cate_3."','".$related_goods."','".$sales_store."','".$goods_name."','".$goods_sub_name."','".$goods_size."','".$goods_color."','".$goods_eng_name."','".$goods_code."','".$goods_model."','".$goods_brand."','".$goods_status."','".$goods_small_desc."','".$goods_middle_desc."','".$goods_big_desc."','".$m_goods_big_descYN."','".$m_goods_big_desc."','".$supply_price."','".$sales_price."','".$discount_price."','".$saved_priceYN."','".$saved_price."','".$goods_optionYN."','".$goods_option_txt."','".$goods_stock."','".date("Y-m-d H:i:s")."')";
 			$goods_result		= mysqli_query($my_db, $goods_query);
 			if ($goods_result)
 				$flag	= "Y||".$goods_code;
@@ -1233,6 +1235,39 @@
 				$flag = "0";
 			echo $flag;
 		break;
+		
+		case "insert_special_info" :
+			$special_name			= $_REQUEST['special_name'];
+			$special_desc			= $_REQUEST['special_desc'];
+			$special_showYN			= $_REQUEST['special_showYN'];
+					
+			$special_query	= "INSERT INTO ".$_gl['special_info_table']."(special_name,special_desc,special_showYN,special_regdate) values('".$special_name."','".$special_desc."','".$special_showYN."','".date("Y-m-d H:i:s")."')";
+			$special_result	= mysqli_query($my_db, $special_query);
+			$id_num				= mysqli_insert_id($my_db);
+			if($special_result)
+				$flag = $id_num;
+			else
+				$flag = "0";
+			echo $flag;
+		break;
+			
+		case "insert_promotion_info" :
+			$promotion_name			= $_REQUEST['promotion_name'];
+			$promotion_category		= $_REQUEST['promotion_category'];
+			$promotion_startdate	= $_REQUEST['promotion_startdate'];
+			$promotion_enddate		= $_REQUEST['promotion_enddate'];
+			$promotion_goods		= $_REQUEST['promotion_goods'];
+			$promotion_showYN		= $_REQUEST['promotion_showYN'];
+					
+			$promotion_query	= "INSERT INTO ".$_gl['promotion_info_table']."(promotion_name,promotion_category,promotion_startdate,promotion_enddate,promotion_goods,promotion_showYN,promotion_regdate) values('".$promotion_name."','".$promotion_category."','".$promotion_startdate."','".$promotion_enddate."','".$promotion_goods."','".$promotion_showYN."','".date("Y-m-d H:i:s")."')";
+			$promotion_result	= mysqli_query($my_db, $promotion_query);
+			$id_num				= mysqli_insert_id($my_db);
+			if($promotion_result)
+				$flag = $id_num;
+			else
+				$flag = "0";
+			echo $flag;
+		break;
 			
 		case "update_banner_info" :
 			$banner_idx				= $_REQUEST['banner_idx'];
@@ -1343,6 +1378,39 @@
 				$innerHTML	.= "<td>".$list_data['banner_link_target']."</td>";
 				$innerHTML	.= "<td>".$list_data['banner_regdate']."</td>";
 				$innerHTML	.= "<td><a href='./banner_detail.php?idx=".$list_data['idx']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='javascript:void(0)' class='del_banner' data-idx='".$list_data['idx']."' onclick='delete_row(".$list_data['idx'].");return false;'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
+				$innerHTML	.= "</tr>";
+				//$i++;
+			}
+			$innerHTML	.= "</tbody>";
+			echo $innerHTML;
+		break;
+
+		case "show_special_list" :
+			$target	= $_REQUEST['target'];
+			$list_query		= "SELECT * FROM ".$_gl['special_info_table']." WHERE 1 ORDER BY idx DESC";
+			$list_result		= mysqli_query($my_db, $list_query);
+
+			$innerHTML	= "<thead>";
+			$innerHTML	.= "<tr>";
+			$innerHTML	.= "<th>스페셜 타이틀</th>";
+			$innerHTML	.= "<th>스페셜 설명</th>";
+			$innerHTML	.= "<th>스페셜 대표 이미지</th>";
+			$innerHTML	.= "<th>스페셜 노출 여부</th>";
+			$innerHTML	.= "<th>스페셜 등록일</th>";
+			$innerHTML	.= "<th></th>";
+			$innerHTML	.= "</tr>";
+			$innerHTML	.= "</thead>";
+			$innerHTML	.= "<tbody>";
+			//$i	= 1;
+			while ($list_data = mysqli_fetch_array($list_result))
+			{
+				$innerHTML	.= "<tr>";
+				$innerHTML	.= "<td>".$list_data['special_name']."</td>";
+				$innerHTML	.= "<td>".$list_data['special_desc']."</td>";
+				$innerHTML	.= "<td>".$list_data['banner_img_url']."</td>";
+				$innerHTML	.= "<td class='showYN'>".$list_data['special_showYN']."</td>";
+				$innerHTML	.= "<td>".$list_data['special_regdate']."</td>";
+				$innerHTML	.= "<td><a href='./special_detail.php?idx=".$list_data['idx']."'><button type='button' class='btn btn-primary'>수정</button></a> <a href='javascript:void(0)' class='del_banner' data-idx='".$list_data['idx']."' onclick='delete_row(".$list_data['idx'].");return false;'><button type='button' class='btn btn-danger'>삭제</button></a></td>";
 				$innerHTML	.= "</tr>";
 				//$i++;
 			}

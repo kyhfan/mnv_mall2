@@ -35,6 +35,22 @@ function select_goods_info($goodscode)
 	return $data;
 }
 
+// 주문용 해당 상품정보 가져오기 (goods_code)
+function select_order_goods_info($goodscode)
+{
+	global $_gl;
+	global $my_db;
+
+	$query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_code='".$goodscode."'";
+	$result		= mysqli_query($my_db, $query);
+	while ($data = mysqli_fetch_array($result))
+	{
+		$res_data[]	= $data;
+	}
+
+	return $res_data;
+}
+
 // 해당 상품정보 가져오기 (idx)
 function select_idx_goods_info($idx)
 {
@@ -296,7 +312,7 @@ function load_option()
 function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail             = new PHPMailer();
 	$body             = $CONTENT;
-
+/*
 	$mail->IsSMTP(); // telling the class to use SMTP
 	// $mail->Host 	  = "www.coolio.so"; // SMTP server
 	$mail->SMTPDebug  = 0;						// enables SMTP debug information (for testing)
@@ -307,7 +323,7 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
 	$mail->Host       = "smtp.naver.com";      // sets GMAIL as the SMTP server
 	$mail->Port       = 465;                   // set the SMTP port for the GMAIL server
-	$mail->Username   = "yh.kim@minivertising.kr";             // GMAIL username
+	$mail->Username   = "kyhfan";             // GMAIL username
 	$mail->Password   = "dudfks88";              // GMAIL password
 
 	$mail->SetFrom($EMAIL, $NAME);
@@ -320,15 +336,38 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 
 	$address = $MAILTO;
 	$mail->AddAddress($address, $MAILTONAME);
-
-/*
-	if(!$mail->Send()) {
-		echo "E";
-	} else {
-		echo "Y";
-	}
 */
-	$mail->Send();
+	$mail->isSMTP();                                      // Set mailer to use SMTP
+	$mail->Host = 'smtp.naver.com';  // Specify main and backup SMTP servers
+	$mail->SMTPAuth = true;                               // Enable SMTP authentication
+	$mail->Username = 'kyhfan';                 // SMTP username
+	$mail->Password = 'dudfks88';                           // SMTP password
+	$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+	$mail->Port = 465;                                    // TCP port to connect to
+	
+	$mail->CharSet    = "utf-8";
+	$mail->setFrom($EMAIL, $NAME);
+	$mail->addAddress($EMAIL, $NAME);     // Add a recipient
+	// $mail->addAddress('ellen@example.com');               // Name is optional
+	$mail->addReplyTo($EMAIL, $NAME);
+	// $mail->addCC('cc@example.com');
+	// $mail->addBCC('bcc@example.com');
+	
+	// $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+	// $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+	$mail->isHTML(true);                                  // Set email format to HTML
+	
+	$mail->Subject = $SUBJECT;
+	$mail->Body    = $body;
+	// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+	
+	if(!$mail->send()) {
+		echo 'Message could not be sent.';
+		echo 'Mailer Error: ' . $mail->ErrorInfo;
+	} else {
+		echo 'Message has been sent';
+	}
+	// $mail->Send();
 }
 
 // 해당 거래처 정보 가져오기 (idx)
@@ -339,7 +378,7 @@ function select_purchasing_info($idx)
 
 	$query		= "SELECT * FROM ".$_gl['purchasing_info_table']." WHERE idx='".$idx."'";
 	$result		= mysqli_query($my_db, $query);
-	$data			= mysqli_fetch_array($result);
+	$data		= mysqli_fetch_array($result);
 
 	return $data;
 }
@@ -350,9 +389,9 @@ function select_member_info()
 	global $_gl;
 	global $my_db;
 
-	$query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_id='".$_SESSION['ss_chon_id']."'";
+	$query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$_SESSION['ss_chon_email']."'";
 	$result		= mysqli_query($my_db, $query);
-	$data			= mysqli_fetch_array($result);
+	$data		= mysqli_fetch_array($result);
 
 	return $data;
 }
@@ -454,6 +493,18 @@ function select_order_info($oid)
 	return $order_data;
 }
 
+function select_promotion_info($idx)
+{
+	global $_gl;
+	global $my_db;
+
+	$promotion_query		= "SELECT * FROM ".$_gl['promotion_info_table']." WHERE idx='".$idx."'";
+	$promotion_result		= mysqli_query($my_db, $promotion_query);
+	$promotion_data			= mysqli_fetch_array($promotion_result);
+
+	return $promotion_data;
+}
+
 function select_payment_info($oid)
 {
 	global $_gl;
@@ -461,9 +512,89 @@ function select_payment_info($oid)
 
 	$payment_query		= "SELECT * FROM ".$_gl['payment_info_table']." WHERE LGD_OID='".$oid."'";
 	$payment_result		= mysqli_query($my_db, $payment_query);
-	$payment_data			= mysqli_fetch_array($payment_result);
+	$payment_data		= mysqli_fetch_array($payment_result);
 
 	return $payment_data;
+}
+
+function select_oto_info($idx)
+{
+	global $_gl;
+	global $my_db;
+
+	$oto_query		= "SELECT * FROM ".$_gl['board_oto_table']." WHERE idx='".$idx."' AND oto_email='".$_SESSION['ss_chon_email']."'";
+	$oto_result		= mysqli_query($my_db, $oto_query);
+	$oto_data		= mysqli_fetch_array($oto_result);
+
+	return $oto_data;
+
+}
+
+function select_cart_info()
+{
+	global $_gl;
+	global $my_db;
+
+	$mb_id			= $_SESSION['ss_chon_email'];
+
+	$cart_query		= "SELECT * FROM ".$_gl['mycart_info_table']." WHERE mb_email='".$mb_id."' AND showYN='Y' AND cart_regdate >=(CURDATE()-INTERVAL 3 DAY);";
+	$cart_result	= mysqli_query($my_db, $cart_query);
+	// $cart_data		= mysqli_fetch_array($cart_result);
+	while ($cart_data = @mysqli_fetch_array($cart_result))
+	{
+		$res_data[]	= $cart_data;
+	}
+
+	return $res_data;
+}
+
+function select_order_cart_info()
+{
+	global $_gl;
+	global $my_db;
+
+	$mb_id			= $_SESSION['ss_chon_email'];
+
+	$cart_query		= "SELECT * FROM ".$_gl['mycart_info_table']." WHERE mb_email='".$mb_id."' AND showYN='Y' AND cart_regdate >=(CURDATE()-INTERVAL 3 DAY);";
+	$cart_result	= mysqli_query($my_db, $cart_query);
+	// $cart_data		= mysqli_fetch_array($cart_result);
+
+	$total_order_price 	= 0;
+	$total_order_cnt	= 0;
+	$i 					= 0;
+	while ($cart_data = @mysqli_fetch_array($cart_result))
+	{
+		$goods_info 							= select_goods_info($cart_data['goods_code']);
+		$res_data[$i]							= $cart_data;
+		$res_data[$i]["goods_thumb_img_url"]	= $goods_info["goods_thumb_img_url"];
+		$res_data[$i]["goods_name"]				= $goods_info["goods_name"];
+		$total_order_price						+= $goods_info["discount_price"] * $cart_data["goods_cnt"];
+		$total_order_cnt						+= $cart_data["goods_cnt"];
+		$i++;
+	}
+	$res_data[0]["total_order_price"]	= $total_order_price;
+	$res_data[0]["total_order_cnt"]		= $total_order_cnt;
+	
+	return $res_data;
+}
+
+function check_wish_goods($goods_code)
+{
+	global $_gl;
+	global $my_db;
+
+	$mb_id			= $_SESSION['ss_chon_email'];
+	
+	$wish_query 	= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND goods_code='".$goods_code."' AND showYN='Y'";
+	$wish_result 	= mysqli_query($my_db, $wish_query);
+	$wish_data		= mysqli_fetch_array($wish_result);
+
+	if ($wish_data)
+		$flag 	= "Y";
+	else
+		$flag 	= "N";
+
+	return $flag;
 }
 
 ?>

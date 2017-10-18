@@ -24,22 +24,30 @@
 				</div>
 				<div class="top-block">
 					<div class="wrapper">
-						<div class="verify-btn logoff">
-							<a href="#">
-								<span>로그인</span>
-							</a>
-						</div>
-						<div class="cart-btn">
-							<a href="#">
-								<span>장바구니 (<em class="nft"> 0 </em>)</span>
-							</a>
-						</div>
+<?
+	if (!$_SESSION['ss_chon_email'])
+	{
+?>						
+						<a href="member_login.php?ref_url=<?=$_SERVER['REQUEST_URI']?>">
+							<span>LOG IN</span>
+						</a>
+						<a href="javascript:void(0)">
+							<span>JOIN</span>
+						</a>
+<?
+	}else{
+?>		
+						<a href="logout.php">
+							<span>LOG OUT</span>
+						</a>
+<?
+	}
+?>					
 					</div>
 				</div>
 				<div class="bot-block">
 					<div class="wrapper">
-						<!-- <div class="child"> -->
-							<h4>CATEGORY</h4>
+						<div class="child">
 							<div class="list cate">
 								<ul>
 <?
@@ -48,10 +56,9 @@
 
     while ($data = mysqli_fetch_array($result))
     {
-        $cate_link  = $data['cate_1'].$data['cate_2'].$data['cate_3'];
-?>
+?>                                
 									<li>
-										<a href="<?=$cate_link?>">
+										<a href="product_list.php?cate=<?=$data["cate_1"]?>">
 											<span><?=$data['cate_name']?></span>
 										</a>
 									</li>
@@ -63,7 +70,7 @@
 							<div class="list theme">
 								<ul>
 									<li>
-										<a href="#">
+										<a href="special.php">
 											<span>SPECIAL</span>
 										</a>
 									</li>
@@ -79,7 +86,7 @@
 									</li>
 								</ul>
 							</div>
-						<!-- </div> -->
+						</div>
 					</div>
 					<div class="banner-block">
 						<a href="#">

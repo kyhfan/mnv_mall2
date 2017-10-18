@@ -572,6 +572,10 @@
 		font-size: 24px;
 		color: #333333;
 	}
+	.input-group input[type="password"] {
+		font-size: 24px;
+		color: #333333;
+	}
 	::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		color: #dcdcdc;
 	}
@@ -2487,6 +2491,10 @@
 		padding: 27px 0 27px 20px;
 		width: 100%;
 	}
+	.login .input-group .input-box input[type="password"] {
+		padding: 27px 0 27px 20px;
+		width: 100%;
+	}
 	.login .btn.login {
 		width: 90.7%;
 		margin: 0 auto;
@@ -2635,6 +2643,10 @@
 	.join > .wrapper .input-group .input-box input[type="password"] {
 		width: 100%;
 		padding: 38px 0 35px 22px;
+	}
+	.join > .wrapper .input-group .input-box input[type="password"] {
+		width: 100%;
+		padding: 40px 0 40px 22px;
 	}
 	.join > .wrapper .birth.n3 .row {
 		width: 100%;

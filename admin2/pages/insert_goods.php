@@ -51,7 +51,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>진열상태</td>
+                  <td>메인 진열상태</td>
                   <td colspan="2">
                     <input type="radio" name="showYN" value="Y"> 진열함
                     <input type="radio" name="showYN" value="N" checked> 진열안함
@@ -70,10 +70,10 @@
                     <select class="form-control" id="cate_1">
                       <option value="">선택하세요</option>
                     </select>
-                    <select class="form-control" id="cate_2">
+                    <!-- <select class="form-control" id="cate_2">
                       <option value="">선택하세요</option>
                     </select> (상품분류 추가/수정/삭제는 소핑몰관리 > 카테고리 관리 에서 해 주세요. )
-                    <!-- <select class="form-control" id="cate_3">
+                    <select class="form-control" id="cate_3">
                       <option value="">선택하세요</option>
                     </select> -->
                   </td>
@@ -103,12 +103,30 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>* 상품명</td>
+                  <td>* 대표 제품명</td>
                   <td colspan="2">
                     <input class="form-control" id="goods_name" style="width:100%">
                   </td>
                 </tr>
                 <tr>
+                  <td>* 품목명 및 제품명</td>
+                  <td colspan="2">
+                    <input class="form-control" id="goods_sub_name" style="width:100%">
+                  </td>
+                </tr>
+                <tr>
+                  <td>* 사이즈</td>
+                  <td colspan="2">
+                    <input class="form-control" id="goods_size" style="width:100%">
+                  </td>
+                </tr>
+                <tr>
+                  <td>* 색상 / 무늬</td>
+                  <td colspan="2">
+                    <input class="form-control" id="goods_color" style="width:100%">
+                  </td>
+                </tr>
+                <!-- <tr>
                   <td>영문 상품명</td>
                   <td colspan="2">
                     <input class="form-control" id="goods_eng_name" style="width:100%">
@@ -120,8 +138,8 @@
                     <input class="form-control" id="goods_model" style="width:100%">
                   </td>
                 </tr>
-                <tr>
-                  <td>브랜드명</td>
+                <tr> -->
+                  <td>* 브랜드명(제조자)</td>
                   <td colspan="2">
                     <select class="form-control" id="goods_brand">
                       <option value="">선택하세요</option>
@@ -129,15 +147,60 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>* 상품 이미지</td>
+                  <td>* 상품 썸네일 이미지</td>
                   <td colspan="2">
-                    <form action="../../lib/filer/php/upload.php" id="img_frm" method="post" enctype="multipart/form-data">
-                      <input type="file" name="files[]" id="filer_input" multiple="multiple">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm2" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files2[]" id="filer_input2" multiple="multiple">
                       <!-- <input type="submit" value="Submit"> -->
                     </form>
                   </td>
                 </tr>
                 <tr>
+                <td>* 상품 메인 이미지1</td>
+                <td colspan="2">
+                  <form action="../../lib/filer/php/upload.php" id="img_frm_main1" method="post" enctype="multipart/form-data">
+                    <input type="file" name="files_main1[]" id="filer_input_main1" multiple="multiple">
+                    <!-- <input type="submit" value="Submit"> -->
+                  </form>
+                </td>
+              </tr>
+              <tr>
+                  <td>상품 메인 이미지2</td>
+                  <td colspan="2">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main2" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main2[]" id="filer_input_main2" multiple="multiple">
+                      <!-- <input type="submit" value="Submit"> -->
+                    </form>
+                  </td>
+                </tr>
+                <tr>
+                  <td>상품 메인 이미지3</td>
+                  <td colspan="2">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main3" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main3[]" id="filer_input_main3" multiple="multiple">
+                      <!-- <input type="submit" value="Submit"> -->
+                    </form>
+                  </td>
+                </tr>
+                <tr>
+                  <td>상품 메인 이미지4</td>
+                  <td colspan="2">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main4" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main4[]" id="filer_input_main4" multiple="multiple">
+                      <!-- <input type="submit" value="Submit"> -->
+                    </form>
+                  </td>
+                </tr>
+                <tr>
+                  <td>상품 메인 이미지5</td>
+                  <td colspan="2">
+                    <form action="../../lib/filer/php/upload.php" id="img_frm_main5" method="post" enctype="multipart/form-data">
+                      <input type="file" name="files_main5[]" id="filer_input_main5" multiple="multiple">
+                      <!-- <input type="submit" value="Submit"> -->
+                    </form>
+                  </td>
+                </tr>
+              <tr>
                   <td>상품코드</td>
                   <td colspan="2">
                     자동생성
@@ -163,20 +226,20 @@
                     <textarea class="form-control" id="goods_middle_desc" rows="3" style="width:100%"></textarea>
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>* 상품 상세설명</td>
                   <td colspan="2">
                     <form action="sample.php" method="post">
                       <textarea name="goods_big_desc"  id="goods_big_desc" rows="10" cols="100" style="width:100%; height:412px; display:none;"></textarea>
                     </form>
                   </td>
-                </tr>
+                </tr> -->
                 <tr>
-                  <td>모바일 상품 상세설명</td>
+                  <td>* 모바일 상품 상세설명</td>
                   <td colspan="2">
-                    <input type="radio" name="m_goods_big_descYN" id="m_goods_big_descY" value="new"> 직접 등록
-                    <input type="radio" name="m_goods_big_descYN" id="m_goods_big_descN" value="same" checked> 상품 상세설명 동일
-                    <div id="mobile_detail_div" style="display:none;">
+                    <!-- <input type="radio" name="m_goods_big_descYN" id="m_goods_big_descY" value="new"> 직접 등록
+                    <input type="radio" name="m_goods_big_descYN" id="m_goods_big_descN" value="same" checked> 상품 상세설명 동일 -->
+                    <div id="mobile_detail_div">
                       <form action="sample.php" method="post">
                         <textarea name="m_goods_big_desc"  id="m_goods_big_desc" rows="10" cols="100" style="width:100%; height:412px;"></textarea>
                       </form>
@@ -201,13 +264,13 @@
                 <tr>
                   <td>* 판매가</td>
                   <td colspan="2">
-                    <input class="form-control" id="sales_price" value="0"> 원
+                    <input class="form-control" id="sales_price" value="0" onblur="$('#discount_price').val($(this).val())"> 원
                   </td>
                 </tr>
                 <tr>
                   <td>할인가</td>
                   <td colspan="2">
-                    <input class="form-control" id="discount_price" value="0"> 원 ( 미 입력시 할인가 노출 안됩니다.)
+                    <input class="form-control" id="discount_price" value="0"> 원 ( 할인가와 판매가가 동일하면 할인상품에 노출 안됩니다.)
                   </td>
                 </tr>
                 <tr>
@@ -304,25 +367,25 @@
 		show_select_brand("goods_brand");
 	});
 
-	nhn.husky.EZCreator.createInIFrame({
-		oAppRef: oEditors,
-		elPlaceHolder: "goods_big_desc",
-		sSkinURI: "../../lib/smarteditor/SmartEditor2Skin.html",	
-		htParams : {
-			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-			bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-			bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-			//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
-			fOnBeforeUnload : function(){
-				//alert("완료!");
-			}
-		}, //boolean
-		fOnAppLoad : function(){
-			//예제 코드
-			//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
-		},
-		fCreator: "createSEditor2"
-	});
+	// nhn.husky.EZCreator.createInIFrame({
+	// 	oAppRef: oEditors,
+	// 	elPlaceHolder: "goods_big_desc",
+	// 	sSkinURI: "../../lib/smarteditor/SmartEditor2Skin.html",	
+	// 	htParams : {
+	// 		bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	// 		bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	// 		bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	// 		//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+	// 		fOnBeforeUnload : function(){
+	// 			//alert("완료!");
+	// 		}
+	// 	}, //boolean
+	// 	fOnAppLoad : function(){
+	// 		//예제 코드
+	// 		//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+	// 	},
+	// 	fCreator: "createSEditor2"
+	// });
 
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: m_oEditors,
@@ -344,7 +407,7 @@
 		fCreator: "createSEditor2"
 	});
 
-	$('#filer_input').filer({
+	$('#filer_input_main1').filer({
 		showThumbs: true,
 		templates: {
 			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
@@ -400,7 +463,293 @@
 		},
 		addMore: true
 	});
-	</script>
+
+	$('#filer_input_main2').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input_main3').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input_main4').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input_main5').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+	$('#filer_input2').filer({
+		showThumbs: true,
+		templates: {
+			box: '<ul class="jFiler-items-list jFiler-items-grid"></ul>',
+			item: '<li class="jFiler-item">\
+						<div class="jFiler-item-container">\
+							<div class="jFiler-item-inner">\
+								<div class="jFiler-item-thumb">\
+									<div class="jFiler-item-status"></div>\
+									<div class="jFiler-item-info">\
+										<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+										<span class="jFiler-item-others">{{fi-size2}}</span>\
+									</div>\
+									{{fi-image}}\
+								</div>\
+								<div class="jFiler-item-assets jFiler-row">\
+									<ul class="list-inline pull-left"></ul>\
+									<ul class="list-inline pull-right">\
+										<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+									</ul>\
+								</div>\
+							</div>\
+						</div>\
+					</li>',
+			itemAppend: '<li class="jFiler-item">\
+							<div class="jFiler-item-container">\
+								<div class="jFiler-item-inner">\
+									<div class="jFiler-item-thumb">\
+										<div class="jFiler-item-status"></div>\
+										<div class="jFiler-item-info">\
+											<span class="jFiler-item-title"><b title="{{fi-name}}">{{fi-name | limitTo: 25}}</b></span>\
+											<span class="jFiler-item-others">{{fi-size2}}</span>\
+										</div>\
+										{{fi-image}}\
+									</div>\
+									<div class="jFiler-item-assets jFiler-row">\
+										<ul class="list-inline pull-left">\
+											<li><span class="jFiler-item-others">{{fi-icon}}</span></li>\
+										</ul>\
+										<ul class="list-inline pull-right">\
+											<li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+										</ul>\
+									</div>\
+								</div>\
+							</div>\
+						</li>',
+			itemAppendToEnd: false,
+			removeConfirmation: true,
+			_selectors: {
+				list: '.jFiler-items-list',
+				item: '.jFiler-item',
+				remove: '.jFiler-item-trash-action'
+			}
+		},
+		addMore: true
+	});
+
+</script>
 
 </body>
 
