@@ -1,8 +1,8 @@
 <?
 	include_once "./header.php";
 
-	$order_type		= $_REQUEST["t"];
-
+	$order_type				= $_REQUEST["t"];
+	$total_delivery_price	= 0;
 	if ($order_type == "cart")
 	{
 		$order_info 		= select_order_cart_info();
@@ -17,9 +17,14 @@
 		$total_order_price	= $order_info[0]["discount_price"] * $buycnt;
 	}
 
+	$total_payment_price 		= $total_order_price;
 	if ($total_order_price < 50000)
-		$total_order_price = $total_order_price + 2500;
-
+	{
+		$total_payment_price 		= $total_order_price + 2500;
+		$total_delivery_price 	= $_gl['delivery_price']; 
+	}
+	$total_save_price		+= $total_order_price * $_gl['save_percent'];
+	
 	$member_info 	= select_member_info();
 ?>
 <body>
@@ -342,7 +347,7 @@
 														<span>배송비</span>
 													</div>
 													<div class="col info">
-														<span><em class="nft">0</em>원</span>
+														<span><em class="nft"><?=number_format($total_delivery_price)?></em>원</span>
 													</div>
 												</li>
 												<li class="row clearfix">
@@ -351,7 +356,7 @@
 													</div>
 													<div class="col info">
 														<span>
-															<em class="nft">990</em>원
+															<em class="nft">0</em>원
 														</span>
 													</div>
 												</li>
@@ -361,7 +366,7 @@
 													</div>
 													<div class="col info">
 														<span>
-															<em class="nft">1,000</em>원
+															<em class="nft"><?=number_format($total_save_price)?></em>원
 														</span>
 													</div>
 												</li>
@@ -371,7 +376,7 @@
 													</div>
 													<div class="col info">
 														<span>
-															<em class="nft">78,010</em>원
+															<em class="nft"><?=number_format($total_payment_price)?></em>원
 														</span>
 													</div>
 												</li>
@@ -413,7 +418,7 @@
 								</div>
 							</div>
 							<div class="finish-btn">
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" id="order_start">
 									<span>결제하기</span>
 								</a>
 							</div>
