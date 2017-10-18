@@ -1011,11 +1011,18 @@
 
 		case "update_cart_cnt" :
 			$cart_idx		= $_REQUEST['cart_idx'];
-			$goods_cnt	= $_REQUEST['goods_cnt'];
-			$mb_id		= $_SESSION['ss_chon_id'];
+			$goods_cnt		= $_REQUEST['goods_cnt'];
+			$mb_email		= $_SESSION['ss_chon_email'];
 
-			$cart_query 	= "UPDATE ".$_gl['mycart_info_table']." SET goods_cnt='".$goods_cnt."' WHERE idx='".$cart_idx."' AND mb_id='".$mb_id."'";
+			$cart_query 	= "UPDATE ".$_gl['mycart_info_table']." SET goods_cnt='".$goods_cnt."' WHERE idx='".$cart_idx."' AND mb_email='".$mb_email."'";
 			$cart_result 		= mysqli_query($my_db, $cart_query);
+
+			if ($cart_result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+
+			echo $flag;
 
 		break;
 

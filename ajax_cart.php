@@ -1,28 +1,16 @@
 <?
-	include_once "./header.php";
+	include_once "./config.php";    
 
+    $cart_idx		= $_REQUEST['cart_idx'];
+    $goods_cnt		= $_REQUEST['goods_cnt'];
+    $mb_email		= $_SESSION['ss_chon_email'];
+
+    $cart_query 	= "UPDATE ".$_gl['mycart_info_table']." SET goods_cnt='".$goods_cnt."' WHERE idx='".$cart_idx."' AND mb_email='".$mb_email."'";
+    $cart_result 		= mysqli_query($my_db, $cart_query);
+    
 	$cart_info 	= select_cart_info();
 	$cart_num	= count($cart_info);
 ?>
-<body>
-	<input type="hidden" id="cart_num" value="<?=$cart_num?>">
-	<div id="chon-app">
-<?
-	include_once "./head_area.php";
-?>
-		<div id="container" class="cart">
-			<div class="content">
-<?
-	if ($cart_num < 1)
-	{
-?>				
-				<!-- 장바구니 비어있을 경우 -->
-				<p class="empty">장바구니에 담긴 상품이 없습니다.</p>
-				<!-- 장바구니 비어있을 경우 -->
-<?
-	}else{
-?>				
-				<div class="cart-block">
 					<div class="block">
 						<div class="wrap-control clearfix">
 							<div class="check">
@@ -124,72 +112,3 @@
 							<span>구매하기</span>
 						</a>
 					</div>
-				</div>
-<?
-	}
-?>				
-			</div>
-		</div>
-<?
-	include_once "./footer.php";	
-?>		
-	</div>
-	<script type="text/javascript">
-		var $header = $('#header');
-		var $app = $('#chon-app');
-
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
-		$(document).ready(function() {
-			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
-				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
-			});
-			$('#menu-layer .close-btn a').on('click', function() {
-				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
-			});
-		});
-
-		var chk_all_flag 	= 0;
-		$("#chk_all").click(function() {
-			if (chk_all_flag == 0)
-			{
-				$("input[name=chk_this]:checkbox").prop("checked", true);
-				$("#chk_goods").html($("#cart_num").val());
-				chk_all_flag	= 1;
-			}else{
-				$("input[name=chk_this]:checkbox").prop("checked",false);
-				$("#chk_goods").html("0");
-				chk_all_flag	= 0;
-			}  
-		});
-
-		$("input[name=chk_this]").change(function(){
-			var chk_count	= 0;
-			$("input[name=chk_this]:checked").each(function() {
-				chk_count++;
-			});
-			$("#chk_goods").html(chk_count);
-		});		
-	</script>
-</body>
-</html>

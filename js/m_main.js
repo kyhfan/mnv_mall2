@@ -266,6 +266,25 @@ function del_cart(idx)
 
 }
 
+function change_cart(idx)
+{
+	var goods_cnt = $("#cart_num_"+idx).val();
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./ajax_cart.php",
+		data:{
+			"cart_idx"			: idx,
+			"goods_cnt"			: goods_cnt
+		},
+		success: function(response){
+			$(".cart-block").html(response);
+			// location.reload();
+		}
+	});
+}
+
 // 회원가입 전체동의 체크 선택
 $(document).on("click", "#all_chk", function(){
 	if ($("#all_chk").prop("checked") == false)
