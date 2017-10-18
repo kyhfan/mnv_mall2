@@ -35,7 +35,7 @@
     /*
      * LGD_RETURNURL �� �����Ͽ� �ֽñ� �ٶ��ϴ�. �ݵ�� ���� �������� ������ ����Ʈ�� ��  ȣ��Ʈ�̾�� �մϴ�. �Ʒ� �κ��� �ݵ�� �����Ͻʽÿ�.
      */    
-    $LGD_RETURNURL				= "http://www.store-chon.com/dev/order_end.php";  
+    $LGD_RETURNURL				= "http://www.store-chon.com/dev/returnurl.php";  
 	
 	/*
 	* ISP ī����� ������ ���� �Ķ����(�ʼ�)
