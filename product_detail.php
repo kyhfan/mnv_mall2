@@ -48,22 +48,22 @@
 <?
 	// 신상품 노출 여부
 	if ($goods_data["goods_regdate"] > date("Y-m-d", strtotime("-30days")))
-	{		
-?>									
+	{
+?>
 							<span class="new">NEW</span>
 <?
 	}
-	
+
 	// 판매가와 할인가가 동일할 경우 판매가 숨기기
 	if ($goods_data["sales_price"] != $goods_data["discount_price"])
-	{		
+	{
 		// 할인율 계산
 		$discount_percent 			= ($goods_data['sales_price'] - $goods_data['discount_price']) / $goods_data['sales_price'] * 100;
-?>									
+?>
 							<span class="percent"><?=ceil($discount_percent)?>%</span>
 <?
 	}
-?>						
+?>
 						</div>
 					</div>
 					<div class="sub">
@@ -73,15 +73,15 @@
 <?
 	// 판매가와 할인가가 동일할 경우 판매가 숨기기
 	if ($goods_data["sales_price"] != $goods_data["discount_price"])
-	{		
-?>									
-						
+	{
+?>
+
 						<span class="normal">
 							<?=number_format($goods_data["sales_price"])?>
 						</span>
 <?
 	}
-?>						
+?>
 						<span class="sale">
 							<?=number_format($goods_data["discount_price"])?>
 						</span>
@@ -284,41 +284,50 @@
 						</a>
 					</div>
 					<div class="buy">
-						<a href="order.php?t=goods&goodscode=<?=$goods_code?>&buycnt=1">
+						<a href="javascript:void(0)" onclick="optionToggle(this)">
+							<!-- order.php?t=goods&goodscode=<?=$goods_code?>&buycnt=1 -->
 							<h5>구매하기</h5>
 						</a>
 					</div>
 				</div>
 			</div>
+			<div class="spread">
+				<div class="bg"></div>
+				<div class="wrapper">
+					<div class="inner">
+						<a class="toggle" href="javascript:void(0)" onclick="optionToggle()">
+							<span class="blind">접기</span>
+						</a>
+						<div class="control-block clearfix">
+							<div class="button" class="minus" onclick="amountControl('m')">
+								<button>-</button>
+							</div>
+							<div class="input">
+								<input type="tel" value="1" id="amount">
+							</div>
+							<div class="button" class="plus" onclick="amountControl('p')">
+								<button>+</button>
+							</div>
+						</div>
+						<div class="buttons">
+							<a href="javascript:void(0)">
+								<span>장바구니</span>
+							</a>
+							<a href="javascript:void(0)" id="buyBtn" data-type="goods" data-goodscode=<?=$goods_code?>>
+								<span>바로구매</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 <?
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
-		var $header = $('#header');
-		var $app = $('#chon-app');
-
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
+	var $header = $('#header');
+	var $app = $('#chon-app');
 		$(document).ready(function() {
 			// swiper initialize
 			var chonSwiper = new Swiper ('.swiper-container', {
@@ -339,20 +348,49 @@
 			});
 
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 
 			$('.etc-block .toggle').on('click', function() {
 				$(this).siblings('ul').toggle();
 			});
+
+			// 바로 구매 누를 시
+			$('#buyBtn').on('click', function() {
+				var data = $(this).data();
+				location.href = "order.php?t="+data['type']+"&goodscode="+data['goodscode']+"&buycnt="+$('#amount').val();
+			});
 		});
-
-
+		// 구매하기 누를 시 옵션 레이어
+		var spread_tl;
+		function optionToggle(el) {
+			var data = $(el).data() || "";
+			if($('.spread').hasClass('on')) {
+				spread_tl.reverse();
+				$('.spread').removeClass('on');
+			}else{
+				spread_tl = new TimelineMax();
+				spread_tl.to($('.spread'), 0.1, {autoAlpha: 1});
+				spread_tl.to($('.spread .wrapper'), 0.4, {bottom: 0});
+				spread_tl.to($('.spread .bg'), 0.25, {autoAlpha: 1});
+				$('.spread').addClass('on');
+			}
+		}
+		// 옵션 레이어 내부 수량 컨트롤
+		function amountControl(type) {
+			var amount = $('#amount').val();
+			if(type == 'p') {
+				amount++;
+			}else{
+				amount--;
+			}
+			$('#amount').val(amount);
+		}
 	</script>
 </body>
 </html>

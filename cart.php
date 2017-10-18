@@ -15,13 +15,13 @@
 <?
 	if ($cart_num < 1)
 	{
-?>				
+?>
 				<!-- 장바구니 비어있을 경우 -->
 				<p class="empty">장바구니에 담긴 상품이 없습니다.</p>
 				<!-- 장바구니 비어있을 경우 -->
 <?
 	}else{
-?>				
+?>
 				<div class="cart-block">
 					<div class="block">
 						<div class="wrap-control clearfix">
@@ -51,7 +51,7 @@
 		$total_cnt				+= $val["goods_cnt"];
 		$total_goods_price		+= $cart_price;
 		$total_save_price		+= $cart_price * $_gl['save_percent'];
-?>					
+?>
 					<div class="block">
 						<div class="wrap-control clearfix">
 							<div class="check">
@@ -94,8 +94,8 @@
 		$total_delivery_price = $_gl['delivery_price'];
 
 	$total_price			= $total_goods_price + $total_delivery_price;
-		
-?>					
+
+?>
 					<div class="block total">
 						<span>50,000원 이상 구매 시 배송비 무료</span>
 						<div class="row clearfix">
@@ -127,45 +127,24 @@
 				</div>
 <?
 	}
-?>				
+?>
 			</div>
 		</div>
 <?
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
-
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
 		$(document).ready(function() {
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 		});
 
@@ -180,7 +159,7 @@
 				$("input[name=chk_this]:checkbox").prop("checked",false);
 				$("#chk_goods").html("0");
 				chk_all_flag	= 0;
-			}  
+			}
 		});
 
 		$("input[name=chk_this]").change(function(){
@@ -189,7 +168,7 @@
 				chk_count++;
 			});
 			$("#chk_goods").html(chk_count);
-		});		
+		});
 	</script>
 </body>
 </html>

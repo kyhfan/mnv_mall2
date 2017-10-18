@@ -52,11 +52,11 @@
 <?
 	for ($i=2010; $i>1950; $i--)
 	{
-?>										
+?>
 										<option value="<?=$i?>"><?=$i?></option>
 <?
 	}
-?>										
+?>
 									</select>
 								</div>
 								<div class="col">
@@ -65,11 +65,11 @@
 <?
 	for ($j=1; $j<13; $j++)
 	{
-?>										
+?>
 										<option value="<?=$j?>"><?=$j?></option>
 <?
 	}
-?>										
+?>
 									</select>
 								</div>
 								<div class="col">
@@ -78,11 +78,11 @@
 <?
 	for ($k=1; $k<32; $k++)
 	{
-?>										
+?>
 										<option value="<?=$k?>"><?=$k?></option>
 <?
 	}
-?>										
+?>
 									</select>
 								</div>
 							</div>
@@ -175,35 +175,23 @@
 		</div>
 <?
 	include_once "./popup_div.php";
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
-
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
+		
 		$(document).ready(function() {
-			// swiper initialize
+			$('.gnb').on('click', function() {
+				$('#menu-layer').slideDown('slow');
+				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
+			});
+			$('#menu-layer .close-btn a').on('click', function() {
+				$app.removeClass('menu-opened');
+				$('#menu-layer').slideUp('slow');
+			});
+
 			$("#cboxTopLeft").hide();
 			$("#cboxTopRight").hide();
 			$("#cboxBottomLeft").hide();
@@ -212,31 +200,7 @@
 			$("#cboxMiddleRight").hide();
 			$("#cboxTopCenter").hide();
 			$("#cboxBottomCenter").hide();
-
-			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
-				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
-			});
-			$('#menu-layer .close-btn a').on('click', function() {
-				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
-			});
 		});
-
-		var submitTarget = "fid";
-		function swapBlock(type, elem) {
-			var $_this = $(elem);
-			var type = type || "fid";
-			$('.swap-block a').not($_this).removeClass('active');
-			$_this.addClass('active');
-			$('.input-group').not('.'+type).hide();
-			$('.input-group.'+type).show();
-			submitTarget = type;
-		}
-		$('.btn.find').on('click', function() {
-			alert(submitTarget);
-		});
-
 	</script>
 </body>
 </html>

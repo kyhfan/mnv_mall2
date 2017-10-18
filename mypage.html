@@ -333,12 +333,12 @@
 			});
 
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 		});
 

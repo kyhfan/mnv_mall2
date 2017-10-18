@@ -67,16 +67,16 @@
 				$str	.= "&birthday=".$json_data['response']['birthday'];
 				// print_r($str);
 				echo "<script>location.href='".$str."';</script>";
-*/				
+*/
 				echo "<script>loginWithNaver('".$ref_url."','".$json_data['response']['nickname']."','naver','".$json_data['response']['enc_id']."','".$json_data['response']['profile_image']."','".$json_data['response']['age']."','".$json_data['response']['gender']."','".$json_data['response']['id']."','".$json_data['response']['name']."','".$json_data['response']['email']."','".$json_data['response']['birthday']."');</script>";
 			} else {
 			  	echo "Error 내용:".$response;
-			}			
+			}
 		} else {
 			echo "Error 내용:".$response;
 		}
-	}	
-?>						
+	}
+?>
 <body>
 	<div id="chon-app">
 		<input type="hidden" id="ref_url" value="<?=$ref_url?>">
@@ -123,44 +123,23 @@
 			</div>
 		</div>
 <?
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
 
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
 		$(document).ready(function() {
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 		});
-
 
 		function getUserData() {
 			/* FB.api('/me', function(response) {
@@ -185,7 +164,7 @@
 						"mb_name"			: response.name,
 						"mb_email"			: response.email,
 						"gender"			: response.gender,
-						"birthday"			: response.birthday,						
+						"birthday"			: response.birthday,
 						"id"				: response.id
 					},
 					success: function(response){
@@ -197,13 +176,13 @@
 							alert("다시 시도해 주세요!");
 							location.reload();
 						}
-						
+
 					}
 				});
-				
+
 			});
 		}
-		  
+
 		window.fbAsyncInit = function() {
 			//SDK loaded, initialize it
 			FB.init({
@@ -213,7 +192,7 @@
 				xfbml      : true,  // parse social plugins on this page
 				version    : 'v2.8' // use graph api version 2.8
 			});
-		  
+
 			//check user session and refresh it
 			FB.getLoginStatus(function(response) {
 				if (response.status === 'connected') {
@@ -226,7 +205,7 @@
 				}
 			});
 		};
-		  
+
 		//load the JavaScript SDK
 		(function(d, s, id){
 			var js, fjs = d.getElementsByTagName(s)[0];
@@ -235,7 +214,7 @@
 			js.src = "//connect.facebook.com/ko_KR/sdk.js";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-		  
+
 		//add event listener to login button
 		document.getElementById('loginBtn').addEventListener('click', function() {
 			//do the login
@@ -254,6 +233,6 @@
 			}, {scope: 'email,public_profile,user_birthday',
 				return_scopes: true});
 		}, false);
-</script>	
+</script>
 </body>
 </html>

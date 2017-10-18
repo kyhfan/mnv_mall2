@@ -20,9 +20,9 @@
 	while ($promotion_data = mysqli_fetch_array($promotion_result))
 	{
 		$promotion_img1 	= str_replace("../../../","./",$promotion_data['promotion_img_url1']);
-		$start_date_arr		= explode("-",$promotion_data["promotion_startdate"]);		
-		$end_date_arr		= explode("-",$promotion_data["promotion_enddate"]);		
-?>				
+		$start_date_arr		= explode("-",$promotion_data["promotion_startdate"]);
+		$end_date_arr		= explode("-",$promotion_data["promotion_enddate"]);
+?>
 				<div class="block">
 					<a href="#">
 						<div class="img">
@@ -48,67 +48,27 @@
 				</div>
 <?
 	}
-?>				
+?>
 			</div>
 		</div>
 <?
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
 
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
 		$(document).ready(function() {
-			// swiper initialize
-			var chonSwiper = new Swiper ('.swiper-container', {
-				// Optional parameters
-				direction: 'horizontal',
-				effect: 'fade',
-				speed: 2000,
-				loop: true,
-				autoplay: 4000,
-				autoplayDisableOnInteraction: false,
-				pagination: '.swiper-pagination',
-				paginationClickable: true,
-				paginationBulletRender: function(swiper, index, className) {
-					return '<span class="' + className +'">' + '</span>';
-				}
-				// If we need pagination
-				// pagination: '.swiper-pagination'
-			});
-
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 		});
-
-
 	</script>
 </body>
 </html>

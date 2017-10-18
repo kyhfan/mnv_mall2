@@ -5,7 +5,7 @@
 		echo "<script>location.href='member_login.php?ref_url=member_modify.php';</script>";
 
 	// 회원정보 불러오기
-	$member_info 	= select_member_info();	
+	$member_info 	= select_member_info();
 
 	// 생일 정보 구분자로 나누기
 	$birth_arr 		= explode("-",$member_info["mb_birth"]);
@@ -31,7 +31,7 @@
 <?
 	if ($member_info['mb_login_way'] == "chon")
 	{
-?>								
+?>
 								<div class="modify-btn">
 									<a href="javascript:void(0)" onclick="modifyId(this);">
 										<span>변경하기</span>
@@ -39,7 +39,7 @@
 								</div>
 <?
 	}
-?>								
+?>
 							</div>
 						</div>
 						<div class="input-group hidden">
@@ -85,11 +85,11 @@
 			$selected 	= "selected";
 		else
 			$selected 	= "";
-?>										
+?>
 										<option value="<?=$i?>" <?=$selected?>><?=$i?></option>
 <?
 	}
-?>										
+?>
 									</select>
 								</div>
 								<div class="col">
@@ -102,11 +102,11 @@
 			$selected 	= "selected";
 		else
 			$selected 	= "";
-?>										
+?>
 										<option value="<?=$j?>" <?=$selected?>><?=$j?></option>
 <?
 	}
-?>										
+?>
 									</select>
 								</div>
 								<div class="col">
@@ -119,11 +119,11 @@
 			$selected 	= "selected";
 		else
 			$selected 	= "";
-?>										
+?>
 										<option value="<?=$k?>" <?=$selected?>><?=$k?></option>
 <?
 	}
-?>										
+?>
 									</select>
 								</div>
 							</div>
@@ -195,35 +195,22 @@
 		</div>
 <?
 	include_once "./popup_div.php";
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
 
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
 		$(document).ready(function() {
-			// swiper initialize
+			$('.gnb').on('click', function() {
+				$('#menu-layer').slideDown('slow');
+				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
+			});
+			$('#menu-layer .close-btn a').on('click', function() {
+				$app.removeClass('menu-opened');
+				$('#menu-layer').slideUp('slow');
+			});
 			$("#cboxTopLeft").hide();
 			$("#cboxTopRight").hide();
 			$("#cboxBottomLeft").hide();
@@ -232,29 +219,6 @@
 			$("#cboxMiddleRight").hide();
 			$("#cboxTopCenter").hide();
 			$("#cboxBottomCenter").hide();
-
-			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
-				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
-			});
-			$('#menu-layer .close-btn a').on('click', function() {
-				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
-			});
-		});
-
-		var submitTarget = "fid";
-		function swapBlock(type, elem) {
-			var $_this = $(elem);
-			var type = type || "fid";
-			$('.swap-block a').not($_this).removeClass('active');
-			$_this.addClass('active');
-			$('.input-group').not('.'+type).hide();
-			$('.input-group.'+type).show();
-			submitTarget = type;
-		}
-		$('.btn.find').on('click', function() {
-			alert(submitTarget);
 		});
 		function modifyId(elem) {
 			var $_this = $(elem);
@@ -267,7 +231,6 @@
 				$_this.children().text('변경취소');
 				$('.input-group.hidden').show();
 			}
-
 		}
 
 	</script>

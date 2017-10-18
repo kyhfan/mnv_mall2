@@ -30,7 +30,7 @@
     while ($best_banner_data = mysqli_fetch_array($best_banner_result))
     {
 		$best_banner_img 	= str_replace("../../../","./",$best_banner_data['banner_img_url']);
-?>				
+?>
 				<div class="block">
 					<a href="<?=$best_banner_data["banner_img_link"]?>" target="<?=$best_banner_data["banner_link_target"]?>">
 						<img src="<?=$best_banner_img?>">
@@ -38,7 +38,7 @@
 				</div>
 <?
 	}
-?>				
+?>
 			</div>
 			<div class="grid">
 				<ul class="list-row n2 clearfix">
@@ -52,7 +52,7 @@
 		$goods_thumb_img 	= str_replace("../../../","./",$goods_data['goods_thumb_img_url']);
 		// 할인율 계산
 		$percent 			= ($goods_data['sales_price'] - $goods_data['discount_price']) / $goods_data['sales_price'] * 100;
-?>					
+?>
 					<li class="col">
 						<figure class="pr-item">
 							<a href="product_detail.php?goodscode=<?=$goods_data['goods_code']?>">
@@ -62,13 +62,13 @@
 <?
 	// 판매가와 할인가가 동일할 경우 판매가 숨기기
 	if ($goods_data["sales_price"] != $goods_data["discount_price"])
-	{		
-?>									
+	{
+?>
 									<span class="price"><?=number_format($goods_data["sales_price"])?></span>
 									<span class="percent"><?=ceil($percent)?>%</span>
 <?
 	}
-?>									
+?>
 									<span class="saleP"><?=number_format($goods_data["discount_price"])?></span>
 								</figcaption>
 							</a>
@@ -81,7 +81,7 @@
 <?
 	if ($goods_count > 6)
 	{
-?>			
+?>
 			<div class="more-btn">
 				<a href="javascript:void(0)">
 					<span>더 보기</span>
@@ -89,66 +89,26 @@
 			</div>
 <?
 	}
-?>			
+?>
 		</div>
 <?
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
 
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
 		$(document).ready(function() {
-			// swiper initialize
-			var chonSwiper = new Swiper ('.swiper-container', {
-				// Optional parameters
-				direction: 'horizontal',
-				effect: 'fade',
-				speed: 2000,
-				loop: true,
-				autoplay: 4000,
-				autoplayDisableOnInteraction: false,
-				pagination: '.swiper-pagination',
-				paginationClickable: true,
-				paginationBulletRender: function(swiper, index, className) {
-					return '<span class="' + className +'">' + '</span>';
-				}
-				// If we need pagination
-				// pagination: '.swiper-pagination'
-			});
-
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 		});
-
-
 	</script>
 </body>
 </html>

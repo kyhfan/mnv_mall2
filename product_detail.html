@@ -354,28 +354,31 @@
 				</div>
 			</div>
 			<div class="spread">
-				<div class="inner">
-					<a class="toggle" href="javascript:void(0)">
-						<span class="blind">접기</span>
-					</a>
-					<div class="control-block clearfix">
-						<div class="button" class="minus">
-							<button>-</button>
-						</div>
-						<div class="input">
-							<input type="tel" value="1">
-						</div>
-						<div class="button" class="plus">
-							<button>+</button>
-						</div>
-					</div>
-					<div class="buttons">
-						<a href="javascript:void(0)">
-							<span>장바구니</span>
+				<div class="bg"></div>
+				<div class="wrapper">
+					<div class="inner">
+						<a class="toggle" href="javascript:void(0)">
+							<span class="blind">접기</span>
 						</a>
-						<a href="javascript:void(0)">
-							<span>바로구매</span>
-						</a>
+						<div class="control-block clearfix">
+							<div class="button" class="minus">
+								<button>-</button>
+							</div>
+							<div class="input">
+								<input type="tel" value="1">
+							</div>
+							<div class="button" class="plus">
+								<button>+</button>
+							</div>
+						</div>
+						<div class="buttons">
+							<a href="javascript:void(0)">
+								<span>장바구니</span>
+							</a>
+							<a href="javascript:void(0)">
+								<span>바로구매</span>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -510,12 +513,12 @@
 			});
 
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 
 			$('.etc-block .toggle').on('click', function() {

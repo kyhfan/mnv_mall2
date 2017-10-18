@@ -27,7 +27,7 @@
 <?
 	if (!$_SESSION['ss_chon_email'])
 	{
-?>						
+?>
 						<a href="member_login.php?ref_url=<?=$_SERVER['REQUEST_URI']?>">
 							<span>LOG IN</span>
 						</a>
@@ -36,13 +36,13 @@
 						</a>
 <?
 	}else{
-?>		
+?>
 						<a href="logout.php">
 							<span>LOG OUT</span>
 						</a>
 <?
 	}
-?>					
+?>
 					</div>
 				</div>
 				<div class="bot-block">
@@ -56,7 +56,7 @@
 
     while ($data = mysqli_fetch_array($result))
     {
-?>                                
+?>
 									<li>
 										<a href="product_list.php?cate=<?=$data["cate_1"]?>">
 											<span><?=$data['cate_name']?></span>

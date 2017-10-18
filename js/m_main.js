@@ -5,6 +5,29 @@
 */
 Kakao.init('dee0f864fcd7296e4dc9d6196634d56a');
 
+// window scrolling
+$(window).on('scroll', function() {
+	var currentScroll = $(this).scrollTop();
+	if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
+		$app.addClass('scrolled');
+		TweenMax.to($('.gnb-foot'), 0.3, {autoAlpha: 1});
+	} else {
+		$app.removeClass('scrolled');
+		TweenMax.to($('.gnb-foot'), 0.3, {autoAlpha: 0});
+	}
+
+	if(currentScroll > ($app.height()/3)) {
+		$('.go-top').css({
+			opacity: 1
+		});
+	} else {
+		$('.go-top').css({
+			opacity: 0
+		});
+	}
+	// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
+});
+
 function open_pop(param)
 {
 	$.colorbox({
@@ -121,7 +144,7 @@ $(document).on("click", "#write_oto", function(){
 		return false;
 	}
 
-	
+
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -194,7 +217,7 @@ function oto_sort(val)
 $(document).on("click", ".put-in > a", function(){
 	var goods_code 	= $(".put-in").attr("data-goodscode");
 	var loginYN 	= $(".put-in").attr("data-login");
-	
+
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -276,7 +299,7 @@ $(document).on("click", "#all_chk", function(){
 		$("#use_chk").prop("checked", true);
 		$("#privacy_chk").prop("checked", true);
 	}
-		
+
 });
 
 // 회원 가입
@@ -463,7 +486,7 @@ $(document).on("click", ".btn-verify > a", function(){
 	var change_email	= $("#change_email").val();
 	var mb_email		= $("#mb_email").val();
 	var mb_name			= $("#mb_name").val();
-	
+
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -496,7 +519,7 @@ alert(submitTarget);
 			$("#mb_name").focus();
 			return false;
 		}
-	
+
 		if (mb_password == "")
 		{
 			alert("비밀번호를 입력해 주세요.");
@@ -602,7 +625,7 @@ function loginWithKakao(refURL)
 						"mb_way_id"			: res.id,
 						"mb_profile_img"	: res.properties.profile_image,
 						"mb_name"			: res.properties.nickname,
-						"mb_thumbnail_img"	: res.properties.thumbnail_image						
+						"mb_thumbnail_img"	: res.properties.thumbnail_image
 					},
 					success: function(response){
 						if (response.match("Y") == "Y")
@@ -612,7 +635,7 @@ function loginWithKakao(refURL)
 							alert("다시 시도해 주세요!");
 							location.reload();
 						}
-						
+
 					}
 				});
 			},
@@ -642,10 +665,10 @@ function loginWithNaver(refURL, nickname, login_way, enc_id, profile_image, age,
 			"age"				: age,
 			"gender"			: gender,
 			"id"				: id,
-			"mb_name"			: name,						
-			"nickname"			: nickname,						
-			"email"				: email,						
-			"birthday"			: birthday						
+			"mb_name"			: name,
+			"nickname"			: nickname,
+			"email"				: email,
+			"birthday"			: birthday
 		},
 		success: function(response){
 			if (response.match("Y") == "Y")
@@ -655,7 +678,7 @@ function loginWithNaver(refURL, nickname, login_way, enc_id, profile_image, age,
 				alert("다시 시도해 주세요!");
 				location.reload();
 			}
-			
+
 		}
 	});
 }

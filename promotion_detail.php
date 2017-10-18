@@ -4,15 +4,15 @@
 	$idx	= $_REQUEST["idx"];
 	// 해당 idx 의 프로모션 정보 불러오기
 	$promotion_info 	= select_promotion_info($idx);
-	
+
 	// 이미지 경로 변경
 	$promotion_img2 	= str_replace("../../../","./",$promotion_info['promotion_img_url2']);
 	$promotion_img3 	= str_replace("../../../","./",$promotion_info['promotion_img_url3']);
-	
+
 	// 날짜 형식에 맞춰 배열화
 	$start_date_arr		= explode("-",$promotion_info["promotion_startdate"]);
 	$end_date_arr		= explode("-",$promotion_info["promotion_enddate"]);
-	
+
 	// 연관상품 배열화
 	$promotion_goods_arr	= explode(";",$promotion_info["promotion_goods"]);
 ?>
@@ -81,63 +81,23 @@
 			</div>
 		</div>
 <?
-	include_once "./footer.php";	
-?>		
+	include_once "./footer.php";
+?>
 	</div>
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
 
-		// scrolling header action
-		$(window).on('scroll', function() {
-			var currentScroll = $(this).scrollTop();
-			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
-				$app.addClass('scrolled');
-			} else {
-				$app.removeClass('scrolled');
-			}
-
-			if(currentScroll > ($app.height()/3)) {
-				$('.go-top').css({
-					opacity: 1
-				});
-			} else {
-				$('.go-top').css({
-					opacity: 0
-				});
-			}
-			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
-		});
 		$(document).ready(function() {
-			// swiper initialize
-			var chonSwiper = new Swiper ('.swiper-container', {
-				// Optional parameters
-				direction: 'horizontal',
-				effect: 'fade',
-				speed: 2000,
-				loop: true,
-				autoplay: 4000,
-				autoplayDisableOnInteraction: false,
-				pagination: '.swiper-pagination',
-				paginationClickable: true,
-				paginationBulletRender: function(swiper, index, className) {
-					return '<span class="' + className +'">' + '</span>';
-				}
-				// If we need pagination
-				// pagination: '.swiper-pagination'
-			});
-
 			$('.gnb').on('click', function() {
-				$('#menu-layer').slideDown('normal');
+				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
 			});
 			$('#menu-layer .close-btn a').on('click', function() {
 				$app.removeClass('menu-opened');
-				$('#menu-layer').slideUp('normal');
+				$('#menu-layer').slideUp('slow');
 			});
 		});
-
-
 	</script>
 </body>
 </html>

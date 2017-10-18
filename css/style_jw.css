@@ -66,7 +66,13 @@
 		appearance: none;
 		border: 0;
 	}
-
+	select,
+	textarea,
+	input,
+	input:focus,
+	input:hover {
+		font-size: inherit;
+	}
 	/* initialize */
 
 	/* public module */
@@ -308,6 +314,12 @@
 		position: relative;
 		font-weight: 700;
 	}
+	#menu-layer .menu-inner .bot-block .wrapper .cate a {
+		opacity: 0;
+	}
+	#menu-layer .menu-inner .bot-block .wrapper .theme a {
+		opacity: 0;
+	}
 	#menu-layer .menu-inner .bot-block .wrapper .cate:after {
 		content: "";
 		position: absolute;
@@ -317,7 +329,15 @@
 		width: 22px;
 		height: 1px;
 		background: #574d3e;
+		opacity: 0;
 	}
+	.menu-opened #menu-layer .menu-inner .bot-block .wrapper .cate a,
+	.menu-opened #menu-layer .menu-inner .bot-block .wrapper .theme a,
+	.menu-opened #menu-layer .menu-inner .bot-block .wrapper .cate:after {
+		transition: opacity 0.2s ease 0.5s;
+		opacity: 1;
+	}
+
 	#menu-layer .menu-inner .bot-block .wrapper .cate li {
 		margin-bottom: 36px;
 	}
@@ -440,8 +460,8 @@
 		text-align: center;
 		background: #ffffff;
 		opacity: 0;
-		-webkit-box-shadow: 1px 1px 1px 1px #777777;
-				box-shadow: 1px 1px 1px 1px #777777;
+		/*-webkit-box-shadow: 1px 1px 1px 1px #777777;
+				box-shadow: 1px 1px 1px 1px #777777;*/
 	}
 	#footer .go-top a {
 		font-size: 18px;
@@ -462,6 +482,8 @@
 		border-top: 1px solid #eeeeee;
 		background: #ffffff;
 		z-index: 999;
+		visibility: hidden;
+		opacity: 0;
 	}
 	#footer .gnb-foot ul {
 		height: 100%;
@@ -1026,19 +1048,44 @@
 	}
 	.product-detail .spread {
 		position: fixed;
+		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		width: 100%;
-		background: #ffffff;
+		background: transparent;
 		z-index: 600;
+		visibility: hidden;
+		opacity: 0;
 	}
-	.product-detail .spread > .inner {
+	.product-detail .spread > .bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.3);
+		height: 100%;
+		z-index: 1;
+		visibility: hidden;
+		opacity: 0;
+	}
+	.product-detail .spread > .wrapper {
+		background: #ffffff;
+		position: absolute;
+		/*bottom: 0;*/
+		bottom: -254px;
+		left: 0;
+		right: 0;
+		width: 100%;
+		z-index: 2;
+	}
+	.product-detail .spread .wrapper > .inner {
 		position: relative;
 		width: 90.9%;
 		margin: 0 auto;
 	}
-	.product-detail .spread > .inner .toggle {
+	.product-detail .spread .wrapper .toggle {
 		display: block;
 		position: relative;
 		margin: 0 auto;
@@ -1048,7 +1095,7 @@
 		background: url(../images/spread_btn.png) center center / cover no-repeat;
 		text-align: center;
 	}
-	.product-detail .spread > .inner .toggle:after {
+	.product-detail .spread .wrapper .toggle:after {
 		content: ">";
 		position: absolute;
 		font-size: 23px;
@@ -1060,19 +1107,19 @@
 		-webkit-transform-origin: center;
 				transform-origin: center;
 	}
-	.product-detail .spread > .inner .control-block {
+	.product-detail .spread .wrapper .control-block {
 		width: 100%;
 		font-size: 0;
 		height: 58px;
 		line-height: 58px;
 	}
-	.product-detail .spread > .inner .control-block .button {
+	.product-detail .spread .wrapper .control-block .button {
 		display: block;
 		font-size: 20px;
 		width: 12%;
 		position: relative;
 	}
-	.product-detail .spread > .inner .control-block .button button {
+	.product-detail .spread .wrapper .control-block .button button {
 		width: 100%;
 		height: 100%;
 		background: #ffffff;
@@ -1082,16 +1129,16 @@
 		padding: 0;
 		vertical-align: middle;
 	}
-	.product-detail .spread > .inner .control-block > div {
+	.product-detail .spread .wrapper .control-block > div {
 		float: left;
 		height: 100%;
 	}
-	.product-detail .spread > .inner .control-block .input {
+	.product-detail .spread .wrapper .control-block .input {
 		display: block;
 		width: 76%;
 		font-size: 25px;
 	}
-	.product-detail .spread > .inner .control-block .input input[type="tel"] {
+	.product-detail .spread .wrapper .control-block .input input[type="tel"] {
 		border-top: 1px solid #777777;
 		border-bottom: 1px solid #777777;
 		width: 100%;
@@ -1100,20 +1147,20 @@
 		text-align: center;
 		color: #333333;
 	}
-	.product-detail .spread > .inner .buttons {
+	.product-detail .spread .wrapper .buttons {
 		font-size: 0;
 		padding: 27px 0;
 	}
-	.product-detail .spread > .inner .buttons a {
+	.product-detail .spread .wrapper .buttons a {
 		display: inline-block;
 		font-size: 30px;
 		width: 49.5%;
 		text-align: center;
 	}
-	.product-detail .spread > .inner .buttons a:first-child {
+	.product-detail .spread .wrapper .buttons a:first-child {
 		margin-right: 1%;
 	}
-	.product-detail .spread > .inner .buttons a span {
+	.product-detail .spread .wrapper .buttons a span {
 		display: inline-block;
 		width: 100%;
 		padding: 20px 0;
@@ -2700,6 +2747,8 @@
 		position: relative;
 	}
 	.join > .wrapper .area.text span {
+		display: inline-block;
+		position: relative;
 		color: #c0c0c0;
 		font-size: 20px;
 	}
@@ -2807,6 +2856,7 @@
 	.join > .wrapper .area.finish .check .wrap-line a span {
 		font-size: 20px;
 		color: #c0c0c0;
+		position: relative;
 	}
 	.join .btn.join {
 		margin-top: 5px;
