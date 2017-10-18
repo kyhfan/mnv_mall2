@@ -7,7 +7,7 @@
      * LG���÷������� ���� �������� LGD_PAYKEY(����Key)�� ������ ���� ������û.(�Ķ���� ���޽� POST�� ����ϼ���)
      */
 
-	$configPath = $_SERVER['DOCUMENT_ROOT']."dev/lib/LGU+_SmartXPay_PHP/lgdacom"; //LG���÷������� ������ ȯ������("/conf/lgdacom.conf,/conf/mall.conf") ��ġ ����. 
+	$configPath = $_SERVER['DOCUMENT_ROOT']."/dev/lib/LGU+_SmartXPay_PHP/lgdacom"; //LG���÷������� ������ ȯ������("/conf/lgdacom.conf,/conf/mall.conf") ��ġ ����. 
 
     /*
      *************************************************
