@@ -285,6 +285,12 @@ function change_cart(idx)
 	});
 }
 
+// 주문하기
+function order_start()
+{
+
+}
+
 // 회원가입 전체동의 체크 선택
 $(document).on("click", "#all_chk", function(){
 	if ($("#all_chk").prop("checked") == false)

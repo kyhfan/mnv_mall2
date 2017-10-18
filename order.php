@@ -418,7 +418,7 @@
 								</div>
 							</div>
 							<div class="finish-btn">
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" id="order_start">
 									<span>결제하기</span>
 								</a>
 							</div>
