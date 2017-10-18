@@ -25,7 +25,7 @@
     $LGD_PCVIEWYN				= $_POST["LGD_PCVIEWYN"];				//�޴�����ȣ �Է� ȭ�� ��� ����(����Ĩ�� ���� �ܸ��⿡�� �Է�-->����Ĩ�� �ִ� �޴������� ���� ����)
 	$LGD_CUSTOM_SKIN            = "SMART_XPAY2";                        //�������� ����â ��Ų
     
-	$configPath 				= $_SERVER['DOCUMENT_ROOT']."/dev/lib/LGU+_SmartXPay_PHP/lgdacom"; 						//LG���÷������� ������ ȯ������("/conf/lgdacom.conf") ��ġ ����. 	    
+	$configPath 				= "./lgdacom"; 						//LG���÷������� ������ ȯ������("/conf/lgdacom.conf") ��ġ ����. 	    
     
     /*
      * �������(������) ���� ������ �Ͻô� ��� �Ʒ� LGD_CASNOTEURL �� �����Ͽ� �ֽñ� �ٶ��ϴ�. 
