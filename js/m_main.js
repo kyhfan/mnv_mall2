@@ -385,8 +385,9 @@ $(document).on("click", "#order_start", function(){
 			"pay_type"					: pay_type
 		},
 		success: function(response){
-			console.log(response);
-			launchCrossPlatform();
+			$(window).on('load', function(){
+				launchCrossPlatform();
+			});
 		}
 	});
 });
