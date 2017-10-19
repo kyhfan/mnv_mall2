@@ -385,6 +385,7 @@ $(document).on("click", "#order_start", function(){
 			"pay_type"					: pay_type
 		},
 		success: function(response){
+			console.log(response);
 			$(window).on('load', function(){
 				launchCrossPlatform();
 			});
