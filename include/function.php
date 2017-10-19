@@ -598,4 +598,20 @@ function check_wish_goods($goods_code)
 	return $flag;
 }
 
+function create_oid()
+{
+	global $_gl;
+	global $my_db;
+
+	$oid = PHPRandom::getInteger(10000000, 99999999);
+
+	$order_query 	= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_oid='".$oid."'";
+	$order_result 	= mysqli_query($my_db, $order_query);
+	$order_num		= mysqli_num_rows($order_result);
+
+	if ($order_num > 0)
+		create_oid();
+		
+	return $oid;
+}
 ?>

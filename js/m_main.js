@@ -308,11 +308,88 @@ function change_cart(idx)
 	});
 }
 
-// 주문하기
-function order_start()
-{
+// 주문하기 > 결제방법 선택
+$(document).on("click", "#pay_type > a", function(){
+	$("#pay_type > a").removeClass("active");
+	$(this).addClass("active");
+});
 
-}
+
+// 주문하기
+$(document).on("click", "#order_start", function(){
+	var order_goods				= $("#order_goods").val();
+	var order_name				= $("#order_name").val();
+	var order_email				= $("#order_email").val();
+	var order_phone				= $("#order_phone").val();
+	var delivery_name			= $("#delivery_name").val();
+	var delivery_zipcode		= $("#delivery_zipcode").val();
+	var delivery_addr1			= $("#delivery_addr1").val();
+	var delivery_addr2			= $("#delivery_addr2").val();
+	var delivery_phone			= $("#delivery_phone").val();
+	var delivery_message		= $("#delivery_message").val();
+	var total_order_price		= $("#total_order_price").val();
+	var total_delivery_price	= $("#total_delivery_price").val();
+	var total_save_price		= $("#total_save_price").val();
+	var total_payment_price		= $("#total_payment_price").val();
+	var total_coupon_price		= $("#total_coupon_price").val();
+	var pay_type				= $("#pay_type > .active").attr("data-value");
+	
+	if (delivery_name == "")
+	{
+		alert("배송받으실 분 이름을 입력해 주세요.");
+		$("#delivery_name").focus();
+		return false;
+	}
+
+	if (delivery_zipcode == "" || delivery_addr1 == "" || delivery_addr2 == "")
+	{
+		alert("배송받으실 분 주소를 입력해 주세요.");
+		$("#delivery_addr2").focus();
+		return false;
+	}
+
+	if (delivery_phone == "")
+	{
+		alert("배송받으실 분 휴대전화 번호를 입력해 주세요.");
+		$("#delivery_phone").focus();
+		return false;
+	}
+
+	if ($("#order_chk").prop("checked") == false)
+	{
+		alert("주문의 상품, 가격, 할인, 배송정보에 동의해주셔야만 결제가 진행 됩니다..");
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"						: "insert_order_info",
+			"order_goods"				: order_goods,
+			"order_name"				: order_name,
+			"order_email"				: order_email,
+			"order_phone"				: order_phone,
+			"delivery_name"				: delivery_name,
+			"delivery_zipcode"			: delivery_zipcode,
+			"delivery_addr1"			: delivery_addr1,
+			"delivery_addr2"			: delivery_addr2,
+			"delivery_phone"			: delivery_phone,
+			"delivery_message"			: delivery_message,
+			"total_order_price"			: total_order_price,
+			"total_delivery_price"		: total_delivery_price,
+			"total_save_price"			: total_save_price,
+			"total_payment_price"		: total_payment_price,
+			"total_coupon_price"		: total_coupon_price,
+			"pay_type"					: pay_type
+		},
+		success: function(response){
+			console.log(response);
+			launchCrossPlatform();
+		}
+	});
+});
 
 // 회원가입 전체동의 체크 선택
 $(document).on("click", "#all_chk", function(){

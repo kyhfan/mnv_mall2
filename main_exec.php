@@ -1128,43 +1128,33 @@
 		break;
 
 		case "insert_order_info" :
-			$order_cart_idx			= $_REQUEST['order_cart_idx'];
-			$total_order_price		= $_REQUEST['total_order_price'];
-			$delivery_price			= $_REQUEST['delivery_price'];
-			$total_pay_price		= $_REQUEST['total_pay_price'];
+			$order_goods			= $_REQUEST['order_goods'];
 			$order_name				= $_REQUEST['order_name'];
-			$order_zipcode			= $_REQUEST['order_zipcode'];
-			$order_address1			= $_REQUEST['order_address1'];
-			$order_address2			= $_REQUEST['order_address2'];
-			$order_phone1			= $_REQUEST['order_phone1'];
-			$order_phone2			= $_REQUEST['order_phone2'];
-			$order_phone3			= $_REQUEST['order_phone3'];
-			$order_phone			= $order_phone1."-".$order_phone2."-".$order_phone3;
-			$order_email1			= $_REQUEST['order_email1'];
-			$order_email2			= $_REQUEST['order_email2'];
-			$order_email			= $order_email1."@".$order_email2;
-			$deliver_name			= $_REQUEST['deliver_name'];
-			$deliver_zipcode		= $_REQUEST['deliver_zipcode'];
-			$deliver_address1		= $_REQUEST['deliver_address1'];
-			$deliver_address2		= $_REQUEST['deliver_address2'];
-			$deliver_phone1			= $_REQUEST['deliver_phone1'];
-			$deliver_phone2			= $_REQUEST['deliver_phone2'];
-			$deliver_phone3			= $_REQUEST['deliver_phone3'];
-			$deliver_phone			= $deliver_phone1."-".$deliver_phone2."-".$deliver_phone3;
-			$deliver_message		= $_REQUEST['deliver_message'];
-			$select_pay				= $_REQUEST['select_pay'];
-			$cart_id				= $_SESSION['ss_chon_cartid'];
-			$order_oid				= "test_".$_REQUEST['order_oid'];
+			$order_email			= $_REQUEST['order_email'];
+			$order_phone			= $_REQUEST['order_phone'];
+			$delivery_name			= $_REQUEST['delivery_name'];
+			$delivery_zipcode		= $_REQUEST['delivery_zipcode'];
+			$delivery_addr1			= $_REQUEST['delivery_addr1'];
+			$delivery_addr2			= $_REQUEST['delivery_addr2'];
+			$delivery_phone			= $_REQUEST['delivery_phone'];
+			$delivery_message		= $_REQUEST['delivery_message'];
+			$total_order_price		= $_REQUEST['total_order_price'];
+			$total_delivery_price	= $_REQUEST['total_delivery_price'];
+			$total_save_price		= $_REQUEST['total_save_price'];
+			$total_payment_price	= $_REQUEST['total_payment_price'];
+			$total_coupon_price		= $_REQUEST['total_coupon_price'];
+			$pay_type				= $_REQUEST['pay_type'];
+			$order_oid				= create_oid();
 			$show_goods_name		= $_REQUEST['show_goods_name'];
 
-			if ($select_pay == "card_pay")
+			if ($pay_type == "card_pay")
 					$USABLEPAY	= "SC0010";
 			else if ($select_pay == "phone_pay")
 					$USABLEPAY	= "SC0060";
 			else
 					$USABLEPAY	= "SC0040";
 
-			$order_query		= "INSERT INTO ".$_gl['order_info_table']."(cart_idx, total_order_price, delivery_price, total_pay_price, order_name, order_zipcode, order_address1, order_address2, order_phone, order_email, deliver_name, deliver_zipcode, deliver_address1, deliver_address2, deliver_phone, deliver_message, select_pay, cart_id, order_oid, order_regdate) values('".$order_cart_idx."','".$total_order_price."','".$delivery_price."','".$total_pay_price."','".$order_name."','".$order_zipcode."','".$order_address1."','".$order_address2."','".$order_phone."','".$order_email."','".$deliver_name."','".$deliver_zipcode."','".$deliver_address1."','".$deliver_address2."','".$deliver_phone."','".$deliver_message."','".$select_pay."','".$cart_id."','".$order_oid."','".date("Y-m-d H:i:s")."')";
+			$order_query		= "INSERT INTO ".$_gl['order_info_table']."(order_goods, show_goods_name, order_name, order_email, order_phone, delivery_name, delivery_zipcode, delivery_addr1, delivery_addr2, delivery_phone, delivery_message, total_order_price, total_delivery_price, total_save_price, total_payment_price, total_coupon_price, pay_type, order_oid, order_regdate) values('".$order_goods."','".$show_goods_name."','".$order_name."','".$order_email."','".$order_phone."','".$delivery_name."','".$delivery_zipcode."','".$delivery_addr1."','".$delivery_addr2."','".$delivery_phone."','".$delivery_message."','".$total_order_price."','".$total_delivery_price."','".$total_save_price."','".$total_payment_price."','".$total_coupon_price."','".$pay_type."','".$order_oid."',".date("Y-m-d H:i:s")."')";
 			$order_result 		= mysqli_query($my_db, $order_query);
 
 			if ($order_result)
@@ -1172,56 +1162,7 @@
 				$flag	= "Y";
 
 				$innerHTML	= "";
-				/*
-				 * [결제 인증요청 페이지(STEP2-1)]
-				 *
-				 * 샘플페이지에서는 기본 파라미터만 예시되어 있으며, 별도로 필요하신 파라미터는 연동메뉴얼을 참고하시어 추가 하시기 바랍니다.
-				 */
-
-				/*
-				 * 1. 기본결제 인증요청 정보 변경
-				 *
-				 * 기본정보를 변경하여 주시기 바랍니다.(파라미터 전달시 POST를 사용하세요)
-				 */
-				$CST_PLATFORM						= "test";     //LG유플러스 결제 서비스 선택(test:테스트, service:서비스)
-				$CST_MID							= "miniver";  //상점아이디(LG유플러스으로 부터 발급받으신 상점아이디를 입력하세요)
-																  //테스트 아이디는 't'를 반드시 제외하고 입력하세요.
-				$LGD_MID							= (("test" == $CST_PLATFORM)?"t":"").$CST_MID;   //상점아이디(자동생성)
-				$LGD_OID							= $order_oid;             //주문번호(상점정의 유니크한 주문번호를 입력하세요)
-				$LGD_AMOUNT							= $total_pay_price;       //결제금액("," 를 제외한 결제금액을 입력하세요)
-				$LGD_BUYER							= $order_name;            //구매자명
-				$LGD_BUYERID						= $cart_id;               //구매자ID
-				$LGD_BUYERADDRESS					= "[".$order_zipcode."] ".$order_address1." ".$order_address2;                           //구매자 주소
-				$LGD_BUYERPHONE						= $order_phone;           //구매자 주소
-				$LGD_RECEIVER						= $deliver_name;		  // 수취인 이름
-				$LGD_RECEIVERPHONE					= $deliver_phone;		  // 수취인 전화번호
-				$LGD_DELIVERYINFO					= $deliver_message;
-				$LGD_PRODUCTINFO					= $show_goods_name;       //상품명
-				$LGD_BUYEREMAIL						= $order_email;           //구매자 이메일
-				$LGD_TIMESTAMP						= date("YmdHis");         //타임스탬프
-				$LGD_OSTYPE_CHECK					= "P";		              //값 P: XPay 실행(PC 결제 모듈): PC용과 모바일용 모듈은 파라미터 및 프로세스가 다르므로 PC용은 PC 웹브라우저에서 실행 필요.
-																			  //"P", "M" 외의 문자(Null, "" 포함)는 모바일 또는 PC 여부를 체크하지 않음
-				//$LGD_ACTIVEXYN						= "N";				  //계좌이체 결제시 사용, ActiveX 사용 여부로 "N" 이외의 값: ActiveX 환경에서 계좌이체 결제 진행(IE)
-
-				$LGD_CUSTOM_SKIN					= "red";                  //상점정의 결제창 스킨
-				$LGD_CUSTOM_USABLEPAY			= $USABLEPAY;        	      //디폴트 결제수단 (해당 필드를 보내지 않으면 결제수단 선택 UI 가 노출됩니다.)
-				$LGD_WINDOW_VER					= "2.5";					  //결제창 버젼정보
-				$LGD_WINDOW_TYPE					= "iframe";				  //결제창 호출방식 (수정불가)
-				$LGD_CUSTOM_SWITCHINGTYPE	= "IFRAME";            			  //신용카드 카드사 인증 페이지 연동 방식 (수정불가)
-				$LGD_CUSTOM_PROCESSTYPE		= "TWOTR";                        //수정불가
-
-				/*
-				 * 가상계좌(무통장) 결제 연동을 하시는 경우 아래 LGD_CASNOTEURL 을 설정하여 주시기 바랍니다.
-				 */
-				$LGD_CASNOTEURL					= "http://store-chon.com/PC/pay/cas_noteurl.php";
-
-				/*
-				 * LGD_RETURNURL 을 설정하여 주시기 바랍니다. 반드시 현재 페이지와 동일한 프로트콜 및  호스트이어야 합니다. 아래 부분을 반드시 수정하십시요.
-				 */
-				$LGD_RETURNURL						= "http://store-chon.com/PC/pay/returnurl.php";
-
-
-				$configPath								= $_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
+				$configPath								= $_SERVER['DOCUMENT_ROOT']."/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
 
 				/*
 				 *************************************************
@@ -1240,77 +1181,102 @@
 				 * MD5 해쉬데이터 암호화 검증을 위해
 				 * LG유플러스에서 발급한 상점키(MertKey)를 환경설정 파일(lgdacom/conf/mall.conf)에 반드시 입력하여 주시기 바랍니다.
 				 */
-				require_once($_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom/XPayClient.php");
-				$xpay = new XPayClient($configPath, $CST_PLATFORM);
-				$xpay->Init_TX($LGD_MID);
+				require_once($_SERVER['DOCUMENT_ROOT']."/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
+				$xpay = new XPayClient($configPath, $LGD_PLATFORM);
+				if (!$xpay->Init_TX($LGD_MID)) {
+					echo "LG유플러스에서 제공한 환경파일이 정상적으로 설치 되었는지 확인하시기 바랍니다.<br/>";
+					echo "mall.conf에는 Mert Id = Mert Key 가 반드시 등록되어 있어야 합니다.<br/><br/>";
+					echo "문의전화 LG유플러스 1544-7772<br/>";
+					exit;
+				}
 				$LGD_HASHDATA = md5($LGD_MID.$LGD_OID.$LGD_AMOUNT.$LGD_TIMESTAMP.$xpay->config[$LGD_MID]);
-
+				$LGD_CUSTOM_PROCESSTYPE = "TWOTR";
 				/*
 				 *************************************************
 				 * 2. MD5 해쉬암호화 (수정하지 마세요) - END
 				 *************************************************
 				 */
-
-				$payReqMap['CST_PLATFORM']						= $CST_PLATFORM;				// 테스트, 서비스 구분
-				$payReqMap['LGD_WINDOW_TYPE']					= $LGD_WINDOW_TYPE;			// 수정불가
-				$payReqMap['CST_MID']								= $CST_MID;					// 상점아이디
-				$payReqMap['LGD_MID']								= $LGD_MID;					// 상점아이디
-				$payReqMap['LGD_OID']								= $LGD_OID;					// 주문번호
-				$payReqMap['LGD_BUYER']							= $LGD_BUYER;					// 구매자
-				$payReqMap['LGD_BUYERID']							= $LGD_BUYERID;					// 구매자
-				$payReqMap['LGD_BUYERADDRESS']				= $LGD_BUYERADDRESS;					// 구매자
-				$payReqMap['LGD_BUYERPHONE']					= $LGD_BUYERPHONE;					// 구매자
-				$payReqMap['LGD_PRODUCTINFO']					= $LGD_PRODUCTINFO;			// 상품정보
-				$payReqMap['LGD_AMOUNT']						= $LGD_AMOUNT;					// 결제금액
-				$payReqMap['LGD_BUYEREMAIL']					= $LGD_BUYEREMAIL;				// 구매자 이메일
-				$payReqMap['LGD_RECEIVER']						= $LGD_RECEIVER;				// 구매자 이메일
-				$payReqMap['LGD_RECEIVERPHONE']				= $LGD_RECEIVERPHONE;				// 구매자 이메일
-				$payReqMap['LGD_DELIVERYINFO']					= $LGD_DELIVERYINFO;				// 구매자 이메일
-				$payReqMap['LGD_CUSTOM_SKIN']					= $LGD_CUSTOM_SKIN;			// 결제창 SKIN
-				$payReqMap['LGD_CUSTOM_PROCESSTYPE']		= $LGD_CUSTOM_PROCESSTYPE;		// 트랜잭션 처리방식
-				$payReqMap['LGD_TIMESTAMP']					= $LGD_TIMESTAMP;				// 타임스탬프
-				$payReqMap['LGD_HASHDATA']						= $LGD_HASHDATA;				// MD5 해쉬암호값
-				$payReqMap['LGD_RETURNURL']					= $LGD_RETURNURL;				// 응답수신페이지
-				$payReqMap['LGD_VERSION']						= "PHP_Non-ActiveX_Standard";	// 버전정보 (삭제하지 마세요)
-				$payReqMap['LGD_CUSTOM_USABLEPAY']			= $LGD_CUSTOM_USABLEPAY;	// 디폴트 결제수단
-				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']	= $LGD_CUSTOM_SWITCHINGTYPE;// 신용카드 카드사 인증 페이지 연동 방식
-				$payReqMap['LGD_OSTYPE_CHECK']				= $LGD_OSTYPE_CHECK;        // 값 P: XPay 실행(PC용 결제 모듈), PC, 모바일 에서 선택적으로 결제가능
-				//$payReqMap['LGD_ACTIVEXYN']					= $LGD_ACTIVEXYN;			// 계좌이체 결제시 사용,ActiveX 사용 여부
-				$payReqMap['LGD_WINDOW_VER'] 					= $LGD_WINDOW_VER;
-				$payReqMap['LGD_ENCODING'] 						= "UTF-8";
-				$payReqMap['LGD_ENCODING_NOTEURL'] 		= "UTF-8";
-				$payReqMap['LGD_ENCODING_RETURNURL'] 		= "UTF-8";
-
-
+				$CST_WINDOW_TYPE = "submit";										// 수정불가
+				$payReqMap['CST_PLATFORM']           = "test";				//LG유플러스 결제 서비스 선택(test:테스트, service:서비스)
+				$payReqMap['CST_WINDOW_TYPE']        = $CST_WINDOW_TYPE;			// 수정불가
+				$payReqMap['CST_MID']                = "miniver";					//상점아이디(LG유플러스으로 부터 발급받으신 상점아이디를 입력하세요)
+				$payReqMap['LGD_MID']                = (("test" == $CST_PLATFORM)?"t":"").$CST_MID;  //상점아이디(자동생성)
+				$payReqMap['LGD_OID']                = $order_oid;					//주문번호(상점정의 유니크한 주문번호를 입력하세요)
+				$payReqMap['LGD_BUYER']              = $order_name;					//구매자명
+				$payReqMap['LGD_PRODUCTINFO']        = $show_goods_name;			//상품명
+				$payReqMap['LGD_AMOUNT']             = $total_payment_price;					//결제금액("," 를 제외한 결제금액을 입력하세요)
+				$payReqMap['LGD_BUYEREMAIL']         = $order_email;				//구매자 이메일
+				$payReqMap['LGD_CUSTOM_SKIN']        = "SMART_XPAY2";                        //상점정의 결제창 스킨
+				$payReqMap['LGD_CUSTOM_PROCESSTYPE'] = $LGD_CUSTOM_PROCESSTYPE;		// 트랜잭션 처리방식
+				$payReqMap['LGD_TIMESTAMP']          = date(YmdHis);                         //타임스탬프
+				$payReqMap['LGD_HASHDATA']           = $LGD_HASHDATA;				// MD5 해쉬암호값
+				$payReqMap['LGD_RETURNURL']   		 = "http://store-chon.com/dev/returnurl.php";
+				$payReqMap['LGD_VERSION']         	 = "PHP_Non-ActiveX_SmartXPay";	// 버전정보 (삭제하지 마세요)
+				$payReqMap['LGD_CUSTOM_FIRSTPAY']  	 = $_POST["LGD_CUSTOM_FIRSTPAY"];		//상점정의 초기결제수단
+				$payReqMap['LGD_PCVIEWYN']			 = $_POST["LGD_PCVIEWYN"];				//휴대폰번호 입력 화면 사용 여부(유심칩이 없는 단말기에서 입력-->유심칩이 있는 휴대폰에서 실제 결제)
+				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
+				
+				
+				//iOS 연동시 필수
+				$payReqMap['LGD_MPILOTTEAPPCARDWAPURL'] = "";
+			  
+				/*
+				****************************************************
+				* 신용카드 ISP(국민/BC)결제에만 적용 - BEGIN 
+				****************************************************
+				*/
+				$payReqMap['LGD_KVPMISPWAPURL']		 	= "";	
+				$payReqMap['LGD_KVPMISPCANCELURL']  	= "";
+				
+				/*
+				****************************************************
+				* 신용카드 ISP(국민/BC)결제에만 적용  - END
+				****************************************************
+				*/
+					
+				/*
+				****************************************************
+				* 계좌이체 결제에만 적용 - BEGIN 
+				****************************************************
+				*/
+				$payReqMap['LGD_MTRANSFERWAPURL']		= "";	
+				$payReqMap['LGD_MTRANSFERCANCELURL']  	= "";
+				
+				/*
+				****************************************************
+				* 계좌이체 결제에만 적용  - END
+				****************************************************
+				*/
+				
+				
+				/*
+				****************************************************
+				* 모바일 OS별 ISP(국민/비씨), 계좌이체 결제 구분 값
+				****************************************************
+				- 안드로이드: A (디폴트)
+				- iOS: N
+				- iOS일 경우, 반드시 N으로 값을 수정
+				*/
+				$payReqMap['LGD_KVPMISPAUTOAPPYN']	= "A";		// 신용카드 결제 
+				$payReqMap['LGD_MTRANSFERAUTOAPPYN']= "A";		// 계좌이체 결제
+			
 				// 가상계좌(무통장) 결제연동을 하시는 경우  할당/입금 결과를 통보받기 위해 반드시 LGD_CASNOTEURL 정보를 LG 유플러스에 전송해야 합니다 .
-				$payReqMap['LGD_CASNOTEURL'] = $LGD_CASNOTEURL;               // 가상계좌 NOTEURL
-
+				$payReqMap['LGD_CASNOTEURL'] = "http://store-chon.com/PC/pay/cas_noteurl.php";               // 가상계좌 NOTEURL
+			
 				//Return URL에서 인증 결과 수신 시 셋팅될 파라미터 입니다.*/
 				$payReqMap['LGD_RESPCODE']           = "";
 				$payReqMap['LGD_RESPMSG']            = "";
 				$payReqMap['LGD_PAYKEY']             = "";
-
+			
 				$_SESSION['PAYREQ_MAP'] = $payReqMap;
-
-				//$innerHTML .= "<script language='javascript' src='http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js' type='text/javascript'></script>";
+			
+				$innerHTML .= "<script language='javascript' src='http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js' type='text/javascript'></script>";
 				$innerHTML .= "<script type='text/javascript'>";
-				$innerHTML .= "var LGD_window_type = '".$LGD_WINDOW_TYPE."';";
+				$innerHTML .= "var LGD_window_type = '".$$CST_WINDOW_TYPE."';";
 				$innerHTML .= "";
-				$innerHTML .= "function launchCrossPlatform(){lgdwin = openXpay(document.getElementById('LGD_PAYINFO'), '".$CST_PLATFORM."', LGD_window_type, null, '', '');}";
+				$innerHTML .= "function launchCrossPlatform(){lgdwin = open_paymentwindow(document.getElementById('LGD_PAYINFO'), '<?= $CST_PLATFORM ?>', LGD_window_type);}";
 				$innerHTML .= "function getFormObject() {return document.getElementById('LGD_PAYINFO');}";
-				$innerHTML .= "function payment_return() {";
-				$innerHTML .= "var fDoc;";
-				$innerHTML .= "fDoc = lgdwin.contentWindow || lgdwin.contentDocument;";
-				$innerHTML .= "if (fDoc.document.getElementById('LGD_RESPCODE').value == '0000') {";
-				$innerHTML .= "document.getElementById('LGD_PAYKEY').value = fDoc.document.getElementById('LGD_PAYKEY').value;";
-				$innerHTML .= "document.getElementById('LGD_PAYINFO').target = '_self';";
-				$innerHTML .= "document.getElementById('LGD_PAYINFO').action = '".$_mnv_PC_order_url."order_complete.php';";
-				$innerHTML .= "document.getElementById('LGD_PAYINFO').submit();";
-				$innerHTML .= "} else {";
-				$innerHTML .= "closeIframe();";
-				$innerHTML .= "}}";
 				$innerHTML .= "</script>";
-				$innerHTML .= "<img src='".$_mnv_PC_images_url."blank.png'>";
 				$innerHTML .= "<form method='post' name='LGD_PAYINFO' id='LGD_PAYINFO' action='".$_mnv_PC_order_url."order_complete.php'>";
 				foreach ($payReqMap as $key => $value) {
 					$innerHTML .= "<input type='hidden' name='$key' id='$key' value='$value'>";
@@ -1321,7 +1287,7 @@
 				$innerHTML	= "N";
 			}
 
-			echo $innerHTML;
+			// echo $innerHTML;
 		break;
 
 		case "cancel_order_info" :
