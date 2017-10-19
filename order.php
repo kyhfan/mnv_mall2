@@ -458,7 +458,8 @@
 
 	</div>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<script type="text/javascript">
+	<script language="javascript" src="http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js" type="text/javascript"></script>
+		<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
 		$(document).ready(function() {
