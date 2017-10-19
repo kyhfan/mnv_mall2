@@ -1287,7 +1287,7 @@
 				$innerHTML	= "N";
 			}
 
-			echo $innerHTML;
+			echo $order_query;
 		break;
 
 		case "cancel_order_info" :
