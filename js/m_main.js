@@ -332,6 +332,7 @@ $(document).on("click", "#order_start", function(){
 	var total_save_price		= $("#total_save_price").val();
 	var total_payment_price		= $("#total_payment_price").val();
 	var total_coupon_price		= $("#total_coupon_price").val();
+	var show_goods_name			= $("#show_goods_name").val();
 	var pay_type				= $("#pay_type > .active").attr("data-value");
 	
 	if (delivery_name == "")
@@ -382,7 +383,8 @@ $(document).on("click", "#order_start", function(){
 			"total_save_price"			: total_save_price,
 			"total_payment_price"		: total_payment_price,
 			"total_coupon_price"		: total_coupon_price,
-			"pay_type"					: pay_type
+			"pay_type"					: pay_type,
+			"show_goods_name"			: show_goods_name
 		},
 		success: function(response){
 			console.log(response);
