@@ -1154,7 +1154,7 @@
 			else
 					$USABLEPAY	= "SC0040";
 
-			$order_query		= "INSERT INTO ".$_gl['order_info_table']."(order_goods, show_goods_name, order_name, order_email, order_phone, delivery_name, delivery_zipcode, delivery_addr1, delivery_addr2, delivery_phone, delivery_message, total_order_price, total_delivery_price, total_save_price, total_payment_price, total_coupon_price, pay_type, order_oid, order_regdate) values('".$order_goods."','".$show_goods_name."','".$order_name."','".$order_email."','".$order_phone."','".$delivery_name."','".$delivery_zipcode."','".$delivery_addr1."','".$delivery_addr2."','".$delivery_phone."','".$delivery_message."','".$total_order_price."','".$total_delivery_price."','".$total_save_price."','".$total_payment_price."','".$total_coupon_price."','".$pay_type."','".$order_oid."',".date("Y-m-d H:i:s")."')";
+			$order_query		= "INSERT INTO ".$_gl['order_info_table']."(order_goods, show_goods_name, order_name, order_email, order_phone, delivery_name, delivery_zipcode, delivery_addr1, delivery_addr2, delivery_phone, delivery_message, total_order_price, total_delivery_price, total_save_price, total_payment_price, total_coupon_price, pay_type, order_oid, order_regdate) values('".$order_goods."','".$show_goods_name."','".$order_name."','".$order_email."','".$order_phone."','".$delivery_name."','".$delivery_zipcode."','".$delivery_addr1."','".$delivery_addr2."','".$delivery_phone."','".$delivery_message."','".$total_order_price."','".$total_delivery_price."','".$total_save_price."','".$total_payment_price."','".$total_coupon_price."','".$pay_type."','".$order_oid."','".date("Y-m-d H:i:s")."')";
 			$order_result 		= mysqli_query($my_db, $order_query);
 
 			if ($order_result)
@@ -1287,7 +1287,7 @@
 				$innerHTML	= "N";
 			}
 
-			echo $order_query;
+			echo $innerHTML;
 		break;
 
 		case "cancel_order_info" :
