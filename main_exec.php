@@ -1277,7 +1277,7 @@
 				$innerHTML .= "function launchCrossPlatform(){lgdwin = open_paymentwindow(document.getElementById('LGD_PAYINFO'), '<?= $CST_PLATFORM ?>', LGD_window_type);}";
 				$innerHTML .= "function getFormObject() {return document.getElementById('LGD_PAYINFO');}";
 				$innerHTML .= "</script>";
-				$innerHTML .= "<form method='post' name='LGD_PAYINFO' id='LGD_PAYINFO' action='".$_mnv_PC_order_url."order_complete.php'>";
+				$innerHTML .= "<form method='post' name='LGD_PAYINFO' id='LGD_PAYINFO' action='http://www.store-chon.com/dev/order_complete.php'>";
 				foreach ($payReqMap as $key => $value) {
 					$innerHTML .= "<input type='hidden' name='$key' id='$key' value='$value'>";
 				}
