@@ -1162,7 +1162,7 @@
 				$flag	= "Y";
 
 				$innerHTML	= "";
-				$configPath								= $_SERVER['DOCUMENT_ROOT']."/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
+				$configPath								= "./lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
 
 				/*
 				 *************************************************
@@ -1181,7 +1181,7 @@
 				 * MD5 해쉬데이터 암호화 검증을 위해
 				 * LG유플러스에서 발급한 상점키(MertKey)를 환경설정 파일(lgdacom/conf/mall.conf)에 반드시 입력하여 주시기 바랍니다.
 				 */
-				require_once($_SERVER['DOCUMENT_ROOT']."/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
+				require_once("./lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
 				$xpay = new XPayClient($configPath, $LGD_PLATFORM);
 				if (!$xpay->Init_TX($LGD_MID)) {
 					echo "LG유플러스에서 제공한 환경파일이 정상적으로 설치 되었는지 확인하시기 바랍니다.<br/>";
@@ -1210,10 +1210,10 @@
 				$payReqMap['LGD_CUSTOM_PROCESSTYPE'] = $LGD_CUSTOM_PROCESSTYPE;		// 트랜잭션 처리방식
 				$payReqMap['LGD_TIMESTAMP']          = date(YmdHis);                         //타임스탬프
 				$payReqMap['LGD_HASHDATA']           = $LGD_HASHDATA;				// MD5 해쉬암호값
-				$payReqMap['LGD_RETURNURL']   		 = "http://store-chon.com/dev/returnurl.php";
+				$payReqMap['LGD_RETURNURL']   		 = "http://store-chon.com/dev/order_complete.php";
 				$payReqMap['LGD_VERSION']         	 = "PHP_Non-ActiveX_SmartXPay";	// 버전정보 (삭제하지 마세요)
-				$payReqMap['LGD_CUSTOM_FIRSTPAY']  	 = $_POST["LGD_CUSTOM_FIRSTPAY"];		//상점정의 초기결제수단
-				$payReqMap['LGD_PCVIEWYN']			 = $_POST["LGD_PCVIEWYN"];				//휴대폰번호 입력 화면 사용 여부(유심칩이 없는 단말기에서 입력-->유심칩이 있는 휴대폰에서 실제 결제)
+				// $payReqMap['LGD_CUSTOM_FIRSTPAY']  	 = $_POST["LGD_CUSTOM_FIRSTPAY"];		//상점정의 초기결제수단
+				// $payReqMap['LGD_PCVIEWYN']			 = $_POST["LGD_PCVIEWYN"];				//휴대폰번호 입력 화면 사용 여부(유심칩이 없는 단말기에서 입력-->유심칩이 있는 휴대폰에서 실제 결제)
 				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
 				
 				

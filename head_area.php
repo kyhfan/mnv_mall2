@@ -31,7 +31,7 @@
 						<a href="member_login.php?ref_url=<?=$_SERVER['REQUEST_URI']?>">
 							<span>LOG IN</span>
 						</a>
-						<a href="javascript:void(0)">
+						<a href="member_join.php">
 							<span>JOIN</span>
 						</a>
 <?
