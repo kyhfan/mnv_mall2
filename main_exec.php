@@ -1162,7 +1162,8 @@
 				$flag	= "Y";
 
 				$innerHTML	= "";
-				$configPath								= $_SERVER['DOCUMENT_ROOT']."/mnv_mall2/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
+				// $configPath								= $_SERVER['DOCUMENT_ROOT']."/mnv_mall2/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
+				$configPath								= $_SERVER['DOCUMENT_ROOT']."/dev/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
 
 				/*
 				 *************************************************
@@ -1188,7 +1189,8 @@
 				$LGD_AMOUNT							= $total_payment_price;
 				$LGD_TIMESTAMP						= date("YmdHis");
 
-				require_once($_SERVER['DOCUMENT_ROOT']."/mnv_mall2/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
+				// require_once($_SERVER['DOCUMENT_ROOT']."/mnv_mall2/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
+				require_once($_SERVER['DOCUMENT_ROOT']."/dev/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
 				$xpay = new XPayClient($configPath, $CST_PLATFORM);
 				if (!$xpay->Init_TX($LGD_MID)) {
 					echo "LG유플러스에서 제공한 환경파일이 정상적으로 설치 되었는지 확인하시기 바랍니다.<br/>";
