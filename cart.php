@@ -124,7 +124,7 @@
 					</div>
 					<div class="finish-btn">
 						<a href="order.php?t=cart">
-							<span>구매하기</span>
+							<span>구 매 하 기</span>
 						</a>
 					</div>
 				</div>
