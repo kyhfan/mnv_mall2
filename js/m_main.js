@@ -400,6 +400,7 @@ $(document).on("click", "#order_start", function(){
 					loadedImages++;
 					if(loadedImages == totalImages)
 					{
+						alert("1111");
 						launchCrossPlatform();
 					}
 				});
