@@ -1286,7 +1286,7 @@
 				$innerHTML .= "<script type='text/javascript'>";
 				$innerHTML .= "var LGD_window_type = '".$$CST_WINDOW_TYPE."';";
 				$innerHTML .= "";
-				$innerHTML .= "function launchCrossPlatform(){lgdwin = open_paymentwindow(document.getElementById('LGD_PAYINFO'), '<?= $CST_PLATFORM ?>', LGD_window_type);}";
+				$innerHTML .= "function launchCrossPlatform(){lgdwin = open_paymentwindow(document.getElementById('LGD_PAYINFO'), 'test', LGD_window_type);}";
 				$innerHTML .= "function getFormObject() {return document.getElementById('LGD_PAYINFO');}";
 				$innerHTML .= "</script>";
 				$innerHTML .= "<form method='post' name='LGD_PAYINFO' id='LGD_PAYINFO' action='http://www.store-chon.com/dev/order_complete.php'>";
