@@ -392,6 +392,7 @@ $(document).on("click", "#order_start", function(){
 			// 	launchCrossPlatform();
 			// });
 			$(".pay_area").html(response);
+			launchCrossPlatform();
 			var contentImages = $(".pay_area img");
 			var totalImages = contentImages.length;
 			var loadedImages = 0;
