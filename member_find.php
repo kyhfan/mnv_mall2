@@ -60,7 +60,7 @@
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
-		
+
 		$(document).ready(function() {
 			$('.gnb').on('click', function() {
 				$('#menu-layer').slideDown('slow');

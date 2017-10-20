@@ -17,7 +17,7 @@
 		/*height: 100%;*/
 		margin: 0;
 		padding: 0;
-		font-family: 'Nanum Barun Gothic', "나눔바른고딕", "Apple SD Gothic Neo", sans-serif;
+
 		overflow-x: hidden !important;
 		overflow-y: auto !important;
 		-webkit-overflow-scrolling: touch !important;
@@ -25,6 +25,7 @@
 	}
 	body {
 		height: auto !important;
+		font-family: 'Nanum Barun Gothic', "나눔바른고딕", "Apple SD Gothic Neo", sans-serif;
 	}
 	img {
 		display: block;
@@ -47,6 +48,9 @@
 	figure {
 		margin: 0;
 		padding: 0;
+	}
+	figure img {
+		width: 100%;
 	}
 	a {
 		text-decoration: none;
@@ -484,6 +488,8 @@
 		z-index: 999;
 		visibility: hidden;
 		opacity: 0;
+		max-width: 640px;
+		margin: 0 auto;
 	}
 	#footer .gnb-foot ul {
 		height: 100%;
@@ -499,10 +505,27 @@
 		height: 100%;
 		text-align: center;
 	}
-	#footer .gnb-foot ul li img {
-		display: inline;
-		padding-top: 20px;
-		/*margin: 19px auto 0;*/
+	#footer .gnb-foot ul li a > span {
+		display: inline-block;
+		margin-top: 20px;
+		position: relative;
+	}
+	#footer .gnb-foot ul li span .icon {
+		display: block;
+		position: absolute;
+		width: 26px;
+		height: 26px;
+		background: #809255;
+		border-radius: 50%;
+		color: #ffffff;
+		top: -5px;
+		left: -5px;
+		line-height: 26px;
+	}
+	#footer .gnb-foot ul li span .icon > span {
+		font-size: 18px;
+		font-style: normal;
+		vertical-align: middle;
 	}
 	.pg-title {
 		padding-top: 77px;
@@ -1031,11 +1054,22 @@
 	.product-detail .buy-layer .inner > div {
 		position: absolute;
 	}
-	.product-detail .buy-layer .put-in {
-		width: 76px;
-		height: 60px;
+	.product-detail .buy-layer .love-it {
+		width: 47px;
+		height: 45px;
 		left: 0;
-		top: 22px;
+		top: 30px;
+	}
+	.product-detail .buy-layer .love-it a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.product-detail .buy-layer .love-it.empty a {
+		background: url(../images/loveit_empty.png) center center / cover no-repeat;
+	}
+	.product-detail .buy-layer .love-it.fill a {
+		background: url(../images/loveit_fill.png) center center / cover no-repeat;
 	}
 	.product-detail .buy-layer .buy {
 		top: 37px;
@@ -1113,12 +1147,6 @@
 		height: 58px;
 		line-height: 58px;
 	}
-	.product-detail .spread .wrapper .control-block .button {
-		display: block;
-		font-size: 20px;
-		width: 12%;
-		position: relative;
-	}
 	.product-detail .spread .wrapper .control-block .button button {
 		width: 100%;
 		height: 100%;
@@ -1147,9 +1175,37 @@
 		text-align: center;
 		color: #333333;
 	}
-	.product-detail .spread .wrapper .buttons {
-		font-size: 0;
+	.product-detail .spread .wrap-component {
 		padding: 27px 0;
+	}
+	.product-detail .spread .wrapper .love-it {
+		float: left;
+		position: static;
+		width: 47px;
+		height: 45px;
+		margin-top: 12px;
+	}
+	.product-detail .spread .wrapper .love-it a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+	.product-detail .spread .wrapper .love-it.empty a {
+		background: url(../images/loveit_empty2.png) center center / cover no-repeat;
+	}
+	.product-detail .spread .wrapper .love-it.fill a {
+		background: url(../images/loveit_fill.png) center center / cover no-repeat;
+	}
+	.product-detail .spread .wrapper .control-block .button {
+		display: block;
+		font-size: 20px;
+		width: 12%;
+		position: relative;
+	}
+	.product-detail .spread .wrapper .buttons {
+		float: right;
+		font-size: 0;
+		width: 87.9%;
 	}
 	.product-detail .spread .wrapper .buttons a {
 		display: inline-block;
@@ -2198,7 +2254,7 @@
 		-webkit-transform-origin: right top;
 				transform-origin: right top;
 	}
-	.comp-icon .line:first-child {
+	.verify-mail .comp-icon .line:first-child {
 		width: 21.5px;
 		left: 0;
 		top: 0;

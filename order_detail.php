@@ -87,7 +87,7 @@
 								<ul>
 									<li>
 										<a href="#">
-											<span>SPECIAL</span>
+											<span>PROMOTION</span>
 										</a>
 									</li>
 									<li>
@@ -378,7 +378,7 @@
 					</li>
 					<li class="menu">
 						<a href="javascript:void(0)">
-							<img src="./images/gnb_menu.png" alt="메뉴">
+							<img src="./images/gnb_cart.png" alt="장바구니">
 						</a>
 					</li>
 				</ul>

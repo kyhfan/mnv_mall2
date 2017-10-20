@@ -70,8 +70,8 @@
 							<div class="list theme">
 								<ul>
 									<li>
-										<a href="special.php">
-											<span>SPECIAL</span>
+										<a href="promotion_list.php">
+											<span>PROMOTION</span>
 										</a>
 									</li>
 									<li>
