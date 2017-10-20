@@ -444,6 +444,9 @@
 									<span>결제하기</span>
 								</a>
 							</div>
+							<div class="pay_area">
+				              <img src='./images/blank.png'>
+            				</div>
 						</div>
 					</div>
 				</div>

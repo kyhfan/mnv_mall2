@@ -1181,8 +1181,15 @@
 				 * MD5 해쉬데이터 암호화 검증을 위해
 				 * LG유플러스에서 발급한 상점키(MertKey)를 환경설정 파일(lgdacom/conf/mall.conf)에 반드시 입력하여 주시기 바랍니다.
 				 */
+				$CST_PLATFORM						= "test";
+				$CST_MID							= "miniver";
+				$LGD_MID							= (("test" == $CST_PLATFORM)?"t":"").$CST_MID;   //상점아이디(자동생성)
+				$LGD_OID							= $order_oid;
+				$LGD_AMOUNT							= $total_payment_price;
+				$LGD_TIMESTAMP						= date("YmdHis");
+
 				require_once($_SERVER['DOCUMENT_ROOT']."/mnv_mall2/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
-				$xpay = new XPayClient($configPath, $LGD_PLATFORM);
+				$xpay = new XPayClient($configPath, $CST_PLATFORM);
 				if (!$xpay->Init_TX($LGD_MID)) {
 					echo "LG유플러스에서 제공한 환경파일이 정상적으로 설치 되었는지 확인하시기 바랍니다.<br/>";
 					echo "mall.conf에는 Mert Id = Mert Key 가 반드시 등록되어 있어야 합니다.<br/><br/>";
@@ -1200,7 +1207,7 @@
 				$payReqMap['CST_PLATFORM']           = "test";				//LG유플러스 결제 서비스 선택(test:테스트, service:서비스)
 				$payReqMap['CST_WINDOW_TYPE']        = $CST_WINDOW_TYPE;			// 수정불가
 				$payReqMap['CST_MID']                = "miniver";					//상점아이디(LG유플러스으로 부터 발급받으신 상점아이디를 입력하세요)
-				$payReqMap['LGD_MID']                = (("test" == $CST_PLATFORM)?"t":"").$CST_MID;  //상점아이디(자동생성)
+				$payReqMap['LGD_MID']                = $LGD_MID;  //상점아이디(자동생성)
 				$payReqMap['LGD_OID']                = $order_oid;					//주문번호(상점정의 유니크한 주문번호를 입력하세요)
 				$payReqMap['LGD_BUYER']              = $order_name;					//구매자명
 				$payReqMap['LGD_PRODUCTINFO']        = $show_goods_name;			//상품명

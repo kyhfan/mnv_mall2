@@ -190,7 +190,7 @@ class XPayClient
 	{
 		if ($this->config[$MID] == null) {
 			$this->response_code = LGD_ERR_NO_MID;
-			$this->response_msg = "Key for MID [".$MID."] does not exist in mall.conf";
+			$this->response_msg = "Key for MID [".$MID."] does not exist11 in mall.conf";
 			$this->log($this->response_msg, LGD_LOG_FATAL);
 			return false;
 		}

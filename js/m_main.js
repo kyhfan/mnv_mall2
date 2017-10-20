@@ -388,9 +388,23 @@ $(document).on("click", "#order_start", function(){
 		},
 		success: function(response){
 			console.log(response);
-			$(window).on('load', function(){
-				launchCrossPlatform();
+			// $(window).on('load', function(){
+			// 	launchCrossPlatform();
+			// });
+			$(".pay_area").html(response);
+			var contentImages = $(".pay_area img");
+			var totalImages = contentImages.length;
+			var loadedImages = 0;
+			contentImages.each(function(){
+				$(this).on('load', function(){
+					loadedImages++;
+					if(loadedImages == totalImages)
+					{
+						launchCrossPlatform();
+					}
+				});
 			});
+			
 		}
 	});
 });
