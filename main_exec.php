@@ -1182,7 +1182,7 @@
 				 * MD5 해쉬데이터 암호화 검증을 위해
 				 * LG유플러스에서 발급한 상점키(MertKey)를 환경설정 파일(lgdacom/conf/mall.conf)에 반드시 입력하여 주시기 바랍니다.
 				 */
-				$CST_PLATFORM						= "test";
+				$CST_PLATFORM						= "service";
 				$CST_MID							= "miniver";
 				$LGD_MID							= (("test" == $CST_PLATFORM)?"t":"").$CST_MID;   //상점아이디(자동생성)
 				$LGD_OID							= $order_oid;
@@ -1206,7 +1206,7 @@
 				 *************************************************
 				 */
 				$CST_WINDOW_TYPE = "submit";										// 수정불가
-				$payReqMap['CST_PLATFORM']           = "test";				//LG유플러스 결제 서비스 선택(test:테스트, service:서비스)
+				$payReqMap['CST_PLATFORM']           = $CST_PLATFORM;				//LG유플러스 결제 서비스 선택(test:테스트, service:서비스)
 				$payReqMap['CST_WINDOW_TYPE']        = $CST_WINDOW_TYPE;			// 수정불가
 				$payReqMap['CST_MID']                = "miniver";					//상점아이디(LG유플러스으로 부터 발급받으신 상점아이디를 입력하세요)
 				$payReqMap['LGD_MID']                = $LGD_MID;  //상점아이디(자동생성)
