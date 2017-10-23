@@ -1,6 +1,7 @@
 <?
 include_once "./header.php";
 
+print_r($_REQUEST);
 ?>
 <body>
 	<div id="chon-app">
