@@ -1,8 +1,6 @@
 <?
 include_once "./header.php";
 
-if (!$_SESSION['ss_chon_email'])
-	echo "<script>location.href='member_login.php?ref_url=mypage.php';</script>";
 ?>
 <body>
 	<div id="chon-app">
@@ -62,10 +60,7 @@ if (!$_SESSION['ss_chon_email'])
 		$(document).ready(function() {
 			// swiper initialize
 			var chonSwiper = new Swiper ('.swiper-container', {
-				// Optional parameters
-				direction: 'horizontal',
-				effect: 'fade',
-				speed: 2000,
+				// Optional parameters 
 				loop: true,
 				autoplay: 4000,
 				autoplayDisableOnInteraction: false,

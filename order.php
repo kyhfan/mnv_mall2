@@ -1,11 +1,6 @@
 <?
 	include_once "./header.php";
 
-	$error_level = error_reporting();
-	error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
-	// dompdf code
-	error_reporting($error_level);
-
 	$order_type				= $_REQUEST["t"];
 	$total_delivery_price	= 0;
 	if ($order_type == "cart")
