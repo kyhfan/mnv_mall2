@@ -36,6 +36,7 @@
 	$_gl['order_status']['delivery_ing']		= "배송중";
 	$_gl['order_status']['delivery_comp']		= "배송완료";
 	$_gl['order_status']['order_cancel']		= "주문취소";
+	$_gl['order_status']['pay_error']			= "결제에러";
 
 	$_gl['PAYTYPE']['SC0010']				= "신용카드";
 	$_gl['PAYTYPE']['SC0060']				= "휴대폰";
