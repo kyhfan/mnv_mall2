@@ -2,6 +2,11 @@
 include_once "./header.php";
 
 print_r($_REQUEST);
+
+if ($_REQUEST["LGD_RESPCODE"] != "0000")
+{
+	echo "<script>alert('주문이 취소되었습니다.');location.href='index.php';</script>";
+}
 ?>
 <body>
 	<div id="chon-app">
