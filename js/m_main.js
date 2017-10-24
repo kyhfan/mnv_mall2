@@ -7,8 +7,9 @@ Kakao.init('dee0f864fcd7296e4dc9d6196634d56a');
 
 // window scrolling
 $(window).on('scroll', function() {
+	var $headerHeight = document.getElementById('header').height || $header.height();
 	var currentScroll = $(this).scrollTop();
-	if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
+	if(currentScroll > $headerHeight && !$app.hasClass('menu-opened')) {
 		$app.addClass('scrolled');
 		TweenMax.to($('.gnb-foot'), 0.3, {autoAlpha: 1});
 	} else {

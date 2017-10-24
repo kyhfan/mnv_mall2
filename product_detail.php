@@ -278,9 +278,10 @@
 			</div>
 			<div class="buy-layer">
 				<div class="inner">
-					<div class="put-in" data-goodscode="<?=$goods_code?>" data-login="<?=$mb_flag?>">
+					<div class="love-it empty">
+						<!--  data-goodscode="<?=$goods_code?>" data-login="<?=$mb_flag?>" -->
 						<a href="javascript:void(0)">
-							<img src="./images/put_in_cart.png" alt="장바구니에 넣기">
+							<span class="blind">관심상품등록</span>
 						</a>
 					</div>
 					<div class="buy">
@@ -309,13 +310,20 @@
 								<button>+</button>
 							</div>
 						</div>
-						<div class="buttons">
-							<a href="javascript:void(0)">
-								<span>장바구니</span>
-							</a>
-							<a href="javascript:void(0)" id="buyBtn" data-type="goods" data-goodscode=<?=$goods_code?>>
-								<span>바로구매</span>
-							</a>
+						<div class="wrap-component clearfix">
+							<div class="love-it empty">
+								<a href="javascript:void(0)">
+									<span class="blind">관심상품등록</span>
+								</a>
+							</div>
+							<div class="buttons">
+								<a href="javascript:void(0)">
+									<span>장바구니</span>
+								</a>
+								<a href="javascript:void(0)">
+									<span>바로구매</span>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>

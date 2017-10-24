@@ -12,6 +12,9 @@
 ?>
 		<div id="container" class="cart">
 			<div class="content">
+				<div class="pg-title">
+					<h3 class="nft">CART</h3>
+				</div>
 <?
 	if ($cart_num < 1)
 	{
@@ -91,7 +94,7 @@
 	}
 
 	if ($total_goods_price < $_gl['delivery_max_price'])
-		$total_delivery_price = $_gl['delivery_price']; 
+		$total_delivery_price = $_gl['delivery_price'];
 
 	$total_price			= $total_goods_price + $total_delivery_price;
 
@@ -121,7 +124,7 @@
 					</div>
 					<div class="finish-btn">
 						<a href="order.php?t=cart">
-							<span>구매하기</span>
+							<span>구 매 하 기</span>
 						</a>
 					</div>
 				</div>

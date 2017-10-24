@@ -62,22 +62,33 @@
 				<ul>
 					<li class="home">
 						<a href="index.php">
-							<img src="./images/gnb_home.png" alt="홈으로 가기">
+							<span>
+								<img src="./images/gnb_home.png" alt="홈으로 가기">
+							</span>
 						</a>
 					</li>
 					<li class="search">
 						<a href="javascript:void(0)">
-							<img src="./images/gnb_search.png" alt="검색">
+							<span>
+								<img src="./images/gnb_search.png" alt="검색">
+							</span>
 						</a>
 					</li>
 					<li class="mypage">
 						<a href="mypage.php">
-							<img src="./images/gnb_mypage.png" alt="마이페이지">
+							<span>
+								<img src="./images/gnb_mypage.png" alt="마이페이지">
+							</span>
 						</a>
 					</li>
-					<li class="menu">
+					<li class="mycart">
 						<a href="cart.php">
-							<img src="./images/gnb_menu.png" alt="메뉴">
+							<span>
+								<img src="./images/gnb_cart.png" alt="메뉴">
+								<div class="icon">
+									<span>1</span>
+								</div>
+							</span>
 						</a>
 					</li>
 				</ul>
