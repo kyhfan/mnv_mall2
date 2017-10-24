@@ -20,7 +20,7 @@ print_r($_REQUEST);
      *************************************************
      */
     $CST_PLATFORM               = "test";
-    $CST_MID                    = $_POST["CST_MID"];
+    $CST_MID                    = "miniver";
     $LGD_MID                    = (("test" == $CST_PLATFORM)?"t":"").$CST_MID;
     $LGD_PAYKEY                 = $_POST["LGD_PAYKEY"];
 
