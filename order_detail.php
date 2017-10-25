@@ -2,8 +2,19 @@
 	include_once "./header.php";
 
 	$oid	= $_REQUEST["oid"];
+	// 주문정보 가져오기
 	$order_info = select_order_info($oid);
-	print_r($order_info);
+	// print_r($order_info);
+
+	// 결제 정보 가져오기
+	$payment_info = select_payment_info($oid);
+
+	// 카드 할부 정보
+	if ($payment_info["LGD_CARDINSTALLMONTH"] == "00")
+		$payment_info["LGD_CARDINSTALLMONTH"] = "일시불";
+	else
+		$payment_info["LGD_CARDINSTALLMONTH"] = $payment_info["LGD_CARDINSTALLMONTH"]."개월";
+	
 
 	// 주문일자
 	$orderdate_arr1 	= explode(" ",$order_info["order_regdate"]);
@@ -74,7 +85,7 @@
 									<span>받는사람</span>
 								</div>
 								<div class="col info">
-									<span>양건영</span>
+									<span><?=$order_info["delivery_name"]?></span>
 								</div>
 							</li>
 							<li class="row clearfix">
@@ -82,7 +93,7 @@
 									<span>연락처</span>
 								</div>
 								<div class="col info">
-									<span>010-2515-4373</span>
+									<span><?=$order_info["delivery_phone"]?></span>
 								</div>
 							</li>
 							<li class="row clearfix">
@@ -90,7 +101,7 @@
 									<span>배송지</span>
 								</div>
 								<div class="col info">
-									<span>서울특별시 서초구 방배중앙로 58 (방배동) 2층</span>
+									<span><?=$order_info["delivery_addr1"]." ".$order_info["delivery_addr2"]?></span>
 								</div>
 							</li>
 							<li class="row clearfix">
@@ -99,7 +110,7 @@
 								</div>
 								<div class="col info">
 									<span>
-										없을 시 1층 경비실에 보관해 주세요
+										<?=$order_info["delivery_message"]?>
 									</span>
 								</div>
 							</li>
@@ -112,7 +123,7 @@
 					</div>
 					<div class="inner">
 						<div class="p-type">
-							<span>신용카드 현대 (4025-96**_****_****) -  일시불</span>
+							<span><?=$_gl['PAYTYPE'][$payment_info["LGD_PAYTYPE"]]?> <?=$payment_info["LGD_FINANCENAME"]?> (<?=$payment_info["LGD_CARDNUM"]?>) -  <?=$payment_info["LGD_CARDINSTALLMONTH"]?></span>
 						</div>
 						<ul>
 							<li class="row clearfix">
@@ -120,72 +131,44 @@
 									<span>상품금액</span>
 								</div>
 								<div class="col info">
-									<span>79,010원</span>
+									<span><em class="nft"><?=number_format($order_info["total_order_price"])?></em>원</span>
 								</div>
 							</li>
 							<li class="row clearfix">
 								<div class="col guide">
-									<span>상품합계</span>
+									<span>배송비</span>
 								</div>
 								<div class="col info">
-									<span>80,000원</span>
+									<span><em class="nft"><?=number_format($order_info["total_delivery_price"])?></em>원</span>
 								</div>
 							</li>
 							<li class="row clearfix">
 								<div class="col guide">
-									<span>배송비합계</span>
-								</div>
-								<div class="col info">
-									<span>0원</span>
-								</div>
-							</li>
-							<li class="row clearfix">
-								<div class="col guide">
-									<span>할인금액</span>
+									<span>쿠폰</span>
 								</div>
 								<div class="col info">
 									<span>
-										-990원
+										<em class="nft">0</em>원 <!-- 쿠폰 작업 해야 함 -->
 									</span>
 								</div>
 							</li>
 							<li class="row clearfix">
 								<div class="col guide">
-									<span>상품/주문할인</span>
+									<span>적립금</span>
 								</div>
 								<div class="col info">
 									<span>
-										-990원
+										<em class="nft">0</em>원 <!-- 적립금 작업 해야 함 -->
 									</span>
 								</div>
 							</li>
 							<li class="row clearfix">
 								<div class="col guide">
-									<span>배송비할인</span>
+									<span>총결제금액</span>
 								</div>
 								<div class="col info">
 									<span>
-										0원
-									</span>
-								</div>
-							</li>
-							<li class="row clearfix">
-								<div class="col guide">
-									<span>환불정산액/포인트 결제액</span>
-								</div>
-								<div class="col info">
-									<span>
-										0원
-									</span>
-								</div>
-							</li>
-							<li class="row clearfix">
-								<div class="col guide">
-									<span>포인트</span>
-								</div>
-								<div class="col info">
-									<span>
-										0원
+										<em class="nft"><?=number_format($order_info["total_payment_price"])?></em>원
 									</span>
 								</div>
 							</li>
