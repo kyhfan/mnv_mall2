@@ -1,8 +1,5 @@
 <?
-include_once "./header.php";
-
-print_r($_REQUEST);
-
+	include_once "./header.php";
 	/*
      * [최종결제요청 페이지(STEP2-2)]
 	 *
