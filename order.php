@@ -11,7 +11,7 @@
 		$total_order_price	= $order_info[0]["total_order_price"];
 	}else{
 		$buycnt				= $_REQUEST["buycnt"];
-		$total_buycnt		= $_REQUEST["buycnt"];
+		$total_buycnt		= 1;
 		$goodscode			= $_REQUEST["goodscode"];
 		$order_info 		= select_order_goods_info($goodscode);
 		$total_order_price	= $order_info[0]["discount_price"] * $buycnt;
@@ -57,7 +57,7 @@
 	foreach($order_info as $key => $val)
 	{
 		$goods_thumb_img 	= str_replace("../../../","./",$val['goods_thumb_img_url']);
-		if ($order_type = "cart")
+		if ($order_type == "cart")
 		{
 			$buycnt				= $val["goods_cnt"];
 			$goods_order_price	= $val["discount_price"] * $buycnt;

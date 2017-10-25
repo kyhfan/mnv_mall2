@@ -481,6 +481,18 @@ function select_order_goods($ordertype)
 	return $res_data;
 }
 
+// function select_order_info($oid)
+// {
+// 	global $_gl;
+// 	global $my_db;
+
+// 	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_oid='".$oid."'";
+// 	$order_result		= mysqli_query($my_db, $order_query);
+// 	$order_data			= mysqli_fetch_array($order_result);
+
+// 	return $order_data;
+// }
+
 function select_order_info($oid)
 {
 	global $_gl;
@@ -489,6 +501,22 @@ function select_order_info($oid)
 	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_oid='".$oid."'";
 	$order_result		= mysqli_query($my_db, $order_query);
 	$order_data			= mysqli_fetch_array($order_result);
+
+	$order_goods_arr1 	= explode(",",$order_data["order_goods"]);
+	$order_goods_arr2	= array_values(array_filter(array_map('trim',$order_goods_arr1)));
+
+	$i = 0;
+	foreach($order_goods_arr2 as $key => $val)
+	{
+		$order_goods_arr3 	= explode("||",$val);
+		$goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE 1 AND goods_code='".$order_goods_arr3[0]."'";
+		$goods_result		= mysqli_query($my_db, $goods_query);
+		$goods_data[$i]			= mysqli_fetch_array($goods_result);
+		$goods_data[$i]['order_cnt']	= $order_goods_arr3[1];
+		
+		$order_data['order_goods']	= $goods_data;
+		$i++;
+	}
 
 	return $order_data;
 }
@@ -611,7 +639,7 @@ function create_oid()
 
 	if ($order_num > 0)
 		create_oid();
-		
+
 	return $oid;
 }
 ?>

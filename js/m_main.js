@@ -86,7 +86,7 @@ $(document).on("click", ".sorting-area > a", function(){
 });
 
 // 상품 하트(위시리스트 추가) 클릭
-$(document).on("click", ".loveit > a", function(){
+$(document).on("click", ".love-it > a", function(){
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -99,10 +99,10 @@ $(document).on("click", ".loveit > a", function(){
 			if (response.match("Y") == "Y")
 			{
 				// alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
-				$(".loveit > a > img").attr("src","./images/heart_fill.png");
+				$(".love-it > a").css("background","url(../images/loveit_fill.png) center center / cover no-repeat");
 			}else if (response.match("D") == "D"){
 				// alert('관심상품에서 삭제 되었습니다.');
-				$(".loveit > a > img").attr("src","./images/heart.png");
+				$(".love-it > a").css("background","url(../images/loveit_empty.png) center center / cover no-repeat");
 			}else if (response.match("N") == "N"){
 				alert('로그인 후 관심상품에 등록해 주세요!');
 				location.href='member_login.php';
@@ -215,10 +215,8 @@ function oto_sort(val)
 }
 
 // 장바구니 담기
-$(document).on("click", ".put-in > a", function(){
-	var goods_code 	= $(".put-in").attr("data-goodscode");
-	var loginYN 	= $(".put-in").attr("data-login");
-
+function add_cart(goods_code, loginYN)
+{
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -239,7 +237,7 @@ $(document).on("click", ".put-in > a", function(){
 			}
 		}
 	});
-});
+}
 
 function del_chk_cart()
 {
@@ -307,6 +305,13 @@ function change_cart(idx)
 			// location.reload();
 		}
 	});
+}
+
+function go_order(goodscode)
+{
+	var goods_amount = $("#amount").val();
+
+	location.href = "order.php?t=goods&buycnt=" + goods_amount + "&goodscode=" + goodscode;
 }
 
 // 주문하기 > 결제방법 선택

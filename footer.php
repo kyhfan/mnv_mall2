@@ -85,9 +85,19 @@
 						<a href="cart.php">
 							<span>
 								<img src="./images/gnb_cart.png" alt="메뉴">
+								<?
+	$cart_info 	= select_cart_info();
+	$cart_num	= count($cart_info);
+
+	if ($cart_num > 0)
+	{
+?>									
 								<div class="icon">
-									<span>1</span>
+									<span><?=$cart_num?></span>
 								</div>
+<?
+	}
+?>								
 							</span>
 						</a>
 					</li>
