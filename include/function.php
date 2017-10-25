@@ -545,13 +545,14 @@ function select_order_list_info()
 			$goods_data[$i]['order_cnt']	= $order_goods_arr3[1];
 			
 			$order_data['order_goods']	= $goods_data;
+			$res_data[] 	= $order_data;
 			$i++;
 		}
 	
 
 	}
 	
-	return $order_data;
+	return $res_data;
 }
 
 function select_promotion_info($idx)
