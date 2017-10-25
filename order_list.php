@@ -1,5 +1,8 @@
 <?
 	include_once "./header.php";
+
+	$order_info = select_order_list_info();
+	print_r($order_info);
 ?>
 <body>
 	<div id="chon-app">

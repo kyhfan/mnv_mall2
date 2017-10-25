@@ -521,6 +521,22 @@ function select_order_info($oid)
 	return $order_data;
 }
 
+function select_order_list_info()
+{
+	global $_gl;
+	global $my_db;
+
+	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_email='".$_SESSION['ss_chon_email']."'";
+	$order_result		= mysqli_query($my_db, $order_query);
+
+	while($order_data = mysqli_fetch_array($order_result))
+	{
+		$res_data 	= $order_data;
+	}
+	
+	return $res_data;
+}
+
 function select_promotion_info($idx)
 {
 	global $_gl;
