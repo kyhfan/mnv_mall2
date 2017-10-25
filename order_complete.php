@@ -73,7 +73,6 @@
           
         echo "<p>";
 */
-        print_r($xpay);
 		// (5) DB에 요청 결과 처리
         if( "0000" == $xpay->Response_Code() ) {
 			//통신상의 문제가 없을시

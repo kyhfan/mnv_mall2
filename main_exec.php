@@ -1223,7 +1223,8 @@
 				$payReqMap['LGD_VERSION']         	 = "PHP_Non-ActiveX_SmartXPay";	// 버전정보 (삭제하지 마세요)
 				// $payReqMap['LGD_CUSTOM_FIRSTPAY']  	 = $_POST["LGD_CUSTOM_FIRSTPAY"];		//상점정의 초기결제수단
 				// $payReqMap['LGD_PCVIEWYN']			 = $_POST["LGD_PCVIEWYN"];				//휴대폰번호 입력 화면 사용 여부(유심칩이 없는 단말기에서 입력-->유심칩이 있는 휴대폰에서 실제 결제)
-				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
+				// $payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
+				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "IFRAME";					// 신용카드 카드사 인증 페이지 연동 방식
 				
 				
 				//iOS 연동시 필수
