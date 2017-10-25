@@ -528,7 +528,7 @@ function select_order_list_info()
 
 	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_email='".$_SESSION['ss_chon_email']."'";
 	$order_result		= mysqli_query($my_db, $order_query);
-
+print_r($order_query);
 	while($order_data = mysqli_fetch_array($order_result))
 	{
 		// $res_data[] 	= $order_data;
