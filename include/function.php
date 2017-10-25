@@ -531,7 +531,7 @@ function select_order_list_info()
 
 	while($order_data = mysqli_fetch_array($order_result))
 	{
-		$res_data 	= $order_data;
+		$res_data[] 	= $order_data;
 	}
 	
 	return $res_data;
