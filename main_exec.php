@@ -1285,7 +1285,7 @@
 			
 				// $innerHTML .= "<script language='javascript' src='http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js' type='text/javascript'></script>";
 				$innerHTML .= "<script type='text/javascript'>";
-				$innerHTML .= "var LGD_window_type = '".$CST_WINDOW_TYPE."';";
+				$innerHTML .= "var LGD_window_type = '".$$CST_WINDOW_TYPE."';";
 				$innerHTML .= "";
 				$innerHTML .= "function launchCrossPlatform(){lgdwin = open_paymentwindow(document.getElementById('LGD_PAYINFO'), 'test', LGD_window_type);}";
 				$innerHTML .= "function getFormObject() {return document.getElementById('LGD_PAYINFO');}";
