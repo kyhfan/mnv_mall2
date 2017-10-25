@@ -1687,14 +1687,17 @@
 	}
 	.order-detail ._product .row .col {
 		float: left;
+		width: 73.7%;
 	}
 	.order-detail ._product .row .col:first-child {
 		width: 21.6%;
-		margin-right: 25px;
+		/*margin-right: 25px;*/
+		margin-right: 4.7%;
 	}
 	.order-detail ._product .row .col .details {
 		font-size: 0;
 		color: #777777;
+		line-height: 1.35;
 	}
 	.order-detail ._product .row .col .details span {
 		position: relative;
@@ -1741,6 +1744,7 @@
 	.order-detail .info-block .info span {
 		color: #777777;
 		font-size: 20px;
+		line-height: 1.2;
 	}
 	.order-detail .info-block .guide {
 		float: left;
