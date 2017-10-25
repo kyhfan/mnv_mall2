@@ -86,7 +86,7 @@
 			{
 				//상점내 DB에 어떠한 이유로 처리를 하지 못한경우 false로 변경해 주세요.
 				$isDBOK = true; 
-				echo "<script>window.opener.document.location.reload();window.close();</script>";
+				// echo "<script>window.opener.document.location.reload();window.close();</script>";
 			}else{
 				$isDBOK = false; 
 			}
