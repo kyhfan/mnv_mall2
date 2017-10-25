@@ -377,7 +377,7 @@
 	if ($wish_flag == "Y")
 	{
 ?>	
-			$(".love-it > a").css("background","url(../images/loveit_fill.png) center center / cover no-repeat");
+			$(".love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
 <?
 	}
 ?>		

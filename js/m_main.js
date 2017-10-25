@@ -99,10 +99,10 @@ $(document).on("click", ".love-it > a", function(){
 			if (response.match("Y") == "Y")
 			{
 				// alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
-				$(".love-it > a").css("background","url(../images/loveit_fill.png) center center / cover no-repeat");
+				$(".love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
 			}else if (response.match("D") == "D"){
 				// alert('관심상품에서 삭제 되었습니다.');
-				$(".love-it > a").css("background","url(../images/loveit_empty.png) center center / cover no-repeat");
+				$(".love-it > a").css("background","url(./images/loveit_empty2.png) center center / cover no-repeat");
 			}else if (response.match("N") == "N"){
 				alert('로그인 후 관심상품에 등록해 주세요!');
 				location.href='member_login.php';
