@@ -191,6 +191,7 @@
 						$mail_result = sendMail(
 							$mb_email,
 							"촌의감각",
+							"촌의감각 회원가입 인증메일입니다.",
 							"	<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
 							<thead>
 								<tr>
@@ -244,7 +245,7 @@
 					}
 				}
 			}
-			echo $$mail_result;
+			echo $flag;
 
 		break;
 
