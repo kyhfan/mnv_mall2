@@ -188,6 +188,34 @@ function getFormObject() {
 <form method="post" name="LGD_PAYINFO" id="LGD_PAYINFO" action="">
 <table>
     <tr>
+        <td>������ �̸� </td><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<title>LG ���÷��� eCredit���� �����׽�Ʈ</title>
+<script language="javascript" src="http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+
+	var LGD_window_type = '<?= $CST_WINDOW_TYPE ?>'; 
+/*
+* �����Ұ�
+*/
+function launchCrossPlatform(){
+      lgdwin = open_paymentwindow(document.getElementById('LGD_PAYINFO'), '<?= $CST_PLATFORM ?>', LGD_window_type);
+}
+/*
+* FORM ��  ���� ����
+*/
+function getFormObject() {
+        return document.getElementById("LGD_PAYINFO");
+}
+
+</script>
+</head>
+<body>
+<form method="post" name="LGD_PAYINFO" id="LGD_PAYINFO" action="">
+<table>
+    <tr>
         <td>������ �̸� </td>
         <td><?= $LGD_BUYER ?></td>
     </tr>

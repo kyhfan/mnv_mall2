@@ -532,7 +532,8 @@ function select_order_list_info()
 // print_r($order_num);
 	while($order_data = mysqli_fetch_array($order_result))
 	{
-		// $res_data[] 	= $order_data;
+
+		$res_data[] 	= $order_data;
 		// $order_goods_arr1 	= explode(",",$order_data["order_goods"]);
 		// $order_goods_arr2	= array_values(array_filter(array_map('trim',$order_goods_arr1)));
 	
@@ -553,8 +554,8 @@ function select_order_list_info()
 
 	}
 	
-	// return $res_data;
-	return $order_data;
+	return $res_data;
+	// return $order_data;
 }
 
 function select_promotion_info($idx)
