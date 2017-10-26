@@ -348,10 +348,12 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->Port = 587;                                    // TCP port to connect to
 	
 	$mail->CharSet    = "utf-8";
-	$mail->setFrom($EMAIL, $NAME);
-	$mail->addAddress($EMAIL, $NAME);     // Add a recipient
-	// $mail->addAddress('ellen@example.com');               // Name is optional
-	$mail->addReplyTo($EMAIL, $NAME);
+	// $mail->setFrom($EMAIL, $NAME);
+	// $mail->addAddress($EMAIL, $NAME);     // Add a recipient
+	$mail->From = "yh.kim@minivertising.kr";
+	$mail->FromName = "촌의감각";
+	$mail->addAddress('yh.kim@minivertising.kr');               // Name is optional
+	// $mail->addReplyTo($EMAIL, $NAME);
 	// $mail->addCC('cc@example.com');
 	// $mail->addBCC('bcc@example.com');
 	
