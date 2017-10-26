@@ -337,24 +337,15 @@
 	var $header = $('#header');
 	var $app = $('#chon-app');
 		$(document).ready(function() {
-			// swiper initialize
-			var chonSwiper = new Swiper ('.swiper-container', {
-				// Optional parameters
-				direction: 'horizontal',
-				effect: 'fade',
-				speed: 2000,
-				loop: true,
-				autoplay: 4000,
-				autoplayDisableOnInteraction: false,
-				pagination: '.swiper-pagination',
-				paginationClickable: true,
-				paginationBulletRender: function(swiper, index, className) {
-					return '<span class="' + className +'">' + '</span>';
-				}
-				// If we need pagination
-				// pagination: '.swiper-pagination'
-			});
-
+			$("#cboxTopLeft").hide();
+			$("#cboxTopRight").hide();
+			$("#cboxBottomLeft").hide();
+			$("#cboxBottomRight").hide();
+			$("#cboxMiddleLeft").hide();
+			$("#cboxMiddleRight").hide();
+			$("#cboxTopCenter").hide();
+			$("#cboxBottomCenter").hide();
+			
 			$('.gnb').on('click', function() {
 				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');

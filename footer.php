@@ -1,3 +1,6 @@
+<?
+	include_once "./popup_div.php";	
+?>
 		<div id="footer">
 			<div class="nav">
 				<ul class="clearfix">

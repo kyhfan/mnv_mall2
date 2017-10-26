@@ -98,6 +98,7 @@ $(document).on("click", ".love-it > a", function(){
 		success: function(response){
 			if (response.match("Y") == "Y")
 			{
+				open_pop("wish_ins_div");
 				// alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
 				$(".love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
 			}else if (response.match("D") == "D"){
@@ -275,7 +276,8 @@ function add_cart(goods_code, loginYN)
 		success: function(response){
 			if (response.match("Y") == "Y")
 			{
-				alert("장바구니에 상품이 담겼습니다!");
+				// alert("장바구니에 상품이 담겼습니다!");
+				open_pop("cart_ins_div");
 				// location.href='oto_list.php';
 			}else{
 				alert('다시 시도해 주세요');
@@ -684,7 +686,7 @@ $(document).on("click", "#find_member", function(){
 	var mb_name 		= $("#mb_name").val();
 	var mb_password		= $("#mb_password").val();
 	var mb_email		= $("#mb_email").val();
-alert(submitTarget);
+
 	if (submitTarget == "fid")
 	{
 		if (mb_name == "")
@@ -722,12 +724,29 @@ alert(submitTarget);
 		},
 		success: function(response){
 			console.log(response);
-			if (response.match("Y") == "Y")
+			var res_arr = response.split("||");
+			if (submitTarget == "fid")
 			{
-				location.href = ref_url;
+				if (response.match("Y") == "Y")
+				{
+					$("#user_name").html(mb_name);
+					$("#find_email").html(res_arr[1]);
+					open_pop("email_find_div");
+				}else{
+					alert('다시 시도해 주세요.');
+					location.reload();	
+				}
+				// location.href = ref_url;
 			}else{
-				alert('다시 시도해 주세요.');
-				location.reload();
+				if (response.match("Y") == "Y")
+				{
+					$("#user_name").html(mb_name);
+					$("#find_email").html(res_arr[1]);
+					open_pop("email_find_div");
+				}else{
+					alert('다시 시도해 주세요.');
+					location.reload();	
+				}
 			}
 		}
 	});
