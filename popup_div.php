@@ -154,7 +154,7 @@
 				</h5>
 				<div class="text">
 					<p>
-						입력하신 <span>joon14@naver.com</span>로<br>
+						입력하신 <span id="pw_email">joon14@naver.com</span>로<br>
 						임시 비밀번호가 발급되었습니다.<br>
 						임시 비밀번호를 통해 로그인 하신 후 MY PAGE에서<br>
 						새로운 비밀번호를 설정해 주시기 바랍니다.

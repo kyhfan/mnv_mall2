@@ -341,7 +341,7 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->Host = 'smtp.naver.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
 	$mail->Username = 'kyhfan';                 // SMTP username
-	$mail->Password = 'dudfks88';                           // SMTP password
+	$mail->Password = 'dudgns__82';                           // SMTP password
 	$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	$mail->Port = 465;                                    // TCP port to connect to
 	

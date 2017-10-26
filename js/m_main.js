@@ -740,9 +740,9 @@ $(document).on("click", "#find_member", function(){
 			}else{
 				if (response.match("Y") == "Y")
 				{
-					$("#user_name").html(mb_name);
-					$("#find_email").html(res_arr[1]);
-					open_pop("email_find_div");
+					$("#pw_email").html(mb_email);
+					// $("#find_email").html(res_arr[1]);
+					open_pop("password_find_div");
 				}else{
 					alert('다시 시도해 주세요.');
 					location.reload();	
