@@ -114,6 +114,52 @@ $(document).on("click", ".love-it > a", function(){
 	});
 });
 
+function del_chk_wish()
+{
+	var chk_idx	= "";
+	$("input[name=chk_this]:checked").each(function() {
+		var chk_id	= $(this).attr("id");
+		var chk_arr	= chk_id.split("_");
+		chk_idx		+= ","+chk_arr[1];
+	});
+
+	if (chk_idx == "")
+	{
+		alert("선택하신 상품이 없습니다.");
+		return false;
+	}else{
+		$.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "./main_exec.php",
+			data:{
+				"exec"				: "delete_chk_wish",
+				"chk_idx"			: chk_idx
+			},
+			success: function(response){
+				location.reload();
+			}
+		});
+	}
+}
+
+function del_wish(idx)
+{
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"				: "delete_one_wish",
+			"wish_idx"			: idx
+		},
+		success: function(response){
+			location.reload();
+		}
+	});
+
+}
+
 // 프로모션 더보기 클릭
 $(document).on("click", ".btn-more", function(){
 	location.href = "promotion_detail.php?idx=" + $(this).attr("data-idx");

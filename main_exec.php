@@ -1009,6 +1009,50 @@
 
 		break;
 
+		case "delete_chk_wish" :
+			$mb_email		= $_SESSION['ss_chon_email'];
+			$chk_idx		= $_REQUEST['chk_idx'];
+
+			$chk_idx_arr		= explode(",",$chk_idx);
+
+			$i = 0;
+			foreach($chk_idx_arr as $key => $val)
+			{
+				if ($i == 0)
+				{
+					$i++;
+					continue;
+				}
+
+				$wish_query 	= "UPDATE ".$_gl['wishlist_info_table']." SET showYN='N' WHERE idx='".$val."' AND mb_id='".$mb_email."'";
+				$result 		= mysqli_query($my_db, $wish_query);
+				$i++;
+			}
+
+			if ($result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+
+			echo $flag;
+
+		break;
+
+		case "delete_one_wish" :
+			$mb_email		= $_SESSION['ss_chon_email'];
+			$wish_idx		= $_REQUEST['wish_idx'];
+
+			$wish_query 	= "UPDATE ".$_gl['wishlist_info_table']." SET showYN='N' WHERE mb_id='".$mb_email."' AND idx='".$wish_idx."'";
+			$result 		= mysqli_query($my_db, $wish_query);
+
+			if ($result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+
+			echo $flag;
+		break;
+
 		case "update_cart_cnt" :
 			$cart_idx		= $_REQUEST['cart_idx'];
 			$goods_cnt		= $_REQUEST['goods_cnt'];
