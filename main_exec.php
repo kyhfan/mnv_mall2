@@ -360,7 +360,7 @@
 					if($update_result)
 					{
 						$mail_result = sendMail(
-							"kyhfan@naver.com",
+							$data['mb_email'],
 							"촌의감각",
 							"비밀번호가 변경되었습니다.",
 							"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
