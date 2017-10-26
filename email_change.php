@@ -9,9 +9,9 @@
     if ($return_flag = "Y")
     {
         echo "<script>alert('이메일이 정상적으로 변경 되었습니다.');</script>";
-        self.close();
+        echo "<script>self.close();</script>";
     }else{
         echo "<script>alert('시스템 오류입니다. 다시 시도해 주세요.');</script>";
-        self.close();        
+        echo "<script>self.close();</script>";
     }
 ?>
