@@ -313,63 +313,58 @@
 				$flag = "D";
 			}else{
 				// result - 메일 발송
-				if($insert_result) {
-					$mail_result = sendMail(
-						$change_email,
-						"촌의감각",
-						"촌의감각 이메일 변경 인증 메일입니다.",
-						"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
-						<   thead>
-							<tr>
-								<th>
-									<a style='color: inherit;' href='http://www.store-chon.com/dev/index.php'>
-										<img style='display: block;padding-bottom: 25px;' src='./images/logo.png' alt='촌의감각'>
-									</a>
-								</th>
-							</tr>
-						</thead>
-						<tbody style='border-width: 1px;border-style: solid;border-color: #333333;border-left: none;border-right: none;'>
-							<tr>
-								<td>
-									<h4 style='font-size: 25px;color: #333333;margin: 0;padding: 60px 0 58px;'>NEW E-MAIL</h4>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<span style='display: block;font-size: 17px;font-weight: 700;color: #333333;'>안녕하세요 촌의 감각입니다.</span>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p style='line-height:20px;color:#333333;margin:0;padding:30px 0 73px;'>
-										<span style='color:#809255;'>24시간</span> 이내에 이메일 인증을 클릭해주시면 이메일(아이디) 변경이 완료됩니다.<br>
-										24시간 이내에 이메일 인증이 완료되지 않을 경우,<br>
-										이메일(아이디) 변경이 진행되지 않습니다.
-									</p>
-									<a href='http://www.store-chon.com/email_change.php?o_mail=".$mb_email."&c_mail=".$change_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
-										<span style='display:inline-block;padding:16px 54px;background-color:#809255;font-size:18px;color:#ffffff;letter-spacing:2px;'>인증하기</span>
-									</a>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td>
-									<p style='padding:24px 0 71px;color:#333333;font-size:17px;line-height:22px;'>
-										촌의 감각 주문 관련 문의는 1:1문의 및 고객지원센터 T. 02-235-2475를 이용해 주십시오.<br>
-										본 메일은 발신전용 메일이며 회신되지 않습니다.
-									</p>
-								</td>
-							</tr>
-						</tfoot>
-					</table>",
-						"$change_email", "$mb_name");
+				$mail_result = sendMail(
+					$change_email,
+					"촌의감각",
+					"촌의감각 이메일 변경 인증 메일입니다.",
+					"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
+					<   thead>
+						<tr>
+							<th>
+								<a style='color: inherit;' href='http://www.store-chon.com/dev/index.php'>
+									<img style='display: block;padding-bottom: 25px;' src='./images/logo.png' alt='촌의감각'>
+								</a>
+							</th>
+						</tr>
+					</thead>
+					<tbody style='border-width: 1px;border-style: solid;border-color: #333333;border-left: none;border-right: none;'>
+						<tr>
+							<td>
+								<h4 style='font-size: 25px;color: #333333;margin: 0;padding: 60px 0 58px;'>NEW E-MAIL</h4>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span style='display: block;font-size: 17px;font-weight: 700;color: #333333;'>안녕하세요 촌의 감각입니다.</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p style='line-height:20px;color:#333333;margin:0;padding:30px 0 73px;'>
+									<span style='color:#809255;'>24시간</span> 이내에 이메일 인증을 클릭해주시면 이메일(아이디) 변경이 완료됩니다.<br>
+									24시간 이내에 이메일 인증이 완료되지 않을 경우,<br>
+									이메일(아이디) 변경이 진행되지 않습니다.
+								</p>
+								<a href='http://www.store-chon.com/email_change.php?o_mail=".$mb_email."&c_mail=".$change_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
+									<span style='display:inline-block;padding:16px 54px;background-color:#809255;font-size:18px;color:#ffffff;letter-spacing:2px;'>인증하기</span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>
+								<p style='padding:24px 0 71px;color:#333333;font-size:17px;line-height:22px;'>
+									촌의 감각 주문 관련 문의는 1:1문의 및 고객지원센터 T. 02-235-2475를 이용해 주십시오.<br>
+									본 메일은 발신전용 메일이며 회신되지 않습니다.
+								</p>
+							</td>
+						</tr>
+					</tfoot>
+				</table>",
+					"$change_email", "$mb_name");
 
-					$flag = "Y";
-				}else{
-					$flag = "N";
-				}
-
+				$flag = "Y";
 			}
 
 			echo $flag;
