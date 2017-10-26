@@ -675,6 +675,13 @@ $(document).on("click", ".btn-verify > a", function(){
 		},
 		success: function(response){
 			console.log(response);
+			if (response.match("Y") == "Y")
+			{
+				alert('변경 요청하신 이메일로 인증메일을 보내 드렸습니다. 메일을 확인해 주세요.');
+			}else{
+				alert('다시 시도해 주세요.');
+				location.reload();
+			}
 		}
 	});
 });
