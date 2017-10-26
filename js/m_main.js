@@ -572,7 +572,7 @@ $(document).on("click", ".btn.join", function(){
 			if (response.match("Y") == "Y")
 			{
 				// alert('고객님이 입력하신 메일주소로 인증메일이 발송 되었습니다.\r\n메일의 확인버튼을 눌러 주시면 회원가입이 완료 됩니다.');
-				location.href = "member_join_verify.php";
+				location.href = "member_join_verify.php?v_email=" + mb_email;
 			}else if (response.match("E") == "E"){
 				alert('만 14세 이상만 가입 가능합니다.');
 			}else if (response.match("D") == "D"){

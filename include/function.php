@@ -704,4 +704,36 @@ function verify_member($email)
 	$member_result 	= mysqli_query($my_db, $member_query);
 
 }
+
+function change_mail($o_mail, $c_mail)
+{
+	global $_gl;
+	global $my_db;
+	
+	$change_query 	= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$o_mail."'";
+	$change_result 	= mysqli_query($my_db, $change_query);
+	$change_num		= mysqli_num_rows($change_result);
+
+	if ($change_num > 0)
+	{
+		$change_query2 	= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$c_mail."'";
+		$change_result2 	= mysqli_query($my_db, $change_query2);
+		$change_num2		= mysqli_num_rows($change_result2);
+		
+		if ($change_num2 > 0)
+		{
+			$flag	= "D";
+		}else{
+			$change_query3 		= "UPDATE ".$_gl['member_info_table']." SET mb_email='".$c_mail."' WHERE mb_email='".$o_mail."'";
+			$change_result3 	= mysqli_query($my_db, $change_query3);				
+
+			if ($change_result3)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+		}
+	}
+
+	return $flag;
+}
 ?>

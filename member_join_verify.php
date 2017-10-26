@@ -4,6 +4,7 @@
 	if ($_SESSION['ss_chon_email'])
 		echo "<script>location.href='index.php';</script>";
 
+	$v_email	= $_REQUEST["v_email"];
 ?>
 <body>
 	<div id="chon-app">
@@ -24,7 +25,7 @@
 					<div class="msg">
 						<h5>인증메일을 확인해주세요!</h5>
 						<span>
-							<strong>timoggle@naver.com</strong> 으로 인증메일이 발송되었습니다.<br>
+							<strong><?=$v_email?></strong> 으로 인증메일이 발송되었습니다.<br>
 							24시간 이내로 이메일을 확인하여 인증버튼을 클릭하시면<br>
 							촌의감각 회원가입을 완료하실 수 있습니다
 						</span>
