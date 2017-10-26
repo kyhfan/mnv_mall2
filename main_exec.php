@@ -189,33 +189,53 @@
 					// result - 메일 발송
 					if($insert_result) {
 						$mail_result = sendMail(
-							"kyhfan@naver.com",
+							$mb_email,
 							"촌의감각",
-							"회원가입을 축하합니다.",
-							"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
-							<h2>
-							<img src='http://www.store-chon.com/PC/images/mail_title_logo.png' alt='촌의감각' style='width: 116px;height: 92px'/>
-							</h2>
-							<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
-							<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
-							안녕하세요 촌의 감각 입니다.<br/>
-							$mb_name($mb_email)고객님의 회원가입을 축하드립니다.<br/>
-							회원님의 가입정보는 다음과 같습니다.
-							</p>
-							<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
-							<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px;'>아이디:&nbsp;&nbsp;<span style='color: #b88b5b;letter-spacing: normal;font-weight: bold;'>$mb_email</span></span>
-
-							</p>
-							<a href='http://www.store-chon.com/' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 홈페이지 가기</span></p></a>
-							</div>
-							<div style='background-color: #f9f3ec;width: 600px;height: 154px;margin: 0 auto;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;'>
-							<div style='padding: 20px 38px;text-align: left;font-size: 12px'>
-							<p style='margin: 0;padding-bottom: 4px'>본 메일은 발신전용입니다.</p>
-							<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
-							<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
-							</div>
-							</div> 
-							",
+							"	<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
+							<thead>
+								<tr>
+									<th>
+										<a style='color: inherit;' href='javascript:void(0)'>
+											<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/dev/images/logo.png' alt='촌의감각'>
+										</a>
+									</th>
+								</tr>
+							</thead>
+							<tbody style='border-width: 1px;border-style: solid;border-color: #333333;border-left: none;border-right: none;'>
+								<tr>
+									<td>
+										<h4 style='font-size: 25px;color: #333333;margin: 0;padding: 60px 0 58px;'>WELCOME</h4>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span style='display: block;font-size: 17px;font-weight: 700;color: #333333;'>안녕하세요 촌의 감각입니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p style='line-height:20px;color:#333333;margin:0;padding:30px 0 73px;'>
+											<span style='color:#809255;'>24시간</span> 이내에 이메일 인증을 클릭해주시면 촌의 감각 회원가입이 완료됩니다.<br>
+											24시간 이내에 이메일 인증이 완료되지 않을 경우,<br>
+											회원가입을 다시 진행해주셔야 합니다.
+										</p>
+										<a href='http://www.store-chon.com/dev/verify.php?v_email=".$mb_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
+											<span style='display:inline-block;padding:16px 54px;background-color:#809255;font-size:18px;color:#ffffff;letter-spacing:2px;'>인증하기</span>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td>
+										<p style='padding:24px 0 71px;color:#333333;font-size:17px;line-height:22px;'>
+											촌의 감각 주문 관련 문의는 1:1문의 및 고객지원센터 T. 02-235-2475를 이용해 주십시오.<br>
+											본 메일은 발신전용 메일이며 회신되지 않습니다.
+										</p>
+									</td>
+								</tr>
+							</tfoot>
+						</table>",
 							"$mb_email", "$mb_name");
 
 						$flag = "Y";
@@ -367,7 +387,7 @@
 							<thead>
 								<tr>
 									<th>
-										<a style='color: inherit;' href='javascript:void(0)'>
+										<a style='color: inherit;' href='http://www.store-chon.com/' target='_blank'>
 											<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/dev/images/logo.png' alt='촌의감각'>
 										</a>
 									</th>
