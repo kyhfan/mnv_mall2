@@ -194,7 +194,7 @@
 					// result - 메일 발송
 					if($insert_result) {
 						$mail_result = sendMail(
-							$mb_email,
+							"yh.kim@minivertising.kr",
 							"촌의감각",
 							"촌의감각 회원가입 인증메일입니다.",
 							"	<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
@@ -426,7 +426,7 @@
 					if($update_result)
 					{
 						$mail_result = sendMail(
-							$data['mb_email'],
+							"yh.kim@minivertising.kr",
 							"촌의감각",
 							"비밀번호가 변경되었습니다.",
 							"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
@@ -471,7 +471,7 @@
 								</tr>
 							</tfoot>
 						</table>",
-							"$mb_email", "$username");
+							"".$data['mb_email']."", "$username");
 						/*
 						if($mail_result == "Y")
 							$flag = "Y"; // 메일 발송까지 완료
