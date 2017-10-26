@@ -572,7 +572,7 @@ $(document).on("click", ".btn.join", function(){
 			if (response.match("Y") == "Y")
 			{
 				// alert('고객님이 입력하신 메일주소로 인증메일이 발송 되었습니다.\r\n메일의 확인버튼을 눌러 주시면 회원가입이 완료 됩니다.');
-				location.href = "member_join_verify";
+				location.href = "member_join_verify.php";
 			}else if (response.match("E") == "E"){
 				alert('만 14세 이상만 가입 가능합니다.');
 			}else if (response.match("D") == "D"){
@@ -786,6 +786,9 @@ $(document).on("click", "#mb_login", function(){
 			if (response.match("Y") == "Y")
 			{
 				location.href	= ref_url;
+			}else if (response.match("V") == "V"){
+				alert('인증되지 않은 회원님입니다. 가입하신 메일 인증 버튼을 눌러 주세요.');
+				location.reload();
 			}else{
 				alert('가입되지 않은 이메일 혹은 틀린 비밀번호 입니다. 확인 후 다시 로그인해 주세요.');
 				location.reload();

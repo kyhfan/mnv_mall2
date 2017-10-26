@@ -15,14 +15,19 @@
 			//if (validate_password($mb_password,$login_data['mb_password']))
 			if ($mb_email == $login_data['mb_email'])
 			{
-				$update_query		= "UPDATE ".$_gl['member_info_table']." SET mb_login_date='".date("Y-m-d H:i:s")."' WHERE mb_id='".$login_data['mb_id']."'";
-				$update_result		= mysqli_query($my_db, $update_query);
+				if ($login_data['mb_verify'] == "Y")
+				{
+					$update_query		= "UPDATE ".$_gl['member_info_table']." SET mb_login_date='".date("Y-m-d H:i:s")."' WHERE mb_id='".$login_data['mb_id']."'";
+					$update_result		= mysqli_query($my_db, $update_query);
 
-				// 회원 이메일, 이름, 로그인 경로 세션 생성
-				$_SESSION['ss_chon_email']		= $login_data['mb_email'];
-				$_SESSION['ss_chon_name']		= $login_data['mb_name'];
-				$_SESSION['ss_chon_way']		= $login_data['mb_login_way'];
-				$flag	= "Y";
+					// 회원 이메일, 이름, 로그인 경로 세션 생성
+					$_SESSION['ss_chon_email']		= $login_data['mb_email'];
+					$_SESSION['ss_chon_name']		= $login_data['mb_name'];
+					$_SESSION['ss_chon_way']		= $login_data['mb_login_way'];
+					$flag	= "Y";
+				}else{
+					$flag	= "V";
+				}
 			}else{
 				$flag	= "N";
 			}

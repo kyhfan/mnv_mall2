@@ -29,11 +29,11 @@
 							촌의감각 회원가입을 완료하실 수 있습니다
 						</span>
 					</div>
-					<div class="buttons">
+					<!-- <div class="buttons">
 						<a href="javascript:void(0)">
 							<span>인증메일 확인하러 가기</span>
 						</a>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
