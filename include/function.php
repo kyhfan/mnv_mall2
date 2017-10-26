@@ -357,7 +357,7 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
 	$mail->Username = 'kyhfan@gmail.com';                 // SMTP username
-	$mail->Password = 'dudgns__82';                           // SMTP password
+	$mail->Password = 'dudfks88';                           // SMTP password
 	// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 	// $mail->Port = 465;                                    // TCP port to connect to
 	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
