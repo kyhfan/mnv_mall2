@@ -19,7 +19,6 @@
 	// 주문일자
 	$orderdate_arr1 	= explode(" ",$order_info["order_regdate"]);
 	$orderdate_arr2 	= explode("-",$orderdate_arr1[0]);
-
 	$orderdate 		= $orderdate_arr2[0].".".$orderdate_arr2[1].".".$orderdate_arr2[2];
 ?>
 <body>

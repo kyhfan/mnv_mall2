@@ -528,28 +528,28 @@ function select_order_list_info()
 
 	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_email='".$_SESSION['ss_chon_email']."'";
 	$order_result		= mysqli_query($my_db, $order_query);
-	$order_num			= mysqli_num_rows($order_result);
-print_r($order_num);
+	// $order_num			= mysqli_num_rows($order_result);
+// print_r($order_num);
 	while($order_data = mysqli_fetch_array($order_result))
 	{
 
-		$res_data[] 	= $order_data;
-		// $order_goods_arr1 	= explode(",",$order_data["order_goods"]);
-		// $order_goods_arr2	= array_values(array_filter(array_map('trim',$order_goods_arr1)));
+		// $res_data[] 	= $order_data;
+		$order_goods_arr1 	= explode(",",$order_data["order_goods"]);
+		$order_goods_arr2	= array_values(array_filter(array_map('trim',$order_goods_arr1)));
 	
-		// $i = 0;
-		// foreach($order_goods_arr2 as $key => $val)
-		// {
-		// 	$order_goods_arr3 	= explode("||",$val);
-		// 	$goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE 1 AND goods_code='".$order_goods_arr3[0]."'";
-		// 	$goods_result		= mysqli_query($my_db, $goods_query);
-		// 	$goods_data[$i]			= mysqli_fetch_array($goods_result);
-		// 	$goods_data[$i]['order_cnt']	= $order_goods_arr3[1];
+		$i = 0;
+		foreach($order_goods_arr2 as $key => $val)
+		{
+			$order_goods_arr3 	= explode("||",$val);
+			$goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE 1 AND goods_code='".$order_goods_arr3[0]."'";
+			$goods_result		= mysqli_query($my_db, $goods_query);
+			$goods_data[$i]			= mysqli_fetch_array($goods_result);
+			$goods_data[$i]['order_cnt']	= $order_goods_arr3[1];
 			
-		// 	$order_data['order_goods']	= $goods_data;
-		// 	$res_data[] 	= $order_data;
-		// 	$i++;
-		// }
+			$order_data['order_goods']	= $goods_data;
+			$res_data[] 	= $order_data;
+			$i++;
+		}
 	
 
 	}
