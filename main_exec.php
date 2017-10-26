@@ -368,7 +368,7 @@
 								<tr>
 									<th>
 										<a style='color: inherit;' href='javascript:void(0)'>
-											<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/images/logo.png' alt='촌의감각'>
+											<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/dev/images/logo.png' alt='촌의감각'>
 										</a>
 									</th>
 								</tr>

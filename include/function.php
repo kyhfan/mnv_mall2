@@ -343,7 +343,7 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->Username = 'kyhfan';                 // SMTP username
 	$mail->Password = 'dudgns__82';                           // SMTP password
 	$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-	$mail->Port = 465;                                    // TCP port to connect to
+	$mail->Port = 587;                                    // TCP port to connect to
 	
 	$mail->CharSet    = "utf-8";
 	$mail->setFrom($EMAIL, $NAME);
