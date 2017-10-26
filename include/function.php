@@ -526,7 +526,7 @@ function select_order_list_info()
 	global $_gl;
 	global $my_db;
 
-	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_email='".$_SESSION['ss_chon_email']."' AND order_status <> 'order_error'";
+	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_email='".$_SESSION['ss_chon_email']."' AND order_status <> 'pay_error'";
 	$order_result		= mysqli_query($my_db, $order_query);
 	// $order_num			= mysqli_num_rows($order_result);
 // print_r($order_num);
