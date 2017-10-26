@@ -371,7 +371,8 @@
 				}
 
 			}
-			return $flag;
+
+			echo $flag;
 		break;
 
 		case "sear_id":
