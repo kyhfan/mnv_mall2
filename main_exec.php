@@ -318,11 +318,11 @@
 					"촌의감각",
 					"촌의감각 이메일 변경 인증 메일입니다.",
 					"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
-					<   thead>
+					<thead>
 						<tr>
 							<th>
 								<a style='color: inherit;' href='http://www.store-chon.com/dev/index.php'>
-									<img style='display: block;padding-bottom: 25px;' src='./images/logo.png' alt='촌의감각'>
+									<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/dev/images/logo.png' alt='촌의감각'>
 								</a>
 							</th>
 						</tr>
