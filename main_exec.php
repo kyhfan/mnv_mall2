@@ -345,7 +345,7 @@
 									24시간 이내에 이메일 인증이 완료되지 않을 경우,<br>
 									이메일(아이디) 변경이 진행되지 않습니다.
 								</p>
-								<a href='http://www.store-chon.com/email_change.php?o_mail=".$mb_email."&c_mail=".$change_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
+								<a href='http://www.store-chon.com/dev/email_change.php?o_mail=".$mb_email."&c_mail=".$change_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
 									<span style='display:inline-block;padding:16px 54px;background-color:#809255;font-size:18px;color:#ffffff;letter-spacing:2px;'>인증하기</span>
 								</a>
 							</td>
