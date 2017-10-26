@@ -339,7 +339,7 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 */
 	$mail->isSMTP();                                      // Set mailer to use SMTP
 	$mail->Host = 'smtp.worksmobile.com';  // Specify main and backup SMTP servers
-	// $mail->SMTPAuth = true;                               // Enable SMTP authentication
+	$mail->SMTPAuth = true;                               // Enable SMTP authentication
 	$mail->Username = 'yh.kim@minivertising.kr';                 // SMTP username
 	$mail->Password = 'dudgns__82';                           // SMTP password
 	// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
@@ -348,11 +348,11 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->Port = 587;                                    // TCP port to connect to
 	
 	$mail->CharSet    = "utf-8";
-	// $mail->setFrom($EMAIL, $NAME);
-	// $mail->addAddress($EMAIL, $NAME);     // Add a recipient
-	$mail->From = "yh.kim@minivertising.kr";
-	$mail->FromName = "촌의감각";
-	$mail->addAddress('yh.kim@minivertising.kr');               // Name is optional
+	$mail->setFrom($EMAIL, $NAME);
+	$mail->addAddress($EMAIL, $NAME);     // Add a recipient
+	// $mail->From = "yh.kim@minivertising.kr";
+	// $mail->FromName = "촌의감각";
+	// $mail->addAddress('yh.kim@minivertising.kr');               // Name is optional
 	// $mail->addReplyTo($EMAIL, $NAME);
 	// $mail->addCC('cc@example.com');
 	// $mail->addBCC('bcc@example.com');
