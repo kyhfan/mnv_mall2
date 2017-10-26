@@ -314,7 +314,7 @@
 			}else{
 				// result - 메일 발송
 				$mail_result = sendMail(
-					$change_email,
+					"yh.kim@minivertising.kr",
 					"촌의감각",
 					"촌의감각 이메일 변경 인증 메일입니다.",
 					"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>

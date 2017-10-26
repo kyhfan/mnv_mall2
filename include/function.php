@@ -337,7 +337,6 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$address = $MAILTO;
 	$mail->AddAddress($address, $MAILTONAME);
 */
-/*
 	$mail->isSMTP();                                      // Set mailer to use SMTP
 	$mail->Host = 'smtp.worksmobile.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -350,22 +349,8 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	
 	$mail->CharSet    = "utf-8";
 	$mail->setFrom($EMAIL, $NAME);
-	$mail->addAddress($EMAIL, $NAME);     // Add a recipient
-*/
+	$mail->addAddress($MAILTO, $NAME);     // Add a recipient
 
-	$mail->isSMTP();                                      // Set mailer to use SMTP
-	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-	$mail->SMTPAuth = true;                               // Enable SMTP authentication
-	$mail->Username = 'kyhfan@gmail.com';                 // SMTP username
-	$mail->Password = 'dudfks88';                           // SMTP password
-	// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-	// $mail->Port = 465;                                    // TCP port to connect to
-	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-	$mail->Port = 587;                                    // TCP port to connect to
-	
-	$mail->CharSet    = "utf-8";
-	$mail->setFrom($EMAIL, $NAME);
-	$mail->addAddress($EMAIL, $NAME);     // Add a recipient
 	// $mail->From = "yh.kim@minivertising.kr";
 	// $mail->FromName = "촌의감각";
 	// $mail->addAddress('yh.kim@minivertising.kr');               // Name is optional
