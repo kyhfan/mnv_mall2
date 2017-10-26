@@ -694,4 +694,14 @@ function create_oid()
 
 	return $oid;
 }
+
+function verify_member($email)
+{
+	global $_gl;
+	global $my_db;
+
+	$member_query 	= "UPDATE ".$_gl['member_info_table']." SET mb_verify='Y' WHERE mb_email='".$email."'";
+	$member_result 	= mysqli_query($my_db, $member_query);
+
+}
 ?>

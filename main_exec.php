@@ -220,7 +220,7 @@
 											24시간 이내에 이메일 인증이 완료되지 않을 경우,<br>
 											회원가입을 다시 진행해주셔야 합니다.
 										</p>
-										<a href='http://www.store-chon.com/dev/verify.php?v_email=".$mb_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
+										<a href='http://www.store-chon.com/dev/join_complete.php?v_email=".$mb_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
 											<span style='display:inline-block;padding:16px 54px;background-color:#809255;font-size:18px;color:#ffffff;letter-spacing:2px;'>인증하기</span>
 										</a>
 									</td>
