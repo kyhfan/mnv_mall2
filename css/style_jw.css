@@ -65,9 +65,9 @@
 	}
 	input {
 		border-radius: 0; /* iSO 둥근모서리 제거 */
-		/*-webkit-appearance: none;
+		-webkit-appearance: none;
 		-moz-appearance: none;
-		appearance: none;*/
+		appearance: none;
 		border: 0;
 	}
 	select,
@@ -84,6 +84,12 @@
 	input[type="tel"] {
 		position: relative;
 		z-index: 3;
+	}
+	input[type="checkbox"] {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		border: 0;
 	}
 	/* initialize */
 
@@ -2534,9 +2540,9 @@
 	}
 	.board-frame .body .content textarea {
 		width: 100%;
-		/*-moz-appearance: none;
+		-moz-appearance: none;
 			 appearance: none;
-		-webkit-appearance: none;*/
+		-webkit-appearance: none;
 		border: 0;
 		text-align: left;
 		resize: none;
