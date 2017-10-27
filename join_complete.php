@@ -1,8 +1,8 @@
 <?
 	include_once "./header.php";
 
-	if ($_SESSION['ss_chon_email'])
-		echo "<script>location.href='index.php';</script>";
+	// if ($_SESSION['ss_chon_email'])
+		// echo "<script>location.href='index.php';</script>";
 
 	$v_email	= $_REQUEST["v_email"];
 
