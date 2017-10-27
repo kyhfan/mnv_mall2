@@ -10,7 +10,7 @@
 			<div class="section main-slider swiper-container">
 				<div class="slider swiper-wrapper">
 <?
-    $main_rolling_query		= "SELECT * FROM ".$_gl['banner_info_table']." WHERE banner_showYN='Y' ORDER BY banner_show_order ASC";
+    $main_rolling_query		= "SELECT * FROM ".$_gl['banner_info_table']." WHERE banner_showYN='Y' AND banner_type='main_rolling_banner' ORDER BY banner_show_order ASC";
     $main_rolling_result		= mysqli_query($my_db, $main_rolling_query);
     while ($main_rolling_data = mysqli_fetch_array($main_rolling_result))
     {

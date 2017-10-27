@@ -53,5 +53,4 @@
 	$_gl['save_percent']					= 0.01;
 	$_gl['delivery_price']					= 2500;
 	$_gl['delivery_max_price']				= 2500;
-	
 ?>
