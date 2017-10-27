@@ -78,6 +78,13 @@
 		/*font-size: inherit;*/
 		zoom: 0;
 	}
+	/* 인풋 사라지는 이슈 픽스 */
+	input[type="text"],
+	input[type="password"],
+	input[type="tel"] {
+		position: relative;
+		z-index: 3;
+	}
 	/* initialize */
 
 	/* public module */
