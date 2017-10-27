@@ -1685,6 +1685,39 @@
 		color: #777777;
 		font-weight: 700;
 	}
+	.order-detail ._product > .title {
+		padding-bottom: 12px;
+	}
+	.order-detail ._product > .title .btn {
+		float: right;
+	}
+	.order-detail ._product > .title .btn a {
+		display: block;
+	}
+	.order-detail ._product > .title .btn a span {
+		display: inline-block;
+		font-size: 18px;
+		padding: 11px 22px;
+		background: #809255;
+		color: #ffffff;
+	}
+	.order-detail ._product .btns {
+		text-align: right;
+		padding: 14px 42px 0 0;
+	}
+	.order-detail ._product .btns a {
+		display: inline-block;
+	}
+	.order-detail ._product .btns a:first-child {
+		margin-right: 9px;
+	}
+	.order-detail ._product .btns a span {
+		display: inline-block;
+		font-size: 18px;
+		padding: 11px 24px;
+		background: #809255;
+		color: #ffffff;
+	}
 	.order-detail .info-block .inner {
 		padding: 0 7%;
 		border-top: 1px solid #dcdcdc;
@@ -3186,10 +3219,12 @@
 		color: #809255;
 		text-decoration: underline;
 	}
+	.member .wrapper > .inner .text {
+		margin: 45px 0 49px;
+	}
 	.member .wrapper > .inner .text p {
 		font-size: 20px;
 		line-height: 1.4;
-		margin: 45px 0 49px;
 		color: #777777;
 	}
 	.member .wrapper > .inner .text p span {
@@ -3202,6 +3237,51 @@
 		color: #ffffff;
 		background: #809255;
 		width: 100%;
+	}
+	.popup.order .wrapper > .inner {
+		padding: 94px 55px 66px;
+	}
+	.popup.order .wrapper > .inner .title {
+		color: #333333;
+	}
+	.popup.order .wrapper > .inner .text {
+		margin: 16px 0 43px;
+	}
+	.popup.order .wrapper > .inner .text p {
+		color: #333333;
+	}
+	.popup.order .wrapper > .inner .text p .mini {
+		font-size: 15px;
+		color: inherit;
+	}
+	.cancelO .title {
+		margin-bottom: 53px;
+	}
+	.popup.cancelComp .comp-icon + span {
+		display: inline-block;
+		font-size: 22px;
+		text-decoration: underline;
+		margin: 28px 0 56px;
+	}
+	.popup.cancelComp .wrapper .inner {
+		padding: 77px 32px 40px;
+		font-size: 0;
+	}
+	.popup.cancelComp .wrapper .inner .buttons a {
+		display: inline-block;
+		width: 49.5%;
+		text-align: center;
+		background: #809255;
+	}
+	.popup.cancelComp .wrapper .inner .buttons a:first-child {
+		margin-right: 1%;
+		background: rgba(128, 146, 85, 0.7);
+	}
+	.popup.cancelComp .wrapper .inner .buttons a span {
+		display: inline-block;
+		font-size: 26px;
+		color: #ffffff;
+		padding: 26px 0;
 	}
 	/*.member .wrapper > .inner */
 	/* popup */
