@@ -338,7 +338,7 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->AddAddress($address, $MAILTONAME);
 */
 	$mail->isSMTP();                                      // Set mailer to use SMTP
-	$mail->Host = 'smtp.worksmobile.com';  // Specify main and backup SMTP servers
+	$mail->Host = 'smtp.worksmobile.com';  // Specify main and backup SMTP servers   
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
 	$mail->Username = 'yh.kim@minivertising.kr';                 // SMTP username
 	$mail->Password = '1234';                           // SMTP password
