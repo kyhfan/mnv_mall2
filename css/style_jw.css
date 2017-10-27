@@ -1199,7 +1199,7 @@
 		height: 100%;
 	}
 	.product-detail .spread .wrapper .love-it.empty a {
-		background: url(../images/loveit_empty2.png) center center / cover no-repeat;
+		background: url(../images/loveit_empty.png) center center / cover no-repeat;
 	}
 	.product-detail .spread .wrapper .love-it.fill a {
 		background: url(../images/loveit_fill.png) center center / cover no-repeat;

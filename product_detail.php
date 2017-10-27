@@ -368,7 +368,8 @@
 	if ($wish_flag == "Y")
 	{
 ?>	
-			$(".love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
+			$(".inner > .love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
+			$(".wrap-component > .love-it > a").css("background","url(./images/loveit_fill2.png) center center / cover no-repeat");
 <?
 	}
 ?>		
