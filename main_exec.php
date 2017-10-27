@@ -15,14 +15,19 @@
 			//if (validate_password($mb_password,$login_data['mb_password']))
 			if ($mb_email == $login_data['mb_email'])
 			{
-				$update_query		= "UPDATE ".$_gl['member_info_table']." SET mb_login_date='".date("Y-m-d H:i:s")."' WHERE mb_id='".$login_data['mb_id']."'";
-				$update_result		= mysqli_query($my_db, $update_query);
+				if ($login_data['mb_verify'] == "Y")
+				{
+					$update_query		= "UPDATE ".$_gl['member_info_table']." SET mb_login_date='".date("Y-m-d H:i:s")."' WHERE mb_id='".$login_data['mb_id']."'";
+					$update_result		= mysqli_query($my_db, $update_query);
 
-				// 회원 이메일, 이름, 로그인 경로 세션 생성
-				$_SESSION['ss_chon_email']		= $login_data['mb_email'];
-				$_SESSION['ss_chon_name']		= $login_data['mb_name'];
-				$_SESSION['ss_chon_way']		= $login_data['mb_login_way'];
-				$flag	= "Y";
+					// 회원 이메일, 이름, 로그인 경로 세션 생성
+					$_SESSION['ss_chon_email']		= $login_data['mb_email'];
+					$_SESSION['ss_chon_name']		= $login_data['mb_name'];
+					$_SESSION['ss_chon_way']		= $login_data['mb_login_way'];
+					$flag	= "Y";
+				}else{
+					$flag	= "V";
+				}
 			}else{
 				$flag	= "N";
 			}
@@ -189,33 +194,54 @@
 					// result - 메일 발송
 					if($insert_result) {
 						$mail_result = sendMail(
-							"kyhfan@naver.com",
+							"yh.kim@minivertising.kr",
 							"촌의감각",
-							"회원가입을 축하합니다.",
-							"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
-							<h2>
-							<img src='http://www.store-chon.com/PC/images/mail_title_logo.png' alt='촌의감각' style='width: 116px;height: 92px'/>
-							</h2>
-							<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
-							<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
-							안녕하세요 촌의 감각 입니다.<br/>
-							$mb_name($mb_email)고객님의 회원가입을 축하드립니다.<br/>
-							회원님의 가입정보는 다음과 같습니다.
-							</p>
-							<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
-							<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px;'>아이디:&nbsp;&nbsp;<span style='color: #b88b5b;letter-spacing: normal;font-weight: bold;'>$mb_email</span></span>
-
-							</p>
-							<a href='http://www.store-chon.com/' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 홈페이지 가기</span></p></a>
-							</div>
-							<div style='background-color: #f9f3ec;width: 600px;height: 154px;margin: 0 auto;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;'>
-							<div style='padding: 20px 38px;text-align: left;font-size: 12px'>
-							<p style='margin: 0;padding-bottom: 4px'>본 메일은 발신전용입니다.</p>
-							<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
-							<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
-							</div>
-							</div> 
-							",
+							"촌의감각 회원가입 인증메일입니다.",
+							"	<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
+							<thead>
+								<tr>
+									<th>
+										<a style='color: inherit;' href='javascript:void(0)'>
+											<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/dev/images/logo.png' alt='촌의감각'>
+										</a>
+									</th>
+								</tr>
+							</thead>
+							<tbody style='border-width: 1px;border-style: solid;border-color: #333333;border-left: none;border-right: none;'>
+								<tr>
+									<td>
+										<h4 style='font-size: 25px;color: #333333;margin: 0;padding: 60px 0 58px;'>WELCOME</h4>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span style='display: block;font-size: 17px;font-weight: 700;color: #333333;'>안녕하세요 촌의 감각입니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p style='line-height:20px;color:#333333;margin:0;padding:30px 0 73px;'>
+											<span style='color:#809255;'>24시간</span> 이내에 이메일 인증을 클릭해주시면 촌의 감각 회원가입이 완료됩니다.<br>
+											24시간 이내에 이메일 인증이 완료되지 않을 경우,<br>
+											회원가입을 다시 진행해주셔야 합니다.
+										</p>
+										<a href='http://www.store-chon.com/dev/join_complete.php?v_email=".$mb_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
+											<span style='display:inline-block;padding:16px 54px;background-color:#809255;font-size:18px;color:#ffffff;letter-spacing:2px;'>인증하기</span>
+										</a>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td>
+										<p style='padding:24px 0 71px;color:#333333;font-size:17px;line-height:22px;'>
+											촌의 감각 주문 관련 문의는 1:1문의 및 고객지원센터 T. 02-235-2475를 이용해 주십시오.<br>
+											본 메일은 발신전용 메일이며 회신되지 않습니다.
+										</p>
+									</td>
+								</tr>
+							</tfoot>
+						</table>",
 							"$mb_email", "$mb_name");
 
 						$flag = "Y";
@@ -224,7 +250,7 @@
 					}
 				}
 			}
-			echo $$mail_result;
+			echo $flag;
 
 		break;
 
@@ -287,21 +313,61 @@
 				$flag = "D";
 			}else{
 				// result - 메일 발송
-				if($insert_result) {
-					$mail_result = sendMail(
-						"kyhfan@naver.com",
-						"촌의감각",
-						"이메일 변경 인증 메일입니다.(서버업로드 후 적용)",
-						"이메일 변경 인증 메일입니다.",
-						"$change_email", "$mb_name");
+				$mail_result = sendMail(
+					"yh.kim@minivertising.kr",
+					"촌의감각",
+					"촌의감각 이메일 변경 인증 메일입니다.",
+					"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
+					<thead>
+						<tr>
+							<th>
+								<a style='color: inherit;' href='http://www.store-chon.com/dev/index.php'>
+									<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/dev/images/logo.png' alt='촌의감각'>
+								</a>
+							</th>
+						</tr>
+					</thead>
+					<tbody style='border-width: 1px;border-style: solid;border-color: #333333;border-left: none;border-right: none;'>
+						<tr>
+							<td>
+								<h4 style='font-size: 25px;color: #333333;margin: 0;padding: 60px 0 58px;'>NEW E-MAIL</h4>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<span style='display: block;font-size: 17px;font-weight: 700;color: #333333;'>안녕하세요 촌의 감각입니다.</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p style='line-height:20px;color:#333333;margin:0;padding:30px 0 73px;'>
+									<span style='color:#809255;'>24시간</span> 이내에 이메일 인증을 클릭해주시면 이메일(아이디) 변경이 완료됩니다.<br>
+									24시간 이내에 이메일 인증이 완료되지 않을 경우,<br>
+									이메일(아이디) 변경이 진행되지 않습니다.
+								</p>
+								<a href='http://www.store-chon.com/dev/email_change.php?o_mail=".$mb_email."&c_mail=".$change_email."' style='display:inline-block;text-align:center;margin-bottom:65px;'>
+									<span style='display:inline-block;padding:16px 54px;background-color:#809255;font-size:18px;color:#ffffff;letter-spacing:2px;'>인증하기</span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>
+								<p style='padding:24px 0 71px;color:#333333;font-size:17px;line-height:22px;'>
+									촌의 감각 주문 관련 문의는 1:1문의 및 고객지원센터 T. 02-235-2475를 이용해 주십시오.<br>
+									본 메일은 발신전용 메일이며 회신되지 않습니다.
+								</p>
+							</td>
+						</tr>
+					</tfoot>
+				</table>",
+					"$change_email", "$mb_name");
 
-					$flag = "Y";
-				}else{
-					$flag = "N";
-				}
-
+				$flag = "Y";
 			}
 
+			echo $flag;
 		break;
 
 		case "sear_id":
@@ -360,30 +426,52 @@
 					if($update_result)
 					{
 						$mail_result = sendMail(
-							"kyhfan@naver.com",
+							"yh.kim@minivertising.kr",
 							"촌의감각",
 							"비밀번호가 변경되었습니다.",
-							"<div style='width: 600px;margin: 0 auto;margin-bottom: 60px;margin-top: 60px;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;;text-align: center'>
-							<h2>   
-							<span style='display: inline-block;width: 18px;height: 1px;background-color: #b88b5b;margin: 15px 0'></span>
-							<p style='line-height: 18px;margin-bottom: 18px;font-size: 14px'>
-							새롭게 설정된 비밀번호 입니다.<br/>
-							로그인 후, 꼭 재설정 해주세요.
-							</p>
-							<p style='border: 1px solid #b88b5b;width: 334px;margin: 0 auto;margin-bottom: 25px;padding: 25px 0'>
-							<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>새로 발급된 비밀번호</span>
-							<span style='display: block;color: #b88b5b;vertical-align: middle;font-size: 18px;letter-spacing: normal;font-weight: bold;padding-top: 10px'>$temp_pw</span>
-							</p>
-							<a href='http://store-chon.com/PC/member/member_login.php' style='text-decoration: none;color: #000'><p style='background-color: #b88b5b;margin: 0 auto;width: 186px;padding: 14px 0'><span style='display: block;color: #fff;vertical-align: middle;font-size: 15px;letter-spacing: -1px'>촌의 감각 로그인</span></p></a>
-							</div>
-							<div style='background-color: #f9f3ec;width: 600px;height: 154px;margin: 0 auto;font-family: &quot;맑은 고딕&quot;, &quot;Malgun Gothic&quot;'>
-							<div style='padding: 20px 38px;text-align: left;font-size: 12px'>
-							<p style='margin: 0;padding-bottom: 4px'>본 메일은 발신전용입니다.</p>
-							<p style='margin: 0;padding-bottom: 4px'>기타 관련 사항은 고객센터(070-4888-3580) 또는 촌의 감각 쇼핑몰에서 문의 바랍니다.</p>
-							<p style='margin: 0;padding-bottom: 4px;padding-top: 10px'>Copyright@CHON. ALL RIGHTS RESERVED.</p>
-							</div>
-							</div>",
-							"$mb_email", "$username");
+							"<table style='width: 700px;margin: 61px 0 74px 31px;table-layout:fixed;border-spacing: 0;border-collapse: collapse;border-spacing: 0;border: 0;' border-spacing='0' cellspacing='0' cellpadding='0' border='0'>
+							<thead>
+								<tr>
+									<th>
+										<a style='color: inherit;' href='http://www.store-chon.com/' target='_blank'>
+											<img style='display: block;padding-bottom: 25px;' src='http://www.store-chon.com/dev/images/logo.png' alt='촌의감각'>
+										</a>
+									</th>
+								</tr>
+							</thead>
+							<tbody style='border-width: 1px;border-style: solid;border-color: #333333;border-left: none;border-right: none;'>
+								<tr>
+									<td>
+										<h4 style='font-size: 25px;color: #333333;margin: 0;padding: 60px 0 58px;'>PASSWORD</h4>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span style='display: block;font-size: 17px;font-weight: 700;color: #333333;'>안녕하세요 촌의 감각입니다.</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<p style='line-height:20px;color:#333333;margin:0;padding:30px 0 25px;'>
+											요청하신 임시 비밀번호가 발급되었습니다.<br>
+											<a style='color: inherit;' href='javascript:void(0)'>임시 비밀번호를 통해 로그인 하신 후 반드시 새로운 비밀번호를 MY PAGE</a>에서 설정해 주시기 바랍니다.
+										</p>
+										<span style='display:inline-block;padding-bottom:58px;color:#809255;'>[".$temp_pw."]</span>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td>
+										<p style='padding:24px 0 71px;color:#333333;font-size:17px;line-height:22px;'>
+											촌의 감각 주문 관련 문의는 1:1문의 및 고객지원센터 T. 02-235-2475를 이용해 주십시오.<br>
+											본 메일은 발신전용 메일이며 회신되지 않습니다.
+										</p>
+									</td>
+								</tr>
+							</tfoot>
+						</table>",
+							"".$data['mb_email']."", "$username");
 						/*
 						if($mail_result == "Y")
 							$flag = "Y"; // 메일 발송까지 완료
@@ -1009,6 +1097,50 @@
 
 		break;
 
+		case "delete_chk_wish" :
+			$mb_email		= $_SESSION['ss_chon_email'];
+			$chk_idx		= $_REQUEST['chk_idx'];
+
+			$chk_idx_arr		= explode(",",$chk_idx);
+
+			$i = 0;
+			foreach($chk_idx_arr as $key => $val)
+			{
+				if ($i == 0)
+				{
+					$i++;
+					continue;
+				}
+
+				$wish_query 	= "UPDATE ".$_gl['wishlist_info_table']." SET showYN='N' WHERE idx='".$val."' AND mb_id='".$mb_email."'";
+				$result 		= mysqli_query($my_db, $wish_query);
+				$i++;
+			}
+
+			if ($result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+
+			echo $flag;
+
+		break;
+
+		case "delete_one_wish" :
+			$mb_email		= $_SESSION['ss_chon_email'];
+			$wish_idx		= $_REQUEST['wish_idx'];
+
+			$wish_query 	= "UPDATE ".$_gl['wishlist_info_table']." SET showYN='N' WHERE mb_id='".$mb_email."' AND idx='".$wish_idx."'";
+			$result 		= mysqli_query($my_db, $wish_query);
+
+			if ($result)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+
+			echo $flag;
+		break;
+
 		case "update_cart_cnt" :
 			$cart_idx		= $_REQUEST['cart_idx'];
 			$goods_cnt		= $_REQUEST['goods_cnt'];
@@ -1128,43 +1260,33 @@
 		break;
 
 		case "insert_order_info" :
-			$order_cart_idx			= $_REQUEST['order_cart_idx'];
-			$total_order_price		= $_REQUEST['total_order_price'];
-			$delivery_price			= $_REQUEST['delivery_price'];
-			$total_pay_price		= $_REQUEST['total_pay_price'];
+			$order_goods			= $_REQUEST['order_goods'];
 			$order_name				= $_REQUEST['order_name'];
-			$order_zipcode			= $_REQUEST['order_zipcode'];
-			$order_address1			= $_REQUEST['order_address1'];
-			$order_address2			= $_REQUEST['order_address2'];
-			$order_phone1			= $_REQUEST['order_phone1'];
-			$order_phone2			= $_REQUEST['order_phone2'];
-			$order_phone3			= $_REQUEST['order_phone3'];
-			$order_phone			= $order_phone1."-".$order_phone2."-".$order_phone3;
-			$order_email1			= $_REQUEST['order_email1'];
-			$order_email2			= $_REQUEST['order_email2'];
-			$order_email			= $order_email1."@".$order_email2;
-			$deliver_name			= $_REQUEST['deliver_name'];
-			$deliver_zipcode		= $_REQUEST['deliver_zipcode'];
-			$deliver_address1		= $_REQUEST['deliver_address1'];
-			$deliver_address2		= $_REQUEST['deliver_address2'];
-			$deliver_phone1			= $_REQUEST['deliver_phone1'];
-			$deliver_phone2			= $_REQUEST['deliver_phone2'];
-			$deliver_phone3			= $_REQUEST['deliver_phone3'];
-			$deliver_phone			= $deliver_phone1."-".$deliver_phone2."-".$deliver_phone3;
-			$deliver_message		= $_REQUEST['deliver_message'];
-			$select_pay				= $_REQUEST['select_pay'];
-			$cart_id				= $_SESSION['ss_chon_cartid'];
-			$order_oid				= "test_".$_REQUEST['order_oid'];
+			$order_email			= $_REQUEST['order_email'];
+			$order_phone			= $_REQUEST['order_phone'];
+			$delivery_name			= $_REQUEST['delivery_name'];
+			$delivery_zipcode		= $_REQUEST['delivery_zipcode'];
+			$delivery_addr1			= $_REQUEST['delivery_addr1'];
+			$delivery_addr2			= $_REQUEST['delivery_addr2'];
+			$delivery_phone			= $_REQUEST['delivery_phone'];
+			$delivery_message		= $_REQUEST['delivery_message'];
+			$total_order_price		= $_REQUEST['total_order_price'];
+			$total_delivery_price	= $_REQUEST['total_delivery_price'];
+			$total_save_price		= $_REQUEST['total_save_price'];
+			$total_payment_price	= $_REQUEST['total_payment_price'];
+			$total_coupon_price		= $_REQUEST['total_coupon_price'];
+			$pay_type				= $_REQUEST['pay_type'];
+			$order_oid				= create_oid();
 			$show_goods_name		= $_REQUEST['show_goods_name'];
 
-			if ($select_pay == "card_pay")
+			if ($pay_type == "card_pay")
 					$USABLEPAY	= "SC0010";
 			else if ($select_pay == "phone_pay")
 					$USABLEPAY	= "SC0060";
 			else
 					$USABLEPAY	= "SC0040";
 
-			$order_query		= "INSERT INTO ".$_gl['order_info_table']."(cart_idx, total_order_price, delivery_price, total_pay_price, order_name, order_zipcode, order_address1, order_address2, order_phone, order_email, deliver_name, deliver_zipcode, deliver_address1, deliver_address2, deliver_phone, deliver_message, select_pay, cart_id, order_oid, order_regdate) values('".$order_cart_idx."','".$total_order_price."','".$delivery_price."','".$total_pay_price."','".$order_name."','".$order_zipcode."','".$order_address1."','".$order_address2."','".$order_phone."','".$order_email."','".$deliver_name."','".$deliver_zipcode."','".$deliver_address1."','".$deliver_address2."','".$deliver_phone."','".$deliver_message."','".$select_pay."','".$cart_id."','".$order_oid."','".date("Y-m-d H:i:s")."')";
+			$order_query		= "INSERT INTO ".$_gl['order_info_table']."(order_goods, show_goods_name, order_name, order_email, order_phone, delivery_name, delivery_zipcode, delivery_addr1, delivery_addr2, delivery_phone, delivery_message, total_order_price, total_delivery_price, total_save_price, total_payment_price, total_coupon_price, pay_type, order_oid, order_regdate) values('".$order_goods."','".$show_goods_name."','".$order_name."','".$order_email."','".$order_phone."','".$delivery_name."','".$delivery_zipcode."','".$delivery_addr1."','".$delivery_addr2."','".$delivery_phone."','".$delivery_message."','".$total_order_price."','".$total_delivery_price."','".$total_save_price."','".$total_payment_price."','".$total_coupon_price."','".$pay_type."','".$order_oid."','".date("Y-m-d H:i:s")."')";
 			$order_result 		= mysqli_query($my_db, $order_query);
 
 			if ($order_result)
@@ -1172,56 +1294,8 @@
 				$flag	= "Y";
 
 				$innerHTML	= "";
-				/*
-				 * [결제 인증요청 페이지(STEP2-1)]
-				 *
-				 * 샘플페이지에서는 기본 파라미터만 예시되어 있으며, 별도로 필요하신 파라미터는 연동메뉴얼을 참고하시어 추가 하시기 바랍니다.
-				 */
-
-				/*
-				 * 1. 기본결제 인증요청 정보 변경
-				 *
-				 * 기본정보를 변경하여 주시기 바랍니다.(파라미터 전달시 POST를 사용하세요)
-				 */
-				$CST_PLATFORM						= "test";     //LG유플러스 결제 서비스 선택(test:테스트, service:서비스)
-				$CST_MID							= "miniver";  //상점아이디(LG유플러스으로 부터 발급받으신 상점아이디를 입력하세요)
-																  //테스트 아이디는 't'를 반드시 제외하고 입력하세요.
-				$LGD_MID							= (("test" == $CST_PLATFORM)?"t":"").$CST_MID;   //상점아이디(자동생성)
-				$LGD_OID							= $order_oid;             //주문번호(상점정의 유니크한 주문번호를 입력하세요)
-				$LGD_AMOUNT							= $total_pay_price;       //결제금액("," 를 제외한 결제금액을 입력하세요)
-				$LGD_BUYER							= $order_name;            //구매자명
-				$LGD_BUYERID						= $cart_id;               //구매자ID
-				$LGD_BUYERADDRESS					= "[".$order_zipcode."] ".$order_address1." ".$order_address2;                           //구매자 주소
-				$LGD_BUYERPHONE						= $order_phone;           //구매자 주소
-				$LGD_RECEIVER						= $deliver_name;		  // 수취인 이름
-				$LGD_RECEIVERPHONE					= $deliver_phone;		  // 수취인 전화번호
-				$LGD_DELIVERYINFO					= $deliver_message;
-				$LGD_PRODUCTINFO					= $show_goods_name;       //상품명
-				$LGD_BUYEREMAIL						= $order_email;           //구매자 이메일
-				$LGD_TIMESTAMP						= date("YmdHis");         //타임스탬프
-				$LGD_OSTYPE_CHECK					= "P";		              //값 P: XPay 실행(PC 결제 모듈): PC용과 모바일용 모듈은 파라미터 및 프로세스가 다르므로 PC용은 PC 웹브라우저에서 실행 필요.
-																			  //"P", "M" 외의 문자(Null, "" 포함)는 모바일 또는 PC 여부를 체크하지 않음
-				//$LGD_ACTIVEXYN						= "N";				  //계좌이체 결제시 사용, ActiveX 사용 여부로 "N" 이외의 값: ActiveX 환경에서 계좌이체 결제 진행(IE)
-
-				$LGD_CUSTOM_SKIN					= "red";                  //상점정의 결제창 스킨
-				$LGD_CUSTOM_USABLEPAY			= $USABLEPAY;        	      //디폴트 결제수단 (해당 필드를 보내지 않으면 결제수단 선택 UI 가 노출됩니다.)
-				$LGD_WINDOW_VER					= "2.5";					  //결제창 버젼정보
-				$LGD_WINDOW_TYPE					= "iframe";				  //결제창 호출방식 (수정불가)
-				$LGD_CUSTOM_SWITCHINGTYPE	= "IFRAME";            			  //신용카드 카드사 인증 페이지 연동 방식 (수정불가)
-				$LGD_CUSTOM_PROCESSTYPE		= "TWOTR";                        //수정불가
-
-				/*
-				 * 가상계좌(무통장) 결제 연동을 하시는 경우 아래 LGD_CASNOTEURL 을 설정하여 주시기 바랍니다.
-				 */
-				$LGD_CASNOTEURL					= "http://store-chon.com/PC/pay/cas_noteurl.php";
-
-				/*
-				 * LGD_RETURNURL 을 설정하여 주시기 바랍니다. 반드시 현재 페이지와 동일한 프로트콜 및  호스트이어야 합니다. 아래 부분을 반드시 수정하십시요.
-				 */
-				$LGD_RETURNURL						= "http://store-chon.com/PC/pay/returnurl.php";
-
-
-				$configPath								= $_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
+				// $configPath								= $_SERVER['DOCUMENT_ROOT']."/mnv_mall2/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
+				$configPath								= $_SERVER['DOCUMENT_ROOT']."/dev/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom";                                  //LG유플러스에서 제공한 환경파일("/conf/lgdacom.conf") 위치 지정.
 
 				/*
 				 *************************************************
@@ -1240,78 +1314,114 @@
 				 * MD5 해쉬데이터 암호화 검증을 위해
 				 * LG유플러스에서 발급한 상점키(MertKey)를 환경설정 파일(lgdacom/conf/mall.conf)에 반드시 입력하여 주시기 바랍니다.
 				 */
-				require_once($_SERVER['DOCUMENT_ROOT']."/lib/lg_payment_module_pc/lgdacom/XPayClient.php");
-				$xpay = new XPayClient($configPath, $CST_PLATFORM);
-				$xpay->Init_TX($LGD_MID);
-				$LGD_HASHDATA = md5($LGD_MID.$LGD_OID.$LGD_AMOUNT.$LGD_TIMESTAMP.$xpay->config[$LGD_MID]);
+				$CST_PLATFORM						= "test";
+				$CST_MID							= "miniver";
+				$LGD_MID							= (("test" == $CST_PLATFORM)?"t":"").$CST_MID;   //상점아이디(자동생성)
+				$LGD_OID							= $order_oid;
+				$LGD_AMOUNT							= $total_payment_price;
+				$LGD_TIMESTAMP						= date("YmdHis");
 
+				// require_once($_SERVER['DOCUMENT_ROOT']."/mnv_mall2/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
+				require_once($_SERVER['DOCUMENT_ROOT']."/dev/lib/LGU+_SmartXPay_PHP/PHP7/lgdacom/XPayClient.php");
+				$xpay = new XPayClient($configPath, $CST_PLATFORM);
+				if (!$xpay->Init_TX($LGD_MID)) {
+					echo "LG유플러스에서 제공한 환경파일이 정상적으로 설치 되었는지 확인하시기 바랍니다.<br/>";
+					echo "mall.conf에는 Mert Id = Mert Key 가 반드시 등록되어 있어야 합니다.<br/><br/>";
+					echo "문의전화 LG유플러스 1544-7772<br/>";
+					exit;
+				}
+				$LGD_HASHDATA = md5($LGD_MID.$LGD_OID.$LGD_AMOUNT.$LGD_TIMESTAMP.$xpay->config[$LGD_MID]);
+				$LGD_CUSTOM_PROCESSTYPE = "TWOTR";
 				/*
 				 *************************************************
 				 * 2. MD5 해쉬암호화 (수정하지 마세요) - END
 				 *************************************************
 				 */
-
-				$payReqMap['CST_PLATFORM']						= $CST_PLATFORM;				// 테스트, 서비스 구분
-				$payReqMap['LGD_WINDOW_TYPE']					= $LGD_WINDOW_TYPE;			// 수정불가
-				$payReqMap['CST_MID']								= $CST_MID;					// 상점아이디
-				$payReqMap['LGD_MID']								= $LGD_MID;					// 상점아이디
-				$payReqMap['LGD_OID']								= $LGD_OID;					// 주문번호
-				$payReqMap['LGD_BUYER']							= $LGD_BUYER;					// 구매자
-				$payReqMap['LGD_BUYERID']							= $LGD_BUYERID;					// 구매자
-				$payReqMap['LGD_BUYERADDRESS']				= $LGD_BUYERADDRESS;					// 구매자
-				$payReqMap['LGD_BUYERPHONE']					= $LGD_BUYERPHONE;					// 구매자
-				$payReqMap['LGD_PRODUCTINFO']					= $LGD_PRODUCTINFO;			// 상품정보
-				$payReqMap['LGD_AMOUNT']						= $LGD_AMOUNT;					// 결제금액
-				$payReqMap['LGD_BUYEREMAIL']					= $LGD_BUYEREMAIL;				// 구매자 이메일
-				$payReqMap['LGD_RECEIVER']						= $LGD_RECEIVER;				// 구매자 이메일
-				$payReqMap['LGD_RECEIVERPHONE']				= $LGD_RECEIVERPHONE;				// 구매자 이메일
-				$payReqMap['LGD_DELIVERYINFO']					= $LGD_DELIVERYINFO;				// 구매자 이메일
-				$payReqMap['LGD_CUSTOM_SKIN']					= $LGD_CUSTOM_SKIN;			// 결제창 SKIN
-				$payReqMap['LGD_CUSTOM_PROCESSTYPE']		= $LGD_CUSTOM_PROCESSTYPE;		// 트랜잭션 처리방식
-				$payReqMap['LGD_TIMESTAMP']					= $LGD_TIMESTAMP;				// 타임스탬프
-				$payReqMap['LGD_HASHDATA']						= $LGD_HASHDATA;				// MD5 해쉬암호값
-				$payReqMap['LGD_RETURNURL']					= $LGD_RETURNURL;				// 응답수신페이지
-				$payReqMap['LGD_VERSION']						= "PHP_Non-ActiveX_Standard";	// 버전정보 (삭제하지 마세요)
-				$payReqMap['LGD_CUSTOM_USABLEPAY']			= $LGD_CUSTOM_USABLEPAY;	// 디폴트 결제수단
-				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']	= $LGD_CUSTOM_SWITCHINGTYPE;// 신용카드 카드사 인증 페이지 연동 방식
-				$payReqMap['LGD_OSTYPE_CHECK']				= $LGD_OSTYPE_CHECK;        // 값 P: XPay 실행(PC용 결제 모듈), PC, 모바일 에서 선택적으로 결제가능
-				//$payReqMap['LGD_ACTIVEXYN']					= $LGD_ACTIVEXYN;			// 계좌이체 결제시 사용,ActiveX 사용 여부
-				$payReqMap['LGD_WINDOW_VER'] 					= $LGD_WINDOW_VER;
-				$payReqMap['LGD_ENCODING'] 						= "UTF-8";
-				$payReqMap['LGD_ENCODING_NOTEURL'] 		= "UTF-8";
-				$payReqMap['LGD_ENCODING_RETURNURL'] 		= "UTF-8";
-
-
+				$CST_WINDOW_TYPE = "submit";										// 수정불가
+				$payReqMap['CST_PLATFORM']           = $CST_PLATFORM;				//LG유플러스 결제 서비스 선택(test:테스트, service:서비스)
+				$payReqMap['CST_WINDOW_TYPE']        = $CST_WINDOW_TYPE;			// 수정불가
+				$payReqMap['CST_MID']                = "miniver";					//상점아이디(LG유플러스으로 부터 발급받으신 상점아이디를 입력하세요)
+				$payReqMap['LGD_MID']                = $LGD_MID;  //상점아이디(자동생성)
+				$payReqMap['LGD_OID']                = $order_oid;					//주문번호(상점정의 유니크한 주문번호를 입력하세요)
+				$payReqMap['LGD_BUYER']              = $order_name;					//구매자명
+				$payReqMap['LGD_PRODUCTINFO']        = $show_goods_name;			//상품명
+				$payReqMap['LGD_AMOUNT']             = $total_payment_price;					//결제금액("," 를 제외한 결제금액을 입력하세요)
+				$payReqMap['LGD_BUYEREMAIL']         = $order_email;				//구매자 이메일
+				$payReqMap['LGD_CUSTOM_SKIN']        = "SMART_XPAY2";                        //상점정의 결제창 스킨
+				$payReqMap['LGD_CUSTOM_PROCESSTYPE'] = $LGD_CUSTOM_PROCESSTYPE;		// 트랜잭션 처리방식
+				$payReqMap['LGD_TIMESTAMP']          = date(YmdHis);                         //타임스탬프
+				$payReqMap['LGD_HASHDATA']           = $LGD_HASHDATA;				// MD5 해쉬암호값
+				$payReqMap['LGD_RETURNURL']   		 = "http://store-chon.com/dev/order_complete.php";
+				$payReqMap['LGD_VERSION']         	 = "PHP_Non-ActiveX_SmartXPay";	// 버전정보 (삭제하지 마세요)
+				// $payReqMap['LGD_CUSTOM_FIRSTPAY']  	 = $_POST["LGD_CUSTOM_FIRSTPAY"];		//상점정의 초기결제수단
+				// $payReqMap['LGD_PCVIEWYN']			 = $_POST["LGD_PCVIEWYN"];				//휴대폰번호 입력 화면 사용 여부(유심칩이 없는 단말기에서 입력-->유심칩이 있는 휴대폰에서 실제 결제)
+				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
+				
+				
+				//iOS 연동시 필수
+				$payReqMap['LGD_MPILOTTEAPPCARDWAPURL'] = "";
+			  
+				/*
+				****************************************************
+				* 신용카드 ISP(국민/BC)결제에만 적용 - BEGIN 
+				****************************************************
+				*/
+				$payReqMap['LGD_KVPMISPWAPURL']		 	= "";	
+				$payReqMap['LGD_KVPMISPCANCELURL']  	= "";
+				
+				/*
+				****************************************************
+				* 신용카드 ISP(국민/BC)결제에만 적용  - END
+				****************************************************
+				*/
+					
+				/*
+				****************************************************
+				* 계좌이체 결제에만 적용 - BEGIN 
+				****************************************************
+				*/
+				$payReqMap['LGD_MTRANSFERWAPURL']		= "";	
+				$payReqMap['LGD_MTRANSFERCANCELURL']  	= "";
+				
+				/*
+				****************************************************
+				* 계좌이체 결제에만 적용  - END
+				****************************************************
+				*/
+				
+				
+				/*
+				****************************************************
+				* 모바일 OS별 ISP(국민/비씨), 계좌이체 결제 구분 값
+				****************************************************
+				- 안드로이드: A (디폴트)
+				- iOS: N
+				- iOS일 경우, 반드시 N으로 값을 수정
+				*/
+				$payReqMap['LGD_KVPMISPAUTOAPPYN']	= "A";		// 신용카드 결제 
+				$payReqMap['LGD_MTRANSFERAUTOAPPYN']= "A";		// 계좌이체 결제
+			
 				// 가상계좌(무통장) 결제연동을 하시는 경우  할당/입금 결과를 통보받기 위해 반드시 LGD_CASNOTEURL 정보를 LG 유플러스에 전송해야 합니다 .
-				$payReqMap['LGD_CASNOTEURL'] = $LGD_CASNOTEURL;               // 가상계좌 NOTEURL
-
+				$payReqMap['LGD_CASNOTEURL'] = "http://store-chon.com/PC/pay/cas_noteurl.php";               // 가상계좌 NOTEURL
+			
 				//Return URL에서 인증 결과 수신 시 셋팅될 파라미터 입니다.*/
 				$payReqMap['LGD_RESPCODE']           = "";
 				$payReqMap['LGD_RESPMSG']            = "";
 				$payReqMap['LGD_PAYKEY']             = "";
-
+				$payReqMap['LGD_ENCODING'] 						= "UTF-8";
+				$payReqMap['LGD_ENCODING_NOTEURL'] 		= "UTF-8";
+				$payReqMap['LGD_ENCODING_RETURNURL'] 		= "UTF-8";
+			
 				$_SESSION['PAYREQ_MAP'] = $payReqMap;
-
-				//$innerHTML .= "<script language='javascript' src='http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js' type='text/javascript'></script>";
+			
+				// $innerHTML .= "<script language='javascript' src='http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js' type='text/javascript'></script>";
 				$innerHTML .= "<script type='text/javascript'>";
-				$innerHTML .= "var LGD_window_type = '".$LGD_WINDOW_TYPE."';";
+				$innerHTML .= "var LGD_window_type = '".$CST_WINDOW_TYPE."';";
 				$innerHTML .= "";
-				$innerHTML .= "function launchCrossPlatform(){lgdwin = openXpay(document.getElementById('LGD_PAYINFO'), '".$CST_PLATFORM."', LGD_window_type, null, '', '');}";
+				$innerHTML .= "function launchCrossPlatform(){lgdwin = open_paymentwindow(document.getElementById('LGD_PAYINFO'), 'test', LGD_window_type);}";
 				$innerHTML .= "function getFormObject() {return document.getElementById('LGD_PAYINFO');}";
-				$innerHTML .= "function payment_return() {";
-				$innerHTML .= "var fDoc;";
-				$innerHTML .= "fDoc = lgdwin.contentWindow || lgdwin.contentDocument;";
-				$innerHTML .= "if (fDoc.document.getElementById('LGD_RESPCODE').value == '0000') {";
-				$innerHTML .= "document.getElementById('LGD_PAYKEY').value = fDoc.document.getElementById('LGD_PAYKEY').value;";
-				$innerHTML .= "document.getElementById('LGD_PAYINFO').target = '_self';";
-				$innerHTML .= "document.getElementById('LGD_PAYINFO').action = '".$_mnv_PC_order_url."order_complete.php';";
-				$innerHTML .= "document.getElementById('LGD_PAYINFO').submit();";
-				$innerHTML .= "} else {";
-				$innerHTML .= "closeIframe();";
-				$innerHTML .= "}}";
 				$innerHTML .= "</script>";
-				$innerHTML .= "<img src='".$_mnv_PC_images_url."blank.png'>";
-				$innerHTML .= "<form method='post' name='LGD_PAYINFO' id='LGD_PAYINFO' action='".$_mnv_PC_order_url."order_complete.php'>";
+				$innerHTML .= "<form method='post' name='LGD_PAYINFO' id='LGD_PAYINFO' action='http://www.store-chon.com/dev/order_complete.php'>";
 				foreach ($payReqMap as $key => $value) {
 					$innerHTML .= "<input type='hidden' name='$key' id='$key' value='$value'>";
 				}

@@ -86,7 +86,7 @@ $(document).on("click", ".sorting-area > a", function(){
 });
 
 // 상품 하트(위시리스트 추가) 클릭
-$(document).on("click", ".loveit > a", function(){
+$(document).on("click", ".love-it > a", function(){
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -98,11 +98,12 @@ $(document).on("click", ".loveit > a", function(){
 		success: function(response){
 			if (response.match("Y") == "Y")
 			{
+				open_pop("wish_ins_div");
 				// alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
-				$(".loveit > a > img").attr("src","./images/heart_fill.png");
+				$(".love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
 			}else if (response.match("D") == "D"){
 				// alert('관심상품에서 삭제 되었습니다.');
-				$(".loveit > a > img").attr("src","./images/heart.png");
+				$(".love-it > a").css("background","url(./images/loveit_empty2.png) center center / cover no-repeat");
 			}else if (response.match("N") == "N"){
 				alert('로그인 후 관심상품에 등록해 주세요!');
 				location.href='member_login.php';
@@ -113,6 +114,52 @@ $(document).on("click", ".loveit > a", function(){
 		}
 	});
 });
+
+function del_chk_wish()
+{
+	var chk_idx	= "";
+	$("input[name=chk_this]:checked").each(function() {
+		var chk_id	= $(this).attr("id");
+		var chk_arr	= chk_id.split("_");
+		chk_idx		+= ","+chk_arr[1];
+	});
+
+	if (chk_idx == "")
+	{
+		alert("선택하신 상품이 없습니다.");
+		return false;
+	}else{
+		$.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "./main_exec.php",
+			data:{
+				"exec"				: "delete_chk_wish",
+				"chk_idx"			: chk_idx
+			},
+			success: function(response){
+				location.reload();
+			}
+		});
+	}
+}
+
+function del_wish(idx)
+{
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"				: "delete_one_wish",
+			"wish_idx"			: idx
+		},
+		success: function(response){
+			location.reload();
+		}
+	});
+
+}
 
 // 프로모션 더보기 클릭
 $(document).on("click", ".btn-more", function(){
@@ -215,10 +262,8 @@ function oto_sort(val)
 }
 
 // 장바구니 담기
-$(document).on("click", ".put-in > a", function(){
-	var goods_code 	= $(".put-in").attr("data-goodscode");
-	var loginYN 	= $(".put-in").attr("data-login");
-
+function add_cart(goods_code, loginYN)
+{
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -231,7 +276,8 @@ $(document).on("click", ".put-in > a", function(){
 		success: function(response){
 			if (response.match("Y") == "Y")
 			{
-				alert("장바구니에 상품이 담겼습니다!");
+				// alert("장바구니에 상품이 담겼습니다!");
+				open_pop("cart_ins_div");
 				// location.href='oto_list.php';
 			}else{
 				alert('다시 시도해 주세요');
@@ -239,7 +285,7 @@ $(document).on("click", ".put-in > a", function(){
 			}
 		}
 	});
-});
+}
 
 function del_chk_cart()
 {
@@ -309,11 +355,115 @@ function change_cart(idx)
 	});
 }
 
-// 주문하기
-function order_start()
+function go_order(goodscode)
 {
+	var goods_amount = $("#amount").val();
 
+	location.href = "order.php?t=goods&buycnt=" + goods_amount + "&goodscode=" + goodscode;
 }
+
+// 주문하기 > 결제방법 선택
+$(document).on("click", "#pay_type > a", function(){
+	$("#pay_type > a").removeClass("active");
+	$(this).addClass("active");
+});
+
+
+// 주문하기
+$(document).on("click", "#order_start", function(){
+	var order_goods				= $("#order_goods").val();
+	var order_name				= $("#order_name").val();
+	var order_email				= $("#order_email").val();
+	var order_phone				= $("#order_phone").val();
+	var delivery_name			= $("#delivery_name").val();
+	var delivery_zipcode		= $("#delivery_zipcode").val();
+	var delivery_addr1			= $("#delivery_addr1").val();
+	var delivery_addr2			= $("#delivery_addr2").val();
+	var delivery_phone			= $("#delivery_phone").val();
+	var delivery_message		= $("#delivery_message").val();
+	var total_order_price		= $("#total_order_price").val();
+	var total_delivery_price	= $("#total_delivery_price").val();
+	var total_save_price		= $("#total_save_price").val();
+	var total_payment_price		= $("#total_payment_price").val();
+	var total_coupon_price		= $("#total_coupon_price").val();
+	var show_goods_name			= $("#show_goods_name").val();
+	var pay_type				= $("#pay_type > .active").attr("data-value");
+	
+	if (delivery_name == "")
+	{
+		alert("배송받으실 분 이름을 입력해 주세요.");
+		$("#delivery_name").focus();
+		return false;
+	}
+
+	if (delivery_zipcode == "" || delivery_addr1 == "" || delivery_addr2 == "")
+	{
+		alert("배송받으실 분 주소를 입력해 주세요.");
+		$("#delivery_addr2").focus();
+		return false;
+	}
+
+	if (delivery_phone == "")
+	{
+		alert("배송받으실 분 휴대전화 번호를 입력해 주세요.");
+		$("#delivery_phone").focus();
+		return false;
+	}
+
+	if ($("#order_chk").prop("checked") == false)
+	{
+		alert("주문의 상품, 가격, 할인, 배송정보에 동의해주셔야만 결제가 진행 됩니다..");
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"						: "insert_order_info",
+			"order_goods"				: order_goods,
+			"order_name"				: order_name,
+			"order_email"				: order_email,
+			"order_phone"				: order_phone,
+			"delivery_name"				: delivery_name,
+			"delivery_zipcode"			: delivery_zipcode,
+			"delivery_addr1"			: delivery_addr1,
+			"delivery_addr2"			: delivery_addr2,
+			"delivery_phone"			: delivery_phone,
+			"delivery_message"			: delivery_message,
+			"total_order_price"			: total_order_price,
+			"total_delivery_price"		: total_delivery_price,
+			"total_save_price"			: total_save_price,
+			"total_payment_price"		: total_payment_price,
+			"total_coupon_price"		: total_coupon_price,
+			"pay_type"					: pay_type,
+			"show_goods_name"			: show_goods_name
+		},
+		success: function(response){
+			console.log(response);
+			// $(window).on('load', function(){
+			// 	launchCrossPlatform();
+			// });
+			$(".pay_area").html(response);
+			launchCrossPlatform();
+			var contentImages = $(".pay_area img");
+			var totalImages = contentImages.length;
+			var loadedImages = 0;
+			contentImages.each(function(){
+				$(this).on('load', function(){
+					loadedImages++;
+					if(loadedImages == totalImages)
+					{
+						alert("1111");
+						launchCrossPlatform();
+					}
+				});
+			});
+			
+		}
+	});
+});
 
 // 회원가입 전체동의 체크 선택
 $(document).on("click", "#all_chk", function(){
@@ -421,8 +571,8 @@ $(document).on("click", ".btn.join", function(){
 			console.log(response);
 			if (response.match("Y") == "Y")
 			{
-				alert('고객님이 입력하신 메일주소로 인증메일이 발송 되었습니다.\r\n메일의 확인버튼을 눌러 주시면 회원가입이 완료 됩니다.');
-				location.href = "index.php";
+				// alert('고객님이 입력하신 메일주소로 인증메일이 발송 되었습니다.\r\n메일의 확인버튼을 눌러 주시면 회원가입이 완료 됩니다.');
+				location.href = "member_join_verify.php?v_email=" + mb_email;
 			}else if (response.match("E") == "E"){
 				alert('만 14세 이상만 가입 가능합니다.');
 			}else if (response.match("D") == "D"){
@@ -525,6 +675,14 @@ $(document).on("click", ".btn-verify > a", function(){
 		},
 		success: function(response){
 			console.log(response);
+			if (response.match("Y") == "Y")
+			{
+				alert('변경 요청하신 이메일로 인증메일을 보내 드렸습니다. 메일을 확인해 주세요.');
+				location.href = "index.php";				
+			}else{
+				alert('다시 시도해 주세요.');
+				location.reload();
+			}
 		}
 	});
 });
@@ -536,7 +694,7 @@ $(document).on("click", "#find_member", function(){
 	var mb_name 		= $("#mb_name").val();
 	var mb_password		= $("#mb_password").val();
 	var mb_email		= $("#mb_email").val();
-alert(submitTarget);
+
 	if (submitTarget == "fid")
 	{
 		if (mb_name == "")
@@ -574,12 +732,29 @@ alert(submitTarget);
 		},
 		success: function(response){
 			console.log(response);
-			if (response.match("Y") == "Y")
+			var res_arr = response.split("||");
+			if (submitTarget == "fid")
 			{
-				location.href = ref_url;
+				if (response.match("Y") == "Y")
+				{
+					$("#user_name").html(mb_name);
+					$("#find_email").html(res_arr[1]);
+					open_pop("email_find_div");
+				}else{
+					alert('다시 시도해 주세요.');
+					location.reload();	
+				}
+				// location.href = ref_url;
 			}else{
-				alert('다시 시도해 주세요.');
-				location.reload();
+				if (response.match("Y") == "Y")
+				{
+					$("#pw_email").html(mb_email);
+					// $("#find_email").html(res_arr[1]);
+					open_pop("password_find_div");
+				}else{
+					alert('다시 시도해 주세요.');
+					location.reload();	
+				}
 			}
 		}
 	});
@@ -619,6 +794,9 @@ $(document).on("click", "#mb_login", function(){
 			if (response.match("Y") == "Y")
 			{
 				location.href	= ref_url;
+			}else if (response.match("V") == "V"){
+				alert('인증되지 않은 회원님입니다. 가입하신 메일 인증 버튼을 눌러 주세요.');
+				location.reload();
 			}else{
 				alert('가입되지 않은 이메일 혹은 틀린 비밀번호 입니다. 확인 후 다시 로그인해 주세요.');
 				location.reload();

@@ -12,7 +12,7 @@
 	// 상품 상세 설명 P태그 class 자동 삽입
 	$goods_data["m_goods_big_desc"] 	= str_replace('<p>','<p class="txt-template ft-18 cl-333 lh-32" style="padding-bottom: 68px;">',$goods_data["m_goods_big_desc"]);
 
-	// $wish_flag 	= check_wish_goods($goods_code);
+	$wish_flag 	= check_wish_goods($goods_code);
 	if ($_SESSION['ss_chon_email'])
 		$mb_flag	= "Y";
 	else
@@ -280,7 +280,7 @@
 				<div class="inner">
 					<div class="love-it empty">
 						<!--  data-goodscode="<?=$goods_code?>" data-login="<?=$mb_flag?>" -->
-						<a href="javascript:void(0)">
+						<a href="javascript:void(0)" data-goods="<?=$goods_code?>">
 							<span class="blind">관심상품등록</span>
 						</a>
 					</div>
@@ -312,15 +312,15 @@
 						</div>
 						<div class="wrap-component clearfix">
 							<div class="love-it empty">
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" data-goods="<?=$goods_code?>">
 									<span class="blind">관심상품등록</span>
 								</a>
 							</div>
 							<div class="buttons">
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" onclick="add_cart('<?=$goods_code?>','<?=$mb_flag?>');">
 									<span>장바구니</span>
 								</a>
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" onclick="go_order('<?=$goods_code?>');">
 									<span>바로구매</span>
 								</a>
 							</div>
@@ -337,24 +337,15 @@
 	var $header = $('#header');
 	var $app = $('#chon-app');
 		$(document).ready(function() {
-			// swiper initialize
-			var chonSwiper = new Swiper ('.swiper-container', {
-				// Optional parameters
-				direction: 'horizontal',
-				effect: 'fade',
-				speed: 2000,
-				loop: true,
-				autoplay: 4000,
-				autoplayDisableOnInteraction: false,
-				pagination: '.swiper-pagination',
-				paginationClickable: true,
-				paginationBulletRender: function(swiper, index, className) {
-					return '<span class="' + className +'">' + '</span>';
-				}
-				// If we need pagination
-				// pagination: '.swiper-pagination'
-			});
-
+			$("#cboxTopLeft").hide();
+			$("#cboxTopRight").hide();
+			$("#cboxBottomLeft").hide();
+			$("#cboxBottomRight").hide();
+			$("#cboxMiddleLeft").hide();
+			$("#cboxMiddleRight").hide();
+			$("#cboxTopCenter").hide();
+			$("#cboxBottomCenter").hide();
+			
 			$('.gnb').on('click', function() {
 				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');
@@ -369,10 +360,18 @@
 			});
 
 			// 바로 구매 누를 시
-			$('#buyBtn').on('click', function() {
-				var data = $(this).data();
-				location.href = "order.php?t="+data['type']+"&goodscode="+data['goodscode']+"&buycnt="+$('#amount').val();
-			});
+			// $('#buyBtn').on('click', function() {
+			// 	var data = $(this).data();
+			// 	location.href = "order.php?t="+data['type']+"&goodscode="+data['goodscode']+"&buycnt="+$('#amount').val();
+			// });
+<?
+	if ($wish_flag == "Y")
+	{
+?>	
+			$(".love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
+<?
+	}
+?>		
 		});
 		// 구매하기 누를 시 옵션 레이어
 		var spread_tl;

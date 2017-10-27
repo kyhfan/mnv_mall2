@@ -66,15 +66,15 @@
 						</a>
 					</li>
 					<li>
-						<a href="javascript:void(0)">
+						<a href="cart.php">
 							<span>장바구니</span>
 						</a>
 					</li>
-					<!-- <li>
-						<a href="javascript:void(0)">
-							<span>찜한상품</span>
+					<li>
+						<a href="wish.php">
+							<span>관심상품</span>
 						</a>
-					</li> -->
+					</li>
 					<li>
 						<a href="javascript:void(0)">
 							<span>쿠폰</span>

@@ -338,18 +338,23 @@ function sendMail($EMAIL, $NAME, $SUBJECT, $CONTENT, $MAILTO, $MAILTONAME){
 	$mail->AddAddress($address, $MAILTONAME);
 */
 	$mail->isSMTP();                                      // Set mailer to use SMTP
-	$mail->Host = 'smtp.naver.com';  // Specify main and backup SMTP servers
+	$mail->Host = 'smtp.worksmobile.com';  // Specify main and backup SMTP servers
 	$mail->SMTPAuth = true;                               // Enable SMTP authentication
-	$mail->Username = 'kyhfan';                 // SMTP username
-	$mail->Password = 'dudfks88';                           // SMTP password
-	$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-	$mail->Port = 465;                                    // TCP port to connect to
+	$mail->Username = 'yh.kim@minivertising.kr';                 // SMTP username
+	$mail->Password = '1234';                           // SMTP password
+	// $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+	// $mail->Port = 465;                                    // TCP port to connect to
+	$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	$mail->Port = 587;                                    // TCP port to connect to
 	
 	$mail->CharSet    = "utf-8";
 	$mail->setFrom($EMAIL, $NAME);
-	$mail->addAddress($EMAIL, $NAME);     // Add a recipient
-	// $mail->addAddress('ellen@example.com');               // Name is optional
-	$mail->addReplyTo($EMAIL, $NAME);
+	$mail->addAddress($MAILTO, $NAME);     // Add a recipient
+
+	// $mail->From = "yh.kim@minivertising.kr";
+	// $mail->FromName = "촌의감각";
+	// $mail->addAddress('yh.kim@minivertising.kr');               // Name is optional
+	// $mail->addReplyTo($EMAIL, $NAME);
 	// $mail->addCC('cc@example.com');
 	// $mail->addBCC('bcc@example.com');
 	
@@ -481,6 +486,18 @@ function select_order_goods($ordertype)
 	return $res_data;
 }
 
+// function select_order_info($oid)
+// {
+// 	global $_gl;
+// 	global $my_db;
+
+// 	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_oid='".$oid."'";
+// 	$order_result		= mysqli_query($my_db, $order_query);
+// 	$order_data			= mysqli_fetch_array($order_result);
+
+// 	return $order_data;
+// }
+
 function select_order_info($oid)
 {
 	global $_gl;
@@ -490,7 +507,57 @@ function select_order_info($oid)
 	$order_result		= mysqli_query($my_db, $order_query);
 	$order_data			= mysqli_fetch_array($order_result);
 
+	$order_goods_arr1 	= explode(",",$order_data["order_goods"]);
+	$order_goods_arr2	= array_values(array_filter(array_map('trim',$order_goods_arr1)));
+
+	$i = 0;
+	foreach($order_goods_arr2 as $key => $val)
+	{
+		$order_goods_arr3 	= explode("||",$val);
+		$goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE 1 AND goods_code='".$order_goods_arr3[0]."'";
+		$goods_result		= mysqli_query($my_db, $goods_query);
+		$goods_data[$i]			= mysqli_fetch_array($goods_result);
+		$goods_data[$i]['order_cnt']	= $order_goods_arr3[1];
+		
+		$order_data['order_goods']	= $goods_data;
+		$i++;
+	}
+
 	return $order_data;
+}
+
+function select_order_list_info()
+{
+	global $_gl;
+	global $my_db;
+
+	$order_query		= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_email='".$_SESSION['ss_chon_email']."' AND order_status <> 'pay_error'";
+	$order_result		= mysqli_query($my_db, $order_query);
+	// $order_num			= mysqli_num_rows($order_result);
+// print_r($order_num);
+	while($order_data = mysqli_fetch_array($order_result))
+	{
+
+		// $res_data[] 	= $order_data;
+		$order_goods_arr1 	= explode(",",$order_data["order_goods"]);
+		$order_goods_arr2	= array_values(array_filter(array_map('trim',$order_goods_arr1)));
+	
+		$i = 0;
+		foreach($order_goods_arr2 as $key => $val)
+		{
+			$order_goods_arr3 	= explode("||",$val);
+			$goods_query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE 1 AND goods_code='".$order_goods_arr3[0]."'";
+			$goods_result		= mysqli_query($my_db, $goods_query);
+			$goods_data[$i]			= mysqli_fetch_array($goods_result);
+			$goods_data[$i]['order_cnt']	= $order_goods_arr3[1];
+			
+			$order_data['order_goods']	= $goods_data;
+			$i++;
+		}
+		$res_data[] 	= $order_data;
+	}
+	
+	return $res_data;
 }
 
 function select_promotion_info($idx)
@@ -568,6 +635,7 @@ function select_order_cart_info()
 		$res_data[$i]							= $cart_data;
 		$res_data[$i]["goods_thumb_img_url"]	= $goods_info["goods_thumb_img_url"];
 		$res_data[$i]["goods_name"]				= $goods_info["goods_name"];
+		$res_data[$i]["discount_price"]			= $goods_info["discount_price"];
 		$total_order_price						+= $goods_info["discount_price"] * $cart_data["goods_cnt"];
 		$total_order_cnt						+= $cart_data["goods_cnt"];
 		$i++;
@@ -597,4 +665,80 @@ function check_wish_goods($goods_code)
 	return $flag;
 }
 
+function select_wish_info()
+{
+	global $_gl;
+	global $my_db;
+
+	$mb_id			= $_SESSION['ss_chon_email'];
+
+	$wish_query		= "SELECT * FROM ".$_gl['wishlist_info_table']." WHERE mb_id='".$mb_id."' AND showYN='Y'";
+	$wish_result	= mysqli_query($my_db, $wish_query);
+
+	while ($wish_data = @mysqli_fetch_array($wish_result))
+	{
+		$res_data[]	= $wish_data;
+	}
+
+	return $res_data;
+}
+
+function create_oid()
+{
+	global $_gl;
+	global $my_db;
+
+	$oid = PHPRandom::getInteger(10000000, 99999999);
+
+	$order_query 	= "SELECT * FROM ".$_gl['order_info_table']." WHERE order_oid='".$oid."'";
+	$order_result 	= mysqli_query($my_db, $order_query);
+	$order_num		= mysqli_num_rows($order_result);
+
+	if ($order_num > 0)
+		create_oid();
+
+	return $oid;
+}
+
+function verify_member($email)
+{
+	global $_gl;
+	global $my_db;
+
+	$member_query 	= "UPDATE ".$_gl['member_info_table']." SET mb_verify='Y' WHERE mb_email='".$email."'";
+	$member_result 	= mysqli_query($my_db, $member_query);
+
+}
+
+function change_mail($o_mail, $c_mail)
+{
+	global $_gl;
+	global $my_db;
+	
+	$change_query 	= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$o_mail."'";
+	$change_result 	= mysqli_query($my_db, $change_query);
+	$change_num		= mysqli_num_rows($change_result);
+
+	if ($change_num > 0)
+	{
+		$change_query2 	= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$c_mail."'";
+		$change_result2 	= mysqli_query($my_db, $change_query2);
+		$change_num2		= mysqli_num_rows($change_result2);
+		
+		if ($change_num2 > 0)
+		{
+			$flag	= "D";
+		}else{
+			$change_query3 		= "UPDATE ".$_gl['member_info_table']." SET mb_email='".$c_mail."' WHERE mb_email='".$o_mail."'";
+			$change_result3 	= mysqli_query($my_db, $change_query3);				
+
+			if ($change_result3)
+				$flag	= "Y";
+			else
+				$flag	= "N";
+		}
+	}
+
+	return $flag;
+}
 ?>

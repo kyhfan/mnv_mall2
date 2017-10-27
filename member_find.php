@@ -62,6 +62,15 @@
 		var $app = $('#chon-app');
 
 		$(document).ready(function() {
+			$("#cboxTopLeft").hide();
+			$("#cboxTopRight").hide();
+			$("#cboxBottomLeft").hide();
+			$("#cboxBottomRight").hide();
+			$("#cboxMiddleLeft").hide();
+			$("#cboxMiddleRight").hide();
+			$("#cboxTopCenter").hide();
+			$("#cboxBottomCenter").hide();
+
 			$('.gnb').on('click', function() {
 				$('#menu-layer').slideDown('slow');
 				$app.hasClass('menu-opened') ? $app.removeClass('menu-opened') : $app.addClass('menu-opened');

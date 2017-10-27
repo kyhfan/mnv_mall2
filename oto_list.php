@@ -67,7 +67,7 @@
 					</table>
 				</div>
 				<div class="action-group clearfix">
-					<div class="pagination">
+					<!-- <div class="pagination">
 						<div class="wrapper">
 							<a href="javascript:void(0)">
 								<span>
@@ -100,7 +100,7 @@
 								</span>
 							</a>
 						</div>
-					</div>
+					</div> -->
 					<div class="button">
 						<a href="oto_write.php">
 							<span>글쓰기</span>
