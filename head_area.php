@@ -71,7 +71,7 @@
 								<ul>
 									<li>
 										<a href="promotion_list.php">
-											<span>PROMOTION</span>
+											<span>MAGAZINE</span>
 										</a>
 									</li>
 									<li>

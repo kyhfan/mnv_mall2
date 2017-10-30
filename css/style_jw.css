@@ -678,24 +678,29 @@
 	.main .section {
 		position: relative;
 	}
-	.main .brand .title,
-	.main .sale .title {
+	.main .section > .title {
+		text-align: center;
+		color: #333333;
+		margin-bottom: 70px;
+		position: static;
+	}
+	.main .brand .title {
 		position: absolute;
 		top: 88px;
 		left: 0;
 		right: 0;
-		text-align: center;
-		color: #333333;
 		z-index: 1;
 	}
-	.main .brand .title h3,
-	.main .sale .title h3 {
+	.main .best .title {
+		margin-top: 110px;
+		margin-bottom: 0;
+	}
+	.main .section .title h3 {
 		display: inline-block;
 		font-size: 24px;
 		position: relative;
 	}
-	.main .brand .title h3:after,
-	.main .sale .title h3:after {
+	.main .section .title h3:after {
 		content: "";
 		position: absolute;
 		/*left: calc(50% - 31.5px);*/
@@ -745,14 +750,14 @@
 		bottom: 26px;
 		font-size: 18px;
 	}
-	.main .newest .grid {
+	.main .best .grid {
 		width: 90.6%;
-		margin: 135px auto;
+		margin: 80px auto 135px;
 	}
 	.main .grid .list-row .col {
 		margin-bottom: 17px;
 	}
-	.main .newest .grid .list-row .col:nth-of-type(2n+1) {
+	.main .best .grid .list-row .col:nth-of-type(2n+1) {
 		margin-right: 3%;
 	}
 	.main .grid .list-row .col:last-child,
@@ -761,10 +766,6 @@
 	}
 	.main .sale {
 		margin: 110px 0;
-	}
-	.main .sale > .title {
-		position: static;
-		margin-bottom: 70px;
 	}
 	.main .sale .grid {
 		width: 90.6%;
@@ -3119,6 +3120,56 @@
 		display: inline;
 	}
 	/* about-chon */
+	/* point */
+	.point .point-block {
+		padding: 87px 0 46px;
+		width: 95.9%;
+		margin: 0 auto;
+	}
+	.point .point-block .bg {
+		background: #809255;
+	}
+	.point .point-block .bg > .inner {
+		padding: 24px 41px;
+		color: #ffffff;
+		position: relative;
+	}
+	.point .point-block .bg > .inner .txt p {
+		font-size: 20px;
+	}
+	.point .point-block .bg > .inner .txt p span {
+		font-weight: 900;
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.point .point-block .bg > .inner .current {
+		position: absolute;
+		font-size: 36px;
+		right: 41px;
+		top: 50%;
+		margin-top: -20px;
+	}
+	.point .point-block .bg > .inner .current span {
+		display: inline-block;
+		font-weight: 700;
+		margin-right: 15px;
+	}
+	.point .point-block .guide {
+		padding: 18px 0 0 40px;
+	}
+	.point .point-block .guide span {
+		display: block;
+		font-size: 14px;
+		color: #777777;
+		padding-bottom: 4px;
+	}
+	.point .point-block .guide span:last-child {
+		padding-bottom: 0;
+	}
+	.point .board-list {
+		margin: 0 auto 31px;
+	}
+	/* point */
 
 	/* popup */
 	.popup {
