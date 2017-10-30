@@ -81,9 +81,6 @@ var search = {
 	}
 }
 
-$(document).on("click", "#searchOpen", function() {
-
-});
 
 // 상품 리스트 소팅 클릭
 $(document).on("click", ".sorting-area > a", function(){
