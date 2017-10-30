@@ -68,7 +68,7 @@
 						</a>
 					</li>
 					<li class="search">
-						<a href="javascript:void(0)">
+						<a href="javascript:search.toggle()">
 							<span>
 								<img src="./images/gnb_search.png" alt="검색">
 							</span>
@@ -91,13 +91,13 @@
 
 	if ($cart_num > 0)
 	{
-?>									
+?>
 								<div class="icon">
 									<span><?=$cart_num?></span>
 								</div>
 <?
 	}
-?>								
+?>
 							</span>
 						</a>
 					</li>
@@ -105,5 +105,5 @@
 			</div>
 		</div>
 <?
-	include_once "./popup_div.php";	
+	include_once "./popup_div.php";
 ?>

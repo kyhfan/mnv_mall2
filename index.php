@@ -172,6 +172,7 @@
 				$('#menu-layer').slideUp('slow');
 			});
 		});
+		
 	</script>
 </body>
 </html>
