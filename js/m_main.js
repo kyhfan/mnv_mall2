@@ -77,7 +77,7 @@ var search = {
 	},
 	find: function(word) {
 		// 검색 함수
-		console.log("word");
+		console.log(word);
 	}
 }
 

@@ -102,7 +102,7 @@
 					<div class="inner">
 						<div class="input-box">
 							<form method="post">
-								<input type="text" placeholder="검색어 입력">
+								<input type="text" placeholder="검색어 입력" onkeypress="javascript:if(event.keyCode==13){search.find(this.value);return false;}">
 								<button type="button" class="close" onclick="search.toggle()">
 									<span class="blind">닫기</span>
 								</button>
