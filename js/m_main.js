@@ -72,12 +72,42 @@ function open_pop(param)
 
 // 검색관련 객체
 var search = {
+	word: "",
+	length: 0,
 	toggle: function() {
 		$app.hasClass('searchOpen') ? $app.removeClass('searchOpen') : $app.addClass('searchOpen');
 	},
-	find: function(word) {
+	detect: function(input) {
+		this.word = input;
+		this.length = input.length;
+
+		if(event.keyCode ==  8 || this.length <= 2) {
+			$('.hot-word .title').text("인기 검색어").css('color','#809255');
+		}
+
+		if(event.keyCode == 13) {
+			event.preventDefault();
+			this.find();
+		}
+	},
+	find: function() {
 		// 검색 함수
-		console.log(word);
+		$.ajax({
+			type   : "POST",
+			async  : false,
+			url    : "./main_exec.php",
+			data:{
+				"exec"		: "search_product",
+				"word"		: this.word
+			},
+			success: function(response){
+				if(!response) {
+					$('.hot-word .title').text("검색 결과가 없습니다.").css('color','#000');
+				}else{
+					location.href = "search_result.php?code_list="+response;
+				}
+			}
+		});
 	}
 }
 

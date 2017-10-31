@@ -102,7 +102,9 @@
 					<div class="inner">
 						<div class="input-box">
 							<form method="post">
-								<input type="text" placeholder="검색어 입력" onkeypress="javascript:if(event.keyCode==13){search.find(this.value);return false;}">
+								<!-- <input type="text" placeholder="검색어 입력" onkeypress="javascript:if(event.keyCode==13){search.find(this.value);return false;}"> -->
+								<!-- <input type="text" placeholder="검색어 입력" onkeypress="javascript:search.detect(this.value);"> -->
+								<input type="text" placeholder="검색어 입력" onkeydown="javascript:search.detect(this.value);">
 								<button type="button" class="close" onclick="search.toggle()">
 									<span class="blind">닫기</span>
 								</button>
@@ -111,7 +113,7 @@
 					</div>
 				</div>
 				<div class="hot-word">
-					<h5>인기 검색어</h5>
+					<h5 class="title">인기 검색어</h5>
 					<div class="list">
 						<div class="row">
 							<div class="col">
@@ -150,6 +152,9 @@
 							</div>
 						</div>
 					</div>
+					<!-- <div class="nrs">
+						<h5>검색 결과가 없습니다.</h5>
+					</div> -->
 				</div>
 			</div>
 		</div>

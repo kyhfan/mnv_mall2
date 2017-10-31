@@ -391,6 +391,7 @@
 		z-index: 998;
 		background: rgba(0, 0, 0, 0.3);
 		transition: all 0.3s ease;
+		margin: 0 auto;
 	}
 	#search-layer > .wrapper {
 		position: relative;
@@ -427,8 +428,24 @@
 	}
 	#search-layer > .wrapper .hot-word {
 		background: #ffffff;
+		position: relative;
 	}
-	#search-layer > .wrapper .hot-word > h5 {
+	/*#search-layer > .wrapper .hot-word .nrs {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: #ffffff;
+	}
+	#search-layer > .wrapper .hot-word .nrs h5 {
+		font-size: 22px;
+		font-weight: 700;
+		text-align: center;
+		padding-top: 30px;
+	}*/
+	#search-layer > .wrapper .hot-word .title {
 		font-size: 22px;
 		color: #809255;
 		font-weight: 700;

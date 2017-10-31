@@ -48,7 +48,7 @@
 				$mb_kakao_email_verified = "Y";
 			else
 				$mb_kakao_email_verified = "N";
-			
+
 			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."' AND mb_kakao_way_id='".$mb_kakao_way_id."'";
 			$login_result		= mysqli_query($my_db, $login_query);
 			$login_data			= mysqli_fetch_array($login_result);
@@ -66,7 +66,7 @@
 			$_SESSION['ss_chon_email']		= $mb_email;
 			$_SESSION['ss_chon_name']		= $mb_kakao_name;
 			$_SESSION['ss_chon_way']		= $mb_login_way;
-			
+
 			if ($result)
 				$flag	= "Y";
 			else
@@ -87,7 +87,7 @@
 			$mb_naver_age				= $_REQUEST["age"];
 			$mb_naver_way_enc_id		= $_REQUEST["enc_id"];
 			$mb_naver_way_id			= $_REQUEST["id"];
-			
+
 			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."' AND mb_naver_way_id='".$mb_naver_way_id."'";
 			$login_result		= mysqli_query($my_db, $login_query);
 			$login_data			= mysqli_fetch_array($login_result);
@@ -105,7 +105,7 @@
 			$_SESSION['ss_chon_email']		= $mb_email;
 			$_SESSION['ss_chon_name']		= $mb_naver_name;
 			$_SESSION['ss_chon_way']		= $mb_login_way;
-			
+
 			if ($result)
 				$flag	= "Y";
 			else
@@ -122,7 +122,7 @@
 			$mb_facebook_gender			= $_REQUEST["gender"];
 			$mb_facebook_birthday		= $_REQUEST["birthday"];
 			$mb_facebook_way_id			= $_REQUEST["id"];
-			
+
 			$login_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."' AND mb_facebook_way_id='".$mb_facebook_way_id."'";
 			$login_result		= mysqli_query($my_db, $login_query);
 			$login_data			= mysqli_fetch_array($login_result);
@@ -140,7 +140,7 @@
 			$_SESSION['ss_chon_email']		= $mb_email;
 			$_SESSION['ss_chon_name']		= $mb_facebook_name;
 			$_SESSION['ss_chon_way']		= $mb_login_way;
-			
+
 			if ($result)
 				$flag	= "Y";
 			else
@@ -159,7 +159,7 @@
 			$email_chk		= $_REQUEST["email_chk"];
 			$sms_chk		= $_REQUEST["sms_chk"];
 			$mb_login_way	= "chon";
-		
+
 			if ($event_chk == "true")
 				$event_chk	= "Y";
 			else
@@ -179,7 +179,7 @@
 			$dupli_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE 1 AND mb_email='".$mb_email."'";
 			$dupli_result		= mysqli_query($my_db, $dupli_query);
 			$dupli_count 		= mysqli_num_rows($dupli_result);
-	
+
 			if ($dupli_count > 0)
 			{
 				$flag = "D";
@@ -286,7 +286,7 @@
 					$update_query = "UPDATE ".$_gl['member_info_table']." SET mb_name='".$mb_name."',mb_birth='".$birthday."',mb_phone='".$mb_phone."',mb_smsYN='".$sms_chk."',mb_eventYN='".$event_chk."',mb_emailYN='".$email_chk."',mb_update_date='".date("Y-m-d H:i:s")."' WHERE mb_email='".$_SESSION['ss_chon_email']."'";
 				else
 					$update_query = "UPDATE ".$_gl['member_info_table']." SET mb_password=MD5('".$mb_password."'),mb_name='".$mb_name."',mb_birth='".$birthday."',mb_phone='".$mb_phone."',mb_smsYN='".$sms_chk."',mb_eventYN='".$event_chk."',mb_emailYN='".$email_chk."',mb_update_date='".date("Y-m-d H:i:s")."' WHERE mb_email='".$_SESSION['ss_chon_email']."'";
-		
+
 				$update_result   = mysqli_query($my_db, $update_query);
 
 				if($update_result) {
@@ -302,12 +302,12 @@
 		case "email_change" :
 			$change_email 	= $_REQUEST['change_email'];
 			$mb_email 		= $_REQUEST['mb_email'];
-			$mb_name 		= $_REQUEST['mb_name'];	
+			$mb_name 		= $_REQUEST['mb_name'];
 
 			$dupli_query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE 1 AND mb_email='".$change_email."'";
 			$dupli_result		= mysqli_query($my_db, $dupli_query);
 			$dupli_count 		= mysqli_num_rows($dupli_result);
-	
+
 			if ($dupli_count > 0)
 			{
 				$flag = "D";
@@ -401,7 +401,7 @@
 				$query		= "SELECT mb_email FROM ".$_gl['member_info_table']." WHERE mb_name='".$mb_name."' AND mb_password=MD5('".$mb_password."')";
 				$result		= mysqli_query($my_db, $query);
 				$data 		= mysqli_fetch_array($result);
-	
+
 				if($data){
 					$email_arr	= explode("@",$data['mb_email']);
 
@@ -411,7 +411,7 @@
 				}else{
 					$flag = "N||none";
 				}
-	
+
 			}else{
 				$query		= "SELECT * FROM ".$_gl['member_info_table']." WHERE mb_email='".$mb_email."'";
 				$result		= mysqli_query($my_db, $query);
@@ -491,6 +491,21 @@
 
 		break;
 
+		case "search_product" :
+			$word = $_REQUEST['word'];
+			$search_query = "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_name LIKE '%".$word."%' OR m_goods_big_desc LIKE '%".$word."%'";
+			$search_result = mysqli_query($my_db, $search_query);
+
+			if($search_result) {
+				$result_list = array();
+				while ($search_data = mysqli_fetch_array($search_result)) {
+					$result_list[] = $search_data['goods_code'];
+				};
+			}
+			echo implode(',', $result_list);
+			// print_r($result_list);
+			// echo json_encode($result_list);
+		break;
 
 		case "insert_banner_info" :
 			$banner_name		= $_REQUEST['banner_name'];
@@ -508,7 +523,7 @@
 			$oto_question_type		= $_REQUEST['oto_question_type'];
 			$oto_title				= $_REQUEST['oto_title'];
 			$oto_contents			= $_REQUEST['oto_contents'];
-		
+
 			$oto_query		= "INSERT INTO ".$_gl['board_oto_table']."(oto_email, oto_question_type, oto_title, oto_contents, oto_regdate, oto_ipaddr) values('".$_SESSION['ss_chon_email']."','".$oto_question_type."','".$oto_title."','".$oto_contents."','".date("Y-m-d H:i:s")."','".$_SERVER["REMOTE_ADDR"]."')";
 			$oto_result		= mysqli_query($my_db, $oto_query);
 
@@ -1356,40 +1371,40 @@
 				// $payReqMap['LGD_CUSTOM_FIRSTPAY']  	 = $_POST["LGD_CUSTOM_FIRSTPAY"];		//상점정의 초기결제수단
 				// $payReqMap['LGD_PCVIEWYN']			 = $_POST["LGD_PCVIEWYN"];				//휴대폰번호 입력 화면 사용 여부(유심칩이 없는 단말기에서 입력-->유심칩이 있는 휴대폰에서 실제 결제)
 				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
-				
-				
+
+
 				//iOS 연동시 필수
 				$payReqMap['LGD_MPILOTTEAPPCARDWAPURL'] = "";
-			  
+
 				/*
 				****************************************************
-				* 신용카드 ISP(국민/BC)결제에만 적용 - BEGIN 
+				* 신용카드 ISP(국민/BC)결제에만 적용 - BEGIN
 				****************************************************
 				*/
-				$payReqMap['LGD_KVPMISPWAPURL']		 	= "";	
+				$payReqMap['LGD_KVPMISPWAPURL']		 	= "";
 				$payReqMap['LGD_KVPMISPCANCELURL']  	= "";
-				
+
 				/*
 				****************************************************
 				* 신용카드 ISP(국민/BC)결제에만 적용  - END
 				****************************************************
 				*/
-					
+
 				/*
 				****************************************************
-				* 계좌이체 결제에만 적용 - BEGIN 
+				* 계좌이체 결제에만 적용 - BEGIN
 				****************************************************
 				*/
-				$payReqMap['LGD_MTRANSFERWAPURL']		= "";	
+				$payReqMap['LGD_MTRANSFERWAPURL']		= "";
 				$payReqMap['LGD_MTRANSFERCANCELURL']  	= "";
-				
+
 				/*
 				****************************************************
 				* 계좌이체 결제에만 적용  - END
 				****************************************************
 				*/
-				
-				
+
+
 				/*
 				****************************************************
 				* 모바일 OS별 ISP(국민/비씨), 계좌이체 결제 구분 값
@@ -1398,12 +1413,12 @@
 				- iOS: N
 				- iOS일 경우, 반드시 N으로 값을 수정
 				*/
-				$payReqMap['LGD_KVPMISPAUTOAPPYN']	= "A";		// 신용카드 결제 
+				$payReqMap['LGD_KVPMISPAUTOAPPYN']	= "A";		// 신용카드 결제
 				$payReqMap['LGD_MTRANSFERAUTOAPPYN']= "A";		// 계좌이체 결제
-			
+
 				// 가상계좌(무통장) 결제연동을 하시는 경우  할당/입금 결과를 통보받기 위해 반드시 LGD_CASNOTEURL 정보를 LG 유플러스에 전송해야 합니다 .
 				$payReqMap['LGD_CASNOTEURL'] = "http://store-chon.com/PC/pay/cas_noteurl.php";               // 가상계좌 NOTEURL
-			
+
 				//Return URL에서 인증 결과 수신 시 셋팅될 파라미터 입니다.*/
 				$payReqMap['LGD_RESPCODE']           = "";
 				$payReqMap['LGD_RESPMSG']            = "";
@@ -1411,9 +1426,9 @@
 				$payReqMap['LGD_ENCODING'] 						= "UTF-8";
 				$payReqMap['LGD_ENCODING_NOTEURL'] 		= "UTF-8";
 				$payReqMap['LGD_ENCODING_RETURNURL'] 		= "UTF-8";
-			
+
 				$_SESSION['PAYREQ_MAP'] = $payReqMap;
-			
+
 				// $innerHTML .= "<script language='javascript' src='http://xpay.uplus.co.kr/xpay/js/xpay_crossplatform.js' type='text/javascript'></script>";
 				$innerHTML .= "<script type='text/javascript'>";
 				$innerHTML .= "var LGD_window_type = '".$CST_WINDOW_TYPE."';";
