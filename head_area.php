@@ -101,14 +101,12 @@
 				<div class="input-block">
 					<div class="inner">
 						<div class="input-box">
-							<form method="post">
 								<!-- <input type="text" placeholder="검색어 입력" onkeypress="javascript:if(event.keyCode==13){search.find(this.value);return false;}"> -->
 								<!-- <input type="text" placeholder="검색어 입력" onkeypress="javascript:search.detect(this.value);"> -->
-								<input type="text" placeholder="검색어 입력" onkeydown="javascript:search.detect(this.value);">
-								<button type="button" class="close" onclick="search.toggle()">
-									<span class="blind">닫기</span>
-								</button>
-							</form>
+							<input type="text" placeholder="검색어 입력" onkeyup="search.detect(this.value);return false;">
+							<button type="button" class="close" onclick="search.toggle()">
+								<span class="blind">닫기</span>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -117,36 +115,36 @@
 					<div class="list">
 						<div class="row">
 							<div class="col">
-								<a href="javascript:void(0)">
+								<a href="#" onclick="search.click()">
 									<span>여기 담기</span>
 								</a>
 							</div>
 							<div class="col">
-								<a href="javascript:void(0)">
+								<a href="#" onclick="search.click()">
 									<span>머그컵</span>
 								</a>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col">
-								<a href="javascript:void(0)">
+								<a href="#" onclick="search.click()">
 									<span>그릇</span>
 								</a>
 							</div>
 							<div class="col">
-								<a href="javascript:void(0)">
+								<a href="#" onclick="search.click()">
 									<span>파스타 그릇</span>
 								</a>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col">
-								<a href="javascript:void(0)">
+								<a href="#" onclick="search.click()">
 									<span>소창 행주</span>
 								</a>
 							</div>
 							<div class="col">
-								<a href="javascript:void(0)">
+								<a href="#" onclick="search.click()">
 									<span>접시</span>
 								</a>
 							</div>

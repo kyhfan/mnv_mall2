@@ -608,8 +608,8 @@
 		border-top: 1px solid #eeeeee;
 		background: #ffffff;
 		z-index: 999;
-		visibility: hidden;
-		opacity: 0;
+		/*visibility: hidden;*/
+		/*opacity: 0;*/
 		max-width: 640px;
 		margin: 0 auto;
 	}
