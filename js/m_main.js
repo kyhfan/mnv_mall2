@@ -196,7 +196,6 @@ $(document).on("click", "#write_oto", function(){
 		return false;
 	}
 
-
 	$.ajax({
 		type   : "POST",
 		async  : false,
@@ -208,10 +207,37 @@ $(document).on("click", "#write_oto", function(){
 			"oto_contents"			: oto_contents
 		},
 		success: function(response){
-			location.href = "oto_list.php";
+			var res_arr	= response.split("||")
+
+			if (res_arr[0].match("Y") == "Y")
+			{
+				// location.href = "oto_list.php";
+				img_submit_board_oto(res_arr[1]);
+			}else{
+				alert("다시 시도해 주세요!");
+			}
 		}
 	});
 });
+
+// 1대1 문의 파일 업로드
+function img_submit_board_oto(idx)
+{
+	var frm = $('#oto_image_frm');
+	var stringData = frm.serialize();
+	console.log(stringData);
+	// return false;
+	frm.ajaxSubmit({
+		type: 'post',
+		url: './file_upload.php?ig=board_oto&idx='+idx,
+		data: stringData,
+		success:function(msg){
+			console.log(msg);
+			// location.href = "oto_list.php";
+		}
+	}); // end ajaxSubmit
+}
+
 
 // 1대1 문의 글쓰기 삭제
 $(document).on("click", "#del_oto", function(){
@@ -263,6 +289,147 @@ function oto_sort(val)
 			// }
 		}
 	});
+}
+
+// 리뷰 글쓰기 입력
+$(document).on("click", "#write_review", function(){
+	var review_title				= $("#review_title").val();
+	var review_contents				= $("#review_contents").val();
+	var review_gooddscode			= $("#review_goodscode").val();
+
+	if (review_title == "")
+	{
+		alert("제목을 입력해주세요.");
+		$("#review_title").focus();
+		return false;
+	}
+
+	if (review_contents == "")
+	{
+		alert("내용을 입력해주세요.");
+		$("#review_contents").focus();
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"						: "insert_review_info",
+			"review_title"				: review_title,
+			"review_contents"			: review_contents,
+			"review_gooddscode"			: review_gooddscode
+		},
+		success: function(response){
+			var res_arr	= response.split("||")
+
+			if (res_arr[0].match("Y") == "Y")
+			{
+				// location.href = "oto_list.php";
+				img_submit_board_review(res_arr[1],review_gooddscode);
+			}else{
+				alert("다시 시도해 주세요!");
+			}
+		}
+	});
+});
+
+// 리뷰 작성 파일 업로드
+function img_submit_board_review(idx, goodscode)
+{
+	var frm = $('#review_image_frm');
+	var stringData = frm.serialize();
+	// return false;
+	frm.ajaxSubmit({
+		type: 'post',
+		url: './file_upload.php?ig=board_review&idx='+idx,
+		data: stringData,
+		success:function(msg){
+			console.log(msg);
+			location.href = './product_detail.php?goodscode='+goodscode;
+		}
+	}); // end ajaxSubmit
+}
+
+// 상품 상세 페이지 리뷰 토글
+function toggle_review(idx)
+{
+	if ($("#review_detail"+idx).css("display") == "none")
+		$("#review_detail"+idx).show();
+	else
+		$("#review_detail"+idx).hide();
+}
+
+// Q&A 글쓰기 입력
+$(document).on("click", "#write_qna", function(){
+	var qna_title					= $("#qna_title").val();
+	var qna_contents				= $("#qna_contents").val();
+	var qna_gooddscode				= $("#qna_goodscode").val();
+	var qna_question_type			= $("#qna_question_type").val();
+
+	if (qna_title == "")
+	{
+		alert("제목을 입력해주세요.");
+		$("#qna_title").focus();
+		return false;
+	}
+
+	if (qna_contents == "")
+	{
+		alert("내용을 입력해주세요.");
+		$("#qna_contents").focus();
+		return false;
+	}
+
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./main_exec.php",
+		data:{
+			"exec"					: "insert_qna_info",
+			"qna_title"				: qna_title,
+			"qna_contents"			: qna_contents,
+			"qna_question_type"		: qna_question_type,
+			"qna_gooddscode"		: qna_gooddscode
+		},
+		success: function(response){
+			var res_arr	= response.split("||")
+
+			if (res_arr[0].match("Y") == "Y")
+			{
+				img_submit_board_qna(res_arr[1],qna_gooddscode);
+			}else{
+				alert("다시 시도해 주세요!");
+			}
+		}
+	});
+});
+
+// Q&A 작성 파일 업로드
+function img_submit_board_qna(idx, goodscode)
+{
+	var frm = $('#qna_image_frm');
+	var stringData = frm.serialize();
+	// return false;
+	frm.ajaxSubmit({
+		type: 'post',
+		url: './file_upload.php?ig=board_qna&idx='+idx,
+		data: stringData,
+		success:function(msg){
+			console.log(msg);
+			location.href = './product_detail.php?goodscode='+goodscode;
+		}
+	}); // end ajaxSubmit
+}
+
+// 상품 상세 페이지 Q&A 토글
+function toggle_qna(idx)
+{
+	if ($("#qna_detail"+idx).css("display") == "none")
+		$("#qna_detail"+idx).show();
+	else
+		$("#qna_detail"+idx).hide();
 }
 
 // 장바구니 담기

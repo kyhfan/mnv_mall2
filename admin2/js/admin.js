@@ -1402,7 +1402,6 @@ $(document).on("click", ".del_goods", function(){
 
 function img_goods1_submit()
 {
-	alert("1");
 	var frm = $('#img_frm_main1');
 	var stringData = frm.serialize();
 	frm.ajaxSubmit({
@@ -1418,7 +1417,6 @@ function img_goods1_submit()
 
 function img_goods2_submit()
 {
-	alert("2");
 	var frm = $('#img_frm_main2');
 	var stringData = frm.serialize();
 	frm.ajaxSubmit({
@@ -1434,7 +1432,6 @@ function img_goods2_submit()
 
 function img_goods3_submit()
 {
-	alert("3");
 	var frm = $('#img_frm_main3');
 	var stringData = frm.serialize();
 	frm.ajaxSubmit({
@@ -1450,7 +1447,6 @@ function img_goods3_submit()
 
 function img_goods4_submit()
 {
-	alert("4");
 	var frm = $('#img_frm_main4');
 	var stringData = frm.serialize();
 	frm.ajaxSubmit({
@@ -1466,7 +1462,6 @@ function img_goods4_submit()
 
 function img_goods5_submit()
 {
-	alert("5");
 	var frm = $('#img_frm_main5');
 	var stringData = frm.serialize();
 	frm.ajaxSubmit({
