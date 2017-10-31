@@ -70,6 +70,18 @@ function open_pop(param)
 	});
 }
 
+// 검색관련 객체
+var search = {
+	toggle: function() {
+		$app.hasClass('searchOpen') ? $app.removeClass('searchOpen') : $app.addClass('searchOpen');
+	},
+	find: function(word) {
+		// 검색 함수
+		console.log(word);
+	}
+}
+
+
 // 상품 리스트 소팅 클릭
 $(document).on("click", ".sorting-area > a", function(){
 	if ($(this).hasClass("current") === false)
@@ -102,7 +114,7 @@ $(document).on("click", ".love-it > a", function(){
 				// alert('관심상품에 등록 되었습니다. 마이페이지에서 확인하실 수 있습니다.');
 				$(".inner > .love-it > a").css("background","url(./images/loveit_fill.png) center center / cover no-repeat");
 				$(".wrap-component > .love-it > a").css("background","url(./images/loveit_fill2.png) center center / cover no-repeat");
-	
+
 			}else if (response.match("D") == "D"){
 				// alert('관심상품에서 삭제 되었습니다.');
 				// $(".love-it > a").css("background","url(./images/loveit_empty2.png) center center / cover no-repeat");
@@ -432,6 +444,48 @@ function toggle_qna(idx)
 		$("#qna_detail"+idx).hide();
 }
 
+// 할인 페이지 더 보기
+var sales_pg = 0;
+function more_sales_goods(total_goods_num, total_page)
+{
+	sales_pg++;
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./ajax_sales_goods.php",
+		data:{
+			"sales_pg"				: sales_pg,
+			"total_goods_num"		: total_goods_num,
+			"total_page"			: total_page
+		},
+		success: function(response){
+			$(".more-btn").hide();
+			$("#container").append(response);
+		}
+	});
+}
+
+// 베스트 페이지 더 보기
+var best_pg = 0;
+function more_best_goods(total_goods_num, total_page)
+{
+	best_pg++;
+	$.ajax({
+		type   : "POST",
+		async  : false,
+		url    : "./ajax_best_goods.php",
+		data:{
+			"best_pg"				: best_pg,
+			"total_goods_num"		: total_goods_num,
+			"total_page"			: total_page
+		},
+		success: function(response){
+			$(".more-btn").hide();
+			$("#container").append(response);
+		}
+	});
+}
+
 // 장바구니 담기
 function add_cart(goods_code, loginYN)
 {
@@ -559,7 +613,7 @@ $(document).on("click", "#order_start", function(){
 	var total_coupon_price		= $("#total_coupon_price").val();
 	var show_goods_name			= $("#show_goods_name").val();
 	var pay_type				= $("#pay_type > .active").attr("data-value");
-	
+
 	if (delivery_name == "")
 	{
 		alert("배송받으실 분 이름을 입력해 주세요.");
@@ -631,7 +685,7 @@ $(document).on("click", "#order_start", function(){
 					}
 				});
 			});
-			
+
 		}
 	});
 });
@@ -849,7 +903,7 @@ $(document).on("click", ".btn-verify > a", function(){
 			if (response.match("Y") == "Y")
 			{
 				alert('변경 요청하신 이메일로 인증메일을 보내 드렸습니다. 메일을 확인해 주세요.');
-				location.href = "index.php";				
+				location.href = "index.php";
 			}else{
 				alert('다시 시도해 주세요.');
 				location.reload();
@@ -913,7 +967,7 @@ $(document).on("click", "#find_member", function(){
 					open_pop("email_find_div");
 				}else{
 					alert('다시 시도해 주세요.');
-					location.reload();	
+					location.reload();
 				}
 				// location.href = ref_url;
 			}else{
@@ -924,7 +978,7 @@ $(document).on("click", "#find_member", function(){
 					open_pop("password_find_div");
 				}else{
 					alert('다시 시도해 주세요.');
-					location.reload();	
+					location.reload();
 				}
 			}
 		}

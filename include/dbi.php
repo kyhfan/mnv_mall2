@@ -1,7 +1,7 @@
 <?
 /*
 *
-*	php function 
+*	php function
 *
 */
 	// $my_db = new mysqli("localhost", "root", "alslqj~1", "miniver");

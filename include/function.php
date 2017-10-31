@@ -14,10 +14,10 @@ function create_goodscode()
 
 	$query		= "SELECT goods_code FROM ".$_gl['goodscode_info_table']." WHERE useYN='N' limit 1";
 	$result		= mysqli_query($my_db, $query);
-	$data			= mysqli_fetch_array($result);
+	$data		= mysqli_fetch_array($result);
 
 	$query2		= "UPDATE ".$_gl['goodscode_info_table']." SET useYN='Y' WHERE goods_code='".$data['goods_code']."'";
-	$result2		= mysqli_query($my_db, $query2);
+	$result2	= mysqli_query($my_db, $query2);
 
 	return $data['goods_code'];
 }
@@ -30,9 +30,45 @@ function select_goods_info($goodscode)
 
 	$query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_code='".$goodscode."'";
 	$result		= mysqli_query($my_db, $query);
-	$data			= mysqli_fetch_array($result);
+	$data		= mysqli_fetch_array($result);
 
 	return $data;
+}
+
+// 세일 상품정보 가져오기
+function select_sale_goods_info($s_page, $view_pg)
+{
+	global $_gl;
+	global $my_db;
+
+	$query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE discount_price < sales_price LIMIT ".$s_page.", ".$view_pg."";
+	$result		= mysqli_query($my_db, $query);
+	$i = 0;
+	while ($data = @mysqli_fetch_array($result))
+	{
+		$res_data[$i]	= $data;
+		$i++;
+	}
+
+	return $res_data;
+}
+
+// 베스트 리스트 상품정보 가져오기
+function select_best_list_goods_info($s_page, $view_pg)
+{
+	global $_gl;
+	global $my_db;
+
+	$query		= "SELECT * FROM ".$_gl['goods_info_table']." WHERE 1 ORDER BY goods_sales_cnt DESC LIMIT ".$s_page.", ".$view_pg."";
+	$result		= mysqli_query($my_db, $query);
+	$i = 0;
+	while ($data = @mysqli_fetch_array($result))
+	{
+		$res_data[$i]	= $data;
+		$i++;
+	}
+
+	return $res_data;
 }
 
 // 주문용 해당 상품정보 가져오기 (goods_code)

@@ -24,7 +24,7 @@
 		$end_date_arr		= explode("-",$promotion_data["promotion_enddate"]);
 ?>
 				<div class="block">
-					<a href="#">
+					<a href="promotion_detail.php?idx=<?=$promotion_data['idx']?>">
 						<div class="img">
 							<img src="<?=$promotion_img1?>">
 						</div>
@@ -42,7 +42,7 @@
 									<span><?=$start_date_arr[0]?> | <?=$start_date_arr[1]?> | <?=$start_date_arr[2]?> - <?=$end_date_arr[0]?> | <?=$end_date_arr[1]?> | <?=$end_date_arr[2]?></span>
 								</div>
 							</div>
-							<div class="btn-more" data-idx="<?=$promotion_data["idx"]?>"></div>
+							<div class="btn-more"></div>
 						</div>
 					</a>
 				</div>

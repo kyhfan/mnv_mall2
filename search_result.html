@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="./css/style_jw.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./lib/Swiper-master/dist/js/swiper.jquery.min.js"></script>
-<title>촌의감각 메인페이지</title>
+<title>촌의감각</title>
 </head>
 <body>
 	<div id="chon-app">
@@ -109,218 +109,93 @@
 				</div>
 			</div>
 		</div>
-		<div id="search-layer">
-			<div class="wrapper">
-				<div class="input-block">
-					<div class="inner">
-						<div class="input-box">
-							<form method="post">
-								<input type="text" placeholder="검색어 입력">
-								<button class="clear">
-									<span class="blind">입력값 초기화</span>
-								</button>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="hot-word">
-					<h5>인기 검색어</h5>
-					<div class="list">
-						<div class="row">
-							<div class="col">
-								<a href="javascript:void(0)">
-									<span>여기 담기</span>
-								</a>
-							</div>
-							<div class="col">
-								<a href="javascript:void(0)">
-									<span>머그컵</span>
-								</a>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<a href="javascript:void(0)">
-									<span>그릇</span>
-								</a>
-							</div>
-							<div class="col">
-								<a href="javascript:void(0)">
-									<span>파스타 그릇</span>
-								</a>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<a href="javascript:void(0)">
-									<span>소창 행주</span>
-								</a>
-							</div>
-							<div class="col">
-								<a href="javascript:void(0)">
-									<span>접시</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div id="container" class="product-list search-result">
+			<div class="pg-title">
+				<h3>
+					검색결과 (임시)
+				</h3>
 			</div>
-		</div>
-		<div id="container" class="main">
-			<div class="section main-slider swiper-container">
-				<div class="slider swiper-wrapper">
-					<div class="slide swiper-slide _01" style="background: url(./images/main_banner_01.jpg) center center / cover no-repeat;">
-					</div>
-					<div class="slide swiper-slide _02" style="background: url(./images/main_banner_02.jpg) center center / cover no-repeat;">
-					</div>
-					<div class="slide swiper-slide _03" style="background: url(./images/main_banner_03.jpg) center center / cover no-repeat;">
-					</div>
-				</div>
-				<div class="swiper-pagination"></div>
-			</div>
-			<div class="section brand">
-				<div class="title">
-					<h3>
-						BRAND STORY
-					</h3>
-				</div>
-				<div class="brand-slider">
-					<div class="slide _01">
-						<div class="main-block">
-							<img src="./images/brand_main_01.jpg">
-						</div>
-						<div class="intro-block layout-1 clearfix">
-							<figure class="product">
-								<a href="#">
-									<img src="./images/brand_product_01.png">
-									<figcaption>
-										<span class="sub">기품있는 상차림</span>
-										<span class="bname">비즐</span>
-									</figcaption>
-								</a>
-							</figure>
-							<figure class="product">
-								<a href="#">
-									<img src="./images/brand_product_02.png">
-									<figcaption>
-										<span class="sub">기품있는 상차림</span>
-										<span class="bname">비즐</span>
-									</figcaption>
-								</a>
-							</figure>
-							<figure class="product fullW">
-								<a href="#">
-									<img src="./images/brand_product_03.png">
-									<figcaption>
-										<span class="sub">기품있는 상차림</span>
-										<span class="bname">비즐</span>
-										<span class="desc">단아하게 하얀색의 도자기가 저절로 아끼는 마음을 만들어 냅니다.</span>
-									</figcaption>
-								</a>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="section newest">
-				<div class="grid">
-					<ul class="list-row clearfix">
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_01.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_02.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_03.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_04.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_05.jpg">
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/newest_06.jpg">
-								</a>
-							</figure>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="section magazine">
-				<a href="#">
-					<img src="./images/magazine_01.jpg">
-				</a>
-			</div>
-			<div class="section sale">
-				<div class="title">
-					<h3>
-						SALE
-					</h3>
-				</div>
-				<div class="grid">
-					<ul class="list-row clearfix">
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/sale_sample.png">
-									<figcaption>
-										<span class="price nft">20,000</span>
-										<span class="percent nft">50%</span>
-										<span class="saleP nft">10,000</span>
-									</figcaption>
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/sale_sample.png">
-									<figcaption>
-										<span class="price nft">20,000</span>
-										<span class="percent nft">50%</span>
-										<span class="saleP nft">10,000</span>
-									</figcaption>
-								</a>
-							</figure>
-						</li>
-						<li class="col">
-							<figure class="pr-item">
-								<a href="#">
-									<img src="./images/sale_sample.png">
-									<figcaption>
-										<span class="price nft">20,000</span>
-										<span class="percent nft">50%</span>
-										<span class="saleP nft">10,000</span>
-									</figcaption>
-								</a>
-							</figure>
-						</li>
-					</ul>
-				</div>
+			<div class="grid">
+				<ul class="list-row n2 clearfix">
+					<li class="col">
+						<figure class="pr-item">
+							<a href="#">
+								<img src="./images/product_list_img_01.jpg">
+								<figcaption>
+									<span class="name">고즈넉한 밤이야기</span>
+									<span class="price">20,000</span>
+									<span class="percent">50%</span>
+									<span class="saleP">10,000</span>
+								</figcaption>
+							</a>
+						</figure>
+					</li>
+					<li class="col">
+						<figure class="pr-item">
+							<a href="#">
+								<img src="./images/product_list_img_02.jpg">
+								<figcaption>
+									<span class="name">고즈넉한 밤이야기</span>
+									<span class="price">20,000</span>
+									<span class="percent">50%</span>
+									<span class="saleP">10,000</span>
+								</figcaption>
+							</a>
+						</figure>
+					</li>
+					<li class="col">
+						<figure class="pr-item">
+							<a href="#">
+								<img src="./images/product_list_img_03.jpg">
+								<figcaption>
+									<span class="name">고즈넉한 밤이야기</span>
+									<span class="price">20,000</span>
+									<span class="percent">50%</span>
+									<span class="saleP">10,000</span>
+								</figcaption>
+							</a>
+						</figure>
+					</li>
+					<li class="col">
+						<figure class="pr-item">
+							<a href="#">
+								<img src="./images/product_list_img_04.jpg">
+								<figcaption>
+									<span class="name">고즈넉한 밤이야기</span>
+									<span class="price">20,000</span>
+									<span class="percent">50%</span>
+									<span class="saleP">10,000</span>
+								</figcaption>
+							</a>
+						</figure>
+					</li>
+					<li class="col">
+						<figure class="pr-item">
+							<a href="#">
+								<img src="./images/product_list_img_01.jpg">
+								<figcaption>
+									<span class="name">고즈넉한 밤이야기</span>
+									<span class="price">20,000</span>
+									<span class="percent">50%</span>
+									<span class="saleP">10,000</span>
+								</figcaption>
+							</a>
+						</figure>
+					</li>
+					<li class="col">
+						<figure class="pr-item">
+							<a href="#">
+								<img src="./images/product_list_img_02.jpg">
+								<figcaption>
+									<span class="name">고즈넉한 밤이야기</span>
+									<span class="price">20,000</span>
+									<span class="percent">50%</span>
+									<span class="saleP">10,000</span>
+								</figcaption>
+							</a>
+						</figure>
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div id="footer">

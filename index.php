@@ -68,7 +68,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="section newest">
+			<div class="section best">
+				<div class="title">
+					<h3>
+						BEST
+					</h3>
+				</div>
 				<div class="grid">
 					<ul class="list-row clearfix">
 <?
@@ -167,6 +172,7 @@
 				$('#menu-layer').slideUp('slow');
 			});
 		});
+		
 	</script>
 </body>
 </html>
