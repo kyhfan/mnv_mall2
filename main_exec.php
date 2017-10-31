@@ -526,11 +526,49 @@
 
 			$oto_query		= "INSERT INTO ".$_gl['board_oto_table']."(oto_email, oto_question_type, oto_title, oto_contents, oto_regdate, oto_ipaddr) values('".$_SESSION['ss_chon_email']."','".$oto_question_type."','".$oto_title."','".$oto_contents."','".date("Y-m-d H:i:s")."','".$_SERVER["REMOTE_ADDR"]."')";
 			$oto_result		= mysqli_query($my_db, $oto_query);
+			$id_num				= mysqli_insert_id($my_db);
 
 			if($oto_result)
-				$flag = "Y";
+				$flag = "Y||".$id_num;
 			else
-				$flag = "N";
+				$flag = "N||0";
+
+			echo $flag;
+
+		break;
+
+		case "insert_review_info" :
+			$review_title				= $_REQUEST['review_title'];
+			$review_contents			= $_REQUEST['review_contents'];
+			$review_goodscode			= $_REQUEST['review_gooddscode'];
+
+			$review_query		= "INSERT INTO ".$_gl['board_review_table']."(review_email, review_goodscode, review_title, review_contents, review_regdate, review_ipaddr) values('".$_SESSION['ss_chon_email']."','".$review_goodscode."','".$review_title."','".$review_contents."','".date("Y-m-d H:i:s")."','".$_SERVER["REMOTE_ADDR"]."')";
+			$review_result		= mysqli_query($my_db, $review_query);
+			$id_num				= mysqli_insert_id($my_db);
+
+			if($review_result)
+				$flag = "Y||".$id_num;
+			else
+				$flag = "N||0";
+
+			echo $flag;
+
+		break;
+
+		case "insert_qna_info" :
+			$qna_title				= $_REQUEST['qna_title'];
+			$qna_contents			= $_REQUEST['qna_contents'];
+			$qna_goodscode			= $_REQUEST['qna_gooddscode'];
+			$qna_question_type		= $_REQUEST['qna_question_type'];
+
+			$qna_query				= "INSERT INTO ".$_gl['board_qna_table']."(qna_email, qna_question_type, qna_goodscode, qna_title, qna_contents, qna_regdate, qna_ipaddr) values('".$_SESSION['ss_chon_email']."','".$qna_question_type."','".$qna_goodscode."','".$qna_title."','".$qna_contents."','".date("Y-m-d H:i:s")."','".$_SERVER["REMOTE_ADDR"]."')";
+			$qna_result				= mysqli_query($my_db, $qna_query);
+			$id_num					= mysqli_insert_id($my_db);
+
+			if($qna_result)
+				$flag = "Y||".$id_num;
+			else
+				$flag = "N||0";
 
 			echo $flag;
 
@@ -1372,7 +1410,8 @@
 				// $payReqMap['LGD_PCVIEWYN']			 = $_POST["LGD_PCVIEWYN"];				//휴대폰번호 입력 화면 사용 여부(유심칩이 없는 단말기에서 입력-->유심칩이 있는 휴대폰에서 실제 결제)
 				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
 
-
+				$payReqMap['LGD_CUSTOM_FIRSTPAY']	= $USABLEPAY;			// 결제 방식 정의
+				
 				//iOS 연동시 필수
 				$payReqMap['LGD_MPILOTTEAPPCARDWAPURL'] = "";
 

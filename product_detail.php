@@ -17,6 +17,17 @@
 		$mb_flag	= "Y";
 	else
 		$mb_flag	= "N";
+
+	// 리뷰 쿼리
+	$review_query		= "SELECT * FROM ".$_gl['board_review_table']." WHERE review_goodscode='$goods_code' AND review_showYN='Y'";
+	$review_result		= mysqli_query($my_db, $review_query);
+	$review_count 		= mysqli_num_rows($review_result);
+		
+	// QNA 쿼리
+	$qna_query			= "SELECT * FROM ".$_gl['board_qna_table']." WHERE qna_goodscode='$goods_code' AND qna_showYN='Y'";
+	$qna_result			= mysqli_query($my_db, $qna_query);
+	$qna_count 			= mysqli_num_rows($qna_result);
+		
 ?>
 <body>
 	<div id="chon-app">
@@ -118,61 +129,52 @@
 					<a href="javascript:void(0)" class="toggle">
 						<div>
 							<h4>REVIEW</h4>
-							<span>(0)</span>
+							<span>(<?=$review_count?>)</span>
 						</div>
 					</a>
 					<div class="group-switch">
 						<ul>
+<?
+	while($review_data = mysqli_fetch_array($review_result))
+	{
+		// 작성일자
+		$review_arr1 	= explode(" ",$review_data["review_regdate"]);
+		$review_arr2 	= explode("-",$review_arr1[0]);
+		$review_date 	= $review_arr2[0].".".$review_arr2[1].".".$review_arr2[2];
+
+		$email_arr		= explode("@",$review_data['review_email']);
+		$email_arr[0] 	= substr_replace($email_arr[0], "***", -3);
+		$mask_email 	= $email_arr[0]."@".$email_arr[1];		
+?>							
 							<li class="row">
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" onclick="toggle_review('<?=$review_data['idx']?>')">
 									<div class="head">
 										<div class="tt">
-											<p>빠른 배송으로 딱 필요할때 사용할수 있어 더욱 만족스럽네요^^</p>
+											<p><?=$review_data["review_title"]?></p>
 										</div>
 										<div class="other">
-											<span>2017.08.22</span>
-											<span>*duv9**</span>
+											<span><?=$review_date?></span>
+											<span><?=$mask_email?></span>
 										</div>
 									</div>
 								</a>
-								<div class="content clearfix">
+								<div class="content clearfix" id="review_detail<?=$review_data['idx']?>">
 									<div class="img">
-										<img src="./images/review_img.png">
+										<img src="<?=$review_data["review_file_url"]?>" style="width:100%">
 									</div>
 									<div class="txt">
 										<p>
-											계란후라이를 넣었더니 이렇게 예쁠수가!! 너무 맘에 듭니다~~
+										<?=$review_data["review_contents"]?>
 										</p>
 									</div>
 								</div>
 							</li>
-							<li class="row">
-								<a href="javascript:void(0)">
-									<div class="head">
-										<div class="tt">
-											<p>제품이 아주 예쁘고 맘에 꼭 들어용~~!!!</p>
-											<!-- 이미지 업로드 했을 시 아이콘 추가 -->
-										</div>
-										<div class="other">
-											<span>2017.08.22</span>
-											<span>*suwq**</span>
-										</div>
-									</div>
-								</a>
-								<div class="content clearfix">
-									<div class="img">
-										<img src="./images/review_img.png">
-									</div>
-									<div class="txt">
-										<p>
-											계란후라이를 넣었더니 이렇게 예쁠수가!! 너무 맘에 듭니다~~
-										</p>
-									</div>
-								</div>
-							</li>
+<?
+	}
+?>							
 						</ul>
 						<div class="action-group clearfix">
-							<div class="pagination">
+							<!-- <div class="pagination">
 								<div class="wrapper">
 									<a href="javascript:void(0)">
 										<span>1</span>
@@ -184,9 +186,9 @@
 										<span>></span>
 									</a>
 								</div>
-							</div>
+							</div> -->
 							<div class="button">
-								<a href="javascript:void(0)">
+								<a href="review_write.php?goodscode=<?=$goods_code?>">
 									<span>후기작성</span>
 								</a>
 							</div>
@@ -197,44 +199,53 @@
 					<a href="javascript:void(0)" class="toggle">
 						<div>
 							<h4>Q&A</h4>
-							<span>(0)</span>
+							<span>(<?=$qna_count?>)</span>
 						</div>
 					</a>
 					<div class="group-switch">
 						<ul>
+<?
+	while($qna_data = mysqli_fetch_array($qna_result))
+	{
+		// 작성일자
+		$qna_arr1 	= explode(" ",$qna_data["qna_regdate"]);
+		$qna_arr2 	= explode("-",$qna_arr1[0]);
+		$qna_date 	= $qna_arr2[0].".".$qna_arr2[1].".".$qna_arr2[2];
+
+		$email_arr		= explode("@",$qna_data['qna_email']);
+		$email_arr[0] 	= substr_replace($email_arr[0], "***", -3);
+		$mask_email 	= $email_arr[0]."@".$email_arr[1];		
+?>							
 							<li class="row">
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" onclick="toggle_qna('<?=$qna_data['idx']?>')">
 									<div class="head">
 										<div class="tt">
-											<p>배송문의</p>
+											<p><?=$qna_data["qna_title"]?></p>
 											<!-- 비밀글 자물쇠 아이콘 추가 -->
 										</div>
 										<div class="other">
-											<span>2017.08.22</span>
-											<span>*suwq**</span>
+											<span><?=$qna_date?></span>
+											<span><?=$mask_email?></span>
 										</div>
 									</div>
 								</a>
-								<div class="content"></div>
-							</li>
-							<li class="row">
-								<a href="javascript:void(0)">
-									<div class="head">
-										<div class="tt">
-											<p>상품문의</p>
-											<!-- 비밀글 자물쇠 아이콘 추가 -->
-										</div>
-										<div class="other">
-											<span>2017.08.22</span>
-											<span>*suwq**</span>
-										</div>
+								<div class="content clearfix" id="qna_detail<?=$qna_data['idx']?>">
+									<div class="img">
+										<img src="<?=$qna_data["qna_file_url"]?>" style="width:100%">
 									</div>
-								</a>
-								<div class="content"></div>
+									<div class="txt">
+										<p>
+										<?=$qna_data["qna_contents"]?>
+										</p>
+									</div>
+								</div>
 							</li>
+<?
+	}
+?>							
 						</ul>
 						<div class="action-group clearfix">
-							<div class="pagination">
+							<!-- <div class="pagination">
 								<div class="wrapper">
 									<a href="javascript:void(0)">
 										<span>1</span>
@@ -246,9 +257,9 @@
 										<span>></span>
 									</a>
 								</div>
-							</div>
+							</div> -->
 							<div class="button">
-								<a href="javascript:void(0)">
+								<a href="qna_write.php?goodscode=<?=$goods_code?>">
 									<span>문의작성</span>
 								</a>
 							</div>
@@ -336,6 +347,26 @@
 	<script type="text/javascript">
 	var $header = $('#header');
 	var $app = $('#chon-app');
+		// scrolling header action
+		$(window).on('scroll', function() {
+			var currentScroll = $(this).scrollTop();
+			if(currentScroll > $header.height() && !$app.hasClass('menu-opened')) {
+				$app.addClass('scrolled');
+			} else {
+				$app.removeClass('scrolled');
+			}
+
+			if(currentScroll > ($app.height()/3)) {
+				$('.go-top').css({
+					opacity: 1
+				});
+			} else {
+				$('.go-top').css({
+					opacity: 0
+				});
+			}
+			// (currentScroll > $header.height()) ? $headerBg.addClass('scrolled') : $headerBg.remove
+		});
 		$(document).ready(function() {
 			$("#cboxTopLeft").hide();
 			$("#cboxTopRight").hide();
@@ -356,14 +387,8 @@
 			});
 
 			$('.etc-block .toggle').on('click', function() {
-				$(this).siblings('ul').toggle();
+				$(this).parent().toggleClass("active");
 			});
-
-			// 바로 구매 누를 시
-			// $('#buyBtn').on('click', function() {
-			// 	var data = $(this).data();
-			// 	location.href = "order.php?t="+data['type']+"&goodscode="+data['goodscode']+"&buycnt="+$('#amount').val();
-			// });
 <?
 	if ($wish_flag == "Y")
 	{

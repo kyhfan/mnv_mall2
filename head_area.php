@@ -75,12 +75,12 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="best_list.php">
 											<span>BEST ITEM</span>
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a href="sale_list.php">
 											<span>SALE</span>
 										</a>
 									</li>
