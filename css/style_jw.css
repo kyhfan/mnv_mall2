@@ -412,7 +412,7 @@
 		padding: 25px 80px 25px 25px;
 		z-index: 1;
 	}
-	#search-layer > .wrapper .input-block > .inner .input-box .close {
+	#search-layer > .wrapper .input-block > .inner .input-box .clear {
 		z-index: 2;
 		border: 0;
 		-webkit-appearance: none;
@@ -608,8 +608,8 @@
 		border-top: 1px solid #eeeeee;
 		background: #ffffff;
 		z-index: 999;
-		visibility: hidden;
-		opacity: 0;
+		/*visibility: hidden;*/
+		/*opacity: 0;*/
 		max-width: 640px;
 		margin: 0 auto;
 	}
@@ -2427,7 +2427,7 @@
 	/* join-complete */
 
 	/* cart */
-	.cart .empty {
+	#container .empty {
 		font-size: 25px;
 		padding: 220px 0 330px;
 		color: #777777;

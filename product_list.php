@@ -77,6 +77,7 @@
 <?
     }
 ?>
+				</ul>
 			</div>
 <?
 	if ($goods_count > 6)

@@ -497,14 +497,17 @@
 			$search_result = mysqli_query($my_db, $search_query);
 
 			if($search_result) {
-				$result_list = array();
-				while ($search_data = mysqli_fetch_array($search_result)) {
-					$result_list[] = $search_data['goods_code'];
-				};
+				$search_count = mysqli_num_rows($search_result);
+				// $result_list = array();
+				// while ($search_data = mysqli_fetch_array($search_result)) {
+				// 	$result_list[] = $search_data['goods_code'];
+				// };
+				$flag = $search_count;
+			}else{
+				$flag = 0;
 			}
-			echo implode(',', $result_list);
-			// print_r($result_list);
-			// echo json_encode($result_list);
+
+			echo $flag;
 		break;
 
 		case "insert_banner_info" :
@@ -1411,7 +1414,7 @@
 				$payReqMap['LGD_CUSTOM_SWITCHINGTYPE']  = "SUBMIT";					// 신용카드 카드사 인증 페이지 연동 방식
 
 				$payReqMap['LGD_CUSTOM_FIRSTPAY']	= $USABLEPAY;			// 결제 방식 정의
-				
+
 				//iOS 연동시 필수
 				$payReqMap['LGD_MPILOTTEAPPCARDWAPURL'] = "";
 
