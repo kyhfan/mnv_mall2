@@ -70,7 +70,7 @@
 							<div class="list theme">
 								<ul>
 									<li>
-										<a href="promotion_list.php">
+										<a href="magazine_list.php">
 											<span>MAGAZINE</span>
 										</a>
 									</li>
