@@ -24,7 +24,7 @@
 	// 상품 리스트
 	$goods_query = "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_name LIKE '%".$keyword."%' OR m_goods_big_desc LIKE '%".$keyword."%'";
 	$goods_result = mysqli_query($my_db, $goods_query);
-	$goods_count = @mysqli_num_rows($goods_result);
+	$goods_count = mysqli_num_rows($goods_result);
 	if($goods_count > 0) {
 		while ($goods_data = mysqli_fetch_array($goods_result))
 		{

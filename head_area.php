@@ -115,7 +115,7 @@
 					<div class="list">
 						<div class="row">
 							<div class="col">
-								<a href="search_result.php?keyword=여기담기'">
+								<a href="search_result.php?keyword=여기담기">
 									<span>여기 담기</span>
 								</a>
 							</div>
