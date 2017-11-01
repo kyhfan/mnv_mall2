@@ -80,7 +80,8 @@ var search = {
 	click: function(elem) {
 		console.log(elem.children.text());
 	},
-	detect: function(input) {
+	detect: function(elem, input) {
+		$(elem).attr('data-edit', 'Y');
 		this.word = input;
 		this.length = input.length;
 		var _this = this;
@@ -91,11 +92,12 @@ var search = {
 
 		if(tmp == ''){
 			var empty = true;
+			$(elem).attr('data-edit', 'N');
 		}
 
 		if(event.keyCode == 13) {
 			event.preventDefault();
-			if(!input) {
+			if(!input || empty) {
 				alert("검색어를 입력해주세요.");
 				return false;
 			}
@@ -119,9 +121,17 @@ var search = {
 			}
 		});
 	},
-	find: function() {
-		// alert(this.word);
-		// alert("2");
+	clear: function() {
+		event.preventDefault();
+		var searchBox = $('#search-box');
+		if(searchBox.attr('data-edit') == "Y") {
+			searchBox.attr('data-edit', 'N').val("");
+			$('.hot-word .title').text("인기 검색어").css('color','#809255');
+		}else{
+			this.toggle();
+		}
+	},
+	find: function(keyword) {
 		location.href = "search_result.php?keyword="+this.word;
 	}
 }
