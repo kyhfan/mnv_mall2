@@ -147,7 +147,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>* 상품 썸네일 이미지</td>
+                  <td>* 상품 썸네일 이미지 (281 x 246)</td>
                   <td colspan="2">
                     <form action="../../lib/filer/php/upload.php" id="img_frm2" method="post" enctype="multipart/form-data">
                       <input type="file" name="files2[]" id="filer_input2" multiple="multiple">
@@ -156,7 +156,7 @@
                   </td>
                 </tr>
                 <tr>
-                <td>* 상품 메인 이미지1</td>
+                <td>* 상품 메인 이미지1 (640 x 430)</td>
                 <td colspan="2">
                   <form action="../../lib/filer/php/upload.php" id="img_frm_main1" method="post" enctype="multipart/form-data">
                     <input type="file" name="files_main1[]" id="filer_input_main1" multiple="multiple">
@@ -165,7 +165,7 @@
                 </td>
               </tr>
               <tr>
-                  <td>상품 메인 이미지2</td>
+                  <td>상품 메인 이미지2 (640 x 430)</td>
                   <td colspan="2">
                     <form action="../../lib/filer/php/upload.php" id="img_frm_main2" method="post" enctype="multipart/form-data">
                       <input type="file" name="files_main2[]" id="filer_input_main2" multiple="multiple">
@@ -174,7 +174,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>상품 메인 이미지3</td>
+                  <td>상품 메인 이미지3 (640 x 430)</td>
                   <td colspan="2">
                     <form action="../../lib/filer/php/upload.php" id="img_frm_main3" method="post" enctype="multipart/form-data">
                       <input type="file" name="files_main3[]" id="filer_input_main3" multiple="multiple">
@@ -183,7 +183,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>상품 메인 이미지4</td>
+                  <td>상품 메인 이미지4 (640 x 430)</td>
                   <td colspan="2">
                     <form action="../../lib/filer/php/upload.php" id="img_frm_main4" method="post" enctype="multipart/form-data">
                       <input type="file" name="files_main4[]" id="filer_input_main4" multiple="multiple">
@@ -192,7 +192,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>상품 메인 이미지5</td>
+                  <td>상품 메인 이미지5 (640 x 430)</td>
                   <td colspan="2">
                     <form action="../../lib/filer/php/upload.php" id="img_frm_main5" method="post" enctype="multipart/form-data">
                       <input type="file" name="files_main5[]" id="filer_input_main5" multiple="multiple">
