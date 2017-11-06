@@ -3507,6 +3507,10 @@
 	.privacy .inner {
 		padding: 45px 60px;
 	}
+	.popup.privacy .text {
+		overflow: auto;
+		height: 380px;
+	}
 	.privacy .text .block {
 		padding-bottom: 50px;
 		font-size: 20px;
