@@ -3493,5 +3493,69 @@
 		color: #ffffff;
 		padding: 26px 0;
 	}
-	/*.member .wrapper > .inner */
+
+	.privacy .title {
+		padding-bottom: 45px;
+		text-align: center;
+	}
+	.privacy .title p {
+		font-size: 22px;
+		font-weight: 700;
+		color: #809255;
+		text-decoration: underline;
+	}
+	.privacy .inner {
+		padding: 45px 60px;
+	}
+	.privacy .text .block {
+		padding-bottom: 50px;
+		font-size: 20px;
+		color: #777777;
+	}
+	.privacy .text .block h5 {
+		font-size: 20px;
+		text-align: center;
+		padding-bottom: 26px;
+	}
+	.privacy .text .block p {
+		position: relative;
+		line-height: 1.35;
+		padding-bottom: 10px;
+	}
+	.privacy .text .block ._01:before {
+		content: "1.";
+		position: absolute;
+		left: -20px;
+		top: 0;
+	}
+	.privacy .text .block ._02:before {
+		content: "2.";
+		position: absolute;
+		left: -20px;
+		top: 0;
+	}
+	.privacy .text .block ._03:before {
+		content: "3.";
+		position: absolute;
+		left: -20px;
+		top: 0;
+	}
+	.privacy .text .block ._04:before {
+		content: "4.";
+		position: absolute;
+		left: -20px;
+		top: 0;
+	}
+	.privacy .text .block ._05:before {
+		content: "5.";
+		position: absolute;
+		left: -20px;
+		top: 0;
+	}
+	.privacy .text .block ._06:before {
+		content: "6.";
+		position: absolute;
+		left: -20px;
+		top: 0;
+	}
 	/* popup */
