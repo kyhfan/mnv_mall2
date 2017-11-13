@@ -54,7 +54,7 @@
 				</div>
 			</div>
 			<div class="go-top">
-				<a href="#">
+				<a href="javascript:goTop();">
 					<span>TOP</span>
 				</a>
 			</div>

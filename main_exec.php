@@ -492,22 +492,21 @@
 		break;
 
 		case "search_product" :
-			$word = $_REQUEST['word'];
-			$search_query = "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_name LIKE '%".$word."%' OR m_goods_big_desc LIKE '%".$word."%'";
-			$search_result = mysqli_query($my_db, $search_query);
-
-			if($search_result) {
-				$search_count = mysqli_num_rows($search_result);
-				// $result_list = array();
-				// while ($search_data = mysqli_fetch_array($search_result)) {
-				// 	$result_list[] = $search_data['goods_code'];
-				// };
-				$flag = $search_count;
-			}else{
-				$flag = 0;
-			}
-
-			echo $flag;
+			// $word = $_REQUEST['word'];
+			// $search_result_array = array();
+			// foreach ($keyword_storage as $key => $value) {
+			// 	if(strstr($value['goods_name'], $word) || strstr($value['goods_desc'], $word))
+			// 	{
+			// 		array_push($search_result_array, array('goods_code' => $value['goods_code'],
+			// 												'goods_name' => $value['goods_name']) );
+			// 	}
+			// }
+			// if(count($search_result_array) <= 0) {
+			// 	$flag = "N";
+			// } else {
+			// 	$flag = $search_result_array;
+			// }
+			// echo json_encode($flag);
 		break;
 
 		case "insert_banner_info" :

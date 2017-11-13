@@ -18,6 +18,7 @@
 
 	mysqli_query ($my_db,"set names utf8");
 
+	include_once "include/keywordstorage.php";	//키워드 데이터
 
 	// 모바일 체크
 	$mobile_agent = array("iPhone","iPod","iPad","Android","Blackberry","SymbianOS|SCH-M\d+","Opera Mini", "Windows ce", "Nokia", "sony" );
