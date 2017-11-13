@@ -103,7 +103,7 @@ var search = {
 			}
 			this.find();
 		}
-
+/*
 		$.ajax({
 			type   : "POST",
 			async  : false,
@@ -120,6 +120,7 @@ var search = {
 				}
 			}
 		});
+*/		
 	},
 	clear: function() {
 		event.preventDefault();
