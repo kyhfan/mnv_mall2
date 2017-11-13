@@ -103,7 +103,7 @@ var search = {
 			}
 			this.find();
 		}
-/*
+
 		$.ajax({
 			type   : "POST",
 			async  : false,
@@ -113,14 +113,13 @@ var search = {
 				"word"		: input
 			},
 			success: function(response) {
-				if(response < 1 || empty) {
-					$('.hot-word .title').text("검색 결과가 없습니다.").css('color','#000');
-				} else{
-					$('.hot-word .title').text("검색 결과: "+response+"건").css('color','#000');
-				}
+				// if(response < 1 || empty) {
+				// 	$('.hot-word .title').text("검색 결과가 없습니다.").css('color','#000');
+				// } else{
+				// 	$('.hot-word .title').text("검색 결과: "+response+"건").css('color','#000');
+				// }
 			}
 		});
-*/		
 	},
 	clear: function() {
 		event.preventDefault();
