@@ -151,6 +151,28 @@
 							</div>
 						</div>
 					</div>
+					<div class="realtime-list">
+						<div class='row'>
+							<a href='product_detail.php?goodscode=PR00000044'>
+								<span></span>
+							</a>
+						</div>
+						<div class='row'>
+							<a href='product_detail.php?goodscode=PR00000044'>
+								<span></span>
+							</a>
+						</div>
+						<div class='row'>
+							<a href='product_detail.php?goodscode=PR00000044'>
+								<span></span>
+							</a>
+						</div>
+						<div class='row'>
+							<a href='product_detail.php?goodscode=PR00000044'>
+								<span></span>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
