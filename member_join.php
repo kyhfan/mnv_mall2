@@ -148,7 +148,7 @@
 								<div class="checkbox">
 									<input type="checkbox" name="chk1" id="use_chk">
 								</div>
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" onclick="open_pop('terms_div')">
 									<span>내용보기</span>
 								</a>
 							</div>
@@ -159,7 +159,7 @@
 								<div class="checkbox">
 									<input type="checkbox" name="chk1" id="privacy_chk">
 								</div>
-								<a href="javascript:void(0)">
+								<a href="javascript:void(0)" onclick="open_pop('privacy_div')">
 									<span>내용보기</span>
 								</a>
 							</div>
@@ -180,7 +180,7 @@
 	<script type="text/javascript">
 		var $header = $('#header');
 		var $app = $('#chon-app');
-		
+
 		$(document).ready(function() {
 			$('.gnb').on('click', function() {
 				$('#menu-layer').slideDown('slow');

@@ -7,12 +7,12 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="privacy.php">
 							<span>개인정보취급방침</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="terms_of_use.php">
 							<span>이용약관</span>
 						</a>
 					</li>
@@ -84,7 +84,7 @@
 					<li class="mycart">
 						<a href="cart.php">
 							<span>
-								<img src="./images/gnb_cart.png" alt="메뉴">
+								<img src="./images/gnb_cart.png" alt="장바구니">
 								<?
 	$cart_info 	= select_cart_info();
 	$cart_num	= count($cart_info);

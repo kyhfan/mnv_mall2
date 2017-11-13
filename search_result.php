@@ -15,7 +15,7 @@
 		<div id="container" class="product-list search-result">
 			<div class="pg-title">
 				<h3>
-					검색결과 (임시)
+					검색결과
 				</h3>
 			</div>
 			<div class="grid">
