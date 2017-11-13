@@ -81,7 +81,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="javascript:void(0)">
+						<a href="mypoint.php">
 							<span>적립금</span>
 						</a>
 					</li>

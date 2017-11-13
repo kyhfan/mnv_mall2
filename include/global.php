@@ -33,6 +33,7 @@
 	$_gl['post_info_table']					= "post_info";				// 포스트 테이블
 	$_gl['order_info_table']				= "order_info";				// 주문 테이블
 	$_gl['payment_info_table']				= "payment_info";			// 결제 테이블
+	$_gl['point_info_table']				= "point_info";				// 적립금 테이블
 
 	$_gl['order_status']['order_comp']			= "주문완료";
 	$_gl['order_status']['delivery_ing']		= "배송중";
@@ -55,4 +56,8 @@
 	$_gl['save_percent']					= 0.01;
 	$_gl['delivery_price']					= 2500;
 	$_gl['delivery_max_price']				= 2500;
+
+	$_gl['point']['JOIN_PLUS']				= "회원가입 축하 적립";
+	$_gl['point']['BUY_SAVE_PLUS']			= "상품 구매 적립";
+	$_gl['point']['BUY_USE_MINUS']			= "상품 구매 사용";
 ?>
