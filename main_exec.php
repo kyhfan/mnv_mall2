@@ -3,6 +3,25 @@
 
 	switch ($_REQUEST['exec'])
 	{
+		case "search_product" :
+			$word = $_REQUEST['word'];
+			$search_query = "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_name LIKE '%".$word."%' OR m_goods_big_desc LIKE '%".$word."%'";
+			$search_result = mysqli_query($my_db, $search_query);
+
+			if($search_result) {
+				$search_count = mysqli_num_rows($search_result);
+				// $result_list = array();
+				// while ($search_data = mysqli_fetch_array($search_result)) {
+				// 	$result_list[] = $search_data['goods_code'];
+				// };
+				$flag = $search_count;
+			}else{
+				$flag = 0;
+			}
+
+			echo $flag;
+		break;
+
 		case "member_login" :
 			$mb_email			= $_REQUEST["mb_email"];
 			$mb_password		= $_REQUEST["mb_password"];
@@ -489,25 +508,6 @@
 			}
 			echo $flag;
 
-		break;
-
-		case "search_product" :
-			$word = $_REQUEST['word'];
-			$search_query = "SELECT * FROM ".$_gl['goods_info_table']." WHERE goods_name LIKE '%".$word."%' OR m_goods_big_desc LIKE '%".$word."%'";
-			$search_result = mysqli_query($my_db, $search_query);
-
-			if($search_result) {
-				$search_count = mysqli_num_rows($search_result);
-				// $result_list = array();
-				// while ($search_data = mysqli_fetch_array($search_result)) {
-				// 	$result_list[] = $search_data['goods_code'];
-				// };
-				$flag = $search_count;
-			}else{
-				$flag = 0;
-			}
-
-			echo $flag;
 		break;
 
 		case "insert_banner_info" :
