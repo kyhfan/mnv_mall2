@@ -7,12 +7,12 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="privacy.php">
 							<span>개인정보취급방침</span>
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="terms_of_use.php">
 							<span>이용약관</span>
 						</a>
 					</li>

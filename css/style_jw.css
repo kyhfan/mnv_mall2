@@ -2478,7 +2478,7 @@
 	/* join-complete */
 
 	/* cart */
-	#container .empty {
+	#container p.empty {
 		font-size: 25px;
 		padding: 220px 0 330px;
 		color: #777777;
@@ -3492,6 +3492,9 @@
 		font-size: 26px;
 		color: #ffffff;
 		padding: 26px 0;
+	}
+	.popup.privacy .close-btn {
+		right: 30px;
 	}
 
 	.privacy .title {
